@@ -6,19 +6,19 @@ use AgroLinkDB
 
 create table Direccion
 (
-	DireccionID		int primary key not null,
+	DireccionID	int primary key not null,
 	Departamento	varchar(50) not null,
-	Municipio		varchar(50) not null,
-	Colonia			varchar(50),
-	Detalle			varchar(150)
+	Municipio	varchar(50) not null,
+	Colonia		varchar(50),
+	Detalle		varchar(150)
 )
 
 create table NumFiscal
 (
-	NumFiscalID			int primary key not null,
-	RangoInicio			varchar(20) not null,
-	RangoFin			varchar(20) not null,
-	Estado				varchar(10) not null,
+	NumFiscalID		int primary key not null,
+	RangoInicio		varchar(20) not null,
+	RangoFin		varchar(20) not null,
+	Estado			varchar(10) not null,
 	FechaVencimiento	date not null,
 
 	constraint chkEstado check (Estado in('activo','inactivo'))
@@ -40,9 +40,9 @@ create table Impuesto
 create table ListaPrecios
 (
 	ListaPreciosID	int primary key not null,
-	Nombre			varchar(100) not null,
+	Nombre		varchar(100) not null,
 	
-	-- ¿es mejor tipo boolean o tipo varchar?
+	-- Â¿es mejor tipo boolean o tipo varchar?
 
 	-- Activo			bit not null default 1, -- 1 para activo, 0 para inactivo
 	-- Activo varchar(10) not null,
@@ -51,21 +51,21 @@ create table ListaPrecios
 
 create table TipoRiego
 (
-	TipoRiegoID int primary key not null,
+	TipoRiegoID 	int primary key not null,
 	Nombre		varchar(50) not null,
-	Descripcion varchar(150),
+	Descripcion 	varchar(150),
 )
 
 create table Empresa
 (
-	EmpresaID		int primary key not null,
+	EmpresaID	int primary key not null,
 	CodigoEmpresa	as concat('EMP', EmpresaID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
-	Nombre			varchar(100) not null,
-	RTN				varchar(14) not null unique,
-	Correo			varchar(100) not null,
-	Telefono		varchar(20) not null,
-	DireccionID		int not null,
-	NumFiscalID		int not null,
+	Nombre		varchar(100) not null,
+	RTN		varchar(14) not null unique,
+	Correo		varchar(100) not null,
+	Telefono	varchar(20) not null,
+	DireccionID	int not null,
+	NumFiscalID	int not null,
 	
 	constraint fkEmpresaDireccion foreign key (DireccionID) references Direccion(DireccionID)
 	-- constraint chkRTN check (len(RTN) = 14)
@@ -79,7 +79,7 @@ create table Socio
 	Nombre			varchar(150) not null,
 	TipoSocio		varchar(20) not null,
 	Identidad		varchar(13) not null unique,
-	RTN				varchar(14) not null unique,
+	RTN			varchar(14) not null unique,
 	Correo			varchar(100) not null,
 	Telefono		varchar(20) not null,
 	DireccionID		int not null,
@@ -101,7 +101,7 @@ create table Usuario
 	UsuarioID	int primary key not null,
 	-- ?? CodigoUsuario	as concat('USU', UsuarioID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
 	Usuario		varchar(50) not null unique,	-- kmm (puede facilmente quitarse)
-	Clave		varchar(25) not null,	-- Clave o Contraseña
+	Clave		varchar(25) not null,	-- Clave o ContraseÃ±a
 	Nombre		varchar(100) not null,			-- kisha Mejia
 	TipoUsuario varchar(20) not null,
 	
@@ -110,11 +110,11 @@ create table Usuario
 
 create table Finca
 (
-	FincaID			int primary key not null,
-	CodigoFinca		as concat('FIN', FincaID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
-	SocioID			int  not null,
-	Nombre			varchar(100) not null,
-	DireccionID		int not null,
+	FincaID		int primary key not null,
+	CodigoFinca	as concat('FIN', FincaID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
+	SocioID		int  not null,
+	Nombre		varchar(100) not null,
+	DireccionID	int not null,
 	CapacidadAgua	varchar(10) not null,
 
 	constraint fkFincaSocio foreign key (SocioID) references Socio(SocioID),
@@ -135,17 +135,17 @@ create table TipoProducto
 create table UnidadMedida
 (
 	UnidadMedidaID	int primary key not null,
-	Nombre			varchar(50) not null,
-	Abreviacion		varchar(10) not null,
+	Nombre		varchar(50) not null,
+	Abreviacion	varchar(10) not null,
 )
 
 create table Producto
 (
-	ProductoID		int primary key not null,
+	ProductoID	int primary key not null,
 	CodigoProducto	as concat('PRO', ProductoID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
-	TipoID			int not null,
+	TipoID		int not null,
 	UnidadMedidaID	int not null,
-	Nombre			varchar(50) not null,
+	Nombre		varchar(50) not null,
 
 	constraint fkProductoTipoProducto foreign key (TipoID) references TipoProducto(TipoID),
 	constraint fkProductoUnidadMedida foreign key (UnidadMedidaID) references UnidadMedida(UnidadMedidaID)
@@ -153,9 +153,9 @@ create table Producto
 
 create table ProductoDetalle
 (
-	ProductoID		int not null,
+	ProductoID	int not null,
 	ListaPreciosID	int not null,
-	Precio			decimal(10,2) not null default 0 check (Precio >= 0),
+	Precio		decimal(10,2) not null default 0 check (Precio >= 0),
 
 	constraint pkProductoDetalle primary key (ProductoID),
 	constraint fkProductoDetalleProducto foreign key (ProductoID) references Producto(ProductoID),
@@ -164,12 +164,12 @@ create table ProductoDetalle
 
 create table Lote
 (
-	LoteID			int primary key not null,
-	CodigoLote		as concat('LOT', LoteID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
-	FincaID			int not null,
-	ProductoID		int not null,
-	TipoRiegoID		int not null,
-	TipoSuelo		varchar(50) not null,
+	LoteID		int primary key not null,
+	CodigoLote	as concat('LOT', LoteID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
+	FincaID		int not null,
+	ProductoID	int not null,
+	TipoRiegoID	int not null,
+	TipoSuelo	varchar(50) not null,
 	FechaSiembra	date not null,
 	FechaCosecha	date not null,
 	Extension		decimal(6,2) not null,
@@ -179,26 +179,27 @@ create table Lote
 	constraint fkLoteTipoRiego foreign key (TipoRiegoID) references TipoRiego(TipoRiegoID)
 )
 
-create table Almacen
+create table Bodega
 (
-	AlmacenID	int primary key not null,
+	BodegaID	int primary key not null,
+	CodigoBodega 	as concat('BOD', BodegaID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
 	Nombre		varchar(50) not null,
 	Capacidad	decimal(6,2) not null,
-	DireccionID int not null,
+	DireccionID   	int not null,
 
-	constraint fkAlmacenDireccion foreign key (DireccionID) references Direccion(DireccionID)
+	constraint fkBodegaDireccion foreign key (DireccionID) references Direccion(DireccionID)
 )
-
-create table AlmacenDetalle
+	
+create table BodegaDetalle
 (
-	AlmacenID		 int not null,
-	ProductoID		 int not null,
+	BodegaID	 int not null,
+	ProductoID	 int not null,
 	Comprometido	 decimal(10,2) not null default 0 check (Comprometido >= 0),
 	TotalExistencias decimal(10,2) not null default 0 check (TotalExistencias >= 0),
 	
-	constraint pkAlmacenDetalle primary key (AlmacenID),
-	constraint fkAlmacenDetalleAlmacen foreign key (AlmacenID) references Almacen(AlmacenID),
-	constraint fkAlmacenDetalleProducto foreign key (ProductoID) references Producto(ProductoID),
+	constraint pkBodegaDetalle primary key (BodegaID),
+	constraint fkBodegaDetalleBodega foreign key (BodegaID) references Bodega(BodegaID),
+	constraint fkBodegaDetalleProducto foreign key (ProductoID) references Producto(ProductoID),
 
 	constraint chkComprometidoMenorTotal check (Comprometido <= TotalExistencias)
 )
