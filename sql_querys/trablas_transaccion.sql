@@ -55,7 +55,7 @@ go
 --CompraDetalle
 
 Create table CompraDetalle(
-CompraDetalleID int primary key not null,
+CompraID int primary key not null,
 ProductoID int not null,
 ImpuestoID int not null,
 AlmacenID int not null,
@@ -93,6 +93,7 @@ Create Table Factura(
 FacturaID int primary key not null,
 SociosID int not null,
 ListaPrecioID int not null,
+EmpresaID int not null,
 Fecha Datetime not null,
 MetodoPago varchar(50) not null,
 CAI varchar(50) not null,
@@ -118,7 +119,33 @@ ReciboID int primary key not null,
 ListaPrecioID int not null,
 SociosID int not null,
 MetodoPago varchar(50) not null,
+Fecha Datetime not null,
 constraint chkMetodoPagoRecibo check( MetodoPago in('Efectivo','Tarjeta','Cheque') )
 
+)
 
+Create Table ReciboDetalle(
+ReciboID int  primary key not null,
+ProductoID int not null,
+ImpuestoID int not null,
+AlmacenID int not null,
+Cantidad int not null,
+Precio Float not null,
+Total Float not null,
+
+)
+
+--pemdiemye las llaves 
+create Table SalidaProducto(
+
+SalidaID int primary key not null,
+SociosID int not null,
+AlmacenID int not null,
+
+)
+
+create table SalidaProductoDetalle(
+	SalidaID int primary key not null,
+	ProductoID int not null,
+	Cantidad int not null
 )
