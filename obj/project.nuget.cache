@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Dm+LwO2xnc0=",
+  "dgSpecHash": "ne58CCvv+eQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\AgroLink.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Github\\AgroLink\\AgroLink.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\arlet\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.15\\microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
+    "C:\\Users\\arlet\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.15\\microsoft.windowsdesktop.app.ref.8.0.15.nupkg.sha512",
+    "C:\\Users\\arlet\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.15\\microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512",
+    "C:\\Users\\arlet\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.15\\microsoft.netcore.app.host.win-x64.8.0.15.nupkg.sha512"
+  ],
   "logs": []
 }
