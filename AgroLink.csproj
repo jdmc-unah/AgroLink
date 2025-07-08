@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <Folder Include="Pantallas\Pantallas_Transacciones\" />
-    <Folder Include="Pantallas\Pantallas_Objetos\" />
     <Folder Include="Recursos_Visuales\Iconos\" />
     <Folder Include="Recursos_Visuales\Imagenes\" />
   </ItemGroup>
