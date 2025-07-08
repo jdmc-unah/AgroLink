@@ -8,4 +8,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pantallas\Pantallas_Transacciones\" />
+    <Folder Include="Pantallas\Pantallas_Objetos\" />
+    <Folder Include="Recursos_Visuales\Iconos\" />
+    <Folder Include="Recursos_Visuales\Imagenes\" />
+  </ItemGroup>
+
 </Project>

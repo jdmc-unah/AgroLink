@@ -1,6 +1,6 @@
 ﻿namespace AgroLink
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,13 +30,14 @@
         {
             SuspendLayout();
             // 
-            // Form1
+            // Login
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "Form1";
-            Text = "Form1";
+            ClientSize = new Size(1360, 738);
+            Margin = new Padding(5, 5, 5, 5);
+            Name = "Login";
+            Text = "Login";
             Load += Form1_Load;
             ResumeLayout(false);
         }
