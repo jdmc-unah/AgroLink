@@ -24,23 +24,20 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void Empresa_Load(object sender, EventArgs e)
         {
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Nombre");
-            dt.Columns.Add("RTN");
-            dt.Columns.Add("Correo");
-            dt.Columns.Add("Telefono");
-            dt.Columns.Add("Departamento");
-            dt.Columns.Add("Municipio");
-            dt.Columns.Add("Colonia");
-            dt.Columns.Add("Detalle");
+            DataRow valores = recSQL.ejecutarVista("vDatosEmpresa").Rows[0];
+            
+            string nombre = valores[0].ToString();
+            string rtn = valores[1].ToString();
+            string correo = valores[2].ToString();
+            string telefono = valores[3].ToString();
+            string direccion = $"{valores["Detalle"].ToString()}, {valores["Colonia"].ToString()}, \n{valores["Municipio"].ToString()}, {valores["Departamento"].ToString()}   ";
 
 
-            DataRow fila = dt.NewRow();
-            fila["Nombre"] = "José Martínez";
-            fila["Telefono"] = "+50498765432";
-            dt.Rows.Add(fila);
-
-
+            this.textBox1.Text = nombre;
+            this.textBox2.Text = rtn;
+            this.textBox3.Text = correo;
+            this.textBox4.Text = telefono;
+            this.richTextBox1.Text = direccion;
 
 
 
