@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AgroLink.Recursos_SQL
 {
@@ -18,7 +19,7 @@ namespace AgroLink.Recursos_SQL
 
         //metodo general para ejecutar procedimientos almacenados con recibir el nombre del sp y los parametros que ocupe
         //devuelve un datatable con los datos
-        public DataTable ejecutarSP(string nombreSP, Dictionary<string, object>? parametros = null)
+        public DataTable EjecutarSPDataTable(string nombreSP, Dictionary<string, object>? parametros = null)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -52,8 +53,47 @@ namespace AgroLink.Recursos_SQL
         }
 
 
+        public Boolean EjecutarSPBool(string nombreSP, Dictionary<string, object>? parametros = null)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(nombreSP, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Parámetros de entrada
+                        if (parametros != null) 
+                        {
+                            foreach (var param in parametros)
+                            {
+                                command.Parameters.AddWithValue($"@{param.Key}", param.Value ?? null);
+                            }
+                        }
+
+                        connection.Open();
+
+                        //ejecuta el sp
+                        command.ExecuteNonQuery(); 
+
+                        return true;
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //si falla devuelve falso
+                return false;
+            }
+        }
+
+
+
         //Ejecuta vistas
-        public DataTable ejecutarVista(string nombreVista)
+        public DataTable EjecutarVista(string nombreVista)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -78,6 +118,10 @@ namespace AgroLink.Recursos_SQL
 
         }
 
+
+
+
+       
 
 
 

@@ -20,6 +20,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         }
 
         Recursos_SQL.Recursos_SQL recSQL = new Recursos_SQL.Recursos_SQL();
+        Metodos_Globales.MetodosGlobales metGlobales = new Metodos_Globales.MetodosGlobales();
 
         #region Metodos
 
@@ -40,7 +41,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void Empresa_Load(object sender, EventArgs e)
         {
             //Trae  Datos Empresa y llena campos de formulario
-            DataRow valores = recSQL.ejecutarVista("vDatosEmpresa").Rows[0];
+            DataRow valores = recSQL.EjecutarVista("vDatosEmpresa").Rows[0];
 
             this.textBox1.Text = valores["Nombre"].ToString();
             this.textBox2.Text = valores["RTN"].ToString();
@@ -51,10 +52,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
 
             //Trae Numeros Fiscales y llena datagridview 1
-            this.dataGridView1.DataSource = recSQL.ejecutarVista("vNumerosFiscales");
+            this.dataGridView1.DataSource = recSQL.EjecutarVista("vNumerosFiscales");
 
             //Trae Impuesto y llena datagridview 2
-            this.dataGridView2.DataSource = recSQL.ejecutarVista("Pruebas.Impuesto");
+            this.dataGridView2.DataSource = recSQL.EjecutarVista("Pruebas.Impuesto");
 
 
         }
@@ -83,6 +84,32 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int row = this.dataGridView1.CurrentRow.Index;
+            int numFiscalID = (int)this.dataGridView1.Rows[row].Cells[0].Value;
+
+            if (metGlobales.MensajeConfirmacion("Confirmar", $"Esta seguro de borrar el Numero Fiscal con ID {numFiscalID}"))
+            {
+
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    {"NumFiscalID", numFiscalID }
+                };
+
+                if (recSQL.EjecutarSPBool("spBorrarNumFiscal", parametros))
+                {
+                    MessageBox.Show($"Se borro el numero fiscal con el id {numFiscalID}");
+                    this.dataGridView1.DataSource = recSQL.EjecutarVista("vNumerosFiscales");
+
+                }
+                else
+                {
+                    MessageBox.Show($"Ocurrio un error al borrar el numero fiscal {numFiscalID}");
+                }
+
+            }
+
+
+
 
         }
     }
