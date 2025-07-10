@@ -44,11 +44,23 @@
             textBox2 = new TextBox();
             label1 = new Label();
             splitContainer2 = new SplitContainer();
+            splitContainer4 = new SplitContainer();
+            label7 = new Label();
             dataGridView1 = new DataGridView();
+            NumFiscalID = new DataGridViewTextBoxColumn();
+            RangoInicio = new DataGridViewTextBoxColumn();
+            RangoFin = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
+            FechaVencimiento = new DataGridViewTextBoxColumn();
             contextMenuStrip1 = new ContextMenuStrip(components);
             borrarToolStripMenuItem = new ToolStripMenuItem();
             editarToolStripMenuItem = new ToolStripMenuItem();
+            splitContainer3 = new SplitContainer();
+            label6 = new Label();
             dataGridView2 = new DataGridView();
+            ImpuestoID = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Valor = new DataGridViewTextBoxColumn();
             contextMenuStrip2 = new ContextMenuStrip(components);
             borrarToolStripMenuItem1 = new ToolStripMenuItem();
             editarToolStripMenuItem1 = new ToolStripMenuItem();
@@ -60,15 +72,23 @@
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer4).BeginInit();
+            splitContainer4.Panel1.SuspendLayout();
+            splitContainer4.Panel2.SuspendLayout();
+            splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             contextMenuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(153, 164);
+            textBox1.Location = new Point(117, 164);
             textBox1.Margin = new Padding(2, 3, 2, 3);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
@@ -102,14 +122,14 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
-            splitContainer1.Size = new Size(1965, 1244);
-            splitContainer1.SplitterDistance = 964;
+            splitContainer1.Size = new Size(2238, 1244);
+            splitContainer1.SplitterDistance = 832;
             splitContainer1.SplitterWidth = 5;
             splitContainer1.TabIndex = 5;
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(153, 790);
+            richTextBox1.Location = new Point(117, 790);
             richTextBox1.Margin = new Padding(7, 8, 7, 8);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
@@ -119,7 +139,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(624, 989);
+            button3.Location = new Point(586, 1112);
             button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
             button3.Size = new Size(187, 57);
@@ -131,7 +151,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(364, 989);
+            button2.Location = new Point(347, 1112);
             button2.Margin = new Padding(2, 3, 2, 3);
             button2.Name = "button2";
             button2.Size = new Size(187, 57);
@@ -143,38 +163,40 @@
             // 
             // button1
             // 
-            button1.Location = new Point(114, 989);
+            button1.Location = new Point(169, 965);
             button1.Margin = new Padding(2, 3, 2, 3);
             button1.Name = "button1";
-            button1.Size = new Size(187, 57);
+            button1.Size = new Size(500, 57);
             button1.TabIndex = 14;
-            button1.Text = "Editar";
+            button1.Text = "Editar Datos de Empresa";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(117, 741);
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label5.Location = new Point(81, 741);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(142, 41);
+            label5.Size = new Size(150, 41);
             label5.TabIndex = 13;
             label5.Text = "Direccion";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(117, 571);
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label4.Location = new Point(81, 571);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(132, 41);
+            label4.Size = new Size(140, 41);
             label4.TabIndex = 11;
             label4.Text = "Telefono";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(153, 631);
+            textBox4.Location = new Point(117, 631);
             textBox4.Margin = new Padding(2, 3, 2, 3);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
@@ -184,16 +206,17 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(117, 413);
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label3.Location = new Point(81, 413);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(109, 41);
+            label3.Size = new Size(113, 41);
             label3.TabIndex = 9;
             label3.Text = "Correo";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(153, 470);
+            textBox3.Location = new Point(117, 470);
             textBox3.Margin = new Padding(2, 3, 2, 3);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
@@ -203,16 +226,17 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(117, 273);
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label2.Location = new Point(81, 273);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(73, 41);
+            label2.Size = new Size(79, 41);
             label2.TabIndex = 7;
             label2.Text = "RTN";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(153, 331);
+            textBox2.Location = new Point(117, 331);
             textBox2.Margin = new Padding(2, 3, 2, 3);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
@@ -222,10 +246,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(117, 107);
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label1.Location = new Point(81, 107);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(291, 41);
+            label1.Size = new Size(304, 41);
             label1.TabIndex = 5;
             label1.Text = "Nombre de Empresa";
             // 
@@ -239,29 +264,103 @@
             // 
             // splitContainer2.Panel1
             // 
-            splitContainer2.Panel1.Controls.Add(dataGridView1);
+            splitContainer2.Panel1.Controls.Add(splitContainer4);
             // 
             // splitContainer2.Panel2
             // 
-            splitContainer2.Panel2.Controls.Add(dataGridView2);
-            splitContainer2.Size = new Size(996, 1244);
+            splitContainer2.Panel2.Controls.Add(splitContainer3);
+            splitContainer2.Size = new Size(1401, 1244);
             splitContainer2.SplitterDistance = 620;
             splitContainer2.SplitterWidth = 3;
             splitContainer2.TabIndex = 1;
             // 
+            // splitContainer4
+            // 
+            splitContainer4.Dock = DockStyle.Fill;
+            splitContainer4.Location = new Point(0, 0);
+            splitContainer4.Name = "splitContainer4";
+            splitContainer4.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer4.Panel1
+            // 
+            splitContainer4.Panel1.Controls.Add(label7);
+            // 
+            // splitContainer4.Panel2
+            // 
+            splitContainer4.Panel2.Controls.Add(dataGridView1);
+            splitContainer4.Size = new Size(1401, 620);
+            splitContainer4.SplitterDistance = 85;
+            splitContainer4.TabIndex = 1;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label7.Location = new Point(548, 28);
+            label7.Name = "label7";
+            label7.Size = new Size(260, 41);
+            label7.TabIndex = 1;
+            label7.Text = "Numeros Fiscales";
+            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { NumFiscalID, RangoInicio, RangoFin, Estado, FechaVencimiento });
             dataGridView1.ContextMenuStrip = contextMenuStrip1;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Location = new Point(0, 3);
             dataGridView1.Margin = new Padding(2, 3, 2, 3);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 102;
-            dataGridView1.Size = new Size(996, 620);
+            dataGridView1.Size = new Size(1357, 517);
             dataGridView1.TabIndex = 0;
+            // 
+            // NumFiscalID
+            // 
+            NumFiscalID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            NumFiscalID.DataPropertyName = "NumFiscalID";
+            NumFiscalID.HeaderText = "ID";
+            NumFiscalID.MinimumWidth = 100;
+            NumFiscalID.Name = "NumFiscalID";
+            NumFiscalID.ReadOnly = true;
+            NumFiscalID.Width = 101;
+            // 
+            // RangoInicio
+            // 
+            RangoInicio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            RangoInicio.DataPropertyName = "RangoInicio";
+            RangoInicio.HeaderText = "Inicio";
+            RangoInicio.MinimumWidth = 250;
+            RangoInicio.Name = "RangoInicio";
+            RangoInicio.ReadOnly = true;
+            // 
+            // RangoFin
+            // 
+            RangoFin.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            RangoFin.DataPropertyName = "RangoFin";
+            RangoFin.HeaderText = "Fin";
+            RangoFin.MinimumWidth = 250;
+            RangoFin.Name = "RangoFin";
+            RangoFin.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            Estado.DataPropertyName = "Estado";
+            Estado.HeaderText = "Estado";
+            Estado.MinimumWidth = 12;
+            Estado.Name = "Estado";
+            Estado.ReadOnly = true;
+            Estado.Width = 250;
+            // 
+            // FechaVencimiento
+            // 
+            FechaVencimiento.DataPropertyName = "FechaVencimiento";
+            FechaVencimiento.HeaderText = "Fecha de Vencimiento";
+            FechaVencimiento.MinimumWidth = 12;
+            FechaVencimiento.Name = "FechaVencimiento";
+            FechaVencimiento.ReadOnly = true;
+            FechaVencimiento.Width = 250;
             // 
             // contextMenuStrip1
             // 
@@ -284,17 +383,70 @@
             editarToolStripMenuItem.Text = "Editar";
             editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
             // 
+            // splitContainer3
+            // 
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer3.Location = new Point(0, 0);
+            splitContainer3.Name = "splitContainer3";
+            splitContainer3.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            splitContainer3.Panel1.Controls.Add(label6);
+            // 
+            // splitContainer3.Panel2
+            // 
+            splitContainer3.Panel2.Controls.Add(dataGridView2);
+            splitContainer3.Size = new Size(1401, 621);
+            splitContainer3.SplitterDistance = 67;
+            splitContainer3.TabIndex = 3;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label6.Location = new Point(596, 14);
+            label6.Name = "label6";
+            label6.Size = new Size(164, 41);
+            label6.TabIndex = 0;
+            label6.Text = "Impuestos";
+            // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { ImpuestoID, Nombre, Valor });
             dataGridView2.ContextMenuStrip = contextMenuStrip2;
-            dataGridView2.Dock = DockStyle.Fill;
             dataGridView2.Location = new Point(0, 0);
             dataGridView2.Margin = new Padding(2, 3, 2, 3);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 102;
-            dataGridView2.Size = new Size(996, 621);
+            dataGridView2.Size = new Size(1357, 517);
             dataGridView2.TabIndex = 2;
+            // 
+            // ImpuestoID
+            // 
+            ImpuestoID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ImpuestoID.DataPropertyName = "ImpuestoID";
+            ImpuestoID.HeaderText = "ID";
+            ImpuestoID.MinimumWidth = 12;
+            ImpuestoID.Name = "ImpuestoID";
+            ImpuestoID.Width = 101;
+            // 
+            // Nombre
+            // 
+            Nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Nombre.DataPropertyName = "Nombre";
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 12;
+            Nombre.Name = "Nombre";
+            // 
+            // Valor
+            // 
+            Valor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Valor.DataPropertyName = "Valor";
+            Valor.HeaderText = "Valor";
+            Valor.MinimumWidth = 12;
+            Valor.Name = "Valor";
             // 
             // contextMenuStrip2
             // 
@@ -319,11 +471,11 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1965, 1244);
+            ClientSize = new Size(2238, 1244);
             Controls.Add(splitContainer1);
             Margin = new Padding(2, 3, 2, 3);
             Name = "Empresa";
-            Text = "Empresa";
+            Text = "Configuración de Empresa";
             Load += Empresa_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
@@ -334,8 +486,18 @@
             splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
+            splitContainer4.Panel1.ResumeLayout(false);
+            splitContainer4.Panel1.PerformLayout();
+            splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer4).EndInit();
+            splitContainer4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             contextMenuStrip1.ResumeLayout(false);
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel1.PerformLayout();
+            splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             contextMenuStrip2.ResumeLayout(false);
             ResumeLayout(false);
@@ -366,5 +528,17 @@
         private ContextMenuStrip contextMenuStrip2;
         private ToolStripMenuItem borrarToolStripMenuItem1;
         private ToolStripMenuItem editarToolStripMenuItem1;
+        private DataGridViewTextBoxColumn NumFiscalID;
+        private DataGridViewTextBoxColumn RangoInicio;
+        private DataGridViewTextBoxColumn RangoFin;
+        private DataGridViewTextBoxColumn Estado;
+        private DataGridViewTextBoxColumn FechaVencimiento;
+        private SplitContainer splitContainer3;
+        private SplitContainer splitContainer4;
+        private Label label7;
+        private Label label6;
+        private DataGridViewTextBoxColumn ImpuestoID;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Valor;
     }
 }
