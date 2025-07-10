@@ -130,3 +130,5 @@ C:\Users\Daniel\OneDrive\Documentos\UNAH\Proyecto Comercializadora\AgroLink\obj\
 C:\Users\Daniel\OneDrive\Documentos\UNAH\Proyecto Comercializadora\AgroLink\obj\Debug\net8.0-windows\AgroLink.pdb
 C:\Users\Daniel\OneDrive\Documentos\UNAH\Proyecto Comercializadora\AgroLink\obj\Debug\net8.0-windows\AgroLink.genruntimeconfig.cache
 C:\Users\Daniel\OneDrive\Documentos\UNAH\Proyecto Comercializadora\AgroLink\obj\Debug\net8.0-windows\ref\AgroLink.dll
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Empresa.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Venta.resources
