@@ -221,3 +221,9 @@ create table Pruebas.BodegaDetalle -- ya creada/editada
 	constraint chkComprometidoMenorTotal check (Comprometido <= TotalExistencias)
 )
 
+
+
+
+
+
+
