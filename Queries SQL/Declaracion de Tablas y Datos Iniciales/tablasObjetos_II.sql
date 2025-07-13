@@ -1,13 +1,8 @@
---ya creada
 Create Table Pruebas.Puesto
 (
 PuestoID int primary key not null,
 Nombre Varchar(50)
 )
-
-
-
-
 
 create Table Pruebas.Empleado
 (
@@ -19,7 +14,7 @@ Correo			varchar(100),
 Telefono		varchar(20) not null,
 Direccion		varchar(80),
 Notas			varchar(150),
-PuestoID		int,
+PuestoID		int not null,
 Estado			varchar(40)	not null,
 Sexo			varchar(40) not null,
 Edad			int not null,
@@ -31,7 +26,7 @@ constraint fkEmpleadoPuesto foreign key(PuestoID) references Pruebas.Puesto(Pues
 constraint chkIdentidad check (len(Identidad) = 13),
 constraint chkRTN check (len(RTN) = 14),
 constraint chkEstado check ( Estado in('Activo','Inactivo') ),
-constraint chkSexo check ( Sexo in('Mascullino','Femenino') ),
+constraint chkSexo check ( Sexo in('Masculino','Femenino') ),
 constraint chkEdad check ( Edad>=18 ),
 constraint chkEstadoCivil check ( EstadoCivil in('Casado','Soltero','Union Libre'))
 
@@ -59,15 +54,16 @@ constraint fkMunicipioDepartamento foreign key (DepartamentoID) references Prueb
 
 Create Table Pruebas.Entrega
 (
-EntregaID int not null,
+EntregaID int primary key not null,
 Fecha Datetime not null,
 SocioID int not null,
-DocumentoID int not null,
-Direccion varchar(80) not null, -- no se si usamos la tabla dirrecion :/
+VentaID int not null,
+Direccion int not null, -- no se si usamos la tabla dirrecion :/
 RepartidorID int not null,
 
 constraint fkEntregaSocios foreign key (SocioID) references Pruebas.Socio(SocioID),
-constraint fkEntregaDocumento foreign key (DocumentoID)references Pruebas.Factura(facturaID),  
+constraint fkEntregaVenta foreign key (VentaID) references Pruebas.Venta(VentaID),  
+constraint fkEntregaDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
 constraint fkEntregaRepartidor foreign key (RepartidorID) references Pruebas.Empleado(EmpleadoID)
 )
 
@@ -77,6 +73,9 @@ EntregaID int not null,
 ProductoID int not null,
 cantidad int not null,
 
+constraint pkEntregaDetalle primary key (EntregaID, ProductoID),
+
+constraint fkEntregaDetalleEntrega foreign key (EntregaID) references Pruebas.Entrega(EntregaID),  
 constraint fkEntregaDetalleProducto foreign key(ProductoID) references Pruebas.Producto(ProductoID),
 constraint chkCantidad check (cantidad>=0)
 )
