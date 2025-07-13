@@ -6,13 +6,12 @@ use AgroLinkDB
 
 create table Pruebas.Direccion	--ya creada
 (
-	DireccionID	int primary key not null,
-	DepartamentoID	int not null,   --CAMBIO
-	MunicipioID	int not null,		--CAMBIO
-	Colonia		varchar(50),
-	Detalle		varchar(150)
+    DireccionID int primary key identity(1,1),
+    MunicipioID int not null,
+    Colonia		varchar(50),
+    Detalle		varchar(250),
 
-	constraint fkDireccionDepartamento foreign key (DepartamentoID) references Pruebas.Departamento(DepartamentoID),	--CAMBIO
+	constraint fkDireccionMunicipio foreign key (MunicipioID) references Pruebas.Municipio(MunicipioID)
 )
 
 create table Pruebas.NumFiscal	--ya creada
