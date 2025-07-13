@@ -105,7 +105,7 @@ create table Pruebas.Socio --ya creada
 	DireccionID		int not null,
 	Notas			varchar(150),
 
-	foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
+	constraint fkSocioDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
 	
 	constraint chkTipoSocio check (TipoSocio in ('Agricultor','Proveedor','Consumidor')),
 	constraint chkIdentidad check (len(Identidad) = 13),
