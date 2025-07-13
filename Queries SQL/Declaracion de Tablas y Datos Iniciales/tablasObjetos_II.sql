@@ -1,10 +1,10 @@
-Create Table Pruebas.Puesto
+Create Table Pruebas.Puesto        --YA CREADA
 (
 PuestoID int primary key not null,
 Nombre Varchar(50)
 )
 
-create Table Pruebas.Empleado
+create Table Pruebas.Empleado      --YA CREADA
 (
 EmpleadoID int primary key not null,
 Nombre			varchar(50) not null,
@@ -23,26 +23,21 @@ EstadoCivil     varchar(50) not null,
 
 constraint fkEmpleadoPuesto foreign key(PuestoID) references Pruebas.Puesto(PuestoID),
 
-constraint chkIdentidad check (len(Identidad) = 13),
-constraint chkRTN check (len(RTN) = 14),
-constraint chkEstado check ( Estado in('Activo','Inactivo') ),
+constraint chkIdentidadEmpleado check (len(Identidad) = 13),
+constraint chkRTNEmpleado check (len(RTN) = 14),
+constraint chkEstadoEmpleado check ( Estado in('Activo','Inactivo') ),
 constraint chkSexo check ( Sexo in('Masculino','Femenino') ),
 constraint chkEdad check ( Edad>=18 ),
 constraint chkEstadoCivil check ( EstadoCivil in('Casado','Soltero','Union Libre'))
-
 )
 
-
-
-Create Table Pruebas.Departamento -- ya creada 
+Create Table Pruebas.Departamento       --YA CREADA
 (
 DepartamentoID int primary key not null,
 Nombre varchar(50) not null
-
 )
-
-
-Create Table Pruebas.Municipio --ya creada
+  
+Create Table Pruebas.Municipio          --YA CREADA
 (
 MunicipioID int primary key not null,
 DepartamentoID int not null,
@@ -52,13 +47,13 @@ constraint fkMunicipioDepartamento foreign key (DepartamentoID) references Prueb
 )
 
 
-Create Table Pruebas.Entrega
+Create Table Pruebas.Entrega      --YA CREADA
 (
 EntregaID int primary key not null,
 Fecha Datetime not null,
 SocioID int not null,
 VentaID int not null,
-Direccion int not null, -- no se si usamos la tabla dirrecion :/
+DireccionID int not null, 
 RepartidorID int not null,
 
 constraint fkEntregaSocios foreign key (SocioID) references Pruebas.Socio(SocioID),
@@ -67,15 +62,15 @@ constraint fkEntregaDireccion foreign key (DireccionID) references Pruebas.Direc
 constraint fkEntregaRepartidor foreign key (RepartidorID) references Pruebas.Empleado(EmpleadoID)
 )
 
-create table Pruebas.EntregaDetalle
+create table Pruebas.EntregaDetalle    --YA CREADA
 (
 EntregaID int not null,
 ProductoID int not null,
-cantidad int not null,
+Cantidad int not null,
 
 constraint pkEntregaDetalle primary key (EntregaID, ProductoID),
 
 constraint fkEntregaDetalleEntrega foreign key (EntregaID) references Pruebas.Entrega(EntregaID),  
 constraint fkEntregaDetalleProducto foreign key(ProductoID) references Pruebas.Producto(ProductoID),
-constraint chkCantidad check (cantidad>=0)
+constraint chkCantidadEntrega check (Cantidad>=0)
 )
