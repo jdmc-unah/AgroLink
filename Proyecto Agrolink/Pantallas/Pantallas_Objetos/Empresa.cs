@@ -13,6 +13,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         Recursos_SQL recSQL = new Recursos.Recursos_SQL();
         MetodosGlobales metGlobales = new Recursos.MetodosGlobales();
+        DataRow valores;
+
 
         #region Metodos
 
@@ -38,7 +40,6 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         //Llena Comboboxes
         void LlenaDepto()
         {
-            // Llena Comboboxes Departamento y Municipio con datos
             comboBox1.DataSource = recSQL.EjecutarVista("Pruebas.Departamento");  // Asignar el origen de datos
             comboBox1.DisplayMember = "Nombre";         // Columna que se mostrará
             comboBox1.ValueMember = "DepartamentoID";   // Valor interno que se usará
@@ -48,22 +49,24 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         void LlenaMuni(int depto)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>
-                {
-                    {"depto",  depto }
-                };
+            {
+                {"depto",  depto }
+            };
 
-            comboBox2.DataSource = recSQL.EjecutarSPDataTable("spTraeDeptoMunicipio", parametros);  // Asignar el origen de datos
-            comboBox2.DisplayMember = "Nombre";         // Columna que se mostrará
-            comboBox2.ValueMember = "MunicipioID";   // Valor interno que se usará
-
+            comboBox2.DataSource = recSQL.EjecutarSPDataTable("spTraeDeptoMunicipio", parametros); 
+            comboBox2.DisplayMember = "Nombre";         
+            comboBox2.ValueMember = "MunicipioID";   
         }
 
 
         #endregion
+
+
+
         private void Empresa_Load(object sender, EventArgs e)
         {
             //Trae  Datos Empresa y llena campos de formulario
-            DataRow valores = recSQL.EjecutarVista("vDatosEmpresa").Rows[0];
+            valores = recSQL.EjecutarVista("vDatosEmpresa").Rows[0];
 
             this.textBox1.Text = valores["Nombre"].ToString();
             this.textBox2.Text = valores["RTN"].ToString();
@@ -97,15 +100,28 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             ToggleReadOnly(false);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            ToggleReadOnly(true);
-
-        }
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
             ToggleReadOnly(true);
+
+
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ToggleReadOnly(true);
+
+            this.textBox1.Text = valores["Nombre"].ToString();
+            this.textBox2.Text = valores["RTN"].ToString();
+            this.textBox3.Text = valores["Correo"].ToString();
+            this.textBox4.Text = valores["Telefono"].ToString();
+            this.textBox5.Text = valores["Colonia"].ToString();
+            this.richTextBox1.Text = $"{valores["Detalle"].ToString()}";
+
+            comboBox1.SelectedValue = valores["Departamento"];
+            LlenaMuni((int)comboBox1.SelectedValue);
+            comboBox2.SelectedValue = valores["Municipio"];
 
         }
 
@@ -149,11 +165,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+      
         private void borrarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
@@ -189,13 +201,23 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Actualiza municipio en funcion del depto que se elige
 
-            //    LlenaMuni((int)comboBox1.SelectedValue);
-
-
+            if (comboBox1.SelectedValue.ToString() != "System.Data.DataRowView" )
+            {
+                LlenaMuni((int)comboBox1.SelectedValue);
+            }
             
+        }
 
+
+
+
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
+
     }
 }
