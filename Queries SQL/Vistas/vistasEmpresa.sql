@@ -49,3 +49,19 @@ go
 SELECT * FROM vImpuesto
 
 go
+
+
+--Trae Direccion
+CREATE OR ALTER VIEW vDireccionEmpresa
+as
+
+	SELECT Dir.Detalle, Dir.Colonia ,Mun.Nombre as 'Municipio', Dep.Nombre 'Departamento' FROM Pruebas.Direccion Dir 
+	INNER JOIN Pruebas.Municipio Mun on Dir.MunicipioID = Mun.MunicipioID
+	INNER JOIN Pruebas.Departamento Dep on Mun.DepartamentoID = Dep.DepartamentoID  
+	WHERE Dir.DireccionID = 1
+
+go
+
+SELECT * FROM vImpuesto
+
+go
