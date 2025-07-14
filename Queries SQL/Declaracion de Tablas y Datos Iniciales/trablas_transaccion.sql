@@ -1,10 +1,7 @@
 use AgroLinkDB
-
 go 
 
-select * from AgroLinkDB.Pruebas.Socio
-
---creacion de tablas de transacciones
+--editando/creando tablas de transacciones
 
 /*
 bases padre
@@ -24,26 +21,32 @@ drop table Pruebas.ReciboDetalle
 drop table Pruebas.SalidaProductoDetalle
 */
 
+
 --VENTAS
 
 CREATE TABLE Pruebas.Venta --ya creada
 (
 	VentaID int primary key not null,
+	CodigoVenta	as concat('VEN', VentaID) persisted,		--CAMBIO
 	Fecha Datetime not null,
 	SocioID int not null,
 	ListaPreciosID int not null,
 	TipoPago varchar(50) not null,
 	Estado varchar(50) not null,
+	EmpleadoID int not null,		--CAMBIO
 
 	constraint chkTipoPago check( TipoPago in('Contado','Credito') ),
 	constraint chkEstadoVenta check( Estado in('Abierto','Cerrado','Cancelado') ),
 	
 	constraint fkVentaSocios FOREIGN KEY (SocioID) REFERENCES Pruebas.Socio(SocioID),
-	constraint fkVentaListaPrecios FOREIGN key (ListaPreciosID) REFERENCES Pruebas.ListaPrecios(ListaPreciosID)
+	constraint fkVentaListaPrecios FOREIGN key (ListaPreciosID) REFERENCES Pruebas.ListaPrecios(ListaPreciosID),
+	constraint fkVentaEmpleado foreign key (EmpleadoID) references Pruebas.Empleado(EmpleadoID)		--CAMBIO
 )
 go
 
---VentasDetalle 
+
+
+--VENTA DETALLE
 
 Create Table Pruebas.VentaDetalle --ya creada
 (
@@ -67,17 +70,20 @@ go
 Create Table Pruebas.Compra --ya creada
 (
 	CompraID int primary key not null,
+	CodigoCompra	as concat('COM', CompraID) persisted,		--CAMBIO
 	ListaPreciosID int not null,
 	Fecha Datetime not null,
 	SocioID int not null,
 	TipoPago varchar(50) not null,
 	Estado varchar(50) not null,
+	EmpleadoID int not null,		--CAMBIO
 
 	constraint chkTipoPagoCompra check( TipoPago in('Contado','Credito') ),
 	constraint chkEstadoVentaCompra check( Estado in('Abierto','Cerrado','Cancelado') ),
 
 	constraint fkCompraListaPrecios foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID),
-	constraint fkCompraSocio foreign key (SocioID) references Pruebas.Socio(SocioID)
+	constraint fkCompraSocio foreign key (SocioID) references Pruebas.Socio(SocioID),
+	constraint fkCompraEmpleado foreign key (EmpleadoID) references Pruebas.Empleado(EmpleadoID)		--CAMBIO
 )
 go 
 
@@ -105,16 +111,14 @@ go
 Create Table Pruebas.EntradaProducto --ya creada
 (
 	EntradaID int primary key not null,
-	SocioID int not null,
-	BodegaID int not null,
+	SocioID int,						--CAMBIO
 	Fecha Datetime not null,
 	LoteID int,
-	Credito decimal(10,2) not null,
+	CompraID int,						--CAMBIO
 
-	constraint fkEntradaProductoSocio foreign key (SocioID) references Pruebas.Socio(SocioID),
-	constraint fkEntradaProductoBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID),
+	constraint fkEntradaProductoSocio foreign key (SocioID) references Pruebas.Socio(SocioID), 
 	constraint fkEntradaProductoLote foreign key (LoteID) references Pruebas.Lote(LoteID),
-
+	constraint fkEntradaProductoCompra foreign key (CompraID) references Pruebas.Compra(CompraID)	--CAMBIO
 )
 go
 
@@ -125,29 +129,40 @@ Create Table Pruebas.EntradaProductoDetalle --ya creada
 	EntradaID int not null,
 	ProductoID int not null,
 	Cantidad int not null,
+	BodegaID int not null,				--CAMBIO
 
 	constraint pkEntradaProductoDetalle primary key (EntradaID, ProductoID),
-	constraint fkEntradaProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+	constraint fkEntradaProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
+	constraint fkEntradaProductoBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)		--CAMBIO
 )
 go
 
 --Factura
---por aqui me quede en creacion
+
 Create Table Pruebas.Factura --ya creada
 (
 	FacturaID int primary key not null,
+	CodigoFactura	as concat('FRA', FacturaID) persisted,		--CAMBIO
+	VentaID int not null,
 	SocioID int not null,
 	ListaPreciosID int not null,
 	EmpresaID int not null,
 	Fecha Datetime not null,
 	MetodoPago varchar(50) not null,
 	CAI varchar(50) not null,
-	constraint chkMetodoPago check( MetodoPago in('Efectivo','Tarjeta','Cheque') ),
+	EmpleadoID int not null,		--CAMBIO
+	Estado varchar(50) not null,	--CAMBIO
 
-	constraint fkFacturaSocio foreign key (SocioID) references Pruebas.Socio(SocioID),
+	constraint chkMetodoPago check( MetodoPago in('Efectivo','Tarjeta','Cheque') ),
+	constraint chkEstadoFactura check( Estado in('Abierto','Cerrado','Cancelado') ),		--CAMBIO
+
+	constraint fkFacturaVenta foreign key (VentaID) references Pruebas.Venta(VentaID),	--CAMBIO
+ 	constraint fkFacturaSocio foreign key (SocioID) references Pruebas.Socio(SocioID),
 	constraint fkFacturaListaPrecios foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID),
 	constraint fkFacturaEmpresa foreign key (EmpresaID) references Pruebas.Empresa(EmpresaID),
+	constraint fkFacturaEmpleado foreign key (EmpleadoID) references Pruebas.Empleado(EmpleadoID)		--CAMBIO
 )
+go
 
 --FacturaDetalle
 
@@ -172,15 +187,21 @@ Create Table Pruebas.FacturaDetalle --ya creada
 Create Table Pruebas.Recibo --ya creada
 (
 	ReciboID int primary key not null,
+	CodigoRecibo as concat('REC', ReciboID) persisted,	--CAMBIO
+	CompraID int not null,								--CAMBIO
 	ListaPreciosID int not null,
 	SocioID int not null,
 	MetodoPago varchar(50) not null,
 	Fecha Datetime not null,
+	EmpleadoID int not null,		--CAMBIO
+	Estado varchar(50) not null,	--CAMBIO
 	
 	constraint chkMetodoPagoRecibo check( MetodoPago in('Efectivo','Tarjeta','Cheque') ),
+	constraint chkEstadoRecibo check( Estado in('Abierto','Cerrado','Cancelado') ),		--CAMBIO
 
 	constraint fkReciboListaPreciosID foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID),
-	constraint fkReciboSocio foreign key (SocioID) references Pruebas.Socio(SocioID)
+	constraint fkReciboSocio foreign key (SocioID) references Pruebas.Socio(SocioID),
+	constraint fkReciboEmpleado foreign key (EmpleadoID) references Pruebas.Empleado(EmpleadoID)		--CAMBIO
 )
 
 
@@ -202,13 +223,15 @@ Create Table Pruebas.ReciboDetalle --ya creada
 )
 
 
-create Table Pruebas.SalidaProducto  --ya creada
+create Table Pruebas.SalidaProducto --ya creada
 (
 	SalidaID int primary key not null,
+	Fecha datetime not null,			--CAMBIO
 	SocioID int not null,
-	BodegaID int not null,
+	VentaID int not null,						--CAMBIO
+
 	constraint fkSalidaProductoSocio foreign key (SocioID) references Pruebas.Socio(SocioID),
-	constraint fkSalidaProductoBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID),
+	constraint fkSalidaProductoVenta foreign key (VentaID) references Pruebas.Venta(VentaID)	--CAMBIO
 )
 
 create table Pruebas.SalidaProductoDetalle --ya creada
@@ -216,7 +239,9 @@ create table Pruebas.SalidaProductoDetalle --ya creada
 	SalidaID int not null,
 	ProductoID int not null,
 	Cantidad int not null,
+	BodegaID int not null,				--CAMBIO
 
 	constraint pkSalidaProductoDetalle primary key (SalidaID, ProductoID),
-	constraint fkSalidaProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+	constraint fkSalidaProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
+	constraint fkSalidaProductoDetalleBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)	--CAMBIO
 )
