@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AgroLink.Pantallas.Pantallas_Objetos
 {
@@ -48,7 +49,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.textBox2.Text = valores["RTN"].ToString();
             this.textBox3.Text = valores["Correo"].ToString();
             this.textBox4.Text = valores["Telefono"].ToString();
-            this.richTextBox1.Text = $"{valores["Detalle"].ToString()}, {valores["Colonia"].ToString()}, {valores["Municipio"].ToString()}, {valores["Departamento"].ToString()}   ";
+           // this.richTextBox1.Text = $"{valores["Detalle"].ToString()}, {valores["Colonia"].ToString()}, {valores["Municipio"].ToString()}, {valores["Departamento"].ToString()}   ";
 
 
 
@@ -95,11 +96,12 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 //se crea diccionario para poner el paramemtro del id
                 Dictionary<string, object> parametros = new Dictionary<string, object>
                 {
-                    {"NumFiscalID", numFiscalID }
+                    {"id", numFiscalID },
+                    {"tabla", "NumFiscal" }
                 };
 
                 //validar la ejecucion de spBorrarNumFiscal
-                if (recSQL.EjecutarSPBool("spBorrarNumFiscal", parametros))
+                if (recSQL.EjecutarSPBool("spBorrarRegistro", parametros))
                 {
                     MessageBox.Show($"Se borro el numero fiscal con el id {numFiscalID}");
                     this.dataGridView1.DataSource = recSQL.EjecutarVista("vNumerosFiscales");

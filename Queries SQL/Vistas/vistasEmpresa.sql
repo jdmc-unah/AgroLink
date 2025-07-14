@@ -14,9 +14,9 @@ GO
 CREATE OR ALTER VIEW vDatosEmpresa 
 as
 	SELECT E.Nombre, E.RTN, E.Correo, E.Telefono , 
-	D.Departamento, D.Municipio, D.Colonia, D.Detalle
+	--D.DepartamentoID, D.MunicipioID, D.Colonia, D.Detalle
 	FROM Pruebas.Empresa E
-	INNER JOIN ( SELECT * FROM Pruebas.Direccion WHERE DireccionID = 1) D on E.DireccionID = D.DireccionID
+	--INNER JOIN ( SELECT * FROM Pruebas.Direccion WHERE DireccionID = 1) D on E.DireccionID = D.DireccionID
 
 go
 
