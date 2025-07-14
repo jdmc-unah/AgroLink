@@ -183,6 +183,7 @@
             // 
             // comboBox2
             // 
+            comboBox2.Enabled = false;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(52, 908);
             comboBox2.Name = "comboBox2";
@@ -191,11 +192,13 @@
             // 
             // comboBox1
             // 
+            comboBox1.Enabled = false;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(52, 756);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(604, 49);
             comboBox1.TabIndex = 18;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // richTextBox1
             // 

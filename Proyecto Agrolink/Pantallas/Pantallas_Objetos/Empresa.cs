@@ -23,11 +23,41 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.textBox2.ReadOnly = esSoloLectura;
             this.textBox3.ReadOnly = esSoloLectura;
             this.textBox4.ReadOnly = esSoloLectura;
+            this.textBox5.ReadOnly = esSoloLectura;
             this.richTextBox1.ReadOnly = esSoloLectura;
             this.button1.Visible = esSoloLectura;
             this.button2.Visible = !esSoloLectura;
             this.button3.Visible = !esSoloLectura;
+
+            this.comboBox1.Enabled = !esSoloLectura;
+            this.comboBox2.Enabled = !esSoloLectura;
+
         }
+
+
+        //Llena Comboboxes
+        void LlenaDepto()
+        {
+            // Llena Comboboxes Departamento y Municipio con datos
+            comboBox1.DataSource = recSQL.EjecutarVista("Pruebas.Departamento");  // Asignar el origen de datos
+            comboBox1.DisplayMember = "Nombre";         // Columna que se mostrará
+            comboBox1.ValueMember = "DepartamentoID";   // Valor interno que se usará
+
+        }
+
+        void LlenaMuni(int depto)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    {"depto",  depto }
+                };
+
+            comboBox2.DataSource = recSQL.EjecutarSPDataTable("spTraeDeptoMunicipio", parametros);  // Asignar el origen de datos
+            comboBox2.DisplayMember = "Nombre";         // Columna que se mostrará
+            comboBox2.ValueMember = "MunicipioID";   // Valor interno que se usará
+
+        }
+
 
         #endregion
         private void Empresa_Load(object sender, EventArgs e)
@@ -39,8 +69,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.textBox2.Text = valores["RTN"].ToString();
             this.textBox3.Text = valores["Correo"].ToString();
             this.textBox4.Text = valores["Telefono"].ToString();
-            this.richTextBox1.Text = $"{valores["Detalle"].ToString()}, {valores["Colonia"].ToString()}, {valores["Municipio"].ToString()}, {valores["Departamento"].ToString()}   ";
-
+            this.textBox5.Text = valores["Colonia"].ToString();
+            this.richTextBox1.Text = $"{valores["Detalle"].ToString()}";
 
 
             //Trae Numeros Fiscales y llena datagridview 1
@@ -48,6 +78,16 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
             //Trae Impuesto y llena datagridview 2
             this.dataGridView2.DataSource = recSQL.EjecutarVista("vImpuesto");
+
+
+            //Llena comboboxes de departamento y municipio
+            LlenaDepto();
+            comboBox1.SelectedValue = valores["Departamento"];
+
+            LlenaMuni( (int) comboBox1.SelectedValue);
+            comboBox2.SelectedValue = valores["Municipio"];
+
+
 
 
         }
@@ -144,6 +184,17 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 }
 
             }
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //    LlenaMuni((int)comboBox1.SelectedValue);
+
+
+            
+
 
         }
     }

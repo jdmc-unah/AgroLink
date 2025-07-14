@@ -18,7 +18,7 @@ as
 	
 	INNER JOIN 
 	
-	(SELECT Dir.DireccionID, Dir.Detalle, Dir.Colonia ,Mun.Nombre as 'Municipio', Dep.Nombre 'Departamento' FROM Pruebas.Direccion Dir 
+	(SELECT Dir.DireccionID, Dir.Detalle, Dir.Colonia ,Mun.MunicipioID as 'Municipio', Dep.DepartamentoID 'Departamento' FROM Pruebas.Direccion Dir 
 	INNER JOIN Pruebas.Municipio Mun on Dir.MunicipioID = Mun.MunicipioID
 	INNER JOIN Pruebas.Departamento Dep on Mun.DepartamentoID = Dep.DepartamentoID  
 	WHERE Dir.DireccionID = 1) 

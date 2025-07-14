@@ -19,20 +19,15 @@ as
 	end
 
 
+go
 
+-----------------------Traer Municipio por Departamento------------------------------------------------------------------------------------------------------
 
------------------------Traer Departamento y Municipio------------------------------------------------------------------------------------------------------
-
-CREATE OR ALTER PROCEDURE spTraeDeptoMunicipio 
+CREATE OR ALTER PROCEDURE spTraeDeptoMunicipio @depto int
 as
 	begin
 
-
-
-select * from Pruebas.Direccion
-
-select * from Pruebas.Departamento
-select * from Pruebas.Municipio
+		SELECT MunicipioID, Nombre FROM Pruebas.Municipio WHERE DepartamentoID =  @depto
 
 	end
 
