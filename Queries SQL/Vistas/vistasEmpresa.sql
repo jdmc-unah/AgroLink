@@ -13,10 +13,17 @@ GO
 
 CREATE OR ALTER VIEW vDatosEmpresa 
 as
-	SELECT E.Nombre, E.RTN, E.Correo, E.Telefono  
-	--D.DepartamentoID, D.MunicipioID, D.Colonia, D.Detalle
+	SELECT E.Nombre, E.RTN, E.Correo, E.Telefono ,D.Detalle ,  D.Colonia ,  D.Municipio, D.Departamento
 	FROM Pruebas.Empresa E
-	--INNER JOIN ( SELECT * FROM Pruebas.Direccion WHERE DireccionID = 1) D on E.DireccionID = D.DireccionID
+	
+	INNER JOIN 
+	
+	(SELECT Dir.DireccionID, Dir.Detalle, Dir.Colonia ,Mun.Nombre as 'Municipio', Dep.Nombre 'Departamento' FROM Pruebas.Direccion Dir 
+	INNER JOIN Pruebas.Municipio Mun on Dir.MunicipioID = Mun.MunicipioID
+	INNER JOIN Pruebas.Departamento Dep on Mun.DepartamentoID = Dep.DepartamentoID  
+	WHERE Dir.DireccionID = 1) 
+	
+	D on E.DireccionID = D.DireccionID
 
 go
 
@@ -51,17 +58,3 @@ SELECT * FROM vImpuesto
 go
 
 
---Trae Direccion
-CREATE OR ALTER VIEW vDireccionEmpresa
-as
-
-	SELECT Dir.Detalle, Dir.Colonia ,Mun.Nombre as 'Municipio', Dep.Nombre 'Departamento' FROM Pruebas.Direccion Dir 
-	INNER JOIN Pruebas.Municipio Mun on Dir.MunicipioID = Mun.MunicipioID
-	INNER JOIN Pruebas.Departamento Dep on Mun.DepartamentoID = Dep.DepartamentoID  
-	WHERE Dir.DireccionID = 1
-
-go
-
-SELECT * FROM vImpuesto
-
-go

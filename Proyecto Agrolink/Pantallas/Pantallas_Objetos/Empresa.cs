@@ -39,7 +39,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.textBox2.Text = valores["RTN"].ToString();
             this.textBox3.Text = valores["Correo"].ToString();
             this.textBox4.Text = valores["Telefono"].ToString();
-            // this.richTextBox1.Text = $"{valores["Detalle"].ToString()}, {valores["Colonia"].ToString()}, {valores["Municipio"].ToString()}, {valores["Departamento"].ToString()}   ";
+            this.richTextBox1.Text = $"{valores["Detalle"].ToString()}, {valores["Colonia"].ToString()}, {valores["Municipio"].ToString()}, {valores["Departamento"].ToString()}   ";
 
 
 
