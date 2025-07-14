@@ -56,11 +56,12 @@
             NumFiscalID = new DataGridViewTextBoxColumn();
             RangoInicio = new DataGridViewTextBoxColumn();
             RangoFin = new DataGridViewTextBoxColumn();
-            Estado = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewComboBoxColumn();
             FechaVencimiento = new DataGridViewTextBoxColumn();
             contextMenuStrip1 = new ContextMenuStrip(components);
             borrarToolStripMenuItem = new ToolStripMenuItem();
             editarToolStripMenuItem = new ToolStripMenuItem();
+            guardarToolStripMenuItem = new ToolStripMenuItem();
             splitContainer3 = new SplitContainer();
             label6 = new Label();
             dataGridView2 = new DataGridView();
@@ -377,6 +378,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { NumFiscalID, RangoInicio, RangoFin, Estado, FechaVencimiento });
             dataGridView1.ContextMenuStrip = contextMenuStrip1;
@@ -397,7 +399,8 @@
             NumFiscalID.MinimumWidth = 100;
             NumFiscalID.Name = "NumFiscalID";
             NumFiscalID.ReadOnly = true;
-            NumFiscalID.Width = 101;
+            NumFiscalID.Visible = false;
+            NumFiscalID.Width = 250;
             // 
             // RangoInicio
             // 
@@ -421,9 +424,12 @@
             // 
             Estado.DataPropertyName = "Estado";
             Estado.HeaderText = "Estado";
+            Estado.Items.AddRange(new object[] { "activo", "inactivo" });
             Estado.MinimumWidth = 12;
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
+            Estado.Resizable = DataGridViewTriState.True;
+            Estado.SortMode = DataGridViewColumnSortMode.Automatic;
             Estado.Width = 250;
             // 
             // FechaVencimiento
@@ -438,23 +444,31 @@
             // contextMenuStrip1
             // 
             contextMenuStrip1.ImageScalingSize = new Size(40, 40);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { borrarToolStripMenuItem, editarToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { borrarToolStripMenuItem, editarToolStripMenuItem, guardarToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(177, 100);
+            contextMenuStrip1.Size = new Size(361, 203);
             // 
             // borrarToolStripMenuItem
             // 
             borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
-            borrarToolStripMenuItem.Size = new Size(176, 48);
+            borrarToolStripMenuItem.Size = new Size(360, 48);
             borrarToolStripMenuItem.Text = "Borrar";
             borrarToolStripMenuItem.Click += borrarToolStripMenuItem_Click;
             // 
             // editarToolStripMenuItem
             // 
             editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            editarToolStripMenuItem.Size = new Size(176, 48);
+            editarToolStripMenuItem.Size = new Size(360, 48);
             editarToolStripMenuItem.Text = "Editar";
             editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
+            // 
+            // guardarToolStripMenuItem
+            // 
+            guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            guardarToolStripMenuItem.Size = new Size(360, 48);
+            guardarToolStripMenuItem.Text = "Guardar";
+            guardarToolStripMenuItem.Visible = false;
+            guardarToolStripMenuItem.Click += guardarToolStripMenuItem_Click;
             // 
             // splitContainer3
             // 
@@ -486,6 +500,8 @@
             // 
             // dataGridView2
             // 
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { ImpuestoID, Nombre, Valor });
             dataGridView2.ContextMenuStrip = contextMenuStrip2;
@@ -540,6 +556,7 @@
             editarToolStripMenuItem1.Name = "editarToolStripMenuItem1";
             editarToolStripMenuItem1.Size = new Size(176, 48);
             editarToolStripMenuItem1.Text = "Editar";
+            editarToolStripMenuItem1.Click += editarToolStripMenuItem1_Click;
             // 
             // Empresa
             // 
@@ -602,11 +619,6 @@
         private ContextMenuStrip contextMenuStrip2;
         private ToolStripMenuItem borrarToolStripMenuItem1;
         private ToolStripMenuItem editarToolStripMenuItem1;
-        private DataGridViewTextBoxColumn NumFiscalID;
-        private DataGridViewTextBoxColumn RangoInicio;
-        private DataGridViewTextBoxColumn RangoFin;
-        private DataGridViewTextBoxColumn Estado;
-        private DataGridViewTextBoxColumn FechaVencimiento;
         private SplitContainer splitContainer3;
         private SplitContainer splitContainer4;
         private Label label7;
@@ -620,5 +632,11 @@
         private ComboBox comboBox1;
         private Label label10;
         private Label label9;
+        private DataGridViewTextBoxColumn NumFiscalID;
+        private DataGridViewTextBoxColumn RangoInicio;
+        private DataGridViewTextBoxColumn RangoFin;
+        private DataGridViewComboBoxColumn Estado;
+        private DataGridViewTextBoxColumn FechaVencimiento;
+        private ToolStripMenuItem guardarToolStripMenuItem;
     }
 }

@@ -53,9 +53,9 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 {"depto",  depto }
             };
 
-            comboBox2.DataSource = recSQL.EjecutarSPDataTable("spTraeDeptoMunicipio", parametros); 
-            comboBox2.DisplayMember = "Nombre";         
-            comboBox2.ValueMember = "MunicipioID";   
+            comboBox2.DataSource = recSQL.EjecutarSPDataTable("spTraeDeptoMunicipio", parametros);
+            comboBox2.DisplayMember = "Nombre";
+            comboBox2.ValueMember = "MunicipioID";
         }
 
 
@@ -87,7 +87,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             LlenaDepto();
             comboBox1.SelectedValue = valores["Departamento"];
 
-            LlenaMuni( (int) comboBox1.SelectedValue);
+            LlenaMuni((int)comboBox1.SelectedValue);
             comboBox2.SelectedValue = valores["Municipio"];
 
 
@@ -102,7 +102,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             ToggleReadOnly(false);
         }
 
-       
+
         //Boton Aceptar
         private void button2_Click(object sender, EventArgs e)
         {
@@ -165,10 +165,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
-        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.dataGridView1.ReadOnly = false;
-        }
+
 
         private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -205,7 +202,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
-      
+
         private void borrarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
@@ -243,11 +240,11 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         {
             //Actualiza municipio en funcion del depto que se elige
 
-            if (comboBox1.SelectedValue.ToString() != "System.Data.DataRowView" )
+            if (comboBox1.SelectedValue.ToString() != "System.Data.DataRowView")
             {
                 LlenaMuni((int)comboBox1.SelectedValue);
             }
-            
+
         }
 
 
@@ -259,5 +256,54 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.dataGridView1.ReadOnly = false;
+            this.guardarToolStripMenuItem.Visible = true;
+            this.editarToolStripMenuItem.Visible = false;
+            this.borrarToolStripMenuItem.Visible = false;
+
+        }
+
+
+
+
+        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.dataGridView2.ReadOnly = false;
+
+
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            DataTable dt = new DataTable();
+
+            // Crear columnas
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                dt.Columns.Add(col.Name, col.ValueType ?? typeof(string));
+            }
+
+            // Agregar filas
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    DataRow dr = dt.NewRow();
+                    foreach (DataGridViewColumn col in dataGridView1.Columns)
+                    {
+                        dr[col.Name] = row.Cells[col.Name].Value ?? DBNull.Value;
+                    }
+                    dt.Rows.Add(dr);
+                }
+            }
+
+
+
+
+
+        }
     }
 }
