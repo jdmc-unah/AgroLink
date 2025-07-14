@@ -33,14 +33,12 @@ CREATE TABLE Pruebas.Venta --ya creada
 	ListaPreciosID int not null,
 	TipoPago varchar(50) not null,
 	Estado varchar(50) not null,
-	EmpleadoID int not null,		--CAMBIO
-
+	
 	constraint chkTipoPago check( TipoPago in('Contado','Credito') ),
 	constraint chkEstadoVenta check( Estado in('Abierto','Cerrado','Cancelado') ),
 	
 	constraint fkVentaSocios FOREIGN KEY (SocioID) REFERENCES Pruebas.Socio(SocioID),
 	constraint fkVentaListaPrecios FOREIGN key (ListaPreciosID) REFERENCES Pruebas.ListaPrecios(ListaPreciosID),
-	constraint fkVentaEmpleado foreign key (EmpleadoID) references Pruebas.Empleado(EmpleadoID)		--CAMBIO
 )
 go
 
@@ -76,14 +74,12 @@ Create Table Pruebas.Compra --ya creada
 	SocioID int not null,
 	TipoPago varchar(50) not null,
 	Estado varchar(50) not null,
-	EmpleadoID int not null,		--CAMBIO
 
 	constraint chkTipoPagoCompra check( TipoPago in('Contado','Credito') ),
 	constraint chkEstadoVentaCompra check( Estado in('Abierto','Cerrado','Cancelado') ),
 
 	constraint fkCompraListaPrecios foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID),
 	constraint fkCompraSocio foreign key (SocioID) references Pruebas.Socio(SocioID),
-	constraint fkCompraEmpleado foreign key (EmpleadoID) references Pruebas.Empleado(EmpleadoID)		--CAMBIO
 )
 go 
 
