@@ -1,17 +1,17 @@
 USE AgroLinkDB;
 
 -- 1. direcciones
-insert into Pruebas.Direccion (DireccionID, Departamento, Municipio, Colonia, Detalle) values
-(1, 'Cortés', 'San Pedro Sula', 'Colonia Universidad', 'Boulevard Los Próceres #1234'),
-(2, 'Cortés', 'San Pedro Sula', 'Barrio Río de Piedras', 'Ave. Circunvalación #5678'),
-(3, 'Cortés', 'San Pedro Sula', 'Colonia Moderna', '10a Calle, 15 Ave. SO #91'),
-(4, 'Cortés', 'Choloma', 'Centro', 'Calle Principal, frente al parque central'),
-(5, 'Cortés', 'Puerto Cortés', 'Barrio El Centro', 'Ave. Honduras #321'),
-(6, 'Cortés', 'Villanueva', 'Colonia San José', 'Carretera CA-5 Km 15'),
-(7, 'Cortés', 'La Lima', 'Barrio El Progreso', 'Ave. La Lima #789'),
-(8, 'Cortés', 'Pimienta', 'Aldea San Antonio', 'Desvío La Barca Km 3'),
-(9, 'Cortés', 'Omoa', 'Casco Histórico', 'Calle del Comercio #456'),
-(10, 'Cortés', 'Santa Cruz de Yojoa', 'El Paraíso', 'Orilla del Lago de Yojoa');
+insert into Pruebas.Direccion (DireccionID, MunicipioID, Colonia, Detalle) values
+(1, 501, 'Colonia Universidad', 'Boulevard Los Próceres #1234'),
+(2, 501, 'Barrio Río de Piedras', 'Ave. Circunvalación #5678'),
+(3, 501, 'Colonia Moderna', '10a Calle, 15 Ave. SO #91'),
+(4, 502, 'Centro', 'Calle Principal, frente al parque central'),  --se volvieron a insertar por el cambio en tabla direccion
+(5, 506, 'Barrio El Centro', 'Ave. Honduras #321'),
+(6, 511, 'Colonia San José', 'Carretera CA-5 Km 15'),
+(7, 512, 'Barrio El Progreso', 'Ave. La Lima #789'),
+(8, 504, 'Aldea San Antonio', 'Desvío La Barca Km 3'),
+(9, 503, 'Casco Histórico', 'Calle del Comercio #456'),
+(10, 510, 'El Paraíso', 'Orilla del Lago de Yojoa');
 --(2, 'Francisco Morazán', 'Tegucigalpa', 'Colonia Kennedy', 'Blvd. Morazán, Casa #123'),
 --(3, 'Yoro', 'El Progreso', 'Centro', 'Calle Principal #789'),
 --(4, 'Choluteca', 'Choluteca', 'Barrio El Centro', 'Ave. Valle #321'),
@@ -21,6 +21,7 @@ insert into Pruebas.Direccion (DireccionID, Departamento, Municipio, Colonia, De
 --(8, 'Santa Bárbara', 'Santa Bárbara', 'Las Flores', 'Entrada Principal'),
 --(9, 'Copán', 'Santa Rosa de Copán', 'Centro', 'Parque Central, Edificio #2'),
 --(10, 'Intibucá', 'La Esperanza', 'Barrio Buenos Aires', 'Calle Los Pinos #445');
+
 
 select * from Pruebas.Direccion
 delete from Pruebas.Direccion

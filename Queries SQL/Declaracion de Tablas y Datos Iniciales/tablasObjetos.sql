@@ -6,7 +6,7 @@ use AgroLinkDB
 
 create table Pruebas.Direccion	--ya creada
 (
-    DireccionID int primary key identity(1,1),
+    DireccionID int primary key,
     MunicipioID int not null,
     Colonia		varchar(50),
     Detalle		varchar(250),
