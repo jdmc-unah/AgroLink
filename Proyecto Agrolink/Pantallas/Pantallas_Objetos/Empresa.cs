@@ -73,7 +73,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.textBox3.Text = valores["Correo"].ToString();
             this.textBox4.Text = valores["Telefono"].ToString();
             this.textBox5.Text = valores["Colonia"].ToString();
-            this.richTextBox1.Text = $"{valores["Detalle"].ToString()}";
+            this.richTextBox1.Text = valores["Detalle"].ToString();
 
 
             //Trae Numeros Fiscales y llena datagridview 1
@@ -95,19 +95,59 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
+
+        //Boton Editar
         private void button1_Click(object sender, EventArgs e)
         {
             ToggleReadOnly(false);
         }
 
        
-
+        //Boton Aceptar
         private void button2_Click(object sender, EventArgs e)
         {
-            ToggleReadOnly(true);
+            try
+            {
+
+                if (metGlobales.MensajeConfirmacion("Confirmar Actualización", "¿Desea guardar los cambios?"))
+                {
+
+                    Dictionary<string, object> parametros = new Dictionary<string, object>()
+                {
+                    {"nombre", this.textBox1.Text  },
+                    {"rtn" ,   this.textBox2.Text  },
+                    {"correo", this.textBox3.Text } ,
+                    {"tel",    this.textBox4.Text } ,
+                    {"col" ,   this.textBox5.Text } ,
+                    {"det" ,   this.richTextBox1.Text },
+                    {"muni",    this.comboBox2.SelectedValue }
+
+                };
+
+                    if (recSQL.EjecutarSPBool("spUpdateEmpresa", parametros))
+                    {
+                        MessageBox.Show("Se guardaron los cambios con éxito");
+                        ToggleReadOnly(true);
+                        Empresa_Load(sender, e);
+                    }
+
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Los cambios no se han guardado debido a un error inesperado");
+            }
+
+
+
+
 
 
         }
+
+
+        //Boton Cancelar
         private void button3_Click(object sender, EventArgs e)
         {
             ToggleReadOnly(true);
@@ -117,7 +157,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.textBox3.Text = valores["Correo"].ToString();
             this.textBox4.Text = valores["Telefono"].ToString();
             this.textBox5.Text = valores["Colonia"].ToString();
-            this.richTextBox1.Text = $"{valores["Detalle"].ToString()}";
+            this.richTextBox1.Text = valores["Detalle"].ToString();
 
             comboBox1.SelectedValue = valores["Departamento"];
             LlenaMuni((int)comboBox1.SelectedValue);
@@ -137,7 +177,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             int numFiscalID = (int)this.dataGridView1.Rows[row].Cells[0].Value;
 
             //Confirma la decision del usuario y procede con lo demas
-            if (metGlobales.MensajeConfirmacion("Confirmar", $"Esta seguro de borrar el Numero Fiscal con ID {numFiscalID}"))
+            if (metGlobales.MensajeConfirmacion("Confirmar", $"¿Esta seguro de borrar el Numero Fiscal con ID {numFiscalID}"))
             {
                 //se crea diccionario para poner el paramemtro del id
                 Dictionary<string, object> parametros = new Dictionary<string, object>
@@ -174,7 +214,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             int impuestoID = (int)this.dataGridView2.Rows[row].Cells[0].Value;
 
             //Confirma la decision del usuario y procede con lo demas
-            if (metGlobales.MensajeConfirmacion("Confirmar", $"Esta seguro de borrar el Impuesto con ID {impuestoID}"))
+            if (metGlobales.MensajeConfirmacion("Confirmar", $"¿Esta seguro de borrar el Impuesto con ID {impuestoID}"))
             {
                 //se crea diccionario para poner el paramemtro del id
                 Dictionary<string, object> parametros = new Dictionary<string, object>

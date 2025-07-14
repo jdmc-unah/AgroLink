@@ -26,10 +26,12 @@ go
 CREATE OR ALTER PROCEDURE spTraeDeptoMunicipio @depto int
 as
 	begin
-
 		SELECT MunicipioID, Nombre FROM Pruebas.Municipio WHERE DepartamentoID =  @depto
-
 	end
+
+go
+
+
 
 
 
