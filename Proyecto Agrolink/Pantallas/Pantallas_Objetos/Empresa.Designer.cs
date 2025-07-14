@@ -453,18 +453,19 @@
             contextMenuStrip2.ImageScalingSize = new Size(40, 40);
             contextMenuStrip2.Items.AddRange(new ToolStripItem[] { borrarToolStripMenuItem1, editarToolStripMenuItem1 });
             contextMenuStrip2.Name = "contextMenuStrip2";
-            contextMenuStrip2.Size = new Size(177, 100);
+            contextMenuStrip2.Size = new Size(361, 155);
             // 
             // borrarToolStripMenuItem1
             // 
             borrarToolStripMenuItem1.Name = "borrarToolStripMenuItem1";
-            borrarToolStripMenuItem1.Size = new Size(176, 48);
+            borrarToolStripMenuItem1.Size = new Size(360, 48);
             borrarToolStripMenuItem1.Text = "Borrar";
+            borrarToolStripMenuItem1.Click += borrarToolStripMenuItem1_Click;
             // 
             // editarToolStripMenuItem1
             // 
             editarToolStripMenuItem1.Name = "editarToolStripMenuItem1";
-            editarToolStripMenuItem1.Size = new Size(176, 48);
+            editarToolStripMenuItem1.Size = new Size(360, 48);
             editarToolStripMenuItem1.Text = "Editar";
             // 
             // Empresa
