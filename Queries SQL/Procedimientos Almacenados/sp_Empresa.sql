@@ -36,12 +36,34 @@ CREATE TYPE TipoTablaNumFiscal as TABLE (
 
 go
 
+select * from pruebas.NumFiscal
 
+go
 
 CREATE OR ALTER PROCEDURE spAddUpdateNumFiscal @tabla TipoTablaNumFiscal READONLY
 as
 	begin
-		
+		declare @numId int -- , @rIni date , @rFin date, @estado varchar(20), @fVen varchar(20)
+
+		declare crsNumFiscal cursor for
+		select NumFiscalID from @tabla
+
+		open crsNumFiscal
+		fetch next from crsNumFiscal into @numId  --, @rIni,@rFin, @estado, @fVen
+
+		WHILE @@FETCH_STATUS = 0
+			begin
+				IF @numId = 0
+					
+					insert into Pruebas.NumFiscal (RangoInicio, RangoFin, Estado , FechaVencimiento, EmpresaID)
+					SELECT RangoInicio, RangoFin, Estado, FechaVencimiento, 1  FROM @tabla WHERE NumFiscalID = @numId
+					--VALUES (@rIni,@rFin, @estado, @fVen, 1)
+
+				ELSE
+					update Pruebas.NumFiscal set RangoInicio = T.RangoInicio, RangoFin = T.RangoFin, Estado = T.Estado, FechaVencimiento = T.FechaVencimiento 
+					FROM Pruebas.NumFiscal NF
+					INNER JOIN @tabla T ON NF.NumFiscalID = T.NumFiscalID WHERE T.NumFiscalID = @numId
+			end
 
 	end
 
