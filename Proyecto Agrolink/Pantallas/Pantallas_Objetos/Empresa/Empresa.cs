@@ -77,7 +77,13 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
 
             //Trae Numeros Fiscales y llena datagridview 1
-            this.dataGridView1.DataSource = recSQL.EjecutarVista("vNumerosFiscales");
+
+            DataTable dt = recSQL.EjecutarVista("vNumerosFiscales");
+            dt.Columns["NumFiscalID"].DefaultValue = 0;
+
+
+            this.dataGridView1.DataSource = dt;
+
 
             //Trae Impuesto y llena datagridview 2
             this.dataGridView2.DataSource = recSQL.EjecutarVista("vImpuesto");
@@ -256,12 +262,15 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
+
+        //boton de editar con click derecho
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.dataGridView1.ReadOnly = false;
             this.guardarToolStripMenuItem.Visible = true;
             this.editarToolStripMenuItem.Visible = false;
             this.borrarToolStripMenuItem.Visible = false;
+            MessageBox.Show("Modo edicion para la tabla Numeros Fiscales Activado");
 
         }
 
@@ -301,9 +310,16 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             }
 
 
+            this.dataGridView2.DataSource = dt;
 
 
+        }
 
+
+        //esto es para evvitar que este tirando error cada vez que se salga de la fila poroque es molesto
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

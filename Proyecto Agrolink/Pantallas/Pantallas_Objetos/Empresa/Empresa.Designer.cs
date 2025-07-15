@@ -390,6 +390,7 @@
             dataGridView1.RowHeadersWidth = 102;
             dataGridView1.Size = new Size(1357, 517);
             dataGridView1.TabIndex = 0;
+            dataGridView1.DataError += dataGridView1_DataError;
             // 
             // NumFiscalID
             // 
@@ -446,26 +447,26 @@
             contextMenuStrip1.ImageScalingSize = new Size(40, 40);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { borrarToolStripMenuItem, editarToolStripMenuItem, guardarToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(361, 203);
+            contextMenuStrip1.Size = new Size(203, 148);
             // 
             // borrarToolStripMenuItem
             // 
             borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
-            borrarToolStripMenuItem.Size = new Size(360, 48);
+            borrarToolStripMenuItem.Size = new Size(202, 48);
             borrarToolStripMenuItem.Text = "Borrar";
             borrarToolStripMenuItem.Click += borrarToolStripMenuItem_Click;
             // 
             // editarToolStripMenuItem
             // 
             editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            editarToolStripMenuItem.Size = new Size(360, 48);
+            editarToolStripMenuItem.Size = new Size(202, 48);
             editarToolStripMenuItem.Text = "Editar";
             editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
             // 
             // guardarToolStripMenuItem
             // 
             guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            guardarToolStripMenuItem.Size = new Size(360, 48);
+            guardarToolStripMenuItem.Size = new Size(202, 48);
             guardarToolStripMenuItem.Text = "Guardar";
             guardarToolStripMenuItem.Visible = false;
             guardarToolStripMenuItem.Click += guardarToolStripMenuItem_Click;
@@ -632,11 +633,11 @@
         private ComboBox comboBox1;
         private Label label10;
         private Label label9;
+        private ToolStripMenuItem guardarToolStripMenuItem;
         private DataGridViewTextBoxColumn NumFiscalID;
         private DataGridViewTextBoxColumn RangoInicio;
         private DataGridViewTextBoxColumn RangoFin;
         private DataGridViewComboBoxColumn Estado;
         private DataGridViewTextBoxColumn FechaVencimiento;
-        private ToolStripMenuItem guardarToolStripMenuItem;
     }
 }
