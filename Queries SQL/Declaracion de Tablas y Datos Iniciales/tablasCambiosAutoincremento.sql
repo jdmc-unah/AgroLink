@@ -251,7 +251,7 @@ sp_help 'pruebas.entradaProducto'
 
 Create Table Pruebas.EntradaProducto --ya creada
 (
-	EntradaID int primary key not null,
+	EntradaID int identity(1,1) primary key not null,
 	SocioID int,						--CAMBIO
 	Fecha Datetime not null,
 	LoteID int,
@@ -280,21 +280,21 @@ go
 
 
 
-INSERT INTO Pruebas.EntradaProducto (EntradaID, SocioID, Fecha, LoteID, CompraID) VALUES
+INSERT INTO Pruebas.EntradaProducto ( SocioID, Fecha, LoteID, CompraID) VALUES
 --Entrada de compra 1
-(1, 6, '2025/07/07', NULL, 1),
+( 6, '2025/07/07', NULL, 1),
 
 --Entrada de Compra 2
-(2, 2, '2025/07/07', NULL, 2),
+( 2, '2025/07/07', NULL, 2),
 
 --Entrada de Compra 3
-(3, 6, '2025/07/07', NULL, 3 ),	
+( 6, '2025/07/07', NULL, 3 ),	
 
 --Entrada de Compra 4
-(4, 2, '2025/07/07', NULL, 4 ), 
+( 2, '2025/07/07', NULL, 4 ), 
 
 --Entrada de Compra 5
-(5, 1, '2025/07/08', 1 , 5 )	
+( 1, '2025/07/08', 1 , 5 )	
 
 
 INSERT INTO Pruebas.EntradaProductoDetalle (EntradaID, ProductoID, Cantidad, BodegaID) VALUES
@@ -316,8 +316,6 @@ INSERT INTO Pruebas.EntradaProductoDetalle (EntradaID, ProductoID, Cantidad, Bod
 --Entrada detalle de compra 5
 (5,11, 30, 1),	--Tomate
 (5,14, 5, 1)	--Frijol Rojo
-
-
 
 
 select * from pruebas.EntradaProducto e 
@@ -392,10 +390,13 @@ select * from pruebas.Factura f inner join pruebas.FacturaDetalle fd on f.Factur
 
 
 -->>>>>>>>>>>>>>>>>>>>>>>> RECIBO >>>>>>>>>>>>>>>>>>>>>>>>
+sp_help 'pruebas.recibo'
+
+drop table Pruebas.Recibo 
 
 Create Table Pruebas.Recibo --ya creada
 (
-	ReciboID int primary key not null,
+	ReciboID int identity(1,1)  primary key not null,
 	CodigoRecibo as concat('REC', ReciboID) persisted,	--CAMBIO
 	CompraID int not null,								--CAMBIO
 	ListaPreciosID int not null,
@@ -413,31 +414,62 @@ Create Table Pruebas.Recibo --ya creada
 	constraint fkReciboEmpleado foreign key (EmpleadoID) references Pruebas.Empleado(EmpleadoID)		--CAMBIO
 )
 
+delete from pruebas.ReciboDetalle
 
-Create Table Pruebas.ReciboDetalle --ya creada
-(
-	ReciboID int not null,
-	ProductoID int not null,
-	ImpuestoID int not null,
-	BodegaID int not null,
-	Cantidad int not null,
-	Precio	decimal(10,2) not null default 0 check (Precio >= 0),
-	Total decimal(10,2) not null default 0 check (Total >= 0),
+INSERT INTO Pruebas.Recibo (CompraID, ListaPreciosID, SocioID, MetodoPago, Fecha, EmpleadoID, Estado) VALUES
+--Recibo Compra 1
+(1, 6, 6, 'Tarjeta', '2025/07/07', 1 , 'Cerrado'),
 
-	constraint pkReciboDetalle primary key (ReciboID, ProductoID),
+--Recibo Compra 2
+(2, 6, 2, 'Tarjeta', '2025/07/07', 1 , 'Cerrado'),
 
-	constraint fkReciboDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
-	constraint fkReciboDetalleImpuesto foreign key (ImpuestoID) references Pruebas.Impuesto(ImpuestoID),
-	constraint fkReciboDetalleBodega2 foreign key (BodegaID) references Pruebas.Bodega(BodegaID)
-)
+--Recibo Compra 3
+(3, 6, 6, 'Tarjeta', '2025/07/07', 1 , 'Cerrado'),
 
+--Recibo Compra 4
+(4, 6, 2, 'Tarjeta', '2025/07/07', 1 , 'Cerrado'),
+
+--Recibo Compra 5
+(5, 6, 1, 'Cheque', '2025/07/10', 1 , 'Cerrado')
 
 
--->>>>>>>>>>>>>>>>>>>>>>>> SALIDA >>>>>>>>>>>>>>>>>>>>>>>>
+
+INSERT INTO Pruebas.ReciboDetalle (ReciboID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
+--Recibo Detalle Compra  1
+(1, 1, 1, 1, 10, 85,977.5),  --Semilla Tomate 
+(1, 2, 1, 2, 10, 65, 747.5 ), --Semilla Lechuga 
+
+--Recibo Detalle Compra 2
+(2, 3, 1, 3, 45, 750, 38812.5 ),	--Fertilizante
+(2, 4, 1, 4, 35, 680, 27370 ),		--Urea
+
+--Recibo Detalle Compra 3
+(3, 1, 1, 1, 15, 85, 1466.25),	--Semilla Tomate 
+(3, 2, 1, 2, 10, 65, 747.5 ),	--Semilla Lechuga 
+
+--Recibo Detalle Compra 4
+(4, 5, 1, 5, 15, 180, 3105 ),	--Insecticida
+
+--Recibo Detalle Compra 5
+(5,11 , 1, 1, 30, 25, 862.5 ),	--Tomate
+(5,14 , 1, 1, 5, 850, 4887.5 )	--Frijol Rojo
+
+
+SELECT * FROM PRUEBAS.Recibo r
+inner join pruebas.ReciboDetalle rd on r.ReciboID = rd.ReciboID
+
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>> SALIDA >>>>>>>>>>>>>>>>>>>>>>>>   *******************Pendiente
+sp_help 'pruebas.salidaproducto'
+
+drop table pruebas.SalidaProducto
+drop table pruebas.SalidaProductoDetalle
 
 create Table Pruebas.SalidaProducto --ya creada
 (
-	SalidaID int primary key not null,
+	SalidaID int identity(1,1) primary key not null,
 	Fecha datetime not null,			--CAMBIO
 	SocioID int not null,
 	VentaID int not null,						--CAMBIO
@@ -457,3 +489,29 @@ create table Pruebas.SalidaProductoDetalle --ya creada
 	constraint fkSalidaProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
 	constraint fkSalidaProductoDetalleBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)	--CAMBIO
 )
+
+
+INSERT INTO Pruebas.SalidaProducto (VentaID, SocioID, Fecha) VALUES
+--Salida de Venta 1
+(1, 4, '2025/07/09' ),	--Salida de producto 11
+--Salida de Venta 2
+(2, 8, '2025/07/09' ),	--Salida de producto 11
+
+--Salida de Venta 3
+(3, 4, '2025/07/09' )	--Salida de producto 14
+
+INSERT INTO Pruebas.SalidaProductoDetalle (SalidaID, ProductoID, Cantidad, BodegaID) VALUES
+--Salida Detalle de Venta 1
+(1,11, 15, 1), --Tomate
+(1,14, 2 , 1),	--Frijol Rojo
+
+--Salida Detalle de Venta 2
+(2,11, 15,1), --Tomate
+
+--Salida Detalle de Venta 3
+(3, 14, 3, 1)	--Frijol Rojo
+
+
+select * from pruebas.SalidaProducto s 
+inner join pruebas.SalidaProductoDetalle sd on s.SalidaID = sd.SalidaID
+

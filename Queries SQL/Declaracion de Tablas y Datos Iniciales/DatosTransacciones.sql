@@ -62,48 +62,40 @@ inner join pruebas.CompraDetalle cd on c.CompraID = cd.CompraID
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Recibo >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
+INSERT INTO Pruebas.Recibo (CompraID, ListaPreciosID, SocioID, MetodoPago, Fecha, EmpleadoID, Estado) VALUES
 --Recibo Compra 1
-INSERT INTO Pruebas.Recibo (ReciboID, ListaPreciosID, SocioID, MetodoPago, Fecha) VALUES
-(1, 6, 6, 'Tarjeta', '2025/07/07')
-
-INSERT INTO Pruebas.ReciboDetalle (ReciboID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
-(1, 1, 1, 1, 10, 85,977.5),  --Semilla Tomate 
-(1, 2, 1, 2, 10, 65, 747.5 ) --Semilla Lechuga 
-
+(1, 6, 6, 'Tarjeta', '2025/07/07', 1 , 'Cerrado'),
 
 --Recibo Compra 2
-INSERT INTO Pruebas.Recibo (ReciboID, ListaPreciosID, SocioID, MetodoPago, Fecha) VALUES
-(2, 6, 2, 'Tarjeta', '2025/07/07')
-
-INSERT INTO Pruebas.ReciboDetalle (ReciboID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
-(2, 3, 1, 3, 45, 750, 38812.5 ),	--Fertilizante
-(2, 4, 1, 4, 35, 680, 27370 )		--Urea
-
+(2, 6, 2, 'Tarjeta', '2025/07/07', 1 , 'Cerrado'),
 
 --Recibo Compra 3
-INSERT INTO Pruebas.Recibo (ReciboID, ListaPreciosID, SocioID, MetodoPago, Fecha) VALUES
-(3, 6, 6, 'Tarjeta', '2025/07/07')
-
-INSERT INTO Pruebas.ReciboDetalle (ReciboID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
-(3, 1, 1, 1, 15, 85, 1466.25),	--Semilla Tomate 
-(3, 2, 1, 2, 10, 65, 747.5 )	--Semilla Lechuga 
-
+(3, 6, 6, 'Tarjeta', '2025/07/07', 1 , 'Cerrado'),
 
 --Recibo Compra 4
-INSERT INTO Pruebas.Recibo (ReciboID, ListaPreciosID, SocioID, MetodoPago, Fecha) VALUES
-(4, 6, 2, 'Tarjeta', '2025/07/07')
-
-INSERT INTO Pruebas.ReciboDetalle (ReciboID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
-(4, 5, 1, 5, 15, 180, 3105 )	--Insecticida
-
-
+(4, 6, 2, 'Tarjeta', '2025/07/07', 1 , 'Cerrado'),
 
 --Recibo Compra 5
-INSERT INTO Pruebas.Recibo (ReciboID, ListaPreciosID, SocioID, MetodoPago, Fecha) VALUES
-(5, 6, 1, 'Cheque', '2025/07/10')
+(5, 6, 1, 'Cheque', '2025/07/10', 1 , 'Cerrado')
+
 
 INSERT INTO Pruebas.ReciboDetalle (ReciboID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
+--Recibo Detalle Compra  1
+(1, 1, 1, 1, 10, 85,977.5),  --Semilla Tomate 
+(1, 2, 1, 2, 10, 65, 747.5 ), --Semilla Lechuga 
+
+--Recibo Detalle Compra 2
+(2, 3, 1, 3, 45, 750, 38812.5 ),	--Fertilizante
+(2, 4, 1, 4, 35, 680, 27370 ),		--Urea
+
+--Recibo Detalle Compra 3
+(3, 1, 1, 1, 15, 85, 1466.25),	--Semilla Tomate 
+(3, 2, 1, 2, 10, 65, 747.5 ),	--Semilla Lechuga 
+
+--Recibo Detalle Compra 4
+(4, 5, 1, 5, 15, 180, 3105 ),	--Insecticida
+
+--Recibo Detalle Compra 5
 (5,11 , 1, 1, 30, 25, 862.5 ),	--Tomate
 (5,14 , 1, 1, 5, 850, 4887.5 )	--Frijol Rojo
 
@@ -228,31 +220,25 @@ select * from pruebas.Factura f inner join pruebas.FacturaDetalle fd on f.Factur
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Salida de Producto  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
+INSERT INTO Pruebas.SalidaProducto (VentaID, SocioID, Fecha) VALUES
 --Salida de Venta 1
-INSERT INTO Pruebas.SalidaProducto (SalidaID, SocioID, BodegaID, Fecha) VALUES
-(1, 4, 1, '2025/07/09' ),	--Salida de producto 11
-(2, 4, 1, '2025/07/09' )	--Salida de producto 14
-
-INSERT INTO Pruebas.SalidaProductoDetalle (SalidaID, ProductoID, Cantidad) VALUES
-(1,11, 15), --Tomate
-(2,14, 2)	--Frijol Rojo
-
-	
+(1, 4, '2025/07/09' ),	--Salida de producto 11
 --Salida de Venta 2
-INSERT INTO Pruebas.SalidaProducto (SalidaID, SocioID, BodegaID, Fecha) VALUES
-(3, 8, 1, '2025/07/09' )	--Salida de producto 11
-
-INSERT INTO Pruebas.SalidaProductoDetalle (SalidaID, ProductoID, Cantidad) VALUES
-(3,11, 15) --Tomate
-
+(2, 8, '2025/07/09' ),	--Salida de producto 11
 
 --Salida de Venta 3
-INSERT INTO Pruebas.SalidaProducto (SalidaID, SocioID, BodegaID, Fecha) VALUES
-(4, 4, 1, '2025/07/09' )	--Salida de producto 14
+(3, 4, '2025/07/09' )	--Salida de producto 14
 
-INSERT INTO Pruebas.SalidaProductoDetalle (SalidaID, ProductoID, Cantidad) VALUES
-(4, 14, 3)	--Frijol Rojo
+INSERT INTO Pruebas.SalidaProductoDetalle (SalidaID, ProductoID, Cantidad, BodegaID) VALUES
+--Salida Detalle de Venta 1
+(1,11, 15, 1), --Tomate
+(1,14, 2 , 1),	--Frijol Rojo
 
+--Salida Detalle de Venta 2
+(2,11, 15,1), --Tomate
+
+--Salida Detalle de Venta 3
+(3, 14, 3, 1)	--Frijol Rojo
 
 
 

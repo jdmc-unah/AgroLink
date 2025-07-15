@@ -106,7 +106,7 @@ go
 
 Create Table Pruebas.EntradaProducto --ya creada
 (
-	EntradaID int primary key not null,
+	EntradaID int identity(1,1)  primary key not null,
 	SocioID int,						--CAMBIO
 	Fecha Datetime not null,
 	LoteID int,
@@ -185,7 +185,7 @@ Create Table Pruebas.FacturaDetalle --ya creada
 
 Create Table Pruebas.Recibo --ya creada
 (
-	ReciboID int primary key not null,
+	ReciboID int identity(1,1) primary key not null,
 	CodigoRecibo as concat('REC', ReciboID) persisted,	--CAMBIO
 	CompraID int not null,								--CAMBIO
 	ListaPreciosID int not null,
@@ -224,7 +224,7 @@ Create Table Pruebas.ReciboDetalle --ya creada
 
 create Table Pruebas.SalidaProducto --ya creada
 (
-	SalidaID int primary key not null,
+	SalidaID int identity(1,1) primary key not null,
 	Fecha datetime not null,			--CAMBIO
 	SocioID int not null,
 	VentaID int not null,						--CAMBIO
