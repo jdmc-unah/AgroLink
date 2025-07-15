@@ -148,7 +148,9 @@ Create Table Pruebas.Factura --ya creada
 	CAI varchar(50) not null,
 	EmpleadoID int not null,		--CAMBIO
 	Estado varchar(50) not null,	--CAMBIO
+	NumFiscalID int not null,		--CAMBIO
 
+	constraint fkFacturaNumFiscal foreign key (EmpresaID) references Pruebas.Empresa(EmpresaID), --se agrego fk de numfiscal
 	constraint chkMetodoPago check( MetodoPago in('Efectivo','Tarjeta','Cheque') ),
 	constraint chkEstadoFactura check( Estado in('Abierto','Cerrado','Cancelado') ),		--CAMBIO
 

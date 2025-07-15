@@ -26,6 +26,26 @@ as
 go
 
 
+CREATE TYPE TipoTablaNumFiscal as TABLE (
+	NumFiscalID		int primary key not null,
+	RangoInicio		varchar(20) not null,
+	RangoFin		varchar(20) not null,
+	Estado			bit not null,
+	FechaVencimiento	date not null
+)
+
+go
+
+
+
+CREATE OR ALTER PROCEDURE spAddUpdateNumFiscal @tabla TipoTablaNumFiscal READONLY
+as
+	begin
+		
+
+	end
+
+
 
 
 

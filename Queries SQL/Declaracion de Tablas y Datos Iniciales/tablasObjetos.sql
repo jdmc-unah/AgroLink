@@ -21,7 +21,10 @@ create table Pruebas.NumFiscal	--ya creada
 	RangoFin		varchar(20) not null,
 	Estado			bit not null,
 	FechaVencimiento	date not null,
-	
+	EmpresaID	int not null ,
+
+	constraint fkNumFiscalEmpresa foreign key (EmpresaID) references Pruebas.Empresa(EmpresaID) --se agrego fk de empresa
+
 	-- ideas para automatizar Estado
 	-- 1. podriamos usar un trigger que, al insertar o actualizar, revise la fecha de vencimiento y actualice el estado automaticamente
 	-- 2. usamos una columna calculada que se actualiza segun la fecha
@@ -81,10 +84,10 @@ create table Pruebas.Empresa -- ya creada
 	Correo		varchar(100) not null,
 	Telefono	varchar(20) not null,
 	DireccionID	int not null,
-	NumFiscalID	int not null,
 	
+	--se quito numfiscal id
+
 	constraint fkEmpresaDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
-	constraint fkEmpresaNumFiscal foreign key (NumFiscalID) references Pruebas.NumFiscal(NumFiscalID),
 	constraint chkRTNEmpresa check (len(RTN) = 14)
 )
 

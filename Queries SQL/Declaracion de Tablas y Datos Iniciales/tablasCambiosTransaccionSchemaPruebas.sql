@@ -100,7 +100,33 @@ go
 
 
 
+-->>>>>>>>>CAMBIOS POR CAMPO NUMFISCALID>>>>>>>>>>>>>>>
 
+--EMPRESA
+--ALTER TABLE Pruebas.Empresa DROP  CONSTRAINT fkEmpresaNumFiscal 
+
+--ALTER TABLE Pruebas.Empresa DROP COLUMN NumFiscalID
+
+--SELECT * FROM PRUEBAS.Empresa
+
+
+--NumFiscal
+
+--ALTER TABLE Pruebas.NumFiscal ADD EmpresaID int
+
+--ALTER TABLE Pruebas.NumFiscal ADD constraint fkNumFiscalEmpresa foreign key (EmpresaID) references Pruebas.Empresa(EmpresaID) --se agrego fk de empresa
+
+
+
+--Factura
+--ALTER TABLE Pruebas.Factura ADD NumFiscalID int 
+--ALTER TABLE Pruebas.Factura ADD constraint fkFacturaNumFiscal foreign key (EmpresaID) references Pruebas.Empresa(EmpresaID) --se agrego fk de numfiscal
+
+
+--sp_help 'Pruebas.Factura'
+
+
+GO
 
 
 --CUESTIONES EXTRAS
@@ -116,4 +142,5 @@ go
 --SELECT * FROM Pruebas.Compra
 --SELECT * FROM Pruebas.Lote
 --SELECT * FROM Pruebas.SalidaProducto WHERE CompraID IS NULL
+
 
