@@ -26,7 +26,7 @@ drop table Pruebas.SalidaProductoDetalle
 
 CREATE TABLE Pruebas.Venta --ya creada
 (
-	VentaID int primary key not null,
+	VentaID int identity(1,1) primary key not null,
 	CodigoVenta	as concat('VEN', VentaID) persisted,		--CAMBIO
 	Fecha Datetime not null,
 	SocioID int not null,

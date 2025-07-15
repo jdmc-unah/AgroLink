@@ -18,45 +18,42 @@ alter table Pruebas.SalidaProducto add Fecha datetime not null
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Compra>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>					
 
+INSERT INTO PRUEBAS.Compra ( ListaPreciosID, Fecha, SocioID, TipoPago, Estado)VALUES
 --Compra 1
-INSERT INTO PRUEBAS.Compra (CompraID, ListaPreciosID, Fecha, SocioID, TipoPago, Estado)
-VALUES (1, 6, '2025/07/07', 6, 'Credito', 'Cerrado') --Compra a Socio 6 
-
-INSERT INTO PRUEBAS.CompraDetalle (CompraID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES 
-(1, 1, 1, 1, 10, 85,977.5),  --Semilla Tomate 
-(1, 2, 1, 2, 10, 65, 747.5 ) --Semilla Lechuga 
-
-
+( 6, '2025/07/07', 6, 'Credito', 'Cerrado'), --Compra a Socio 6 
 --Compra 2
-INSERT INTO PRUEBAS.Compra (CompraID, ListaPreciosID, Fecha, SocioID, TipoPago, Estado)  VALUES 
-(2, 6, '2025/07/07', 2, 'Contado', 'Cerrado')
-
-INSERT INTO PRUEBAS.CompraDetalle  (CompraID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES 
-(2, 3, 1, 3, 45, 750, 38812.5 ),	--Fertilizante
-(2, 4, 1, 4, 35, 680, 27370 )		--Urea
-
+( 6, '2025/07/07', 2, 'Contado', 'Cerrado'),
 
 --Compra 3
-INSERT INTO PRUEBAS.Compra (CompraID, ListaPreciosID, Fecha, SocioID, TipoPago, Estado) VALUES 
-(3, 6, '2025/07/07', 6, 'Credito', 'Cerrado')
-INSERT INTO PRUEBAS.CompraDetalle   (CompraID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES 
-(3, 1, 1, 1, 15, 85, 1466.25),	--Semilla Tomate 
-(3, 2, 1, 2, 10, 65, 747.5 )	--Semilla Lechuga 
-
+( 6, '2025/07/07', 6, 'Credito', 'Cerrado'),
 
 --Compra 4
-INSERT INTO PRUEBAS.Compra (CompraID, ListaPreciosID, Fecha, SocioID, TipoPago, Estado) VALUES 
-(4, 6, '2025/07/07', 2, 'Contado', 'Cerrado')
-INSERT INTO PRUEBAS.CompraDetalle  (CompraID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES 
-(4, 5, 1, 5, 15, 180, 3105 )	--Insecticida
-
+( 6, '2025/07/07', 2, 'Contado', 'Cerrado'),
 
 --Compra 5 (Esta no se ve reflejada en inventario bodega porque se uso para hacer los datos de venta, entonces asi como entro el producto se vendio)
-INSERT INTO PRUEBAS.Compra (CompraID, ListaPreciosID, Fecha, SocioID, TipoPago, Estado) VALUES 
-(5, 6, '2025/07/07', 1, 'Credito', 'Cerrado')
-INSERT INTO PRUEBAS.CompraDetalle  (CompraID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES 
+(6, '2025/07/07', 1, 'Credito', 'Cerrado')
+
+
+INSERT INTO PRUEBAS.CompraDetalle (CompraID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES 
+--Compra Detalle 1
+(1, 1, 1, 1, 10, 85,977.5),  --Semilla Tomate 
+(1, 2, 1, 2, 10, 65, 747.5 ), --Semilla Lechuga 
+
+--Compra Detalle 2
+(2, 3, 1, 3, 45, 750, 38812.5 ),	--Fertilizante
+(2, 4, 1, 4, 35, 680, 27370 ),		--Urea
+
+--Compra Detalle 3
+(3, 1, 1, 1, 15, 85, 1466.25),	--Semilla Tomate 
+(3, 2, 1, 2, 10, 65, 747.5 ),	--Semilla Lechuga 
+
+--Compra Detalle 4
+(4, 5, 1, 5, 15, 180, 3105 ),	--Insecticida
+
+--Compra Detalle 5
 (5,11 , 1, 1, 30, 25, 862.5 ),	--Tomate
 (5,14 , 1, 1, 5, 850, 4887.5 )	--Frijol Rojo
+
 
 
 SELECT * FROM PRUEBAS.COMPRA c
@@ -119,52 +116,43 @@ inner join pruebas.ReciboDetalle rd on r.ReciboID = rd.ReciboID
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Entrada Producto >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+INSERT INTO Pruebas.EntradaProducto ( SocioID, Fecha, LoteID, CompraID) VALUES
 --Entrada de compra 1
-INSERT INTO Pruebas.EntradaProducto (EntradaID, SocioID, BodegaID, Fecha, LoteID) VALUES
-(1, 6, 1, '2025/07/07', NULL),	--Entrada de producto 1
-(2, 6, 2, '2025/07/07', NULL)	--Entrada de producto 2
-
-INSERT INTO Pruebas.EntradaProductoDetalle (EntradaID, ProductoID, Cantidad) VALUES
-(1, 1, 10), --Semilla Tomate
-(2, 2, 10)	--Semilla Lechuga
-
+( 6, '2025/07/07', NULL, 1),
 
 --Entrada de Compra 2
-INSERT INTO Pruebas.EntradaProducto (EntradaID, SocioID, BodegaID, Fecha, LoteID) VALUES
-(3, 2, 3, '2025/07/07', NULL),	--Entrada de producto 3
-(4, 2, 4, '2025/07/07', NULL)	--Entrada de producto 4
-
-INSERT INTO Pruebas.EntradaProductoDetalle (EntradaID, ProductoID, Cantidad) VALUES
-(3, 3, 45), --Fertilizante
-(4, 4, 35)	--Urea
-
+( 2, '2025/07/07', NULL, 2),
 
 --Entrada de Compra 3
-INSERT INTO Pruebas.EntradaProducto (EntradaID, SocioID, BodegaID, Fecha, LoteID) VALUES
-(5, 6, 1, '2025/07/07', NULL),	--Entrada de producto 1
-(6, 6, 2, '2025/07/07', NULL)	--Entrada de producto 2
-
-INSERT INTO Pruebas.EntradaProductoDetalle (EntradaID, ProductoID, Cantidad) VALUES
-(5, 1, 15), --Semilla Tomate
-(6, 2, 10)	--Semilla Lechuga
-
+( 6, '2025/07/07', NULL, 3 ),	
 
 --Entrada de Compra 4
-INSERT INTO Pruebas.EntradaProducto (EntradaID, SocioID, BodegaID, Fecha, LoteID) VALUES
-(7, 2, 5, '2025/07/07', NULL) --Entrada de producto 5
+( 2, '2025/07/07', NULL, 4 ), 
 
-INSERT INTO Pruebas.EntradaProductoDetalle (EntradaID, ProductoID, Cantidad) VALUES
-(7, 5, 15) --Insecticida
-
-		
 --Entrada de Compra 5
-INSERT INTO Pruebas.EntradaProducto (EntradaID, SocioID, BodegaID, Fecha, LoteID) VALUES
-(8, 1, 1, '2025/07/08', 1  ),	--Entrada de producto 11
-(9, 1, 1, '2025/07/08', 6  )	--Entrada de producto 14
+( 1, '2025/07/08', 1 , 5 )	
 
-INSERT INTO Pruebas.EntradaProductoDetalle (EntradaID, ProductoID, Cantidad) VALUES
-(8,11, 30), --Tomate
-(9,14, 5)	--Frijol Rojo
+
+INSERT INTO Pruebas.EntradaProductoDetalle (EntradaID, ProductoID, Cantidad, BodegaID) VALUES
+--Entrada detalle de compra 1
+(1, 1, 10, 1),	--Semilla Tomate
+(1, 2, 10, 2),	--Semilla Lechuga
+
+--Entrada detalle de compra 2
+(2, 3, 45 , 3), --Fertilizante
+(2, 4, 35 , 4),	--Urea
+
+--Entrada detalle de compra 3
+(3, 1, 15, 1),	--Semilla Tomate
+(3, 2, 10, 2),	--Semilla Lechuga
+
+--Entrada detalle de compra 4
+(4, 5, 15, 5),	--Insecticida
+
+--Entrada detalle de compra 5
+(5,11, 30, 1),	--Tomate
+(5,14, 5, 1)	--Frijol Rojo
 
 
 
@@ -175,28 +163,28 @@ inner join pruebas.EntradaProductoDetalle ed on e.EntradaID = ed.EntradaID
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Venta  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+INSERT INTO PRUEBAS.Venta ( Fecha, SocioID, ListaPreciosID, TipoPago, Estado) VALUES
 --VENTA 1
-INSERT INTO PRUEBAS.Venta (VentaID, Fecha, SocioID, ListaPreciosID, TipoPago, Estado) VALUES
-(1, '2025/07/09', 4, 1, 'Contado', 'Cerrado' )
-
-INSERT INTO PRUEBAS.VentaDetalle (VentaID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
-(1, 11, 1, 1, 15, 25, 431.25),	--tomate
-(1, 14, 1, 1, 2, 850 , 1955)	--frijol rojo
-
+( '2025/07/09', 4, 1, 'Contado', 'Cerrado' ),
 
 --Venta 2
-INSERT INTO PRUEBAS.Venta (VentaID, Fecha, SocioID, ListaPreciosID, TipoPago, Estado) VALUES
-(2, '2025/07/09', 8, 1, 'Contado', 'Cerrado' )
-
-INSERT INTO PRUEBAS.VentaDetalle (VentaID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
-(2, 11, 1, 1, 15, 25, 431.25)	--tomate
-
+( '2025/07/09', 8, 1, 'Contado', 'Cerrado' ),
 
 --VENTA 3
-INSERT INTO PRUEBAS.Venta (VentaID, Fecha, SocioID, ListaPreciosID, TipoPago, Estado) VALUES
-(3, '2025/07/09', 4, 1, 'Contado', 'Cerrado' )
+( '2025/07/09', 4, 1, 'Contado', 'Cerrado' )
+
 
 INSERT INTO PRUEBAS.VentaDetalle (VentaID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
+
+--VENTA DETALLE 1
+(1, 11, 1, 1, 15, 25, 431.25),	--tomate
+(1, 14, 1, 1, 2, 850 , 1955),	--frijol rojo
+
+--VENTA DETALLE 2
+(2, 11, 1, 1, 15, 25, 431.25),	--tomate
+
+--VENTA DETALLE 3
 (3, 14, 1, 1, 3, 850 , 2932.5)	--frijol rojo
 
 
