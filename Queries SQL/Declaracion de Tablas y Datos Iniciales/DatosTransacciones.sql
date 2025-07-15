@@ -208,28 +208,27 @@ inner join pruebas.VentaDetalle vd on v.VentaID = vd.VentaID
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Factura  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 --Factura Venta 1
-INSERT INTO Pruebas.Factura (FacturaID, SocioID, ListaPreciosID, EmpresaID, Fecha, MetodoPago, CAI) VALUES
-(1, 4, 1,1, '2025/07/09', 'Tarjeta', '001-001-01-000001')
+INSERT INTO Pruebas.Factura ( VentaID,SocioID, ListaPreciosID, EmpresaID, Fecha, MetodoPago, CAI, EmpleadoID, Estado, NumFiscalID) VALUES
 
-INSERT INTO PRUEBAS.FacturaDetalle (FacturaID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
-(1, 11, 1, 1, 15, 25, 431.25),	--tomate
-(1, 14, 1, 1, 2, 850 , 1955)	--frijol rojo
-
-
+--Factura Venta 1
+(1, 4, 1,1, '2025/07/09', 'Tarjeta', '001-001-01-000001', 1, 'Cerrado', 1),
 
 --Factura Venta 2
-INSERT INTO Pruebas.Factura (FacturaID, SocioID, ListaPreciosID, EmpresaID, Fecha, MetodoPago, CAI) VALUES
-(2, 8, 1,1, '2025/07/09', 'Tarjeta', '001-001-01-000002')
-
-INSERT INTO PRUEBAS.FacturaDetalle (FacturaID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
-(2, 11, 1, 1, 15, 25, 431.25)	--tomate
-
+(2, 8, 1,1, '2025/07/09', 'Tarjeta', '001-001-01-000002', 1, 'Cerrado', 1),
 
 --Factura Venta 3
-INSERT INTO Pruebas.Factura (FacturaID, SocioID, ListaPreciosID, EmpresaID, Fecha, MetodoPago, CAI) VALUES
-(3, 4, 1,1, '2025/07/09', 'Tarjeta', '001-001-01-000003')
+(3, 4, 1,1, '2025/07/09', 'Tarjeta', '001-001-01-000003', 1, 'Cerrado', 1)
 
-INSERT INTO PRUEBAS.FacturaDetalle (FacturaID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
+INSERT INTO PRUEBAS.FacturaDetalle ( FacturaID,ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES
+
+--Factura Detalle Venta 1
+(1, 11, 1, 1, 15, 25, 431.25),	--tomate
+(1, 14, 1, 1, 2, 850 , 1955),	--frijol rojo
+
+--Factura Detalle Venta 2
+(2, 11, 1, 1, 15, 25, 431.25),	--tomate
+
+--Factura Detalle Venta 3
 (3, 14, 1, 1, 3, 850 , 2932.5)	--frijol rojo
 
 

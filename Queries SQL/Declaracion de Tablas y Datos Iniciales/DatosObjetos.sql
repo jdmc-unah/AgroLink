@@ -1,17 +1,19 @@
 USE AgroLinkDB;
 
 -- 1. direcciones
-insert into Pruebas.Direccion (DireccionID, MunicipioID, Colonia, Detalle) values
-(1, 501, 'Colonia Universidad', 'Boulevard Los Próceres #1234'),
-(2, 501, 'Barrio Río de Piedras', 'Ave. Circunvalación #5678'),
-(3, 501, 'Colonia Moderna', '10a Calle, 15 Ave. SO #91'),
-(4, 502, 'Centro', 'Calle Principal, frente al parque central'),  --se volvieron a insertar por el cambio en tabla direccion
-(5, 506, 'Barrio El Centro', 'Ave. Honduras #321'),
-(6, 511, 'Colonia San José', 'Carretera CA-5 Km 15'),
-(7, 512, 'Barrio El Progreso', 'Ave. La Lima #789'),
-(8, 504, 'Aldea San Antonio', 'Desvío La Barca Km 3'),
-(9, 503, 'Casco Histórico', 'Calle del Comercio #456'),
-(10, 510, 'El Paraíso', 'Orilla del Lago de Yojoa');
+
+insert into Pruebas.Direccion ( MunicipioID, Colonia, Detalle) values
+(501, 'Colonia Universidad', 'Boulevard Los Próceres #1234'),
+(501, 'Barrio Río de Piedras', 'Ave. Circunvalación #5678'),
+(501, 'Colonia Moderna', '10a Calle, 15 Ave. SO #91'),
+(502, 'Centro', 'Calle Principal, frente al parque central'),  --se volvieron a insertar por el cambio en tabla direccion
+(506, 'Barrio El Centro', 'Ave. Honduras #321'),
+(511, 'Colonia San José', 'Carretera CA-5 Km 15'),
+(512, 'Barrio El Progreso', 'Ave. La Lima #789'),
+(504, 'Aldea San Antonio', 'Desvío La Barca Km 3'),
+(503, 'Casco Histórico', 'Calle del Comercio #456'),
+(510, 'El Paraíso', 'Orilla del Lago de Yojoa');
+
 --(2, 'Francisco Morazán', 'Tegucigalpa', 'Colonia Kennedy', 'Blvd. Morazán, Casa #123'),
 --(3, 'Yoro', 'El Progreso', 'Centro', 'Calle Principal #789'),
 --(4, 'Choluteca', 'Choluteca', 'Barrio El Centro', 'Ave. Valle #321'),
@@ -27,12 +29,12 @@ select * from Pruebas.Direccion
 delete from Pruebas.Direccion
 
 -- 2. nuemros fiscales
-insert into Pruebas.NumFiscal (NumFiscalID, RangoInicio, RangoFin, Estado, FechaVencimiento) values
-(1, '001-001-01-000001', '001-001-01-001000', 'activo', '2025-12-31'),
-(2, '001-002-01-000001', '001-002-01-001000', 'activo', '2025-11-30'),
-(3, '001-003-01-000001', '001-003-01-001000', 'activo', '2025-10-31'),
-(4, '001-004-01-000001', '001-004-01-001000', 'inactivo', '2024-12-31'),
-(5, '001-005-01-000001', '001-005-01-001000', 'activo', '2026-06-30');
+insert into Pruebas.NumFiscal ( RangoInicio, RangoFin, Estado, FechaVencimiento, EmpresaID) values
+('001-001-01-000001', '001-001-01-001000', 'activo', '2025-12-31', 1),
+('001-002-01-000001', '001-002-01-001000', 'activo', '2025-11-30', 1),
+('001-003-01-000001', '001-003-01-001000', 'activo', '2025-10-31', 1),
+('001-004-01-000001', '001-004-01-001000', 'inactivo', '2024-12-31', 1),
+('001-005-01-000001', '001-005-01-001000', 'activo', '2026-06-30', 1);
 
 select * from Pruebas.NumFiscal 
 delete from Pruebas.NumFiscal 
@@ -236,3 +238,21 @@ insert into Pruebas.TipoSuelo (TipoSueloID, NombreComun, Descripcion) values
 
 select * from Pruebas.TipoSuelo
 delete from Pruebas.TipoSuelo
+
+
+
+--18. Puesto
+INSERT INTO Pruebas.Puesto (PuestoID, Nombre) VALUES 
+(1, 'Vendedor'),
+(2, 'Repartidor'),
+(3, 'Administrador')
+
+select * from Pruebas.Puesto
+
+
+--19.Empleado
+INSERT INTO Pruebas.Empleado (EmpleadoID, Nombre, Identidad, RTN, Correo, Telefono, Direccion, Notas,PuestoID, Estado, Sexo, Edad ,EstadoCivil) values
+(1, 'Empleado 1', '0501200006523', '05012000065238', 'empleado1@agrolink.com', '99887766' ,'Bo. Suyapa', 'N/A', 1, 'Activo', 'Masculino', 21, 'Casado' ),
+(2, 'Empleado 2', '0801200006523', '08012000065238', 'empleado2@agrolink.com','99332211' ,'Bo. La Guardia', 'N/A', 2, 'Activo', 'Femenino', 30, 'Soltero' )
+
+select * from Pruebas.Empleado

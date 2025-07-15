@@ -6,7 +6,7 @@ use AgroLinkDB
 
 create table Pruebas.Direccion	--ya creada
 (
-    DireccionID int primary key,
+    DireccionID int identity(1,1) primary key,
     MunicipioID int not null,
     Colonia		varchar(50),
     Detalle		varchar(250),
@@ -16,10 +16,10 @@ create table Pruebas.Direccion	--ya creada
 
 create table Pruebas.NumFiscal	--ya creada
 (
-	NumFiscalID		int primary key not null,
+	NumFiscalID		int identity(1,1) primary key not null,
 	RangoInicio		varchar(20) not null,
 	RangoFin		varchar(20) not null,
-	Estado			bit not null,
+	Estado			varchar(20) not null,
 	FechaVencimiento	date not null,
 	EmpresaID	int not null ,
 
@@ -29,6 +29,8 @@ create table Pruebas.NumFiscal	--ya creada
 	-- 1. podriamos usar un trigger que, al insertar o actualizar, revise la fecha de vencimiento y actualice el estado automaticamente
 	-- 2. usamos una columna calculada que se actualiza segun la fecha
 )
+
+
 
 create table Pruebas.Impuesto --ya creada
 (

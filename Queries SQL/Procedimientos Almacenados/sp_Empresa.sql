@@ -30,7 +30,7 @@ CREATE TYPE TipoTablaNumFiscal as TABLE (
 	NumFiscalID		int primary key not null,
 	RangoInicio		varchar(20) not null,
 	RangoFin		varchar(20) not null,
-	Estado			bit not null,
+	Estado			varchar(20) not null,
 	FechaVencimiento	date not null
 )
 
@@ -39,6 +39,8 @@ go
 select * from pruebas.NumFiscal
 
 go
+
+
 
 CREATE OR ALTER PROCEDURE spAddUpdateNumFiscal @tabla TipoTablaNumFiscal READONLY
 as
@@ -57,7 +59,6 @@ as
 					
 					insert into Pruebas.NumFiscal (RangoInicio, RangoFin, Estado , FechaVencimiento, EmpresaID)
 					SELECT RangoInicio, RangoFin, Estado, FechaVencimiento, 1  FROM @tabla WHERE NumFiscalID = @numId
-					--VALUES (@rIni,@rFin, @estado, @fVen, 1)
 
 				ELSE
 					update Pruebas.NumFiscal set RangoInicio = T.RangoInicio, RangoFin = T.RangoFin, Estado = T.Estado, FechaVencimiento = T.FechaVencimiento 
@@ -68,7 +69,7 @@ as
 	end
 
 
-
+go
 
 
 

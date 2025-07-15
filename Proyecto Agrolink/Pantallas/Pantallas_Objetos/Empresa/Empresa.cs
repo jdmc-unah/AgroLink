@@ -79,6 +79,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             //Trae Numeros Fiscales y llena datagridview 1
 
             DataTable dt = recSQL.EjecutarVista("vNumerosFiscales");
+            dt.Columns["NumFiscalID"].AutoIncrement = false; //sino no puedo identificar cualesa gregar y cuales solo update
             dt.Columns["NumFiscalID"].DefaultValue = 0;
 
 
@@ -286,8 +287,19 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Dictionary<string, object> parametros = new Dictionary<string, object>()
+            {
+                {"tabla",  metGlobales.CrearDataTable(this.dataGridView1)  }
+            };
+
+            if (recSQL.EjecutarSPBool("spAddUpdateNumFiscal", parametros))
+            {
+                this.dataGridView1.ReadOnly = !false;
+                this.guardarToolStripMenuItem.Visible = !true;
+                this.editarToolStripMenuItem.Visible = !false;
+                this.borrarToolStripMenuItem.Visible = !false;
+            }
             
-            this.dataGridView2.DataSource = metGlobales.CrearDataTable(this.dataGridView1);
 
 
         }
