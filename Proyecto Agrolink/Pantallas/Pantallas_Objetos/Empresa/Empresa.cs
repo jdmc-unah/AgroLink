@@ -262,6 +262,15 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
+        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.dataGridView2.ReadOnly = false;
+
+
+        }
+
+
+
 
         //boton de editar con click derecho
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -275,42 +284,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         }
 
 
-
-
-        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            this.dataGridView2.ReadOnly = false;
-
-
-        }
-
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            DataTable dt = new DataTable();
-
-            // Crear columnas
-            foreach (DataGridViewColumn col in dataGridView1.Columns)
-            {
-                dt.Columns.Add(col.Name, col.ValueType ?? typeof(string));
-            }
-
-            // Agregar filas
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    DataRow dr = dt.NewRow();
-                    foreach (DataGridViewColumn col in dataGridView1.Columns)
-                    {
-                        dr[col.Name] = row.Cells[col.Name].Value ?? DBNull.Value;
-                    }
-                    dt.Rows.Add(dr);
-                }
-            }
-
-
-            this.dataGridView2.DataSource = dt;
+            
+            this.dataGridView2.DataSource = metGlobales.CrearDataTable(this.dataGridView1);
 
 
         }

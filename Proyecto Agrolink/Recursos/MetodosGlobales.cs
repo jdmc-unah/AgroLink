@@ -25,43 +25,28 @@ namespace AgroLink.Recursos
 
 
 
-
-
-
-        //Llenar data table
-        public DataTable CrearDataTable(Dictionary<string, Type> columnas, DataGridView myDataGrid)
+        public DataTable CrearDataTable(DataGridView myDataGrid)
         {
+
             DataTable myDataTable = new DataTable();
 
-            foreach (var columna in columnas)
+            // Crear columnas
+            foreach (DataGridViewColumn col in myDataGrid.Columns)
             {
-                myDataTable.Columns.Add(columna.Key, columna.Value);
-
+                myDataTable.Columns.Add(col.Name, col.ValueType ?? typeof(string));
             }
 
-            // Ejemplo : myDataTable.Columns.Add("IdCliente", typeof(int));
-
-            foreach (DataGridViewRow fila in myDataGrid.Rows)
+            // Agregar filas
+            foreach (DataGridViewRow row in myDataGrid.Rows)
             {
-                if (!fila.IsNewRow)
+                if (!row.IsNewRow)
                 {
-                    foreach (var columna in columnas)
+                    DataRow dr = myDataTable.NewRow();
+                    foreach (DataGridViewColumn col in myDataGrid.Columns)
                     {
-
-                        if (columna.Value == typeof(int))
-                        {
-                            myDataTable.Rows.Add(
-                                Convert.ToInt32(fila.Cells[columna.Key].Value)
-                            );
-                        }
-
-                        if (columna.Value == typeof(string))
-                        {
-                            myDataTable.Rows.Add(
-                                fila.Cells[columna.Key].Value.ToString()
-                            );
-                        }
+                        dr[col.Name] = row.Cells[col.Name].Value ?? DBNull.Value;
                     }
+                    myDataTable.Rows.Add(dr);
                 }
             }
 

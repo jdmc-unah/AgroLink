@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_objetos\\empresa\\empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jose.mejia\\documents\\jdmc\\agrolink\\agrolink\\proyecto agrolink\\pantallas\\pantallas_objetos\\empresa\\empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jose.mejia\\documents\\jdmc\\agrolink\\agrolink\\proyecto agrolink\\recursos\\metodosglobales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:recursos\\metodosglobales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|C:\\Users\\jose.mejia\\Documents\\jdmc\\AgroLink\\AgroLink\\Proyecto Agrolink\\pantallas\\pantallas_objetos\\empresa\\empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_objetos\\empresa\\empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jose.mejia\\documents\\jdmc\\agrolink\\agrolink\\proyecto agrolink\\recursos\\recursos_sql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:recursos\\recursos_sql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jose.mejia\\documents\\jdmc\\agrolink\\agrolink\\proyecto agrolink\\recursos\\metodosglobales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:recursos\\metodosglobales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Recursos_SQL.cs",
               "DocumentMoniker": "C:\\Users\\jose.mejia\\Documents\\jdmc\\AgroLink\\AgroLink\\Proyecto Agrolink\\Recursos\\Recursos_SQL.cs",
               "RelativeDocumentMoniker": "Recursos\\Recursos_SQL.cs",
@@ -43,20 +43,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "MetodosGlobales.cs",
               "DocumentMoniker": "C:\\Users\\jose.mejia\\Documents\\jdmc\\AgroLink\\AgroLink\\Proyecto Agrolink\\Recursos\\MetodosGlobales.cs",
               "RelativeDocumentMoniker": "Recursos\\MetodosGlobales.cs",
               "ToolTip": "C:\\Users\\jose.mejia\\Documents\\jdmc\\AgroLink\\AgroLink\\Proyecto Agrolink\\Recursos\\MetodosGlobales.cs",
               "RelativeToolTip": "Recursos\\MetodosGlobales.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-10T19:03:11.807Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Empresa.cs [Design]",
               "DocumentMoniker": "C:\\Users\\jose.mejia\\Documents\\jdmc\\AgroLink\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Objetos\\Empresa\\Empresa.cs",
               "RelativeDocumentMoniker": "Pantallas\\Pantallas_Objetos\\Empresa\\Empresa.cs",
@@ -74,7 +75,7 @@
               "RelativeDocumentMoniker": "Pantallas\\Pantallas_Objetos\\Empresa\\Empresa.cs",
               "ToolTip": "C:\\Users\\jose.mejia\\Documents\\jdmc\\AgroLink\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Objetos\\Empresa\\Empresa.cs",
               "RelativeToolTip": "Pantallas\\Pantallas_Objetos\\Empresa\\Empresa.cs",
-              "ViewState": "AgIAABUBAAAAAAAAAAArwD0BAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAB4BAAAAAAAAAAA0wDYBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-10T19:03:19.222Z",
               "EditorCaption": ""
