@@ -220,12 +220,12 @@ select * from Pruebas.ProductoDetalle
 delete from Pruebas.ProductoDetalle
 
 -- 14. bodega
-insert into Pruebas.Bodega (BodegaID, Nombre, Capacidad, DireccionID) values
-(1, 'Bodega Central SPS', 800.00, 1),
-(2, 'Bodega Puerto Cortés', 600.00, 5),
-(3, 'Bodega Choloma', 400.00, 4),
-(4, 'Bodega Villanueva', 350.00, 6),
-(5, 'Bodega La Lima', 300.00, 7);
+insert into Pruebas.Bodega ( Nombre, Capacidad, DireccionID) values
+('Bodega Central SPS', 800.00, 1),
+('Bodega Puerto Cortés', 600.00, 5),
+('Bodega Choloma', 400.00, 4),
+('Bodega Villanueva', 350.00, 6),
+('Bodega La Lima', 300.00, 7);
 
 select * from Pruebas.Bodega 
 delete from Pruebas.Bodega
@@ -243,13 +243,13 @@ select * from Pruebas.BodegaDetalle
 delete from Pruebas.BodegaDetalle
 
 -- 16. lote
-insert into Pruebas.Lote (LoteID, FincaID, ProductoID, TipoRiegoID, TipoSueloID, FechaSiembra, FechaCosecha, Extension) values
-(1, 1, 11, 1, 3, '2024-03-15', '2024-07-15', 255.50),  -- Tomate Cherry en Finca San José
-(2, 1, 15, 3, 2, '2024-01-10', '2024-12-10', 536.00),    -- Café en Finca San José
-(3, 2, 12, 2, 4, '2024-04-01', '2024-06-01', 365.75),   -- Lechuga en Finca Las Flores
-(4, 3, 13, 1, 5, '2024-05-20', '2024-10-20', 365.25),        -- Maíz en Finca El Paraíso
-(5, 4, 9, 4, 1, '2024-02-01', '2024-05-01', 494.00),  -- Banano en Finca Bella Vista
-(6, 5, 14, 2, 6, '2024-06-15', '2024-11-15', 265.80);    -- Frijol en Finca Los Robles
+insert into Pruebas.Lote ( FincaID, ProductoID, TipoRiegoID, TipoSueloID, FechaSiembra, FechaCosecha, Extension) values
+(1, 11, 1, 3, '2024-03-15', '2024-07-15', 255.50),  -- Tomate Cherry en Finca San José
+(1, 15, 3, 2, '2024-01-10', '2024-12-10', 536.00),    -- Café en Finca San José
+(2, 12, 2, 4, '2024-04-01', '2024-06-01', 365.75),   -- Lechuga en Finca Las Flores
+(3, 13, 1, 5, '2024-05-20', '2024-10-20', 365.25),        -- Maíz en Finca El Paraíso
+(4, 9, 4, 1, '2024-02-01', '2024-05-01', 494.00),  -- Banano en Finca Bella Vista
+(5, 14, 2, 6, '2024-06-15', '2024-11-15', 265.80);    -- Frijol en Finca Los Robles
 
 select * from Pruebas.Lote 
 delete from Pruebas.Lote

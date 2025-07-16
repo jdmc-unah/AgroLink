@@ -609,16 +609,92 @@ Pruebas.ProductoDetalle pd on p.ProductoID = pd.ProductoID
 
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>> Lote >>>>>>>>>>>>>>>>>>>>>>>> 
+drop table  Pruebas.Lote
+
+sp_help 'pruebas.Lote'
+
+ALTER TABLE pruebas.EntradaProducto DROP CONSTRAINT fkEntradaProductoLote
+
+ALTER TABLE pruebas.EntradaProducto  ADD CONSTRAINT	fkEntradaProductoLote foreign key (LoteID) references Pruebas.Lote(LoteID)
+
+create table Pruebas.Lote --ya creada
+(
+	LoteID		int identity(1,1) primary key not null,
+	CodigoLote	as concat('LOT', LoteID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
+	FincaID		int not null,
+	ProductoID	int not null,
+	TipoRiegoID	int not null,
+	TipoSueloID	int not null,
+	FechaSiembra	date not null,
+	FechaCosecha	date not null,
+	Extension		decimal(8,2) not null,
+	
+	constraint fkLoteFinca foreign key (FincaID) references Pruebas.Finca(FincaID),
+	constraint fkLoteProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
+	constraint fkLoteTipoRiego foreign key (TipoRiegoID) references Pruebas.TipoRiego(TipoRiegoID),
+	constraint fkLoteTipoSuelo foreign key (TipoSueloID) references Pruebas.TipoSuelo(TipoSueloID)
+	-- constraint tipos de suelo
+)
+
+
+-- 16. lote
+insert into Pruebas.Lote ( FincaID, ProductoID, TipoRiegoID, TipoSueloID, FechaSiembra, FechaCosecha, Extension) values
+(1, 11, 1, 3, '2024-03-15', '2024-07-15', 255.50),  -- Tomate Cherry en Finca San José
+(1, 15, 3, 2, '2024-01-10', '2024-12-10', 536.00),    -- Café en Finca San José
+(2, 12, 2, 4, '2024-04-01', '2024-06-01', 365.75),   -- Lechuga en Finca Las Flores
+(3, 13, 1, 5, '2024-05-20', '2024-10-20', 365.25),        -- Maíz en Finca El Paraíso
+(4, 9, 4, 1, '2024-02-01', '2024-05-01', 494.00),  -- Banano en Finca Bella Vista
+(5, 14, 2, 6, '2024-06-15', '2024-11-15', 265.80);    -- Frijol en Finca Los Robles
+
+select * from Pruebas.Lote 
 
 
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>> Bodega >>>>>>>>>>>>>>>>>>>>>>>> 
+drop table  Pruebas.Bodega
+
+sp_help 'pruebas.Bodega'
+
+ALTER TABLE pruebas.BodegaDetalle			DROP CONSTRAINT		fkBodegaDetalleBodega
+ALTER TABLE pruebas.CompraDetalle			DROP CONSTRAINT		fkCompraDetalleBodega
+ALTER TABLE pruebas.EntradaProductoDetalle	DROP CONSTRAINT		fkEntradaProductoBodega
+ALTER TABLE pruebas.FacturaDetalle			DROP CONSTRAINT		fkFacturaDetalleBodega
+ALTER TABLE pruebas.ReciboDetalle			DROP CONSTRAINT		fkReciboDetalleBodega2
+ALTER TABLE pruebas.SalidaProductoDetalle	DROP CONSTRAINT		fkSalidaProductoDetalleBodega
+ALTER TABLE pruebas.VentaDetalle			DROP CONSTRAINT		fkVentaDetalleBodega
+
+ALTER TABLE pruebas.BodegaDetalle			ADD CONSTRAINT		fkBodegaDetalleBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)
+ALTER TABLE pruebas.CompraDetalle			ADD CONSTRAINT		fkCompraDetalleBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)	
+ALTER TABLE pruebas.EntradaProductoDetalle	ADD CONSTRAINT		fkEntradaProductoBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)
+ALTER TABLE pruebas.FacturaDetalle			ADD CONSTRAINT		fkFacturaDetalleBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)
+ALTER TABLE pruebas.ReciboDetalle			ADD CONSTRAINT		fkReciboDetalleBodega2 foreign key (BodegaID) references Pruebas.Bodega(BodegaID)
+ALTER TABLE pruebas.SalidaProductoDetalle	ADD CONSTRAINT		fkSalidaProductoDetalleBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)
+ALTER TABLE pruebas.VentaDetalle			ADD CONSTRAINT		fkVentaDetalleBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)
 
 
+create table Pruebas.Bodega -- ya creada
+(
+	BodegaID		int identity(1,1) primary key not null,
+	CodigoBodega 	as concat('BOD', BodegaID) persisted, 
+	Nombre			varchar(50) not null,
+	Capacidad		decimal(6,2) not null,
+	DireccionID   	int not null,
+
+	constraint fkBodegaDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID)
+)
 
 
+-- 14. bodega
+insert into Pruebas.Bodega ( Nombre, Capacidad, DireccionID) values
+('Bodega Central SPS', 800.00, 1),
+('Bodega Puerto Cortés', 600.00, 5),
+('Bodega Choloma', 400.00, 4),
+('Bodega Villanueva', 350.00, 6),
+('Bodega La Lima', 300.00, 7);
 
-
+select * from Pruebas.Bodega 
 
 
 

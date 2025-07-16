@@ -192,7 +192,7 @@ create table Pruebas.ProductoDetalle -- ya creada
 
 create table Pruebas.Lote --ya creada
 (
-	LoteID		int primary key not null,
+	LoteID		int identity(1,1) primary key not null,
 	CodigoLote	as concat('LOT', LoteID) persisted, --calcula el valor automaticamente, se puede indexar, no se modifica directamente
 	FincaID		int not null,
 	ProductoID	int not null,
@@ -211,7 +211,7 @@ create table Pruebas.Lote --ya creada
 
 create table Pruebas.Bodega -- ya creada
 (
-	BodegaID		int primary key not null,
+	BodegaID		int identity(1,1) primary key not null,
 	CodigoBodega 	as concat('BOD', BodegaID) persisted, 
 	Nombre			varchar(50) not null,
 	Capacidad		decimal(6,2) not null,
