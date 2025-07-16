@@ -40,34 +40,38 @@ select * from Pruebas.NumFiscal
 delete from Pruebas.NumFiscal 
 
 -- 3. impuestos
-insert into Pruebas.Impuesto (ImpuestoID, Nombre, Valor) values
-(1, 'ISV', 15.00),
-(2, 'Impuesto sobre la Renta', 25.00),
-(3, 'Impuesto Municipal', 2.00),
-(4, 'Tasa de Seguridad', 1.50);
+
+insert into Pruebas.Impuesto (Nombre, Valor) values
+('ISV', 0.15),
+('Impuesto sobre la Renta', 0.25),
+('Impuesto Municipal', 0.2),
+('Tasa de Seguridad', 0.015);
 
 select * from Pruebas.Impuesto 
 delete from Pruebas.Impuesto 
 
+
 -- 4. lista de precios
-insert into Pruebas.ListaPrecios (ListaPreciosID, Nombre, Activo) values
-(1, 'Precios Mayorista', 1),
-(2, 'Precios Minorista', 1),
-(3, 'Precios Socios Especiales', 1),
-(4, 'Precios Temporada Alta', 1),
-(5, 'Precios Promocionales', 1);
+insert into Pruebas.ListaPrecios ( Nombre, Activo) values
+('Precios Mayorista', 1),
+('Precios Minorista', 1),
+('Precios Socios Especiales', 1),
+('Precios Temporada Alta', 1),
+('Precios Promocionales', 1),
+('Precio de Costo', 1)
 
 select * from Pruebas.ListaPrecios 
 delete from Pruebas.ListaPrecios 
 
+
 -- 5. tipo de riego
-insert into Pruebas.TipoRiego (TipoRiegoID, Nombre, Descripcion) values
-(1, 'Riego por Goteo', 'Se suministra agua directamente a las raíces de las plantas.'),
-(2, 'Riego por Aspersión', 'Utiliza aspersores para distribuir el agua en el terreno.'),
-(3, 'Riego por exudación', 'El agua se libera lentamente a través de tubos porosos.'),
-(4, 'Riego por Microaspersión', 'Sistema de riego localizado con microaspersores de bajo caudal'),
-(5, 'Riego por superficie o inundación', 'Se aplica agua directamente sobre el suelo.'),
-(6, 'Riego Manual', 'Riego realizado manualmente con mangueras o regaderas');
+insert into Pruebas.TipoRiego ( Nombre, Descripcion) values
+('Riego por Goteo', 'Se suministra agua directamente a las raíces de las plantas.'),
+('Riego por Aspersión', 'Utiliza aspersores para distribuir el agua en el terreno.'),
+('Riego por exudación', 'El agua se libera lentamente a través de tubos porosos.'),
+('Riego por Microaspersión', 'Sistema de riego localizado con microaspersores de bajo caudal'),
+('Riego por superficie o inundación', 'Se aplica agua directamente sobre el suelo.'),
+('Riego Manual', 'Riego realizado manualmente con mangueras o regaderas');
 
 select * from Pruebas.TipoRiego 
 delete from Pruebas.TipoRiego

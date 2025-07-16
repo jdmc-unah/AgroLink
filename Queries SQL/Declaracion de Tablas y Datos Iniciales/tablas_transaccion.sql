@@ -67,7 +67,7 @@ go
 --Compra es el registro de la compra al credito, recibo seria cuando ya se pague
 Create Table Pruebas.Compra --ya creada
 (
-	CompraID int primary key not null,
+	CompraID int identity(1, 1)primary key not null,
 	CodigoCompra	as concat('COM', CompraID) persisted,		--CAMBIO
 	ListaPreciosID int not null,
 	Fecha Datetime not null,

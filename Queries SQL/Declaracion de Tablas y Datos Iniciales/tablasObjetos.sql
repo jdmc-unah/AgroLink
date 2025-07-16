@@ -32,26 +32,28 @@ create table Pruebas.NumFiscal	--ya creada
 
 
 
+
 create table Pruebas.Impuesto --ya creada
 (
-	ImpuestoID	int primary key not null,
+	ImpuestoID	int identity(1,1) primary key not null,
 	Nombre		varchar(50) not null,
 	Valor		decimal(2,2) not null,
 
 	constraint chkValorImpuesto check (Valor >= 0 and Valor <= 1)
 )
 
+
 create table Pruebas.ListaPrecios --ya creada
 (
-	ListaPreciosID	int primary key not null,
-	Nombre		varchar(100) not null,
-	Activo		bit not null
+	ListaPreciosID	int identity(1,1) primary key not null,
+	Nombre			varchar(100) not null,
+	Activo			bit not null
 )
 
 create table Pruebas.TipoRiego --ya creada
 (
-	TipoRiegoID 	int primary key not null,
-	Nombre		varchar(50) not null,
+	TipoRiegoID 	int identity(1,1) primary key not null,
+	Nombre			varchar(50) not null,
 	Descripcion 	varchar(150),
 )
 

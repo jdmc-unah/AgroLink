@@ -8,8 +8,8 @@ use AgroLinkDB
 				---------------------------------------------------------------------------------------------------
 				-------------------------------------------TABLAS DE OBJETOS----------------------------------------
 				---------------------------------------------------------------------------------------------------
-
--->> NUM FISCAL
+begin transaction
+-->>>>>>>>>>>>>>>>>>>>>>>>>>  NUM FISCAL >>>>>>>>>>>>>>>>>>>>>>>> 
 --drop table Pruebas.NumFiscal
 
 create table Pruebas.NumFiscal	--ya creada
@@ -37,9 +37,10 @@ insert into Pruebas.NumFiscal ( RangoInicio, RangoFin, Estado, FechaVencimiento,
 ('001-005-01-000001', '001-005-01-001000', 'activo', '2026-06-30', 1);
 
 
+select * from pruebas.numfiscal
 GO
 
--->> DIRECCION
+-->>>>>>>>>>>>>>>>>>>>>>>>>>  DIRECCION >>>>>>>>>>>>>>>>>>>>>>>> 
 --drop table Pruebas.Direccion
 
 create table Pruebas.Direccion	--ya creada
@@ -71,30 +72,118 @@ GO
 
 
 
-
--->> IMPUESTO									 PENDIENTE*************************************************
+-->>>>>>>>>>>>>>>>>>>>>>>>>>  IMPUESTO	>>>>>>>>>>>>>>>>>>>>>>>> 							
 --drop table Pruebas.Impuesto
+
+sp_help 'pruebas.impuesto'
+
+ALTER TABLE pruebas.compradetalle DROP CONSTRAINT fkCompraDetalleImpuesto  
+ALTER TABLE pruebas.facturadetalle DROP CONSTRAINT fkFacturaDetalleImpuesto  
+ALTER TABLE pruebas.recibodetalle DROP CONSTRAINT fkReciboDetalleImpuesto  
+ALTER TABLE pruebas.ventadetalle  DROP CONSTRAINT fkVentaDetalleImpuesto 
+
+ALTER TABLE pruebas.compradetalle  ADD CONSTRAINT fkCompraDetalleImpuesto foreign key (ImpuestoID) references Pruebas.Impuesto(ImpuestoID)
+ALTER TABLE pruebas.facturadetalle ADD CONSTRAINT fkFacturaDetalleImpuesto foreign key (ImpuestoID) references Pruebas.Impuesto(ImpuestoID)
+ALTER TABLE pruebas.recibodetalle  ADD CONSTRAINT fkReciboDetalleImpuesto foreign key (ImpuestoID) references Pruebas.Impuesto(ImpuestoID)
+ALTER TABLE pruebas.ventadetalle   ADD CONSTRAINT fkVentaDetalleImpuesto foreign key (ImpuestoID) references Pruebas.Impuesto(ImpuestoID)
+
 
 create table Pruebas.Impuesto --ya creada
 (
-	ImpuestoID	int primary key not null,
+	ImpuestoID	int identity(1,1) primary key not null,
 	Nombre		varchar(50) not null,
 	Valor		decimal(2,2) not null,
 
 	constraint chkValorImpuesto check (Valor >= 0 and Valor <= 1)
 )
 
-
-insert into Pruebas.Impuesto (ImpuestoID, Nombre, Valor) values
-('ISV', 15.00),
-('Impuesto sobre la Renta', 25.00),
-('Impuesto Municipal', 2.00),
-('Tasa de Seguridad', 1.50);
+insert into Pruebas.Impuesto (Nombre, Valor) values
+('ISV', 0.15),
+('Impuesto sobre la Renta', 0.25),
+('Impuesto Municipal', 0.2),
+('Tasa de Seguridad', 0.015);
 
 
 select * from Pruebas.Impuesto 
 
--->>
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>> Lista de Precios >>>>>>>>>>>>>>>>>>>>>>>> 
+
+drop table  Pruebas.ListaPrecios
+
+sp_help 'pruebas.ListaPrecios'
+
+ALTER TABLE pruebas.compra  DROP CONSTRAINT  fkCompraListaPrecios 
+ALTER TABLE pruebas.factura  DROP CONSTRAINT fkFacturaListaPrecios  
+ALTER TABLE pruebas.productodetalle  DROP CONSTRAINT fkProductoListaPrecios 
+ALTER TABLE pruebas.recibo  DROP CONSTRAINT fkReciboListaPreciosID 
+ALTER TABLE pruebas.venta  DROP CONSTRAINT fkVentaListaPrecios 
+
+ALTER TABLE pruebas.compra ADD CONSTRAINT	fkCompraListaPrecios foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID)
+ALTER TABLE pruebas.factura	ADD CONSTRAINT	fkFacturaListaPrecios foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID)
+ALTER TABLE pruebas.productodetalle	ADD CONSTRAINT fkProductoListaPrecios foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID)
+ALTER TABLE pruebas.recibo ADD CONSTRAINT fkReciboListaPreciosID foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID)
+ALTER TABLE pruebas.venta  ADD CONSTRAINT fkVentaListaPrecios FOREIGN key (ListaPreciosID) REFERENCES Pruebas.ListaPrecios(ListaPreciosID)
+
+
+create table Pruebas.ListaPrecios --ya creada
+(
+	ListaPreciosID	int identity(1,1) primary key not null,
+	Nombre		varchar(100) not null,
+	Activo		bit not null
+)
+
+
+-- 4. lista de precios
+insert into Pruebas.ListaPrecios ( Nombre, Activo) values
+('Precios Mayorista', 1),
+('Precios Minorista', 1),
+('Precios Socios Especiales', 1),
+('Precios Temporada Alta', 1),
+('Precios Promocionales', 1),
+('Precio de Costo', 1)
+
+select * from pruebas.listaprecios
+
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>> TipoRiego >>>>>>>>>>>>>>>>>>>>>>>> 
+
+drop table  Pruebas.TipoRiego
+
+sp_help 'pruebas.TipoRiego'
+
+ALTER TABLE pruebas.Lote   DROP CONSTRAINT fkLoteTipoRiego 
+
+ALTER TABLE pruebas.Lote  ADD CONSTRAINT	fkLoteTipoRiego foreign key (TipoRiegoID) references Pruebas.TipoRiego(TipoRiegoID)
+
+
+create table Pruebas.TipoRiego --ya creada
+(
+	TipoRiegoID 	int identity(1,1)  primary key not null,
+	Nombre		varchar(50) not null,
+	Descripcion 	varchar(150),
+)
+
+
+-- 5. tipo de riego
+insert into Pruebas.TipoRiego ( Nombre, Descripcion) values
+('Riego por Goteo', 'Se suministra agua directamente a las raíces de las plantas.'),
+('Riego por Aspersión', 'Utiliza aspersores para distribuir el agua en el terreno.'),
+('Riego por exudación', 'El agua se libera lentamente a través de tubos porosos.'),
+('Riego por Microaspersión', 'Sistema de riego localizado con microaspersores de bajo caudal'),
+('Riego por superficie o inundación', 'Se aplica agua directamente sobre el suelo.'),
+('Riego Manual', 'Riego realizado manualmente con mangueras o regaderas');
+
+select * from pruebas.TipoRiego
+
+
+
+
+
+
 
 
 
@@ -461,7 +550,7 @@ inner join pruebas.ReciboDetalle rd on r.ReciboID = rd.ReciboID
 
 
 
--->>>>>>>>>>>>>>>>>>>>>>>> SALIDA >>>>>>>>>>>>>>>>>>>>>>>>   *******************Pendiente
+-->>>>>>>>>>>>>>>>>>>>>>>> SALIDA >>>>>>>>>>>>>>>>>>>>>>>>  
 sp_help 'pruebas.salidaproducto'
 
 drop table pruebas.SalidaProducto
