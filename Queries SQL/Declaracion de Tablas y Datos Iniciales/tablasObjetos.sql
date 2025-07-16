@@ -57,9 +57,10 @@ create table Pruebas.TipoRiego --ya creada
 	Descripcion 	varchar(150),
 )
 
+
 create table Pruebas.TipoSuelo -- ya creada
 (
-	TipoSueloID 	int primary key not null,
+	TipoSueloID 	int  identity(1,1) primary key not null,
 	NombreComun		varchar(50) not null,
 	NombreTecnico	as 
 		case NombreComun
@@ -81,7 +82,7 @@ create table Pruebas.TipoSuelo -- ya creada
 
 create table Pruebas.Empresa -- ya creada
 (
-	EmpresaID	int primary key not null,
+	EmpresaID	int  identity(1,1)  primary key not null,
 	CodigoEmpresa	as concat('EMP', EmpresaID) persisted,
 	Nombre		varchar(100) not null,
 	RTN			varchar(14) not null unique,

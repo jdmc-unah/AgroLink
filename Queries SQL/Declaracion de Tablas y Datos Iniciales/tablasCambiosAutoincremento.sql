@@ -181,6 +181,131 @@ select * from pruebas.TipoRiego
 
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>> TipoSuelo >>>>>>>>>>>>>>>>>>>>>>>> 
+
+drop table  Pruebas.TipoSuelo
+
+sp_help 'pruebas.TipoSuelo'
+
+ALTER TABLE pruebas.Lote   DROP CONSTRAINT fkLoteTipoSuelo 
+
+ALTER TABLE pruebas.Lote  ADD CONSTRAINT	 fkLoteTipoSuelo foreign key (TipoSueloID) references Pruebas.TipoSuelo(TipoSueloID)
+
+create table Pruebas.TipoSuelo -- ya creada
+(
+	TipoSueloID 	int  identity(1,1) primary key not null,
+	NombreComun		varchar(50) not null,
+	NombreTecnico	as 
+		case NombreComun
+			when 'Franco-arcilloso'		then 'Alfisoles'
+			when 'Volcanico'		then 'Andisoles'
+			when 'Arenoso joven'		then 'Entisoles'
+			when 'Organico'			then 'Histosoles'
+			when 'Franco'			then 'Inceptisoles'
+			when 'Franco Fertil'		then 'Mollisoles'
+			when 'Arcilloso Acido'		then 'Ultisoles'
+			when 'Lateritico'		then 'Oxisoles'	
+			when 'Arcilloso Expansivo'	then 'Vertisoles'
+			else 'Desconocido'
+			END persisted,
+	Descripcion 	varchar(150),
+
+	constraint chkTipoSuelo check (NombreComun in ('Franco-arcilloso','Volcanico','Arenoso joven','Organico','Franco','Franco Fertil','Arcilloso Acido','Lateritico','Arcilloso Expansivo'))
+)
+
+
+-- 17. Tipo Suelo
+insert into Pruebas.TipoSuelo ( NombreComun, Descripcion) values 
+('Franco-arcilloso', ''),
+('Volcanico', ''),
+('Arenoso joven', ''),
+('Organico', ''),
+('Franco', ''),
+('Franco Fertil', ''),
+('Arcilloso Acido', ''),
+('Lateritico', ''),
+('Arcilloso Expansivo', '');
+
+
+select * from Pruebas.TipoSuelo
+
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>> Empresa >>>>>>>>>>>>>>>>>>>>>>>> 
+
+drop table  Pruebas.Empresa
+
+sp_help 'pruebas.Empresa'
+
+ALTER TABLE pruebas.Factura    DROP CONSTRAINT fkFacturaEmpresa 
+ALTER TABLE pruebas.Factura    DROP CONSTRAINT fkFacturaNumFiscal 
+ALTER TABLE pruebas.NumFiscal    DROP CONSTRAINT fkNumFiscalEmpresa 
+
+ALTER TABLE pruebas.Factura   ADD CONSTRAINT	fkFacturaEmpresa foreign key (EmpresaID) references Pruebas.Empresa(EmpresaID)
+ALTER TABLE pruebas.Factura   ADD CONSTRAINT  fkFacturaNumFiscal foreign key (NumFiscalID) references Pruebas.NumFiscal(NumFiscalID)
+ALTER TABLE pruebas.NumFiscal   ADD CONSTRAINT	fkNumFiscalEmpresa foreign key (EmpresaID) references Pruebas.Empresa(EmpresaID) 
+
+
+create table Pruebas.Empresa -- ya creada
+(
+	EmpresaID	int  identity(1,1)  primary key not null,
+	CodigoEmpresa	as concat('EMP', EmpresaID) persisted,
+	Nombre		varchar(100) not null,
+	RTN			varchar(14) not null unique,
+	Correo		varchar(100) not null,
+	Telefono	varchar(20) not null,
+	DireccionID	int not null,
+	
+	--se quito numfiscal id
+
+	constraint fkEmpresaDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
+	constraint chkRTNEmpresa check (len(RTN) = 14)
+)
+
+-- 6. empresa
+insert into Pruebas.Empresa ( Nombre, RTN, Correo, Telefono, DireccionID) values
+('Comercializadora de Productos Agricolas', '05019999123456', 'info@agrolink.hn', '2550-1234', 1);
+
+select * from Pruebas.Empresa 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

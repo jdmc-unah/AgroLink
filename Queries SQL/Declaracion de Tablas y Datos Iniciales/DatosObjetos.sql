@@ -229,16 +229,17 @@ delete from Pruebas.Lote
 
 
 -- 17. Tipo Suelo
-insert into Pruebas.TipoSuelo (TipoSueloID, NombreComun, Descripcion) values 
-(1, 'Franco-arcilloso', ''),
-(2, 'Volcanico', ''),
-(3, 'Arenoso joven', ''),
-(4, 'Organico', ''),
-(5, 'Franco', ''),
-(6, 'Franco Fertil', ''),
-(7, 'Arcilloso Acido', ''),
-(8, 'Lateritico', ''),
-(9, 'Arcilloso Expansivo', '');
+insert into Pruebas.TipoSuelo ( NombreComun, Descripcion) values 
+('Franco-arcilloso', ''),
+('Volcanico', ''),
+('Arenoso joven', ''),
+('Organico', ''),
+('Franco', ''),
+('Franco Fertil', ''),
+('Arcilloso Acido', ''),
+('Lateritico', ''),
+('Arcilloso Expansivo', '');
+
 
 select * from Pruebas.TipoSuelo
 delete from Pruebas.TipoSuelo
