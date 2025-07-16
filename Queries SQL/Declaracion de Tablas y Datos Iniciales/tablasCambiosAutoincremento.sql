@@ -701,6 +701,110 @@ select * from Pruebas.Bodega
 
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>> Puesto >>>>>>>>>>>>>>>>>>>>>>>> 
+drop table  Pruebas.Puesto
+
+sp_help 'pruebas.Puesto'
+
+ALTER TABLE pruebas.Empleado DROP CONSTRAINT fkEmpleadoPuesto
+
+ALTER TABLE pruebas.Empleado  ADD CONSTRAINT fkEmpleadoPuesto foreign key(PuestoID) references Pruebas.Puesto(PuestoID)
+
+Create Table Pruebas.Puesto        --YA CREADA
+(
+	PuestoID int identity(1,1) primary key not null,
+	Nombre Varchar(50)
+)
+
+--18. Puesto
+INSERT INTO Pruebas.Puesto ( Nombre) VALUES 
+('Vendedor'),
+('Repartidor'),
+('Administrador')
+
+select * from Pruebas.Puesto
+
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>> Empleado >>>>>>>>>>>>>>>>>>>>>>>> 
+drop table  Pruebas.Empleado
+
+sp_help 'pruebas.Empleado'
+
+ALTER TABLE pruebas.Entrega DROP CONSTRAINT		fkEntregaRepartidor 
+ALTER TABLE pruebas.Factura DROP CONSTRAINT		fkFacturaEmpleado
+ALTER TABLE pruebas.Recibo	DROP CONSTRAINT		fkReciboEmpleado
+
+ALTER TABLE pruebas.Entrega ADD CONSTRAINT		fkEntregaRepartidor foreign key (RepartidorID) references Pruebas.Empleado(EmpleadoID)	 
+ALTER TABLE pruebas.Factura ADD CONSTRAINT		fkFacturaEmpleado foreign key (EmpleadoID) references Pruebas.Empleado(EmpleadoID)	
+ALTER TABLE pruebas.Recibo	ADD CONSTRAINT		fkReciboEmpleado foreign key (EmpleadoID) references Pruebas.Empleado(EmpleadoID) 
+
+
+create Table Pruebas.Empleado      --YA CREADA
+(
+EmpleadoID		int identity(1,1) primary key not null,
+Nombre			varchar(50) not null,
+Identidad		varchar(13) not null unique,
+RTN				varchar(14) not null unique,
+Correo			varchar(100),
+Telefono		varchar(20) not null,
+Direccion		varchar(80),
+Notas			varchar(150),
+PuestoID		int not null,
+Estado			varchar(40)	not null,
+Sexo			varchar(40) not null,
+Edad			int not null,
+EstadoCivil     varchar(50) not null,
+
+
+constraint fkEmpleadoPuesto foreign key(PuestoID) references Pruebas.Puesto(PuestoID),
+
+constraint chkIdentidadEmpleado check (len(Identidad) = 13),
+constraint chkRTNEmpleado check (len(RTN) = 14),
+constraint chkEstadoEmpleado check ( Estado in('Activo','Inactivo') ),
+constraint chkSexo check ( Sexo in('Masculino','Femenino') ),
+constraint chkEdad check ( Edad>=18 ),
+constraint chkEstadoCivil check ( EstadoCivil in('Casado','Soltero','Union Libre'))
+)
+
+--19.Empleado
+INSERT INTO Pruebas.Empleado ( Nombre, Identidad, RTN, Correo, Telefono, Direccion, Notas,PuestoID, Estado, Sexo, Edad ,EstadoCivil) values
+('Empleado 1', '0501200006523', '05012000065238', 'empleado1@agrolink.com', '99887766' ,'Bo. Suyapa', 'N/A', 1, 'Activo', 'Masculino', 21, 'Casado' ),
+('Empleado 2', '0801200006523', '08012000065238', 'empleado2@agrolink.com','99332211' ,'Bo. La Guardia', 'N/A', 2, 'Activo', 'Femenino', 30, 'Soltero' ),
+('Empleado 3', '0101200006523', '01012000065238', 'empleado3@agrolink.com','99712110' ,'Colonia Mercedes', 'N/A', 2, 'Activo', 'Masculino', 27, 'Union Libre' )
+
+select * from Pruebas.Empleado
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>> Entrega >>>>>>>>>>>>>>>>>>>>>>>> 
+drop table  Pruebas.Entrega
+
+sp_help 'pruebas.Entrega'
+
+ALTER TABLE pruebas.EntregaDetalle DROP CONSTRAINT fkEntregaDetalleEntrega
+
+ALTER TABLE pruebas.EntregaDetalle  ADD CONSTRAINT	fkEntregaDetalleEntrega foreign key (EntregaID) references Pruebas.Entrega(EntregaID)
+
+
+Create Table Pruebas.Entrega      --YA CREADA
+(
+	EntregaID		int identity(1,1) primary key not null,
+	Fecha			Datetime not null,
+	SocioID			int not null,
+	VentaID			int not null,
+	DireccionID		int not null, 
+	RepartidorID	int not null,
+
+	constraint fkEntregaSocios foreign key (SocioID) references Pruebas.Socio(SocioID),
+	constraint fkEntregaVenta foreign key (VentaID) references Pruebas.Venta(VentaID),  
+	constraint fkEntregaDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
+	constraint fkEntregaRepartidor foreign key (RepartidorID) references Pruebas.Empleado(EmpleadoID)
+)
+
+
+
 
 
 

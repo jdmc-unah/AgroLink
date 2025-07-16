@@ -1,12 +1,13 @@
+
 Create Table Pruebas.Puesto        --YA CREADA
 (
-PuestoID int primary key not null,
+PuestoID int identity(1,1) primary key not null,
 Nombre Varchar(50)
 )
 
 create Table Pruebas.Empleado      --YA CREADA
 (
-EmpleadoID int primary key not null,
+EmpleadoID		int  identity(1,1) primary key not null,
 Nombre			varchar(50) not null,
 Identidad		varchar(13) not null unique,
 RTN				varchar(14) not null unique,
