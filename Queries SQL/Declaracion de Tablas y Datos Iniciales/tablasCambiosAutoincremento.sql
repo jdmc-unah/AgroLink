@@ -372,6 +372,127 @@ select * from Pruebas.Usuario
 
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>> Usuario >>>>>>>>>>>>>>>>>>>>>>>> 
+drop table  Pruebas.Finca
+
+sp_help 'pruebas.Finca'
+
+ALTER TABLE pruebas.Lote	DROP CONSTRAINT fkLoteFinca
+
+ALTER TABLE pruebas.Lote	ADD CONSTRAINT	fkLoteFinca foreign key (FincaID) references Pruebas.Finca(FincaID)
+
+create table Pruebas.Finca --ya creada
+(
+	FincaID		int identity(1,1) primary key not null,
+	CodigoFinca	as concat('FIN', FincaID) persisted, 
+	SocioID		int  not null,
+	Nombre		varchar(100) not null,
+	DireccionID	int not null,
+	CapacidadAgua	varchar(10) not null,
+
+	constraint fkFincaSocio foreign key (SocioID) references Pruebas.Socio(SocioID),
+	constraint fkFincaDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
+
+	constraint ckCapacidadAgua check (CapacidadAgua in ('Baja','Media','Alta'))	
+)
+
+-- 9. finca
+insert into Pruebas.Finca ( SocioID, Nombre, DireccionID, CapacidadAgua) values
+(1, 'Finca San José', 4, 'Alta'),
+(3, 'Finca Orgánica', 6, 'Media'),
+(5, 'Finca El Paraíso', 7, 'Alta'),
+(7, 'Finca Lago Verde', 10, 'Alta'),
+(1, 'Finca Los Plátanos', 4, 'Media');
+
+select * from Pruebas.Finca 
+
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>> TipoProducto >>>>>>>>>>>>>>>>>>>>>>>> 
+drop table  Pruebas.TipoProducto
+
+sp_help 'pruebas.TipoProducto'
+
+ALTER TABLE pruebas.Producto	DROP CONSTRAINT fkProductoTipoProducto
+
+ALTER TABLE pruebas.Producto	ADD CONSTRAINT	fkProductoTipoProducto foreign key (TipoID) references Pruebas.TipoProducto(TipoID)
+
+
+create table Pruebas.TipoProducto -- ya creada
+(
+	TipoID		int identity(1,1)  primary key not null,
+	NombreTipo	varchar(100) not null,
+	Categoria	varchar (25) not null,
+	
+	constraint chkCategoriaProducto check (Categoria in('Insumo','Producto Agricola'))
+)
+
+
+-- 10. tipo de producto
+insert into Pruebas.TipoProducto (NombreTipo, Categoria) values
+('Semillas Certificadas', 'Insumo'),
+('Fertilizantes', 'Insumo'),
+('Agroquímicos', 'Insumo'),
+('Frutas Tropicales', 'Producto Agricola'),
+('Hortalizas', 'Producto Agricola'),
+('Granos Básicos', 'Producto Agricola'),
+('Herramientas', 'Insumo'),
+('Cultivos Exportación', 'Producto Agricola');
+
+select * from Pruebas.TipoProducto 
+
+
+
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>> UnidadMedida >>>>>>>>>>>>>>>>>>>>>>>> 
+drop table  Pruebas.UnidadMedida
+
+sp_help 'pruebas.UnidadMedida'
+
+ALTER TABLE pruebas.Producto	DROP CONSTRAINT fkProductoUnidadMedida
+
+ALTER TABLE pruebas.Producto	ADD CONSTRAINT	fkProductoUnidadMedida foreign key (UnidadMedidaID) references Pruebas.UnidadMedida(UnidadMedidaID)
+
+
+create table Pruebas.UnidadMedida -- ya creada
+(
+	UnidadMedidaID	int identity(1,1) primary key not null,
+	Nombre		varchar(50) not null,
+	Abreviacion	varchar(10) not null,
+)
+
+
+-- 11. unidad de medida
+insert into Pruebas.UnidadMedida (Nombre, Abreviacion) values
+('Kilogramo', 'kg'),
+('Libra', 'lb'),
+('Quintal', 'q'),
+('Litro', 'lts'),
+('Galón', 'gal'),
+('Saco', 'saco'),
+('Caja', 'caja'),
+('Unidad', 'ud'),
+('Metro', 'm'),
+('Tonelada', 't');
+
+select * from Pruebas.UnidadMedida 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

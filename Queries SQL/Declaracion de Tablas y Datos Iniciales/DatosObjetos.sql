@@ -112,45 +112,49 @@ delete from Pruebas.Socio
 
 
 -- 9. finca
-insert into Pruebas.Finca (FincaID, SocioID, Nombre, DireccionID, CapacidadAgua) values
-(1, 1, 'Finca San José', 4, 'Alta'),
-(2, 3, 'Finca Orgánica', 6, 'Media'),
-(3, 5, 'Finca El Paraíso', 7, 'Alta'),
-(4, 7, 'Finca Lago Verde', 10, 'Alta'),
-(5, 1, 'Finca Los Plátanos', 4, 'Media');
+insert into Pruebas.Finca ( SocioID, Nombre, DireccionID, CapacidadAgua) values
+(1, 'Finca San José', 4, 'Alta'),
+(3, 'Finca Orgánica', 6, 'Media'),
+(5, 'Finca El Paraíso', 7, 'Alta'),
+(7, 'Finca Lago Verde', 10, 'Alta'),
+(1, 'Finca Los Plátanos', 4, 'Media');
+
 
 select * from Pruebas.Finca 
 delete from Pruebas.Finca
 
 -- 10. tipo de producto
-insert into Pruebas.TipoProducto (TipoID, NombreTipo, Categoria) values
-(1, 'Semillas Certificadas', 'Insumo'),
-(2, 'Fertilizantes', 'Insumo'),
-(3, 'Agroquímicos', 'Insumo'),
-(4, 'Frutas Tropicales', 'Producto Agricola'),
-(5, 'Hortalizas', 'Producto Agricola'),
-(6, 'Granos Básicos', 'Producto Agricola'),
-(7, 'Herramientas', 'Insumo'),
-(8, 'Cultivos Exportación', 'Producto Agricola');
+insert into Pruebas.TipoProducto (NombreTipo, Categoria) values
+('Semillas Certificadas', 'Insumo'),
+('Fertilizantes', 'Insumo'),
+('Agroquímicos', 'Insumo'),
+('Frutas Tropicales', 'Producto Agricola'),
+('Hortalizas', 'Producto Agricola'),
+('Granos Básicos', 'Producto Agricola'),
+('Herramientas', 'Insumo'),
+('Cultivos Exportación', 'Producto Agricola');
 
 select * from Pruebas.TipoProducto 
 delete from Pruebas.TipoProducto
 
+
+
 -- 11. unidad de medida
-insert into Pruebas.UnidadMedida (UnidadMedidaID, Nombre, Abreviacion) values
-(1, 'Kilogramo', 'kg'),
-(2, 'Libra', 'lb'),
-(3, 'Quintal', 'q'),
-(4, 'Litro', 'lts'),
-(5, 'Galón', 'gal'),
-(6, 'Saco', 'saco'),
-(7, 'Caja', 'caja'),
-(8, 'Unidad', 'ud'),
-(9, 'Metro', 'm'),
-(10, 'Tonelada', 't');
+insert into Pruebas.UnidadMedida (Nombre, Abreviacion) values
+('Kilogramo', 'kg'),
+('Libra', 'lb'),
+('Quintal', 'q'),
+('Litro', 'lts'),
+('Galón', 'gal'),
+('Saco', 'saco'),
+('Caja', 'caja'),
+('Unidad', 'ud'),
+('Metro', 'm'),
+('Tonelada', 't');
 
 select * from Pruebas.UnidadMedida 
 delete from Pruebas.UnidadMedida
+
 
 -- 12. productos
 insert into Pruebas.Producto (ProductoID, TipoID, UnidadMedidaID, Nombre) values

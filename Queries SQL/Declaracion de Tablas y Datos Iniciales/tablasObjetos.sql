@@ -134,9 +134,10 @@ create table Pruebas.Usuario -- ya creada
 	constraint chkTipoUsuario check (TipoUsuario in ('Administrador','Estandar'))
 )
 
+
 create table Pruebas.Finca --ya creada
 (
-	FincaID		int primary key not null,
+	FincaID		int identity(1,1) primary key not null,
 	CodigoFinca	as concat('FIN', FincaID) persisted, 
 	SocioID		int  not null,
 	Nombre		varchar(100) not null,
@@ -151,7 +152,7 @@ create table Pruebas.Finca --ya creada
 
 create table Pruebas.TipoProducto -- ya creada
 (
-	TipoID		int primary key not null,
+	TipoID		int identity(1,1) primary key not null,
 	NombreTipo	varchar(100) not null,
 	Categoria	varchar (25) not null,
 	
@@ -160,7 +161,7 @@ create table Pruebas.TipoProducto -- ya creada
 
 create table Pruebas.UnidadMedida -- ya creada
 (
-	UnidadMedidaID	int primary key not null,
+	UnidadMedidaID	int identity(1,1) primary key not null,
 	Nombre		varchar(50) not null,
 	Abreviacion	varchar(10) not null,
 )
