@@ -12,7 +12,8 @@ insert into Pruebas.Direccion ( MunicipioID, Colonia, Detalle) values
 (512, 'Barrio El Progreso', 'Ave. La Lima #789'),
 (504, 'Aldea San Antonio', 'Desvío La Barca Km 3'),
 (503, 'Casco Histórico', 'Calle del Comercio #456'),
-(510, 'El Paraíso', 'Orilla del Lago de Yojoa');
+(510, 'El Paraíso', 'Orilla del Lago de Yojoa'),
+(501, 'Segundo Anillo', '20 Calle SE')
 
 --(2, 'Francisco Morazán', 'Tegucigalpa', 'Colonia Kennedy', 'Blvd. Morazán, Casa #123'),
 --(3, 'Yoro', 'El Progreso', 'Centro', 'Calle Principal #789'),
@@ -77,35 +78,38 @@ select * from Pruebas.TipoRiego
 delete from Pruebas.TipoRiego
 
 -- 6. empresa
-insert into Pruebas.Empresa (EmpresaID, Nombre, RTN, Correo, Telefono, DireccionID, NumFiscalID) values
-(1, 'Comercializadora de Productos Agricolas', '05019999123456', 'info@agrolink.hn', '2550-1234', 1, 1);
+insert into Pruebas.Empresa ( Nombre, RTN, Correo, Telefono, DireccionID, NumFiscalID) values
+( 'Comercializadora de Productos Agricolas', '05019999123456', 'info@agrolink.hn', '2550-1234', 1, 1);
 
 select * from Pruebas.Empresa 
 delete from Pruebas.Empresa
 
 -- 7. usuario
-insert into Pruebas.Usuario (UsuarioID, Usuario, Clave, Nombre, TipoUsuario) values
---(1, 'admin', 'admin123', 'Carlos Hernández', 'Administrador'),
---(2, 'srodriguez', 'sofia321', 'Sofía Rodríguez', 'Administrador'),
-(3, 'mlopez', 'maria456', 'María López', 'Estandar'),
-(4, 'jcastillo', 'juan789', 'Juan Castillo', 'Estandar'),
-(5, 'pgomez', 'pedro654', 'Pedro Gómez', 'Estandar');
+insert into Pruebas.Usuario ( Usuario, Clave, Nombre, TipoUsuario) values
+('admin', 'admin123', 'Admin Agrolink', 'Administrador'),
+('jose.mejia', '111', 'Jose Daniel Mejia', 'Estandar'),
+('kisha.mejia', '111', 'Kisha Mejia', 'Estandar'),
+('josue.varela', '111', 'Josue Varela', 'Estandar'),
+('arleth.oseguera', '111', 'Arleth Oseguera', 'Estandar');
 
 select * from Pruebas.Usuario 
 delete from Pruebas.Usuario
 
 -- 8. socio
-insert into Pruebas.Socio (SocioID, Nombre, TipoSocio, Identidad, RTN, Correo, Telefono, DireccionID, Notas) values
-(1, 'José Manuel Flores', 'Agricultor', '0502199812345', '05021998123456', 'joseflores@email.com', '9876-5432', 4, 'Productor de plátano en Choloma'),
-(2, 'Agrosuministros S.A.', 'Proveedor', '0501199923456', '05011999234567', 'ventas@agroceiba.hn', '2557-6789', 5, 'Distribuidor de fertilizantes'),
-(3, 'Carmen Elena Mejía', 'Agricultor', '0511198734567', '05011987345678', 'carmenmejia@email.com', '8765-4321', 6, 'Productora orgánica en Villanueva'),
-(4, 'Supermercados Del Norte', 'Consumidor', '0501199845678', '05011998456789', 'compras@delnorte.hn', '2558-7890', 7, 'Cadena regional de supermercados'),
-(5, 'Roberto Alvarado', 'Agricultor', '0512199056789', '05121990567890', 'roberto.alvarado@email.com', '9654-3210', 8, 'Especialista en hortalizas'),
-(6, 'Insumos Agrícolas', 'Proveedor', '0501199167890', '05011991678901', 'info@insumoscortes.hn', '2559-8901', 9, 'Proveedor de semillas certificadas'),
-(7, 'Ana Sofía Castillo', 'Agricultor', '0510198978901', '05101989789012', 'ana.castillo@email.com', '9543-2109', 10, 'Cultivos de exportación Lago Yojoa');
+insert into Pruebas.Socio ( Nombre, TipoSocio, Identidad, RTN, Correo, Telefono, DireccionID, Notas, Saldo) values
+('José Manuel Flores', 'Agricultor', '0502199812345', '05021998123456', 'joseflores@email.com', '9876-5432', 4, 'Productor de plátano en Choloma',0),
+('Agrosuministros S.A.', 'Proveedor', '0501199923456', '05011999234567', 'ventas@agroceiba.hn', '2557-6789', 5, 'Distribuidor de fertilizantes', 0),
+('Carmen Elena Mejía', 'Agricultor', '0511198734567', '05011987345678', 'carmenmejia@email.com', '8765-4321', 6, 'Productora orgánica en Villanueva', 0),
+('Supermercados Del Norte', 'Consumidor', '0501199845678', '05011998456789', 'compras@delnorte.hn', '2558-7890', 7, 'Cadena regional de supermercados', 0),
+('Roberto Alvarado', 'Agricultor', '0512199056789', '05121990567890', 'roberto.alvarado@email.com', '9654-3210', 8, 'Especialista en hortalizas', 0),
+('Insumos Agrícolas', 'Proveedor', '0501199167890', '05011991678901', 'info@insumoscortes.hn', '2559-8901', 9, 'Proveedor de semillas certificadas', 0),
+('Ana Sofía Castillo', 'Agricultor', '0510198978901', '05101989789012', 'ana.castillo@email.com', '9543-2109', 10, 'Cultivos de exportación Lago Yojoa' , 0),
+('Supermercado La Colonia', 'Consumidor', '0501200012345','05012000123455', 'info@lacolonia.com', '2251-6352',11 , 'Supermercado La Colonia', 0  )
 
 select * from Pruebas.Socio 
 delete from Pruebas.Socio
+
+
 
 -- 9. finca
 insert into Pruebas.Finca (FincaID, SocioID, Nombre, DireccionID, CapacidadAgua) values

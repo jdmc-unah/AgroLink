@@ -53,7 +53,6 @@ create table Pruebas.Direccion	--ya creada
 	constraint fkDireccionMunicipio foreign key (MunicipioID) references Pruebas.Municipio(MunicipioID)
 )
 
-
 insert into Pruebas.Direccion ( MunicipioID, Colonia, Detalle) values
 (501, 'Colonia Universidad', 'Boulevard Los Próceres #1234'),
 (501, 'Barrio Río de Piedras', 'Ave. Circunvalación #5678'),
@@ -64,7 +63,8 @@ insert into Pruebas.Direccion ( MunicipioID, Colonia, Detalle) values
 (512, 'Barrio El Progreso', 'Ave. La Lima #789'),
 (504, 'Aldea San Antonio', 'Desvío La Barca Km 3'),
 (503, 'Casco Histórico', 'Calle del Comercio #456'),
-(510, 'El Paraíso', 'Orilla del Lago de Yojoa');
+(510, 'El Paraíso', 'Orilla del Lago de Yojoa'),
+(501, 'Segundo Anillo', '20 Calle SE')
 
 select * from pruebas.direccion
 
@@ -272,17 +272,101 @@ select * from Pruebas.Empresa
 
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>> Socio >>>>>>>>>>>>>>>>>>>>>>>> 
+
+drop table  Pruebas.Socio
+
+sp_help 'pruebas.Socio'
+
+ALTER TABLE pruebas.Compra			DROP CONSTRAINT fkCompraSocio
+ALTER TABLE pruebas.EntradaProducto DROP CONSTRAINT fkEntradaProductoSocio
+ALTER TABLE pruebas.Entrega			DROP CONSTRAINT fkEntregaSocios
+ALTER TABLE pruebas.Factura			DROP CONSTRAINT fkFacturaSocio
+ALTER TABLE pruebas.Finca			DROP CONSTRAINT fkFincaSocio
+ALTER TABLE pruebas.Recibo			DROP CONSTRAINT fkReciboSocio
+ALTER TABLE pruebas.SalidaProducto	DROP CONSTRAINT fkSalidaProductoSocio
+ALTER TABLE pruebas.Venta			DROP CONSTRAINT fkVentaSocios
+
+
+ALTER TABLE pruebas.Compra			ADD CONSTRAINT	fkCompraSocio foreign key (SocioID) references Pruebas.Socio(SocioID)
+ALTER TABLE pruebas.EntradaProducto ADD CONSTRAINT	fkEntradaProductoSocio foreign key (SocioID) references Pruebas.Socio(SocioID)
+ALTER TABLE pruebas.Entrega			ADD CONSTRAINT	fkEntregaSocios foreign key (SocioID) references Pruebas.Socio(SocioID)
+ALTER TABLE pruebas.Factura			ADD CONSTRAINT	fkFacturaSocio foreign key (SocioID) references Pruebas.Socio(SocioID)
+ALTER TABLE pruebas.Finca			ADD CONSTRAINT	fkFincaSocio foreign key (SocioID) references Pruebas.Socio(SocioID)
+ALTER TABLE pruebas.Recibo			ADD CONSTRAINT	fkReciboSocio foreign key (SocioID) references Pruebas.Socio(SocioID)
+ALTER TABLE pruebas.SalidaProducto	ADD CONSTRAINT	fkSalidaProductoSocio foreign key (SocioID) references Pruebas.Socio(SocioID)
+ALTER TABLE pruebas.Venta			ADD CONSTRAINT	fkVentaSocios FOREIGN KEY (SocioID) REFERENCES Pruebas.Socio(SocioID)
+
+
+create table Pruebas.Socio --ya creada
+(
+	SocioID			int identity(1,1) primary key not null,
+	CodigoSocio		as 
+		case TipoSocio
+			when 'Agricultor' then 'AGR'
+			when 'Proveedor' then 'PRO'
+			when 'Consumidor' then 'CON'
+			END + cast (SocioID as varchar) persisted,
+	Nombre			varchar(150) not null,
+	TipoSocio		varchar(20) not null,
+	Identidad		varchar(13) not null unique,
+	RTN				varchar(14) not null unique,
+	Correo			varchar(100) not null,
+	Telefono		varchar(20) not null,
+	DireccionID		int not null,
+	Notas			varchar(150),
+	Saldo			decimal(10, 2) not null,  --se agrego saldo
+
+	constraint fkSocioDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
+	
+	constraint chkTipoSocio check (TipoSocio in ('Agricultor','Proveedor','Consumidor')),
+	constraint chkIdentidad check (len(Identidad) = 13),
+	constraint chkRTN check (len(RTN) = 14)
+)
+
+-- 8. socio
+insert into Pruebas.Socio ( Nombre, TipoSocio, Identidad, RTN, Correo, Telefono, DireccionID, Notas, Saldo) values
+('José Manuel Flores', 'Agricultor', '0502199812345', '05021998123456', 'joseflores@email.com', '9876-5432', 4, 'Productor de plátano en Choloma',0),
+('Agrosuministros S.A.', 'Proveedor', '0501199923456', '05011999234567', 'ventas@agroceiba.hn', '2557-6789', 5, 'Distribuidor de fertilizantes', 0),
+('Carmen Elena Mejía', 'Agricultor', '0511198734567', '05011987345678', 'carmenmejia@email.com', '8765-4321', 6, 'Productora orgánica en Villanueva', 0),
+('Supermercados Del Norte', 'Consumidor', '0501199845678', '05011998456789', 'compras@delnorte.hn', '2558-7890', 7, 'Cadena regional de supermercados', 0),
+('Roberto Alvarado', 'Agricultor', '0512199056789', '05121990567890', 'roberto.alvarado@email.com', '9654-3210', 8, 'Especialista en hortalizas', 0),
+('Insumos Agrícolas', 'Proveedor', '0501199167890', '05011991678901', 'info@insumoscortes.hn', '2559-8901', 9, 'Proveedor de semillas certificadas', 0),
+('Ana Sofía Castillo', 'Agricultor', '0510198978901', '05101989789012', 'ana.castillo@email.com', '9543-2109', 10, 'Cultivos de exportación Lago Yojoa' , 0),
+('Supermercado La Colonia', 'Consumidor', '0501200012345','05012000123455', 'info@lacolonia.com', '2251-6352',11 , 'Supermercado La Colonia', 0  )
+
+select * from Pruebas.Socio 
 
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>> Usuario >>>>>>>>>>>>>>>>>>>>>>>> 
+
+drop table  Pruebas.Usuario
+
+sp_help 'pruebas.Usuario'
 
 
+create table Pruebas.Usuario -- ya creada
+(
+	UsuarioID	int identity(1,1) primary key not null,
+	CodigoUsuario	as concat('USR', UsuarioID) persisted, 
+	Usuario		varchar(50) not null unique,	
+	Clave		varchar(25) not null,	
+	Nombre		varchar(100) not null,			
+	TipoUsuario varchar(20) not null,
+	
+	constraint chkTipoUsuario check (TipoUsuario in ('Administrador','Estandar'))
+)
 
+-- 7. usuario
+insert into Pruebas.Usuario ( Usuario, Clave, Nombre, TipoUsuario) values
+('admin', 'admin123', 'Admin Agrolink', 'Administrador'),
+('jose.mejia', '111', 'Jose Daniel Mejia', 'Estandar'),
+('kisha.mejia', '111', 'Kisha Mejia', 'Estandar'),
+('josue.varela', '111', 'Josue Varela', 'Estandar'),
+('arleth.oseguera', '111', 'Arleth Oseguera', 'Estandar');
 
-
-
-
-
+select * from Pruebas.Usuario 
 
 
 

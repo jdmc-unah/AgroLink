@@ -98,7 +98,7 @@ create table Pruebas.Empresa -- ya creada
 
 create table Pruebas.Socio --ya creada
 (
-	SocioID			int primary key not null,
+	SocioID			int identity(1,1) primary key not null,
 	CodigoSocio		as 
 		case TipoSocio
 			when 'Agricultor' then 'AGR'
@@ -113,6 +113,7 @@ create table Pruebas.Socio --ya creada
 	Telefono		varchar(20) not null,
 	DireccionID		int not null,
 	Notas			varchar(150),
+	Saldo			decimal(10, 2) not null,  --se agrego saldo
 
 	constraint fkSocioDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
 	
@@ -123,7 +124,7 @@ create table Pruebas.Socio --ya creada
 
 create table Pruebas.Usuario -- ya creada
 (
-	UsuarioID	int primary key not null,
+	UsuarioID	int identity(1,1) primary key not null,
 	CodigoUsuario	as concat('USR', UsuarioID) persisted, 
 	Usuario		varchar(50) not null unique,	
 	Clave		varchar(25) not null,	
