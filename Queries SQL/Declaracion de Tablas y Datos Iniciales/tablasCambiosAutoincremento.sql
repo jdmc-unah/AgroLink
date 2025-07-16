@@ -4,7 +4,7 @@
 
 use AgroLinkDB
 
-
+--IMPORTANTE: A las tabla detalle no se les hizo el cambio porque deben ir relacionadas con su padre
 				---------------------------------------------------------------------------------------------------
 				-------------------------------------------TABLAS DE OBJETOS----------------------------------------
 				---------------------------------------------------------------------------------------------------
@@ -484,14 +484,128 @@ select * from Pruebas.UnidadMedida
 
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>> Producto >>>>>>>>>>>>>>>>>>>>>>>> 
+drop table  Pruebas.Producto
+
+sp_help 'pruebas.Producto'
+
+ALTER TABLE pruebas.BodegaDetalle			DROP CONSTRAINT		fkBodegaDetalleProducto
+ALTER TABLE pruebas.CompraDetalle			DROP CONSTRAINT		fkCompraDetalleProducto
+ALTER TABLE pruebas.EntradaProductoDetalle	DROP CONSTRAINT		fkEntradaProductoDetalleProducto
+ALTER TABLE pruebas.FacturaDetalle			DROP CONSTRAINT		fkFacturaDetalleProducto
+ALTER TABLE pruebas.EntregaDetalle			DROP CONSTRAINT		fkEntregaDetalleProducto
+ALTER TABLE pruebas.Lote					DROP CONSTRAINT		fkLoteProducto
+ALTER TABLE pruebas.ProductoDetalle			DROP CONSTRAINT		fkProductoDetalleProducto
+ALTER TABLE pruebas.ReciboDetalle			DROP CONSTRAINT		fkReciboDetalleProducto
+ALTER TABLE pruebas.SalidaProductoDetalle	DROP CONSTRAINT		fkSalidaProductoDetalleProducto
+ALTER TABLE pruebas.VentaDetalle			DROP CONSTRAINT		fkVentaDetalleProducto
+
+ALTER TABLE pruebas.BodegaDetalle			ADD CONSTRAINT		fkBodegaDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+ALTER TABLE pruebas.CompraDetalle			ADD CONSTRAINT		fkCompraDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+ALTER TABLE pruebas.EntradaProductoDetalle	ADD CONSTRAINT		fkEntradaProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+ALTER TABLE pruebas.FacturaDetalle			ADD CONSTRAINT		fkFacturaDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+ALTER TABLE pruebas.EntregaDetalle			ADD CONSTRAINT		fkEntregaDetalleProducto foreign key(ProductoID) references Pruebas.Producto(ProductoID)
+ALTER TABLE pruebas.Lote					ADD CONSTRAINT		fkLoteProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+ALTER TABLE pruebas.ProductoDetalle			ADD CONSTRAINT		fkProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+ALTER TABLE pruebas.ReciboDetalle			ADD CONSTRAINT		fkReciboDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+ALTER TABLE pruebas.SalidaProductoDetalle	ADD CONSTRAINT		fkSalidaProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+ALTER TABLE pruebas.VentaDetalle			ADD CONSTRAINT		fkVentaDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID)
+
+
+create table Pruebas.Producto -- ya creada
+(
+	ProductoID	int  identity(1,1) primary key not null,
+	CodigoProducto	as concat('PRO', ProductoID) persisted, 
+	TipoID		int not null,
+	UnidadMedidaID	int not null,
+	Nombre		varchar(50) not null,
+
+	constraint fkProductoTipoProducto foreign key (TipoID) references Pruebas.TipoProducto(TipoID),
+	constraint fkProductoUnidadMedida foreign key (UnidadMedidaID) references Pruebas.UnidadMedida(UnidadMedidaID)
+)
+
+
+-- 12. productos
+insert into Pruebas.Producto (TipoID, UnidadMedidaID, Nombre) values
+( 1, 1, 'Semilla Tomate '),
+( 1, 1, 'Semilla Lechuga '),
+( 2, 6, 'Fertilizante'),
+( 2, 6, 'Urea Granulada 46%'),
+( 3, 4, 'Insecticida Cipermetrina'),
+( 3, 4, 'Fungicida Propiconazol'),
+( 7, 8, 'Machete Tramontina'),
+( 7, 8, 'Bomba Fumigadora'),
+-- Productos Agrícolas (Típicos de Cortés)
+(4, 7, 'Banano'),
+(4, 7, 'Plátano Verde'),
+(5, 1, 'Tomate'),
+(5, 1, 'Lechuga Iceberg'),
+(6, 3, 'Maíz'),
+(6, 3, 'Frijol Rojo'),
+(8, 1, 'Melón');
+
+select * from Pruebas.Producto 
 
 
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>> ProductoDetalle >>>>>>>>>>>>>>>>>>>>>>>> 
+
+--Se agregó productos con lista de precio costo y se arreglo la tabla ya que como estaba no se podian agregar mas precios
+
+drop table  Pruebas.ProductoDetalle
+
+sp_help 'pruebas.ProductoDetalle'
+
+create table Pruebas.ProductoDetalle -- ya creada
+(
+	ProductoID	int not null,
+	ListaPreciosID	int not null,
+	Precio		decimal(10,2) not null default 0 check (Precio >= 0),
+
+	constraint pkProductoDetalle primary key (ProductoID, ListaPreciosID),  --agregar pk compuesta para poder tener mas de un precio
+	constraint fkProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
+	constraint fkProductoListaPrecios foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID)
+)
 
 
+delete from pruebas.ProductoDetalle
+-- 13. producto detalle (precios)
+insert into Pruebas.ProductoDetalle ( ProductoID, ListaPreciosID, Precio) values
+-- Precios para lista mayorista (ID 1)
+(1, 1, 85.00),      -- Semilla Tomate 
+(1, 6, 50.00),      -- Semilla Tomate Costo
+(2, 1, 65.00),      -- Semilla Lechuga
+(2, 6, 50.00),      -- Semilla Lechuga Costo
+(3, 1, 750.00),     -- Fertilizante
+(3, 6, 500.00),     -- Fertilizante Costo
+(4, 1, 680.00),     -- Urea 46%
+(4, 6, 600.00),     -- Urea 46% costo
+(5, 1, 180.00),     -- Insecticida
+(5, 6, 100.00),     -- Insecticida costo
+(6, 1, 140.00),     -- Fungicida 
+(6, 6, 100.00),     -- Fungicida costo
+(7, 1, 280.00),     -- Machete
+(7, 6, 250.00),     -- Machete costo
+(8, 1, 1250.00),    -- Bomba Fumigadora
+(8, 6, 1000.00),    -- Bomba Fumigadora costo
+(9, 1, 120.00),     -- Banano (caja)
+(9, 6, 90.00),     -- Banano (caja) Costo
+(10, 1, 95.00),     -- Plátano Verde (caja)
+(10, 6, 70.00),     -- Plátano Verde (caja) Costo
+(11, 1, 25.00),     -- Tomate (kg)
+(11, 6, 10.00),     -- Tomate (kg) Costo
+(12, 1, 18.00),     -- Lechuga Iceberg (kg)
+(12, 6, 10.00),     -- Lechuga Iceberg (kg) Costo
+(13, 1, 520.00),    -- Maíz (q) - Precio oficial 2024
+(13, 6, 400.00),    -- Maíz (q) - Costo
+(14, 1, 850.00),    -- Frijol Rojo (q)
+(14, 6, 700.00),    -- Frijol Rojo (q) costo
+(15, 1, 45.00),     -- Melón (kg) 
+(15, 6, 30.00);     -- Melón (kg) costo
 
-
+select * from pruebas.Producto p inner join
+Pruebas.ProductoDetalle pd on p.ProductoID = pd.ProductoID
 
 
 

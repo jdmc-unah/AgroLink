@@ -157,45 +157,64 @@ delete from Pruebas.UnidadMedida
 
 
 -- 12. productos
-insert into Pruebas.Producto (ProductoID, TipoID, UnidadMedidaID, Nombre) values
-(1, 1, 1, 'Semilla Tomate '),
-(2, 1, 1, 'Semilla Lechuga '),
-(3, 2, 6, 'Fertilizante'),
-(4, 2, 6, 'Urea Granulada 46%'),
-(5, 3, 4, 'Insecticida Cipermetrina'),
-(6, 3, 4, 'Fungicida Propiconazol'),
-(7, 7, 8, 'Machete Tramontina'),
-(8, 7, 8, 'Bomba Fumigadora'),
+insert into Pruebas.Producto (TipoID, UnidadMedidaID, Nombre) values
+( 1, 1, 'Semilla Tomate '),
+( 1, 1, 'Semilla Lechuga '),
+( 2, 6, 'Fertilizante'),
+( 2, 6, 'Urea Granulada 46%'),
+( 3, 4, 'Insecticida Cipermetrina'),
+( 3, 4, 'Fungicida Propiconazol'),
+( 7, 8, 'Machete Tramontina'),
+( 7, 8, 'Bomba Fumigadora'),
 -- Productos Agrícolas (Típicos de Cortés)
-(9, 4, 7, 'Banano'),
-(10, 4, 7, 'Plátano Verde'),
-(11, 5, 1, 'Tomate'),
-(12, 5, 1, 'Lechuga Iceberg'),
-(13, 6, 3, 'Maíz'),
-(14, 6, 3, 'Frijol Rojo'),
-(15, 8, 1, 'Melón');
+(4, 7, 'Banano'),
+(4, 7, 'Plátano Verde'),
+(5, 1, 'Tomate'),
+(5, 1, 'Lechuga Iceberg'),
+(6, 3, 'Maíz'),
+(6, 3, 'Frijol Rojo'),
+(8, 1, 'Melón');
+
 
 select * from Pruebas.Producto 
 delete from Pruebas.Producto
 
+
+
 -- 13. producto detalle (precios)
-insert into Pruebas.ProductoDetalle (ProductoID, ListaPreciosID, Precio) values
+insert into Pruebas.ProductoDetalle ( ProductoID, ListaPreciosID, Precio) values
 -- Precios para lista mayorista (ID 1)
 (1, 1, 85.00),      -- Semilla Tomate 
+(1, 6, 50.00),      -- Semilla Tomate Costo
 (2, 1, 65.00),      -- Semilla Lechuga
+(2, 6, 50.00),      -- Semilla Lechuga Costo
 (3, 1, 750.00),     -- Fertilizante
+(3, 6, 500.00),     -- Fertilizante Costo
 (4, 1, 680.00),     -- Urea 46%
+(4, 6, 600.00),     -- Urea 46% costo
 (5, 1, 180.00),     -- Insecticida
-(6, 1, 140.00),     -- Fungicida
+(5, 6, 100.00),     -- Insecticida costo
+(6, 1, 140.00),     -- Fungicida 
+(6, 6, 100.00),     -- Fungicida costo
 (7, 1, 280.00),     -- Machete
+(7, 6, 250.00),     -- Machete costo
 (8, 1, 1250.00),    -- Bomba Fumigadora
+(8, 6, 1000.00),    -- Bomba Fumigadora costo
 (9, 1, 120.00),     -- Banano (caja)
+(9, 6, 90.00),		-- Banano (caja) Costo
 (10, 1, 95.00),     -- Plátano Verde (caja)
+(10, 6, 70.00),     -- Plátano Verde (caja) Costo
 (11, 1, 25.00),     -- Tomate (kg)
+(11, 6, 10.00),     -- Tomate (kg) Costo
 (12, 1, 18.00),     -- Lechuga Iceberg (kg)
+(12, 6, 10.00),     -- Lechuga Iceberg (kg) Costo
 (13, 1, 520.00),    -- Maíz (q) - Precio oficial 2024
+(13, 6, 400.00),    -- Maíz (q) - Costo
 (14, 1, 850.00),    -- Frijol Rojo (q)
-(15, 1, 45.00);     -- Melón (kg)
+(14, 6, 700.00),    -- Frijol Rojo (q) costo
+(15, 1, 45.00),     -- Melón (kg) 
+(15, 6, 30.00);     -- Melón (kg) costo
+
 
 select * from Pruebas.ProductoDetalle 
 delete from Pruebas.ProductoDetalle

@@ -168,7 +168,7 @@ create table Pruebas.UnidadMedida -- ya creada
 
 create table Pruebas.Producto -- ya creada
 (
-	ProductoID	int primary key not null,
+	ProductoID	int  identity(1,1) primary key not null,
 	CodigoProducto	as concat('PRO', ProductoID) persisted, 
 	TipoID		int not null,
 	UnidadMedidaID	int not null,
@@ -180,13 +180,15 @@ create table Pruebas.Producto -- ya creada
 
 create table Pruebas.ProductoDetalle -- ya creada
 (
-	ProductoID	int primary key not null,
+	ProductoID	int not null,
 	ListaPreciosID	int not null,
 	Precio		decimal(10,2) not null default 0 check (Precio >= 0),
 
+	constraint pkProductoDetalle primary key (ProductoID, ListaPreciosID),  --agregar pk compuesta para poder tener mas de un precio
 	constraint fkProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
 	constraint fkProductoListaPrecios foreign key (ListaPreciosID) references Pruebas.ListaPrecios(ListaPreciosID)
 )
+
 
 create table Pruebas.Lote --ya creada
 (
