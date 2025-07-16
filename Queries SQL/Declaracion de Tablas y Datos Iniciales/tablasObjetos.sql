@@ -236,6 +236,56 @@ create table Pruebas.BodegaDetalle -- ya creada/editada
 
 
 
+--Tablas de archivo objetos II
+
+Create Table Pruebas.Puesto        --YA CREADA
+(
+	PuestoID int identity(1,1) primary key not null,
+	Nombre Varchar(50)
+)
+
+create Table Pruebas.Empleado      --YA CREADA
+(
+	EmpleadoID		int  identity(1,1) primary key not null,
+	Nombre			varchar(50) not null,
+	Identidad		varchar(13) not null unique,
+	RTN				varchar(14) not null unique,
+	Correo			varchar(100),
+	Telefono		varchar(20) not null,
+	Direccion		varchar(80),
+	Notas			varchar(150),
+	PuestoID		int not null,
+	Estado			varchar(40)	not null,
+	Sexo			varchar(40) not null,
+	Edad			int not null,
+	EstadoCivil     varchar(50) not null,
+
+
+	constraint fkEmpleadoPuesto foreign key(PuestoID) references Pruebas.Puesto(PuestoID),
+
+	constraint chkIdentidadEmpleado check (len(Identidad) = 13),
+	constraint chkRTNEmpleado check (len(RTN) = 14),
+	constraint chkEstadoEmpleado check ( Estado in('Activo','Inactivo') ),
+	constraint chkSexo check ( Sexo in('Masculino','Femenino') ),
+	constraint chkEdad check ( Edad>=18 ),
+	constraint chkEstadoCivil check ( EstadoCivil in('Casado','Soltero','Union Libre'))
+)
+
+Create Table Pruebas.Departamento       --YA CREADA
+(
+	DepartamentoID	int primary key not null,
+	Nombre			varchar(50) not null
+)
+  
+Create Table Pruebas.Municipio          --YA CREADA
+(
+	MunicipioID		int primary key not null,
+	DepartamentoID	int not null,
+	Nombre			varchar(50) not null,
+
+	constraint fkMunicipioDepartamento foreign key (DepartamentoID) references Pruebas.Departamento(DepartamentoID)
+)
+
 
 
 

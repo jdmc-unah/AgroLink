@@ -244,3 +244,35 @@ create table Pruebas.SalidaProductoDetalle --ya creada
 	constraint fkSalidaProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
 	constraint fkSalidaProductoDetalleBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)	--CAMBIO
 )
+
+
+--tablas de archivo objetos II
+
+Create Table Pruebas.Entrega      --YA CREADA
+(
+	EntregaID		int identity(1,1) primary key not null,
+	Fecha			Datetime not null,
+	SocioID			int not null,
+	VentaID			int not null,
+	DireccionID		int not null, 
+	RepartidorID	int not null,
+
+	constraint fkEntregaSocios foreign key (SocioID) references Pruebas.Socio(SocioID),
+	constraint fkEntregaVenta foreign key (VentaID) references Pruebas.Venta(VentaID),  
+	constraint fkEntregaDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
+	constraint fkEntregaRepartidor foreign key (RepartidorID) references Pruebas.Empleado(EmpleadoID)
+)
+
+
+create table Pruebas.EntregaDetalle    --YA CREADA
+(
+	EntregaID	int not null,
+	ProductoID	int not null,
+	Cantidad	int not null,
+
+	constraint pkEntregaDetalle primary key (EntregaID, ProductoID),
+
+	constraint fkEntregaDetalleEntrega foreign key (EntregaID) references Pruebas.Entrega(EntregaID),  
+	constraint fkEntregaDetalleProducto foreign key(ProductoID) references Pruebas.Producto(ProductoID),
+	constraint chkCantidadEntrega check (Cantidad>=0)
+)
