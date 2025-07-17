@@ -518,6 +518,7 @@
             dataGridView2.ContextMenuStrip = contextMenuStrip2;
             dataGridView2.Location = new Point(0, 0);
             dataGridView2.Margin = new Padding(2, 3, 2, 3);
+            dataGridView2.MultiSelect = false;
             dataGridView2.Name = "dataGridView2";
             dataGridView2.ReadOnly = true;
             dataGridView2.RowHeadersWidth = 102;
@@ -533,7 +534,8 @@
             ImpuestoID.MinimumWidth = 12;
             ImpuestoID.Name = "ImpuestoID";
             ImpuestoID.ReadOnly = true;
-            ImpuestoID.Width = 101;
+            ImpuestoID.Visible = false;
+            ImpuestoID.Width = 250;
             // 
             // Nombre
             // 
@@ -580,6 +582,7 @@
             guardarToolStripMenuItem1.Size = new Size(209, 48);
             guardarToolStripMenuItem1.Text = "Guardar";
             guardarToolStripMenuItem1.Visible = false;
+            guardarToolStripMenuItem1.Click += guardarToolStripMenuItem1_Click;
             // 
             // cancelarToolStripMenuItem1
             // 
@@ -654,9 +657,6 @@
         private SplitContainer splitContainer4;
         private Label label7;
         private Label label6;
-        private DataGridViewTextBoxColumn ImpuestoID;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn Valor;
         private Label label8;
         private TextBox textBox5;
         private ComboBox comboBox2;
@@ -672,5 +672,8 @@
         private ToolStripMenuItem guardarToolStripMenuItem1;
         private ToolStripMenuItem cancelarToolStripMenuItem;
         private ToolStripMenuItem cancelarToolStripMenuItem1;
+        private DataGridViewTextBoxColumn ImpuestoID;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Valor;
     }
 }

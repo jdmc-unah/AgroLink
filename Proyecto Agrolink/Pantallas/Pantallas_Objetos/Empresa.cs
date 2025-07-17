@@ -111,17 +111,20 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
             //Trae Numeros Fiscales y llena datagridview 1
 
-            DataTable dt = recSQL.EjecutarVista("vNumerosFiscales");
-            dt.Columns["NumFiscalID"].AutoIncrement = false; //sino no puedo identificar cuales agregar y cuales solo update
-                                                             //  dt.PrimaryKey = null;
-            dt.Columns["NumFiscalID"].DefaultValue = 0;
+            DataTable dt1 = recSQL.EjecutarVista("vNumerosFiscales");
+            dt1.Columns["NumFiscalID"].AutoIncrement = false;   //se desativa el incremento temporalmente
+            dt1.Columns["NumFiscalID"].DefaultValue = 0;        //se asigna un id 0 a las nuevas filas
 
-
-            this.dataGridView1.DataSource = dt;
+            this.dataGridView1.DataSource = dt1;
 
 
             //Trae Impuesto y llena datagridview 2
-            this.dataGridView2.DataSource = recSQL.EjecutarVista("vImpuesto");
+            DataTable dt2 = recSQL.EjecutarVista("vImpuesto");
+            dt2.Columns["ImpuestoID"].AutoIncrement = false; 
+            dt2.Columns["ImpuestoID"].DefaultValue = 0;
+
+            this.dataGridView2.DataSource = dt2;
+
 
 
             //Llena comboboxes de departamento y municipio
@@ -228,10 +231,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = this.dataGridView1.CurrentRow.Index;
             int numFiscalID = (int)this.dataGridView1.Rows[row].Cells[0].Value;
-            string? rangoIni = this.dataGridView1.Rows[row].Cells[1].Value.ToString();
+            string? rangoIni = (string)this.dataGridView1.Rows[row].Cells[1].Value;
 
             //Confirma la decision del usuario y procede con lo demas
-            if (metGlobales.MensajeConfirmacion("Confirmar", $"¿Esta seguro de borrar el Numero Fiscal con rango inicio: {rangoIni}"))
+            if (metGlobales.MensajeConfirmacion("Confirmar", $"¿Esta seguro de borrar el Numero Fiscal con rango inicio: {rangoIni}?"))
             {
                 //se crea diccionario para poner el paramemtro del id
                 Dictionary<string, object> parametros = new Dictionary<string, object>
@@ -312,9 +315,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = this.dataGridView2.CurrentRow.Index;
             int impuestoID = (int)this.dataGridView2.Rows[row].Cells[0].Value;
+            string nombre = (string) this.dataGridView2.Rows[row].Cells[1].Value;
 
             //Confirma la decision del usuario y procede con lo demas
-            if (metGlobales.MensajeConfirmacion("Confirmar", $"¿Esta seguro de borrar el Impuesto con ID {impuestoID}"))
+            if (metGlobales.MensajeConfirmacion("Confirmar", $"¿Esta seguro de borrar {nombre} ?"))
             {
                 //se crea diccionario para poner el paramemtro del id
                 Dictionary<string, object> parametros = new Dictionary<string, object>
@@ -326,7 +330,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 //validar la ejecucion de spBorrarNumFiscal
                 if (recSQL.EjecutarSPBool("spBorrarRegistro", parametros))
                 {
-                    MessageBox.Show($"Se borro el Impuesto con el id {impuestoID}");
+                    MessageBox.Show($"Se borró {nombre}");
                     this.dataGridView2.DataSource = recSQL.EjecutarVista("vImpuesto");
 
                 }
@@ -347,6 +351,24 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
             MessageBox.Show("Modo edicion para la tabla Impuesto Activado");
 
+        }
+
+        private void guardarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DataTable? tablaImpuesto = recSQL.EjecutarSPDataTable("spAddUpdateImpuesto", "tabla", "TipoTablaImpuesto", metGlobales.CrearDataTable(this.dataGridView2));
+
+            if (tablaImpuesto != null)
+            {
+                ToggleReadOnlyTable(true, "Impuesto");
+                this.dataGridView2.DataSource = tablaImpuesto;
+
+                MessageBox.Show("Cambios guardados con éxito");
+
+            }
+            else
+            {
+                MessageBox.Show("Ocurrio un error inesperado");
+            }
         }
 
         private void dataGridView2_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -372,8 +394,6 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         {
 
         }
-
-       
 
         
     }

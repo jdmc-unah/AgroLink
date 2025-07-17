@@ -45,10 +45,6 @@ CREATE TYPE TipoTablaNumFiscal as TABLE (
 
 go
 
-select * from pruebas.NumFiscal
-
-go
-
 
 -- Se crea sp para ejecutar 
 CREATE OR ALTER PROCEDURE spAddUpdateNumFiscal @tabla TipoTablaNumFiscal READONLY
@@ -77,7 +73,7 @@ as
 		
 		deallocate crsNumFiscal
 
-		select * from Pruebas.NumFiscal
+		select NumFiscalID, RangoInicio ,RangoFin, Estado, FechaVencimiento from Pruebas.NumFiscal
 	end
 
 
@@ -105,11 +101,64 @@ rollback
 
 
 
+-->>>>>>>>>>>>>>>>>>> Agregar o Actualizar Impuesto >>>>>>>>>>>>>>>>>>>
 
 
+go
+
+CREATE TYPE TipoTablaImpuesto as TABLE (
+	ImpuestoID	int not null,
+	Nombre		varchar(50) not null,
+	Valor		decimal(2,2) not null
+)
+
+go
 
 
+CREATE OR ALTER PROCEDURE spAddUpdateImpuesto @tabla TipoTablaImpuesto READONLY
+as
+	begin
+		declare @impId int, @nom varchar(50) , @val decimal(2,2)
 
+		declare crsImpuesto cursor for
+		select ImpuestoID, Nombre , Valor from @tabla
+
+		open crsImpuesto; fetch next from crsImpuesto into @impId , @nom, @val
+
+		WHILE @@FETCH_STATUS = 0
+			begin
+				IF @impId = 0 
+					insert into Pruebas.Impuesto (Nombre, Valor) VALUES (@nom, @val) 
+					
+				ELSE	
+					update Pruebas.Impuesto set Nombre = @nom, Valor = @val WHERE ImpuestoID = @impId
+				
+				fetch next from crsImpuesto into @impId , @nom, @val
+			end
+		
+		deallocate crsImpuesto
+
+		select Nombre, Valor from Pruebas.Impuesto
+	end
+
+go
+	
+	select * from pruebas.Impuesto
+go
+--Para probar el sp anterior
+begin transaction
+-- Declarar la variable tipo tabla
+DECLARE @DatosPrueba AS TipoTablaImpuesto;
+
+-- Insertar datos de prueba
+INSERT INTO @DatosPrueba (ImpuestoID, Nombre, Valor) VALUES 
+(0,'imp1', 0.12 ),
+(1,'imp2', 0.30)
+
+-- Ejecutar el procedimiento con la tabla como parámetro
+EXEC spAddUpdateImpuesto @DatosPrueba;
+
+rollback
 
 
 
