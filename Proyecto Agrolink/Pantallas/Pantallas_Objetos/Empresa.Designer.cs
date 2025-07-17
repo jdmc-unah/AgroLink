@@ -448,7 +448,7 @@
             // contextMenuStrip1
             // 
             contextMenuStrip1.ImageScalingSize = new Size(40, 40);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { borrarToolStripMenuItem, editarToolStripMenuItem, guardarToolStripMenuItem, cancelarToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem, borrarToolStripMenuItem, guardarToolStripMenuItem, cancelarToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(210, 196);
             // 
@@ -558,7 +558,7 @@
             // contextMenuStrip2
             // 
             contextMenuStrip2.ImageScalingSize = new Size(40, 40);
-            contextMenuStrip2.Items.AddRange(new ToolStripItem[] { borrarToolStripMenuItem1, editarToolStripMenuItem1, guardarToolStripMenuItem1, cancelarToolStripMenuItem1 });
+            contextMenuStrip2.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem1, borrarToolStripMenuItem1, guardarToolStripMenuItem1, cancelarToolStripMenuItem1 });
             contextMenuStrip2.Name = "contextMenuStrip2";
             contextMenuStrip2.Size = new Size(210, 196);
             // 

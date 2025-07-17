@@ -9,8 +9,6 @@ go
 ------------------------------------------------------
 
 
-
-
 -->>>>>>>>>>>>>>>>>>> Actualizar Datos de Empresa >>>>>>>>>>>>>>>>>>>
 
 CREATE OR ALTER PROCEDURE spUpdateEmpresa @nombre varchar(100), @rtn varchar(14), @correo varchar(100),

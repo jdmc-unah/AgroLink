@@ -13,9 +13,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         #region Variables Globales
 
-        Recursos_SQL recSQL = new Recursos.Recursos_SQL();
+        Recursos_SQL recSQL = new Recursos.Recursos_SQL();   
         MetodosGlobales metGlobales = new Recursos.MetodosGlobales();
-        DataRow valores;
 
         #endregion
 
@@ -92,6 +91,20 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         }
 
 
+        //Trae los datos y Configura la tabla que va dentro del datagridview para que funcione la logica de los sp
+        void LlenarTabla(DataGridView dataGridView, string vista)
+        {
+            DataTable dataTable = recSQL.EjecutarVista(vista);
+
+            //configura la columna ID que siempre es la primera columna
+            dataTable.Columns[0].AutoIncrement = false;   //se desativa el incremento temporalmente
+            dataTable.Columns[0].DefaultValue = 0;        //se asigna un id 0 a las nuevas filas
+
+            dataGridView.DataSource = dataTable;            //aqui se cargan los datos al datagridview
+
+        }
+
+
         #endregion
 
 
@@ -99,7 +112,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void Empresa_Load(object sender, EventArgs e)
         {
             //Trae  Datos Empresa y llena campos de formulario
-            valores = recSQL.EjecutarVista("vDatosEmpresa").Rows[0];
+            DataRow valores = recSQL.EjecutarVista("vDatosEmpresa").Rows[0];
 
             this.textBox1.Text = valores["Nombre"].ToString();
             this.textBox2.Text = valores["RTN"].ToString();
@@ -110,22 +123,13 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
 
             //Trae Numeros Fiscales y llena datagridview 1
-
-            DataTable dt1 = recSQL.EjecutarVista("vNumerosFiscales");
-            dt1.Columns["NumFiscalID"].AutoIncrement = false;   //se desativa el incremento temporalmente
-            dt1.Columns["NumFiscalID"].DefaultValue = 0;        //se asigna un id 0 a las nuevas filas
-
-            this.dataGridView1.DataSource = dt1;
-
+            LlenarTabla( this.dataGridView1 , "vNumerosFiscales");
+            
 
             //Trae Impuesto y llena datagridview 2
-            DataTable dt2 = recSQL.EjecutarVista("vImpuesto");
-            dt2.Columns["ImpuestoID"].AutoIncrement = false; 
-            dt2.Columns["ImpuestoID"].DefaultValue = 0;
+            LlenarTabla( this.dataGridView2 , "vImpuesto");
 
-            this.dataGridView2.DataSource = dt2;
-
-
+   
 
             //Llena comboboxes de departamento y municipio
             LlenaDepto();
@@ -157,7 +161,6 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         {
             try
             {
-
                 if (metGlobales.MensajeConfirmacion("Confirmar Actualización", "¿Desea guardar los cambios?"))
                 {
 
@@ -177,11 +180,9 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                     {
                         MessageBox.Show("Se guardaron los cambios con éxito");
                         ToggleReadOnlyTF(true);
-                        Empresa_Load(sender, e);
+                        Empresa_Load(sender, e); //recarga el formulario para mostrar los nuevos datos
                     }
-
                 }
-
             }
             catch (Exception)
             {
@@ -195,18 +196,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void button3_Click(object sender, EventArgs e)
         {
             ToggleReadOnlyTF(true);
-
-            this.textBox1.Text = valores["Nombre"].ToString();
-            this.textBox2.Text = valores["RTN"].ToString();
-            this.textBox3.Text = valores["Correo"].ToString();
-            this.textBox4.Text = valores["Telefono"].ToString();
-            this.textBox5.Text = valores["Colonia"].ToString();
-            this.richTextBox1.Text = valores["Detalle"].ToString();
-
-            comboBox1.SelectedValue = valores["Departamento"];
-            LlenaMuni((int)comboBox1.SelectedValue);
-            comboBox2.SelectedValue = valores["Municipio"];
-
+            
+            Empresa_Load(sender, e); //recarga para deshacer los cambios
         }
 
 
@@ -214,6 +205,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         //Actualiza municipio en funcion del depto que se elige
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //cuando se carga el formulario el valor del combobox es eso asi que da error sin esta validacion
             if (comboBox1.SelectedValue.ToString() != "System.Data.DataRowView")
             {
                 LlenaMuni((int)comboBox1.SelectedValue);
@@ -247,7 +239,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 if (recSQL.EjecutarSPBool("spBorrarRegistro", parametros))
                 {
                     MessageBox.Show($"Se borro el numero fiscal con el  rango inicio:  {rangoIni}");
-                    this.dataGridView1.DataSource = recSQL.EjecutarVista("vNumerosFiscales");
+                    LlenarTabla(this.dataGridView1, "vNumerosFiscales");
 
                 }
                 else
@@ -269,15 +261,19 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         }
 
 
+
+        //Guardar cambios de edicion
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //ejecuta sp, el metodo crear datatable es necesario para pasar la tabla como parametro
             DataTable? tablaNumFiscal = recSQL.EjecutarSPDataTable("spAddUpdateNumFiscal", "tabla", "TipoTablaNumFiscal", metGlobales.CrearDataTable(this.dataGridView1));
 
+            
             if (tablaNumFiscal != null)
             {
-                ToggleReadOnlyTable(true, "NumFiscal");
-                this.dataGridView1.DataSource = tablaNumFiscal;
+                ToggleReadOnlyTable(true, "NumFiscal");     //cambia a modo solo lectura
+               // this.dataGridView1.DataSource = tablaNumFiscal; //carga los datos en la tabla
+                LlenarTabla(this.dataGridView1, "vNumerosFiscales");
 
                 MessageBox.Show("Cambios guardados con éxito");
 
@@ -289,7 +285,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         }
 
 
-        //esto es para evitar que este tirando error cada vez que se salga de la fila poroque es molesto
+        //esto es para evitar que este tirando error cada vez que se salga de la fila porque es molesto
         private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.Cancel = true;
@@ -299,6 +295,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void cancelarToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ToggleReadOnlyTable(true, "NumFiscal");
+
+            LlenarTabla(this.dataGridView1, "vNumerosFiscales");
 
         }
 
@@ -331,7 +329,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 if (recSQL.EjecutarSPBool("spBorrarRegistro", parametros))
                 {
                     MessageBox.Show($"Se borró {nombre}");
-                    this.dataGridView2.DataSource = recSQL.EjecutarVista("vImpuesto");
+                    LlenarTabla(this.dataGridView2, "vImpuesto");
 
                 }
                 else
@@ -360,7 +358,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             if (tablaImpuesto != null)
             {
                 ToggleReadOnlyTable(true, "Impuesto");
-                this.dataGridView2.DataSource = tablaImpuesto;
+                LlenarTabla(this.dataGridView2, "vImpuesto");
 
                 MessageBox.Show("Cambios guardados con éxito");
 
@@ -379,6 +377,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void cancelarToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
             ToggleReadOnlyTable(true, "Impuesto");
+
+            LlenarTabla(this.dataGridView2, "vImpuesto");
 
         }
 
