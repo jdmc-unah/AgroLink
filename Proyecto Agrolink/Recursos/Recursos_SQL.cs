@@ -25,6 +25,8 @@ namespace AgroLink.Recursos
             {
                 using (SqlCommand command = new SqlCommand(nombreSP, connection))
                 {
+                  
+                    
                     command.CommandType = CommandType.StoredProcedure;
 
                     // Parámetros de entrada
@@ -51,6 +53,53 @@ namespace AgroLink.Recursos
             }
 
         }
+
+
+
+
+        //Para usar tabla como parametro en un procedimiento almacenado
+        //nombreParametro es el nombre de la tabla que va como parametro
+        public DataTable? EjecutarSPDataTable(string nombreSP, string nombreParametro, string nombreTipoTabla, DataTable tabla)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(nombreSP, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Parámetro de entrada
+                        SqlParameter parameter = command.Parameters.AddWithValue($"@{nombreParametro}", tabla ?? null);
+                        parameter.SqlDbType = SqlDbType.Structured;
+                        parameter.TypeName = nombreTipoTabla; //este es el tipo de tabla que se va a usar (usualmente se crea un tipo custom)
+
+
+                        connection.Open();
+
+                        //lee el resultado del sp
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dataTable = new DataTable(); //inicializa el datatable para borrar la data anterior que tenga
+                            dataTable.Load(reader);
+
+                            return dataTable;
+                        }
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //si falla devuelve null
+                return null;
+            }
+        }
+
+
+
+
 
 
         public bool EjecutarSPBool(string nombreSP, Dictionary<string, object>? parametros = null)
@@ -89,7 +138,6 @@ namespace AgroLink.Recursos
                 return false;
             }
         }
-
 
 
         //Ejecuta vistas

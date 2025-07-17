@@ -79,7 +79,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             //Trae Numeros Fiscales y llena datagridview 1
 
             DataTable dt = recSQL.EjecutarVista("vNumerosFiscales");
-            dt.Columns["NumFiscalID"].AutoIncrement = false; //sino no puedo identificar cualesa gregar y cuales solo update
+            dt.Columns["NumFiscalID"].AutoIncrement = false; //sino no puedo identificar cuales agregar y cuales solo update
+          //  dt.PrimaryKey = null;
             dt.Columns["NumFiscalID"].DefaultValue = 0;
 
 
@@ -179,9 +180,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = this.dataGridView1.CurrentRow.Index;
             int numFiscalID = (int)this.dataGridView1.Rows[row].Cells[0].Value;
+            string rangoIni = this.dataGridView1.Rows[row].Cells[1].Value.ToString();
 
             //Confirma la decision del usuario y procede con lo demas
-            if (metGlobales.MensajeConfirmacion("Confirmar", $"¿Esta seguro de borrar el Numero Fiscal con ID {numFiscalID}"))
+            if (metGlobales.MensajeConfirmacion("Confirmar", $"¿Esta seguro de borrar el Numero Fiscal con rango inicio: {rangoIni}"))
             {
                 //se crea diccionario para poner el paramemtro del id
                 Dictionary<string, object> parametros = new Dictionary<string, object>
@@ -193,7 +195,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 //validar la ejecucion de spBorrarNumFiscal
                 if (recSQL.EjecutarSPBool("spBorrarRegistro", parametros))
                 {
-                    MessageBox.Show($"Se borro el numero fiscal con el id {numFiscalID}");
+                    MessageBox.Show($"Se borro el numero fiscal con el  rango inicio:  {rangoIni}");
                     this.dataGridView1.DataSource = recSQL.EjecutarVista("vNumerosFiscales");
 
                 }
@@ -243,9 +245,11 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
+
+        //Actualiza municipio en funcion del depto que se elige
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Actualiza municipio en funcion del depto que se elige
 
             if (comboBox1.SelectedValue.ToString() != "System.Data.DataRowView")
             {
@@ -273,7 +277,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
 
 
-        //boton de editar con click derecho
+        //boton de editar impuesto con click derecho
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.dataGridView1.ReadOnly = false;
@@ -287,19 +291,28 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Dictionary<string, object> parametros = new Dictionary<string, object>()
-            {
-                {"tabla",  metGlobales.CrearDataTable(this.dataGridView1)  }
-            };
+            
+            DataTable? tablaNumFiscal = recSQL.EjecutarSPDataTable("spAddUpdateNumFiscal", "tabla", "TipoTablaNumFiscal", metGlobales.CrearDataTable(this.dataGridView1));
 
-            if (recSQL.EjecutarSPBool("spAddUpdateNumFiscal", parametros))
+            if (tablaNumFiscal != null)
             {
                 this.dataGridView1.ReadOnly = !false;
                 this.guardarToolStripMenuItem.Visible = !true;
                 this.editarToolStripMenuItem.Visible = !false;
                 this.borrarToolStripMenuItem.Visible = !false;
+
+                this.dataGridView1.DataSource = tablaNumFiscal;
+
+                MessageBox.Show("Cambios guardados con éxito");
+
             }
-            
+            else
+            {
+                MessageBox.Show("Ocurrio un error inesperado");
+
+            }
+
+
 
 
         }
