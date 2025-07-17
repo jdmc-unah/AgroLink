@@ -40,13 +40,34 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         }
 
 
-        void ToggleReadOnlyTable(bool esSoloLectura)
+        void ToggleReadOnlyTable(bool esSoloLectura, string tabla)
         {
-            this.dataGridView1.ReadOnly = esSoloLectura;
-            this.guardarToolStripMenuItem.Visible = !esSoloLectura;
-            this.editarToolStripMenuItem.Visible = esSoloLectura;
-            this.borrarToolStripMenuItem.Visible = esSoloLectura;
+            if (tabla == "NumFiscal")
+            {
+                this.dataGridView1.ReadOnly = esSoloLectura;
+                this.editarToolStripMenuItem.Visible = esSoloLectura;
+                this.borrarToolStripMenuItem.Visible = esSoloLectura;
+                this.guardarToolStripMenuItem.Visible = !esSoloLectura;
+                this.cancelarToolStripMenuItem.Visible = !esSoloLectura;
+
+                //   ToggleReadOnlyTable(true, "Impuesto");
+            }
+
+
+            if (tabla == "Impuesto")
+            {
+                this.dataGridView2.ReadOnly = esSoloLectura;
+                this.editarToolStripMenuItem1.Visible = esSoloLectura;
+                this.borrarToolStripMenuItem1.Visible = esSoloLectura;
+                this.cancelarToolStripMenuItem1.Visible = !esSoloLectura;
+                this.guardarToolStripMenuItem1.Visible = !esSoloLectura;
+
+                //  ToggleReadOnlyTable(true, "NumFiscal");
+
+            }
+
         }
+
 
 
         //Llena Comboboxes
@@ -92,7 +113,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
             DataTable dt = recSQL.EjecutarVista("vNumerosFiscales");
             dt.Columns["NumFiscalID"].AutoIncrement = false; //sino no puedo identificar cuales agregar y cuales solo update
-          //  dt.PrimaryKey = null;
+                                                             //  dt.PrimaryKey = null;
             dt.Columns["NumFiscalID"].DefaultValue = 0;
 
 
@@ -238,7 +259,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         //boton de editar Numeros Fiscales con click derecho
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToggleReadOnlyTable(false);
+            ToggleReadOnlyTable(false, "NumFiscal");
 
             MessageBox.Show("Modo edicion para la tabla Numeros Fiscales Activado");
 
@@ -252,7 +273,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
             if (tablaNumFiscal != null)
             {
-                ToggleReadOnlyTable(true);
+                ToggleReadOnlyTable(true, "NumFiscal");
                 this.dataGridView1.DataSource = tablaNumFiscal;
 
                 MessageBox.Show("Cambios guardados con éxito");
@@ -272,6 +293,11 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         }
 
 
+        private void cancelarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ToggleReadOnlyTable(true, "NumFiscal");
+
+        }
 
         #endregion
 
@@ -317,9 +343,20 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ToggleReadOnlyTable(false);
+            ToggleReadOnlyTable(false, "Impuesto");
 
             MessageBox.Show("Modo edicion para la tabla Impuesto Activado");
+
+        }
+
+        private void dataGridView2_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void cancelarToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            ToggleReadOnlyTable(true, "Impuesto");
 
         }
 
@@ -336,9 +373,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
+       
 
-
-
-
+        
     }
 }
