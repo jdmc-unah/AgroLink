@@ -11,15 +11,18 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
+        #region Variables Globales
+
         Recursos_SQL recSQL = new Recursos.Recursos_SQL();
         MetodosGlobales metGlobales = new Recursos.MetodosGlobales();
         DataRow valores;
 
+        #endregion
 
         #region Metodos
 
         //Metodo para activar o desactivar readonly en los campos de texto
-        void ToggleReadOnly(bool esSoloLectura)
+        void ToggleReadOnlyTF(bool esSoloLectura)
         {
             this.textBox1.ReadOnly = esSoloLectura;
             this.textBox2.ReadOnly = esSoloLectura;
@@ -34,6 +37,15 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.comboBox1.Enabled = !esSoloLectura;
             this.comboBox2.Enabled = !esSoloLectura;
 
+        }
+
+
+        void ToggleReadOnlyTable(bool esSoloLectura)
+        {
+            this.dataGridView1.ReadOnly = esSoloLectura;
+            this.guardarToolStripMenuItem.Visible = !esSoloLectura;
+            this.editarToolStripMenuItem.Visible = esSoloLectura;
+            this.borrarToolStripMenuItem.Visible = esSoloLectura;
         }
 
 
@@ -104,10 +116,15 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         }
 
 
+
+
+        #region Empresa
+
+
         //Boton Editar
         private void button1_Click(object sender, EventArgs e)
         {
-            ToggleReadOnly(false);
+            ToggleReadOnlyTF(false);
         }
 
 
@@ -135,7 +152,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                     if (recSQL.EjecutarSPBool("spUpdateEmpresa", parametros))
                     {
                         MessageBox.Show("Se guardaron los cambios con éxito");
-                        ToggleReadOnly(true);
+                        ToggleReadOnlyTF(true);
                         Empresa_Load(sender, e);
                     }
 
@@ -147,18 +164,13 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 MessageBox.Show("Los cambios no se han guardado debido a un error inesperado");
             }
 
-
-
-
-
-
         }
 
 
         //Boton Cancelar
         private void button3_Click(object sender, EventArgs e)
         {
-            ToggleReadOnly(true);
+            ToggleReadOnlyTF(true);
 
             this.textBox1.Text = valores["Nombre"].ToString();
             this.textBox2.Text = valores["RTN"].ToString();
@@ -175,12 +187,27 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
 
 
+        //Actualiza municipio en funcion del depto que se elige
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedValue.ToString() != "System.Data.DataRowView")
+            {
+                LlenaMuni((int)comboBox1.SelectedValue);
+            }
+        }
+        #endregion
+
+
+
+
+        #region NumFiscal
+
         private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = this.dataGridView1.CurrentRow.Index;
             int numFiscalID = (int)this.dataGridView1.Rows[row].Cells[0].Value;
-            string rangoIni = this.dataGridView1.Rows[row].Cells[1].Value.ToString();
+            string? rangoIni = this.dataGridView1.Rows[row].Cells[1].Value.ToString();
 
             //Confirma la decision del usuario y procede con lo demas
             if (metGlobales.MensajeConfirmacion("Confirmar", $"¿Esta seguro de borrar el Numero Fiscal con rango inicio: {rangoIni}"))
@@ -203,14 +230,55 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 {
                     MessageBox.Show($"Ocurrio un error al borrar el numero fiscal {numFiscalID}");
                 }
-
             }
+        }
 
 
 
+        //boton de editar Numeros Fiscales con click derecho
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToggleReadOnlyTable(false);
+
+            MessageBox.Show("Modo edicion para la tabla Numeros Fiscales Activado");
 
         }
 
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            DataTable? tablaNumFiscal = recSQL.EjecutarSPDataTable("spAddUpdateNumFiscal", "tabla", "TipoTablaNumFiscal", metGlobales.CrearDataTable(this.dataGridView1));
+
+            if (tablaNumFiscal != null)
+            {
+                ToggleReadOnlyTable(true);
+                this.dataGridView1.DataSource = tablaNumFiscal;
+
+                MessageBox.Show("Cambios guardados con éxito");
+
+            }
+            else
+            {
+                MessageBox.Show("Ocurrio un error inesperado");
+            }
+        }
+
+
+        //esto es para evitar que este tirando error cada vez que se salga de la fila poroque es molesto
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+
+
+        #endregion
+
+
+
+
+        #region Impuesto
 
         private void borrarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -246,17 +314,18 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         }
 
 
-        //Actualiza municipio en funcion del depto que se elige
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            ToggleReadOnlyTable(false);
 
-            if (comboBox1.SelectedValue.ToString() != "System.Data.DataRowView")
-            {
-                LlenaMuni((int)comboBox1.SelectedValue);
-            }
+            MessageBox.Show("Modo edicion para la tabla Impuesto Activado");
 
         }
+
+
+        #endregion
+
 
 
 
@@ -267,61 +336,9 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         }
 
-        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            this.dataGridView2.ReadOnly = false;
-
-
-        }
 
 
 
 
-        //boton de editar impuesto con click derecho
-        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.dataGridView1.ReadOnly = false;
-            this.guardarToolStripMenuItem.Visible = true;
-            this.editarToolStripMenuItem.Visible = false;
-            this.borrarToolStripMenuItem.Visible = false;
-            MessageBox.Show("Modo edicion para la tabla Numeros Fiscales Activado");
-
-        }
-
-
-        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            DataTable? tablaNumFiscal = recSQL.EjecutarSPDataTable("spAddUpdateNumFiscal", "tabla", "TipoTablaNumFiscal", metGlobales.CrearDataTable(this.dataGridView1));
-
-            if (tablaNumFiscal != null)
-            {
-                this.dataGridView1.ReadOnly = !false;
-                this.guardarToolStripMenuItem.Visible = !true;
-                this.editarToolStripMenuItem.Visible = !false;
-                this.borrarToolStripMenuItem.Visible = !false;
-
-                this.dataGridView1.DataSource = tablaNumFiscal;
-
-                MessageBox.Show("Cambios guardados con éxito");
-
-            }
-            else
-            {
-                MessageBox.Show("Ocurrio un error inesperado");
-
-            }
-
-
-
-
-        }
-
-
-        //esto es para evvitar que este tirando error cada vez que se salga de la fila poroque es molesto
-        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            e.Cancel = true;
-        }
     }
 }
