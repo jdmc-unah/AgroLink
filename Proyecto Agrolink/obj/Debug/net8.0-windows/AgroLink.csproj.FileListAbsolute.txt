@@ -199,3 +199,5 @@ C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.pdb
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.genruntimeconfig.cache
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\ref\AgroLink.dll
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.PantallaPrincipal.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Properties.Resources.resources
