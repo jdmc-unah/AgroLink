@@ -19,34 +19,9 @@ namespace AgroLink.Pantallas
         }
 
 
-
-        private void HideSubMenu()
+        private void ToggleSubMenu(Panel subMenu)
         {
-            if (panelSubMenuTrans.Visible)
-            {
-                panelSubMenuTrans.Visible = false;
-            }
-            if (panelSubMenuConfig.Visible)
-            {
-                panelSubMenuConfig.Visible = false;
-            }
-
-            //..agregar aqui todos los submenus de cada seccion
-
-        }
-
-
-        private void ShowSubMenu(Panel subMenu)
-        {
-            if (subMenu.Visible == false)
-            {
-                HideSubMenu();
-                subMenu.Visible = true;
-            }
-            else
-            {
-                subMenu.Visible = false;
-            }
+            subMenu.Visible = !subMenu.Visible;
         }
 
 
@@ -54,7 +29,7 @@ namespace AgroLink.Pantallas
 
         private void menuTrans_Click(object sender, EventArgs e)
         {
-            ShowSubMenu(panelSubMenuTrans);
+            ToggleSubMenu(panelSubMenuTrans);
         }
 
         private void subMenuVent_Click(object sender, EventArgs e)
@@ -68,7 +43,7 @@ namespace AgroLink.Pantallas
 
         private void menuConfig_Click(object sender, EventArgs e)
         {
-            ShowSubMenu(panelSubMenuConfig);
+            ToggleSubMenu(panelSubMenuConfig);
 
         }
 
