@@ -65,7 +65,7 @@
             // panelMain
             // 
             panelMain.AutoScroll = true;
-            panelMain.BackColor = SystemColors.ControlLight;
+            panelMain.BackColor = Color.FromArgb(22, 48, 43);
             panelMain.Controls.Add(button1);
             panelMain.Controls.Add(panelSeparador);
             panelMain.Controls.Add(panelSubMenuConfig);
@@ -82,21 +82,23 @@
             panelMain.Name = "panelMain";
             panelMain.Size = new Size(500, 1512);
             panelMain.TabIndex = 1;
+            panelMain.Visible = false;
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(133, 183, 157);
             button1.Location = new Point(75, 1384);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
             button1.Size = new Size(300, 75);
             button1.TabIndex = 19;
             button1.Text = "Salir";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // panelSeparador
             // 
-            panelSeparador.BackColor = SystemColors.ActiveCaptionText;
+            panelSeparador.BackColor = Color.FromArgb(192, 229, 200);
             panelSeparador.Location = new Point(25, 1360);
             panelSeparador.Name = "panelSeparador";
             panelSeparador.Size = new Size(450, 2);
@@ -114,6 +116,7 @@
             // 
             // subMenuEmpresa
             // 
+            subMenuEmpresa.BackColor = Color.FromArgb(192, 229, 200);
             subMenuEmpresa.Dock = DockStyle.Top;
             subMenuEmpresa.Location = new Point(0, 0);
             subMenuEmpresa.Name = "subMenuEmpresa";
@@ -122,11 +125,12 @@
             subMenuEmpresa.TabIndex = 1;
             subMenuEmpresa.Text = "Empresa";
             subMenuEmpresa.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuEmpresa.UseVisualStyleBackColor = true;
+            subMenuEmpresa.UseVisualStyleBackColor = false;
             subMenuEmpresa.Click += subMenuEmpresa_Click;
             // 
             // menuConfig
             // 
+            menuConfig.BackColor = Color.FromArgb(133, 183, 157);
             menuConfig.Dock = DockStyle.Top;
             menuConfig.Location = new Point(0, 1099);
             menuConfig.Name = "menuConfig";
@@ -135,7 +139,7 @@
             menuConfig.TabIndex = 16;
             menuConfig.Text = "Configuración";
             menuConfig.TextAlign = ContentAlignment.MiddleLeft;
-            menuConfig.UseVisualStyleBackColor = true;
+            menuConfig.UseVisualStyleBackColor = false;
             menuConfig.Click += menuConfig_Click_1;
             // 
             // panelSubMenuProductos
@@ -151,6 +155,7 @@
             // 
             // subMenuAlmacenes
             // 
+            subMenuAlmacenes.BackColor = Color.FromArgb(192, 229, 200);
             subMenuAlmacenes.Dock = DockStyle.Top;
             subMenuAlmacenes.Location = new Point(0, 70);
             subMenuAlmacenes.Name = "subMenuAlmacenes";
@@ -159,10 +164,11 @@
             subMenuAlmacenes.TabIndex = 2;
             subMenuAlmacenes.Text = "Almacenes";
             subMenuAlmacenes.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuAlmacenes.UseVisualStyleBackColor = true;
+            subMenuAlmacenes.UseVisualStyleBackColor = false;
             // 
             // subMenuProductos
             // 
+            subMenuProductos.BackColor = Color.FromArgb(192, 229, 200);
             subMenuProductos.Dock = DockStyle.Top;
             subMenuProductos.Location = new Point(0, 0);
             subMenuProductos.Name = "subMenuProductos";
@@ -171,10 +177,11 @@
             subMenuProductos.TabIndex = 1;
             subMenuProductos.Text = "Productos";
             subMenuProductos.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuProductos.UseVisualStyleBackColor = true;
+            subMenuProductos.UseVisualStyleBackColor = false;
             // 
             // menuProductos
             // 
+            menuProductos.BackColor = Color.FromArgb(133, 183, 157);
             menuProductos.Dock = DockStyle.Top;
             menuProductos.Location = new Point(0, 874);
             menuProductos.Name = "menuProductos";
@@ -183,7 +190,7 @@
             menuProductos.TabIndex = 14;
             menuProductos.Text = "Productos";
             menuProductos.TextAlign = ContentAlignment.MiddleLeft;
-            menuProductos.UseVisualStyleBackColor = true;
+            menuProductos.UseVisualStyleBackColor = false;
             menuProductos.Click += menuProductos_Click;
             // 
             // panelSubMenuSocios
@@ -199,6 +206,7 @@
             // 
             // subMenuSocios
             // 
+            subMenuSocios.BackColor = Color.FromArgb(192, 229, 200);
             subMenuSocios.Dock = DockStyle.Top;
             subMenuSocios.Location = new Point(0, 70);
             subMenuSocios.Name = "subMenuSocios";
@@ -207,10 +215,11 @@
             subMenuSocios.TabIndex = 2;
             subMenuSocios.Text = "Socios";
             subMenuSocios.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuSocios.UseVisualStyleBackColor = true;
+            subMenuSocios.UseVisualStyleBackColor = false;
             // 
             // subMenuAgricultores
             // 
+            subMenuAgricultores.BackColor = Color.FromArgb(192, 229, 200);
             subMenuAgricultores.Dock = DockStyle.Top;
             subMenuAgricultores.Location = new Point(0, 0);
             subMenuAgricultores.Name = "subMenuAgricultores";
@@ -219,10 +228,11 @@
             subMenuAgricultores.TabIndex = 1;
             subMenuAgricultores.Text = "Agricultores";
             subMenuAgricultores.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuAgricultores.UseVisualStyleBackColor = true;
+            subMenuAgricultores.UseVisualStyleBackColor = false;
             // 
             // menuSocios
             // 
+            menuSocios.BackColor = Color.FromArgb(133, 183, 157);
             menuSocios.Dock = DockStyle.Top;
             menuSocios.Location = new Point(0, 649);
             menuSocios.Name = "menuSocios";
@@ -231,7 +241,7 @@
             menuSocios.TabIndex = 12;
             menuSocios.Text = "Socios";
             menuSocios.TextAlign = ContentAlignment.MiddleLeft;
-            menuSocios.UseVisualStyleBackColor = true;
+            menuSocios.UseVisualStyleBackColor = false;
             menuSocios.Click += menuSocios_Click;
             // 
             // panelSubMenuTrans
@@ -263,6 +273,7 @@
             // 
             // subMenuEntrada
             // 
+            subMenuEntrada.BackColor = Color.FromArgb(192, 229, 200);
             subMenuEntrada.Dock = DockStyle.Top;
             subMenuEntrada.Location = new Point(0, 280);
             subMenuEntrada.Name = "subMenuEntrada";
@@ -271,10 +282,11 @@
             subMenuEntrada.TabIndex = 8;
             subMenuEntrada.Text = "Entrada de Producto";
             subMenuEntrada.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuEntrada.UseVisualStyleBackColor = true;
+            subMenuEntrada.UseVisualStyleBackColor = false;
             // 
             // subMenuRecibos
             // 
+            subMenuRecibos.BackColor = Color.FromArgb(192, 229, 200);
             subMenuRecibos.Dock = DockStyle.Top;
             subMenuRecibos.Location = new Point(0, 210);
             subMenuRecibos.Name = "subMenuRecibos";
@@ -283,10 +295,11 @@
             subMenuRecibos.TabIndex = 7;
             subMenuRecibos.Text = "Recibos";
             subMenuRecibos.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuRecibos.UseVisualStyleBackColor = true;
+            subMenuRecibos.UseVisualStyleBackColor = false;
             // 
             // subMenuFacturas
             // 
+            subMenuFacturas.BackColor = Color.FromArgb(192, 229, 200);
             subMenuFacturas.Dock = DockStyle.Top;
             subMenuFacturas.Location = new Point(0, 140);
             subMenuFacturas.Name = "subMenuFacturas";
@@ -295,10 +308,11 @@
             subMenuFacturas.TabIndex = 6;
             subMenuFacturas.Text = "Facturas";
             subMenuFacturas.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuFacturas.UseVisualStyleBackColor = true;
+            subMenuFacturas.UseVisualStyleBackColor = false;
             // 
             // subMenuCompras
             // 
+            subMenuCompras.BackColor = Color.FromArgb(192, 229, 200);
             subMenuCompras.Dock = DockStyle.Top;
             subMenuCompras.Location = new Point(0, 70);
             subMenuCompras.Name = "subMenuCompras";
@@ -307,10 +321,11 @@
             subMenuCompras.TabIndex = 5;
             subMenuCompras.Text = "Compras";
             subMenuCompras.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuCompras.UseVisualStyleBackColor = true;
+            subMenuCompras.UseVisualStyleBackColor = false;
             // 
             // subMenuVent
             // 
+            subMenuVent.BackColor = Color.FromArgb(192, 229, 200);
             subMenuVent.Dock = DockStyle.Top;
             subMenuVent.Location = new Point(0, 0);
             subMenuVent.Name = "subMenuVent";
@@ -319,11 +334,12 @@
             subMenuVent.TabIndex = 4;
             subMenuVent.Text = "Ventas";
             subMenuVent.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuVent.UseVisualStyleBackColor = true;
+            subMenuVent.UseVisualStyleBackColor = false;
             subMenuVent.Click += subMenuVent_Click;
             // 
             // menuTrans
             // 
+            menuTrans.BackColor = Color.FromArgb(133, 183, 157);
             menuTrans.Dock = DockStyle.Top;
             menuTrans.Location = new Point(0, 214);
             menuTrans.Name = "menuTrans";
@@ -332,7 +348,7 @@
             menuTrans.TabIndex = 3;
             menuTrans.Text = "Transacciones";
             menuTrans.TextAlign = ContentAlignment.MiddleLeft;
-            menuTrans.UseVisualStyleBackColor = true;
+            menuTrans.UseVisualStyleBackColor = false;
             menuTrans.Click += menuTrans_Click;
             // 
             // panelImage

@@ -1,3 +1,5 @@
+using AgroLink.Pantallas;
+
 namespace AgroLink
 {
     public partial class Login : Form
@@ -14,10 +16,10 @@ namespace AgroLink
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //>>>>ESTO AFECTA A LA PANTALLA PRINCIPAL PORFA NO CAMBIARLO<<<<
 
 
-
+            //si el usuario y contra es correcto que ejecute estas dos lineas para pasar a la pantalla principal
+            PantallaPrincipal.instanciaPantPrincipal.TogglePanelMain();
             this.Close();
 
 

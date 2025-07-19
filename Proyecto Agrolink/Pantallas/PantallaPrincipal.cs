@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Identity.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +14,15 @@ namespace AgroLink.Pantallas
     public partial class PantallaPrincipal : Form
     {
 
-        public static PantallaPrincipal pantallaPrincipal;
+        public static PantallaPrincipal instanciaPantPrincipal;
 
         public PantallaPrincipal()
         {
+            
             InitializeComponent();
-            pantallaPrincipal = this;
+            OpenChildForm(new Login());
+            instanciaPantPrincipal = this; //guarda la instancia del form de la pantalla principal
+
         }
 
 
@@ -26,11 +30,12 @@ namespace AgroLink.Pantallas
         #region Propiedades
         private Form activeForm = null;
 
-
         #endregion
 
 
         #region Metodos
+
+        //NO TOCAR
 
         private void ToggleSubMenu(Panel subMenu)
         {
@@ -41,19 +46,30 @@ namespace AgroLink.Pantallas
 
         private void OpenChildForm(Form childForm)
         {
-            if (activeForm != null) activeForm.Close();
+            //cierra el form actual
+            if (activeForm != null) activeForm.Close(); 
 
+            //configura el form a abrir
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
 
+            //agrega el form al panel
             panelChildForm.Controls.Add(childForm);
             panelChildForm.Tag = childForm;
 
+            //muestra el form
             childForm.BringToFront();
             childForm.Show();
 
+        }
+
+
+        //este se usa en la pantalla de login 
+        public void TogglePanelMain()
+        {
+            panelMain.Visible = !panelMain.Visible;
         }
 
 
@@ -66,22 +82,21 @@ namespace AgroLink.Pantallas
 
         private void menuTrans_Click(object sender, EventArgs e)
         {
+            //.. esto le permite abrir y cerrar las opciones de submenu
             ToggleSubMenu(panelSubMenuTrans);
         }
 
         private void subMenuVent_Click(object sender, EventArgs e)
         {
             //... codigo que abre la ventana de ventas
+            OpenChildForm(new Pantallas.Pantallas_Transacciones.Venta());
 
         }
 
-        #endregion
-
+       #endregion
 
 
         #region Menu de Configuraciones
-
-
 
         private void menuConfig_Click_1(object sender, EventArgs e)
         {
@@ -95,7 +110,6 @@ namespace AgroLink.Pantallas
 
         }
         #endregion
-
 
 
         #region Menu de Socios
@@ -119,13 +133,18 @@ namespace AgroLink.Pantallas
 
         #endregion
 
+
+        #region Cerrar Sesion
         private void button1_Click(object sender, EventArgs e)
         {
+            
             OpenChildForm(new Login());
-
-
-            //this.Close();
             panelMain.Visible = false;
         }
+        #endregion
+    
+    
+    
     }
+
 }
