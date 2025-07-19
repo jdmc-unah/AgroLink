@@ -11,5 +11,17 @@ namespace AgroLink
         {
 
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            //>>>>ESTO AFECTA A LA PANTALLA PRINCIPAL PORFA NO CAMBIARLO<<<<
+
+
+
+            this.Close();
+
+
+
+        }
     }
 }

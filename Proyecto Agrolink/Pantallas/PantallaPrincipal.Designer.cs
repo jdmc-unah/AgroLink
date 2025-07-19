@@ -28,80 +28,286 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            panelMain = new Panel();
+            button1 = new Button();
+            panelSeparador = new Panel();
             panelSubMenuConfig = new Panel();
-            subMenuEmp = new Button();
+            subMenuEmpresa = new Button();
             menuConfig = new Button();
+            panelSubMenuProductos = new Panel();
+            subMenuAlmacenes = new Button();
+            subMenuProductos = new Button();
+            menuProductos = new Button();
+            panelSubMenuSocios = new Panel();
+            subMenuSocios = new Button();
+            subMenuAgricultores = new Button();
+            menuSocios = new Button();
             panelSubMenuTrans = new Panel();
+            subMenuSalida = new Button();
+            subMenuEntrada = new Button();
+            subMenuRecibos = new Button();
+            subMenuFacturas = new Button();
+            subMenuCompras = new Button();
             subMenuVent = new Button();
             menuTrans = new Button();
-            panel2 = new Panel();
+            panelImage = new Panel();
             pictureBox1 = new PictureBox();
-            panel1.SuspendLayout();
+            panelChildForm = new Panel();
+            panelMain.SuspendLayout();
             panelSubMenuConfig.SuspendLayout();
+            panelSubMenuProductos.SuspendLayout();
+            panelSubMenuSocios.SuspendLayout();
             panelSubMenuTrans.SuspendLayout();
-            panel2.SuspendLayout();
+            panelImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // panelMain
             // 
-            panel1.BackColor = SystemColors.ControlLight;
-            panel1.Controls.Add(panelSubMenuConfig);
-            panel1.Controls.Add(menuConfig);
-            panel1.Controls.Add(panelSubMenuTrans);
-            panel1.Controls.Add(menuTrans);
-            panel1.Controls.Add(panel2);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(500, 1252);
-            panel1.TabIndex = 1;
+            panelMain.AutoScroll = true;
+            panelMain.BackColor = SystemColors.ControlLight;
+            panelMain.Controls.Add(button1);
+            panelMain.Controls.Add(panelSeparador);
+            panelMain.Controls.Add(panelSubMenuConfig);
+            panelMain.Controls.Add(menuConfig);
+            panelMain.Controls.Add(panelSubMenuProductos);
+            panelMain.Controls.Add(menuProductos);
+            panelMain.Controls.Add(panelSubMenuSocios);
+            panelMain.Controls.Add(menuSocios);
+            panelMain.Controls.Add(panelSubMenuTrans);
+            panelMain.Controls.Add(menuTrans);
+            panelMain.Controls.Add(panelImage);
+            panelMain.Dock = DockStyle.Left;
+            panelMain.Location = new Point(0, 0);
+            panelMain.Name = "panelMain";
+            panelMain.Size = new Size(500, 1512);
+            panelMain.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(75, 1384);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(300, 75);
+            button1.TabIndex = 19;
+            button1.Text = "Salir";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // panelSeparador
+            // 
+            panelSeparador.BackColor = SystemColors.ActiveCaptionText;
+            panelSeparador.Location = new Point(25, 1360);
+            panelSeparador.Name = "panelSeparador";
+            panelSeparador.Size = new Size(450, 2);
+            panelSeparador.TabIndex = 18;
             // 
             // panelSubMenuConfig
             // 
-            panelSubMenuConfig.Controls.Add(subMenuEmp);
+            panelSubMenuConfig.Controls.Add(subMenuEmpresa);
             panelSubMenuConfig.Dock = DockStyle.Top;
-            panelSubMenuConfig.Location = new Point(0, 514);
+            panelSubMenuConfig.Location = new Point(0, 1174);
             panelSubMenuConfig.Name = "panelSubMenuConfig";
-            panelSubMenuConfig.Size = new Size(500, 161);
-            panelSubMenuConfig.TabIndex = 11;
+            panelSubMenuConfig.Size = new Size(500, 98);
+            panelSubMenuConfig.TabIndex = 17;
             panelSubMenuConfig.Visible = false;
             // 
-            // subMenuEmp
+            // subMenuEmpresa
             // 
-            subMenuEmp.Dock = DockStyle.Top;
-            subMenuEmp.Location = new Point(0, 0);
-            subMenuEmp.Name = "subMenuEmp";
-            subMenuEmp.Padding = new Padding(30, 0, 0, 0);
-            subMenuEmp.Size = new Size(500, 70);
-            subMenuEmp.TabIndex = 0;
-            subMenuEmp.Text = "Empresa";
-            subMenuEmp.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuEmp.UseVisualStyleBackColor = true;
+            subMenuEmpresa.Dock = DockStyle.Top;
+            subMenuEmpresa.Location = new Point(0, 0);
+            subMenuEmpresa.Name = "subMenuEmpresa";
+            subMenuEmpresa.Padding = new Padding(30, 0, 0, 0);
+            subMenuEmpresa.Size = new Size(500, 70);
+            subMenuEmpresa.TabIndex = 1;
+            subMenuEmpresa.Text = "Empresa";
+            subMenuEmpresa.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuEmpresa.UseVisualStyleBackColor = true;
+            subMenuEmpresa.Click += subMenuEmpresa_Click;
             // 
             // menuConfig
             // 
             menuConfig.Dock = DockStyle.Top;
-            menuConfig.Location = new Point(0, 439);
+            menuConfig.Location = new Point(0, 1099);
             menuConfig.Name = "menuConfig";
             menuConfig.Padding = new Padding(10, 0, 0, 0);
             menuConfig.Size = new Size(500, 75);
-            menuConfig.TabIndex = 10;
-            menuConfig.Text = "Configuracion";
+            menuConfig.TabIndex = 16;
+            menuConfig.Text = "Configuración";
             menuConfig.TextAlign = ContentAlignment.MiddleLeft;
             menuConfig.UseVisualStyleBackColor = true;
-            menuConfig.Click += menuConfig_Click;
+            menuConfig.Click += menuConfig_Click_1;
+            // 
+            // panelSubMenuProductos
+            // 
+            panelSubMenuProductos.Controls.Add(subMenuAlmacenes);
+            panelSubMenuProductos.Controls.Add(subMenuProductos);
+            panelSubMenuProductos.Dock = DockStyle.Top;
+            panelSubMenuProductos.Location = new Point(0, 949);
+            panelSubMenuProductos.Name = "panelSubMenuProductos";
+            panelSubMenuProductos.Size = new Size(500, 150);
+            panelSubMenuProductos.TabIndex = 15;
+            panelSubMenuProductos.Visible = false;
+            // 
+            // subMenuAlmacenes
+            // 
+            subMenuAlmacenes.Dock = DockStyle.Top;
+            subMenuAlmacenes.Location = new Point(0, 70);
+            subMenuAlmacenes.Name = "subMenuAlmacenes";
+            subMenuAlmacenes.Padding = new Padding(30, 0, 0, 0);
+            subMenuAlmacenes.Size = new Size(500, 70);
+            subMenuAlmacenes.TabIndex = 2;
+            subMenuAlmacenes.Text = "Almacenes";
+            subMenuAlmacenes.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuAlmacenes.UseVisualStyleBackColor = true;
+            // 
+            // subMenuProductos
+            // 
+            subMenuProductos.Dock = DockStyle.Top;
+            subMenuProductos.Location = new Point(0, 0);
+            subMenuProductos.Name = "subMenuProductos";
+            subMenuProductos.Padding = new Padding(30, 0, 0, 0);
+            subMenuProductos.Size = new Size(500, 70);
+            subMenuProductos.TabIndex = 1;
+            subMenuProductos.Text = "Productos";
+            subMenuProductos.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuProductos.UseVisualStyleBackColor = true;
+            // 
+            // menuProductos
+            // 
+            menuProductos.Dock = DockStyle.Top;
+            menuProductos.Location = new Point(0, 874);
+            menuProductos.Name = "menuProductos";
+            menuProductos.Padding = new Padding(10, 0, 0, 0);
+            menuProductos.Size = new Size(500, 75);
+            menuProductos.TabIndex = 14;
+            menuProductos.Text = "Productos";
+            menuProductos.TextAlign = ContentAlignment.MiddleLeft;
+            menuProductos.UseVisualStyleBackColor = true;
+            menuProductos.Click += menuProductos_Click;
+            // 
+            // panelSubMenuSocios
+            // 
+            panelSubMenuSocios.Controls.Add(subMenuSocios);
+            panelSubMenuSocios.Controls.Add(subMenuAgricultores);
+            panelSubMenuSocios.Dock = DockStyle.Top;
+            panelSubMenuSocios.Location = new Point(0, 724);
+            panelSubMenuSocios.Name = "panelSubMenuSocios";
+            panelSubMenuSocios.Size = new Size(500, 150);
+            panelSubMenuSocios.TabIndex = 13;
+            panelSubMenuSocios.Visible = false;
+            // 
+            // subMenuSocios
+            // 
+            subMenuSocios.Dock = DockStyle.Top;
+            subMenuSocios.Location = new Point(0, 70);
+            subMenuSocios.Name = "subMenuSocios";
+            subMenuSocios.Padding = new Padding(30, 0, 0, 0);
+            subMenuSocios.Size = new Size(500, 70);
+            subMenuSocios.TabIndex = 2;
+            subMenuSocios.Text = "Socios";
+            subMenuSocios.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuSocios.UseVisualStyleBackColor = true;
+            // 
+            // subMenuAgricultores
+            // 
+            subMenuAgricultores.Dock = DockStyle.Top;
+            subMenuAgricultores.Location = new Point(0, 0);
+            subMenuAgricultores.Name = "subMenuAgricultores";
+            subMenuAgricultores.Padding = new Padding(30, 0, 0, 0);
+            subMenuAgricultores.Size = new Size(500, 70);
+            subMenuAgricultores.TabIndex = 1;
+            subMenuAgricultores.Text = "Agricultores";
+            subMenuAgricultores.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuAgricultores.UseVisualStyleBackColor = true;
+            // 
+            // menuSocios
+            // 
+            menuSocios.Dock = DockStyle.Top;
+            menuSocios.Location = new Point(0, 649);
+            menuSocios.Name = "menuSocios";
+            menuSocios.Padding = new Padding(10, 0, 0, 0);
+            menuSocios.Size = new Size(500, 75);
+            menuSocios.TabIndex = 12;
+            menuSocios.Text = "Socios";
+            menuSocios.TextAlign = ContentAlignment.MiddleLeft;
+            menuSocios.UseVisualStyleBackColor = true;
+            menuSocios.Click += menuSocios_Click;
             // 
             // panelSubMenuTrans
             // 
+            panelSubMenuTrans.Controls.Add(subMenuSalida);
+            panelSubMenuTrans.Controls.Add(subMenuEntrada);
+            panelSubMenuTrans.Controls.Add(subMenuRecibos);
+            panelSubMenuTrans.Controls.Add(subMenuFacturas);
+            panelSubMenuTrans.Controls.Add(subMenuCompras);
             panelSubMenuTrans.Controls.Add(subMenuVent);
             panelSubMenuTrans.Dock = DockStyle.Top;
             panelSubMenuTrans.Location = new Point(0, 289);
             panelSubMenuTrans.Name = "panelSubMenuTrans";
-            panelSubMenuTrans.Size = new Size(500, 150);
+            panelSubMenuTrans.Size = new Size(500, 360);
             panelSubMenuTrans.TabIndex = 9;
             panelSubMenuTrans.Visible = false;
+            // 
+            // subMenuSalida
+            // 
+            subMenuSalida.Dock = DockStyle.Top;
+            subMenuSalida.Location = new Point(0, 350);
+            subMenuSalida.Name = "subMenuSalida";
+            subMenuSalida.Padding = new Padding(30, 0, 0, 0);
+            subMenuSalida.Size = new Size(500, 70);
+            subMenuSalida.TabIndex = 9;
+            subMenuSalida.Text = "Salida de Producto";
+            subMenuSalida.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuSalida.UseVisualStyleBackColor = true;
+            // 
+            // subMenuEntrada
+            // 
+            subMenuEntrada.Dock = DockStyle.Top;
+            subMenuEntrada.Location = new Point(0, 280);
+            subMenuEntrada.Name = "subMenuEntrada";
+            subMenuEntrada.Padding = new Padding(30, 0, 0, 0);
+            subMenuEntrada.Size = new Size(500, 70);
+            subMenuEntrada.TabIndex = 8;
+            subMenuEntrada.Text = "Entrada de Producto";
+            subMenuEntrada.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuEntrada.UseVisualStyleBackColor = true;
+            // 
+            // subMenuRecibos
+            // 
+            subMenuRecibos.Dock = DockStyle.Top;
+            subMenuRecibos.Location = new Point(0, 210);
+            subMenuRecibos.Name = "subMenuRecibos";
+            subMenuRecibos.Padding = new Padding(30, 0, 0, 0);
+            subMenuRecibos.Size = new Size(500, 70);
+            subMenuRecibos.TabIndex = 7;
+            subMenuRecibos.Text = "Recibos";
+            subMenuRecibos.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuRecibos.UseVisualStyleBackColor = true;
+            // 
+            // subMenuFacturas
+            // 
+            subMenuFacturas.Dock = DockStyle.Top;
+            subMenuFacturas.Location = new Point(0, 140);
+            subMenuFacturas.Name = "subMenuFacturas";
+            subMenuFacturas.Padding = new Padding(30, 0, 0, 0);
+            subMenuFacturas.Size = new Size(500, 70);
+            subMenuFacturas.TabIndex = 6;
+            subMenuFacturas.Text = "Facturas";
+            subMenuFacturas.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuFacturas.UseVisualStyleBackColor = true;
+            // 
+            // subMenuCompras
+            // 
+            subMenuCompras.Dock = DockStyle.Top;
+            subMenuCompras.Location = new Point(0, 70);
+            subMenuCompras.Name = "subMenuCompras";
+            subMenuCompras.Padding = new Padding(30, 0, 0, 0);
+            subMenuCompras.Size = new Size(500, 70);
+            subMenuCompras.TabIndex = 5;
+            subMenuCompras.Text = "Compras";
+            subMenuCompras.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuCompras.UseVisualStyleBackColor = true;
             // 
             // subMenuVent
             // 
@@ -129,18 +335,18 @@
             menuTrans.UseVisualStyleBackColor = true;
             menuTrans.Click += menuTrans_Click;
             // 
-            // panel2
+            // panelImage
             // 
-            panel2.Controls.Add(pictureBox1);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(500, 214);
-            panel2.TabIndex = 2;
+            panelImage.Controls.Add(pictureBox1);
+            panelImage.Dock = DockStyle.Top;
+            panelImage.Location = new Point(0, 0);
+            panelImage.Name = "panelImage";
+            panelImage.Size = new Size(500, 214);
+            panelImage.TabIndex = 2;
             // 
             // pictureBox1
             // 
-            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = Properties.Resources.LogoAgrolinkTest;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
@@ -149,32 +355,63 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // panelChildForm
+            // 
+            panelChildForm.Dock = DockStyle.Fill;
+            panelChildForm.Location = new Point(500, 0);
+            panelChildForm.Name = "panelChildForm";
+            panelChildForm.Size = new Size(2768, 1512);
+            panelChildForm.TabIndex = 2;
+            // 
             // PantallaPrincipal
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(2219, 1252);
-            Controls.Add(panel1);
+            ClientSize = new Size(3268, 1512);
+            Controls.Add(panelChildForm);
+            Controls.Add(panelMain);
+            MaximizeBox = false;
+            MaximumSize = new Size(3300, 1600);
+            MinimumSize = new Size(3300, 1600);
             Name = "PantallaPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PantallaPrincipal";
-            panel1.ResumeLayout(false);
+            panelMain.ResumeLayout(false);
             panelSubMenuConfig.ResumeLayout(false);
+            panelSubMenuProductos.ResumeLayout(false);
+            panelSubMenuSocios.ResumeLayout(false);
             panelSubMenuTrans.ResumeLayout(false);
-            panel2.ResumeLayout(false);
+            panelImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Panel panel1;
+        private Panel panelMain;
         private Button subMenuVent;
         private Button menuTrans;
-        private Panel panel2;
-        private Panel panelSubMenuConfig;
-        private Button subMenuEmp;
-        private Button menuConfig;
+        private Panel panelImage;
         private Panel panelSubMenuTrans;
         private PictureBox pictureBox1;
+        private Panel panelChildForm;
+        private Button subMenuSalida;
+        private Button subMenuEntrada;
+        private Button subMenuRecibos;
+        private Button subMenuFacturas;
+        private Button subMenuCompras;
+        private Panel panelSubMenuProductos;
+        private Button subMenuAlmacenes;
+        private Button subMenuProductos;
+        private Button menuProductos;
+        private Panel panelSubMenuSocios;
+        private Button subMenuSocios;
+        private Button subMenuAgricultores;
+        private Button menuSocios;
+        private Panel panelSubMenuConfig;
+        private Button subMenuEmpresa;
+        private Button menuConfig;
+        private Panel panelSeparador;
+        private Button button1;
     }
 }

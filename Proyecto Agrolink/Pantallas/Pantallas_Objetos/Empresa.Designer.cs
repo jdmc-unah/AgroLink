@@ -59,8 +59,8 @@
             Estado = new DataGridViewComboBoxColumn();
             FechaVencimiento = new DataGridViewTextBoxColumn();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            borrarToolStripMenuItem = new ToolStripMenuItem();
             editarToolStripMenuItem = new ToolStripMenuItem();
+            borrarToolStripMenuItem = new ToolStripMenuItem();
             guardarToolStripMenuItem = new ToolStripMenuItem();
             cancelarToolStripMenuItem = new ToolStripMenuItem();
             splitContainer3 = new SplitContainer();
@@ -70,8 +70,8 @@
             Nombre = new DataGridViewTextBoxColumn();
             Valor = new DataGridViewTextBoxColumn();
             contextMenuStrip2 = new ContextMenuStrip(components);
-            borrarToolStripMenuItem1 = new ToolStripMenuItem();
             editarToolStripMenuItem1 = new ToolStripMenuItem();
+            borrarToolStripMenuItem1 = new ToolStripMenuItem();
             guardarToolStripMenuItem1 = new ToolStripMenuItem();
             cancelarToolStripMenuItem1 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -138,8 +138,8 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
-            splitContainer1.Size = new Size(2548, 1244);
-            splitContainer1.SplitterDistance = 1180;
+            splitContainer1.Size = new Size(2768, 1512);
+            splitContainer1.SplitterDistance = 1281;
             splitContainer1.SplitterWidth = 5;
             splitContainer1.TabIndex = 5;
             // 
@@ -147,7 +147,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label10.Location = new Point(52, 694);
+            label10.Location = new Point(52, 728);
             label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
             label10.Size = new Size(223, 41);
@@ -158,7 +158,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label9.Location = new Point(52, 840);
+            label9.Location = new Point(673, 728);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
             label9.Size = new Size(161, 41);
@@ -169,7 +169,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label8.Location = new Point(52, 535);
+            label8.Location = new Point(52, 550);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
             label8.Size = new Size(125, 41);
@@ -178,49 +178,49 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(52, 606);
+            textBox5.Location = new Point(52, 621);
             textBox5.Margin = new Padding(2, 3, 2, 3);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
             textBox5.Size = new Size(604, 47);
-            textBox5.TabIndex = 20;
+            textBox5.TabIndex = 4;
             // 
             // comboBox2
             // 
             comboBox2.Enabled = false;
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(52, 908);
+            comboBox2.Location = new Point(673, 790);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(604, 49);
-            comboBox2.TabIndex = 19;
+            comboBox2.Size = new Size(491, 49);
+            comboBox2.TabIndex = 6;
             // 
             // comboBox1
             // 
             comboBox1.Enabled = false;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(52, 756);
+            comboBox1.Location = new Point(52, 790);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(604, 49);
-            comboBox1.TabIndex = 18;
+            comboBox1.Size = new Size(491, 49);
+            comboBox1.TabIndex = 5;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(692, 606);
+            richTextBox1.Location = new Point(52, 964);
             richTextBox1.Margin = new Padding(7, 8, 7, 8);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
-            richTextBox1.Size = new Size(438, 199);
-            richTextBox1.TabIndex = 17;
+            richTextBox1.Size = new Size(683, 216);
+            richTextBox1.TabIndex = 7;
             richTextBox1.Text = "";
             // 
             // button3
             // 
-            button3.Location = new Point(931, 1098);
+            button3.Location = new Point(937, 1319);
             button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
             button3.Size = new Size(187, 57);
-            button3.TabIndex = 16;
+            button3.TabIndex = 10;
             button3.Text = "Cancelar";
             button3.UseVisualStyleBackColor = true;
             button3.Visible = false;
@@ -228,11 +228,11 @@
             // 
             // button2
             // 
-            button2.Location = new Point(692, 1098);
+            button2.Location = new Point(698, 1319);
             button2.Margin = new Padding(2, 3, 2, 3);
             button2.Name = "button2";
             button2.Size = new Size(187, 57);
-            button2.TabIndex = 15;
+            button2.TabIndex = 9;
             button2.Text = "Aceptar";
             button2.UseVisualStyleBackColor = true;
             button2.Visible = false;
@@ -240,11 +240,11 @@
             // 
             // button1
             // 
-            button1.Location = new Point(115, 1064);
+            button1.Location = new Point(116, 1319);
             button1.Margin = new Padding(2, 3, 2, 3);
             button1.Name = "button1";
             button1.Size = new Size(400, 57);
-            button1.TabIndex = 14;
+            button1.TabIndex = 8;
             button1.Text = "Editar Datos de Empresa";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -253,7 +253,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(713, 535);
+            label5.Location = new Point(52, 893);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(118, 41);
@@ -264,7 +264,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(602, 233);
+            label4.Location = new Point(673, 233);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(140, 41);
@@ -273,18 +273,18 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(602, 293);
+            textBox4.Location = new Point(673, 293);
             textBox4.Margin = new Padding(2, 3, 2, 3);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(415, 47);
-            textBox4.TabIndex = 10;
+            textBox4.Size = new Size(491, 47);
+            textBox4.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(52, 389);
+            label3.Location = new Point(52, 395);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(113, 41);
@@ -293,12 +293,12 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(52, 446);
+            textBox3.Location = new Point(52, 452);
             textBox3.Margin = new Padding(2, 3, 2, 3);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(604, 47);
-            textBox3.TabIndex = 8;
+            textBox3.TabIndex = 3;
             // 
             // label2
             // 
@@ -317,8 +317,8 @@
             textBox2.Margin = new Padding(2, 3, 2, 3);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(415, 47);
-            textBox2.TabIndex = 6;
+            textBox2.Size = new Size(491, 47);
+            textBox2.TabIndex = 1;
             // 
             // label1
             // 
@@ -346,8 +346,8 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(splitContainer3);
-            splitContainer2.Size = new Size(1363, 1244);
-            splitContainer2.SplitterDistance = 620;
+            splitContainer2.Size = new Size(1482, 1512);
+            splitContainer2.SplitterDistance = 752;
             splitContainer2.SplitterWidth = 3;
             splitContainer2.TabIndex = 1;
             // 
@@ -365,8 +365,8 @@
             // splitContainer4.Panel2
             // 
             splitContainer4.Panel2.Controls.Add(dataGridView1);
-            splitContainer4.Size = new Size(1363, 620);
-            splitContainer4.SplitterDistance = 85;
+            splitContainer4.Size = new Size(1482, 752);
+            splitContainer4.SplitterDistance = 102;
             splitContainer4.TabIndex = 1;
             // 
             // label7
@@ -391,7 +391,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 102;
-            dataGridView1.Size = new Size(1357, 517);
+            dataGridView1.Size = new Size(1396, 549);
             dataGridView1.TabIndex = 0;
             dataGridView1.DataError += dataGridView1_DataError;
             // 
@@ -452,19 +452,19 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(210, 196);
             // 
-            // borrarToolStripMenuItem
-            // 
-            borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
-            borrarToolStripMenuItem.Size = new Size(209, 48);
-            borrarToolStripMenuItem.Text = "Borrar";
-            borrarToolStripMenuItem.Click += borrarToolStripMenuItem_Click;
-            // 
             // editarToolStripMenuItem
             // 
             editarToolStripMenuItem.Name = "editarToolStripMenuItem";
             editarToolStripMenuItem.Size = new Size(209, 48);
             editarToolStripMenuItem.Text = "Editar";
             editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
+            // 
+            // borrarToolStripMenuItem
+            // 
+            borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
+            borrarToolStripMenuItem.Size = new Size(209, 48);
+            borrarToolStripMenuItem.Text = "Borrar";
+            borrarToolStripMenuItem.Click += borrarToolStripMenuItem_Click;
             // 
             // guardarToolStripMenuItem
             // 
@@ -496,8 +496,8 @@
             // splitContainer3.Panel2
             // 
             splitContainer3.Panel2.Controls.Add(dataGridView2);
-            splitContainer3.Size = new Size(1363, 621);
-            splitContainer3.SplitterDistance = 67;
+            splitContainer3.Size = new Size(1482, 757);
+            splitContainer3.SplitterDistance = 80;
             splitContainer3.TabIndex = 3;
             // 
             // label6
@@ -522,7 +522,7 @@
             dataGridView2.Name = "dataGridView2";
             dataGridView2.ReadOnly = true;
             dataGridView2.RowHeadersWidth = 102;
-            dataGridView2.Size = new Size(1357, 517);
+            dataGridView2.Size = new Size(1396, 587);
             dataGridView2.TabIndex = 2;
             dataGridView2.DataError += dataGridView2_DataError;
             // 
@@ -562,19 +562,19 @@
             contextMenuStrip2.Name = "contextMenuStrip2";
             contextMenuStrip2.Size = new Size(210, 196);
             // 
-            // borrarToolStripMenuItem1
-            // 
-            borrarToolStripMenuItem1.Name = "borrarToolStripMenuItem1";
-            borrarToolStripMenuItem1.Size = new Size(209, 48);
-            borrarToolStripMenuItem1.Text = "Borrar";
-            borrarToolStripMenuItem1.Click += borrarToolStripMenuItem1_Click;
-            // 
             // editarToolStripMenuItem1
             // 
             editarToolStripMenuItem1.Name = "editarToolStripMenuItem1";
             editarToolStripMenuItem1.Size = new Size(209, 48);
             editarToolStripMenuItem1.Text = "Editar";
             editarToolStripMenuItem1.Click += editarToolStripMenuItem1_Click;
+            // 
+            // borrarToolStripMenuItem1
+            // 
+            borrarToolStripMenuItem1.Name = "borrarToolStripMenuItem1";
+            borrarToolStripMenuItem1.Size = new Size(209, 48);
+            borrarToolStripMenuItem1.Text = "Borrar";
+            borrarToolStripMenuItem1.Click += borrarToolStripMenuItem1_Click;
             // 
             // guardarToolStripMenuItem1
             // 
@@ -596,8 +596,9 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2548, 1244);
+            ClientSize = new Size(2768, 1512);
             Controls.Add(splitContainer1);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2, 3, 2, 3);
             Name = "Empresa";
             Text = "Configuración de Empresa";
