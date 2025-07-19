@@ -108,9 +108,9 @@
             // 
             panelSubMenuConfig.Controls.Add(subMenuEmpresa);
             panelSubMenuConfig.Dock = DockStyle.Top;
-            panelSubMenuConfig.Location = new Point(0, 1174);
+            panelSubMenuConfig.Location = new Point(0, 1150);
             panelSubMenuConfig.Name = "panelSubMenuConfig";
-            panelSubMenuConfig.Size = new Size(500, 98);
+            panelSubMenuConfig.Size = new Size(500, 66);
             panelSubMenuConfig.TabIndex = 17;
             panelSubMenuConfig.Visible = false;
             // 
@@ -132,7 +132,7 @@
             // 
             menuConfig.BackColor = Color.FromArgb(133, 183, 157);
             menuConfig.Dock = DockStyle.Top;
-            menuConfig.Location = new Point(0, 1099);
+            menuConfig.Location = new Point(0, 1075);
             menuConfig.Name = "menuConfig";
             menuConfig.Padding = new Padding(10, 0, 0, 0);
             menuConfig.Size = new Size(500, 75);
@@ -147,9 +147,9 @@
             panelSubMenuProductos.Controls.Add(subMenuAlmacenes);
             panelSubMenuProductos.Controls.Add(subMenuProductos);
             panelSubMenuProductos.Dock = DockStyle.Top;
-            panelSubMenuProductos.Location = new Point(0, 949);
+            panelSubMenuProductos.Location = new Point(0, 937);
             panelSubMenuProductos.Name = "panelSubMenuProductos";
-            panelSubMenuProductos.Size = new Size(500, 150);
+            panelSubMenuProductos.Size = new Size(500, 138);
             panelSubMenuProductos.TabIndex = 15;
             panelSubMenuProductos.Visible = false;
             // 
@@ -183,7 +183,7 @@
             // 
             menuProductos.BackColor = Color.FromArgb(133, 183, 157);
             menuProductos.Dock = DockStyle.Top;
-            menuProductos.Location = new Point(0, 874);
+            menuProductos.Location = new Point(0, 862);
             menuProductos.Name = "menuProductos";
             menuProductos.Padding = new Padding(10, 0, 0, 0);
             menuProductos.Size = new Size(500, 75);
@@ -200,7 +200,7 @@
             panelSubMenuSocios.Dock = DockStyle.Top;
             panelSubMenuSocios.Location = new Point(0, 724);
             panelSubMenuSocios.Name = "panelSubMenuSocios";
-            panelSubMenuSocios.Size = new Size(500, 150);
+            panelSubMenuSocios.Size = new Size(500, 138);
             panelSubMenuSocios.TabIndex = 13;
             panelSubMenuSocios.Visible = false;
             // 
