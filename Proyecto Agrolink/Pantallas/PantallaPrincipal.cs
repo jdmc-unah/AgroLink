@@ -131,6 +131,11 @@ namespace AgroLink.Pantallas
 
         }
 
+        private void subMenuProductos_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Transacciones.Producto());
+        }
+
         #endregion
 
 

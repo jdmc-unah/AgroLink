@@ -178,6 +178,7 @@
             subMenuProductos.Text = "Productos";
             subMenuProductos.TextAlign = ContentAlignment.MiddleLeft;
             subMenuProductos.UseVisualStyleBackColor = false;
+            subMenuProductos.Click += subMenuProductos_Click;
             // 
             // menuProductos
             // 
