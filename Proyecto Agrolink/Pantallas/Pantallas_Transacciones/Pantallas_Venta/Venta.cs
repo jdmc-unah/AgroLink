@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 
 namespace AgroLink.Pantallas.Pantallas_Transacciones
 {
+
     public partial class Venta : Form
     {
         public Venta()
@@ -51,12 +53,16 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         {
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = tablaVenta.CurrentRow.Index;
-            int id = (int)tablaVenta.Rows[row].Cells[0].Value;
-            string? rangoIni = (string)tablaVenta.Rows[row].Cells[1].Value;
+            int id = (int) tablaVenta.Rows[row].Cells[0].Value;
 
+            Pantallas_Venta.VentasDetalle detalle = new Pantallas_Venta.VentasDetalle();
+            detalle.ventaID = id;
+            detalle.ventaForm = this;
 
+            //this.Hide();
+            //detalle.Show();
 
-
+            PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, detalle);
 
         }
 

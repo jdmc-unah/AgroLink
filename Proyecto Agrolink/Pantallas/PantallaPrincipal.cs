@@ -43,8 +43,8 @@ namespace AgroLink.Pantallas
         }
 
 
-
-        private void OpenChildForm(Form childForm)
+        //Abrir pantalllas de menu principal
+        public void OpenChildForm(Form childForm)
         {
             //cierra el form actual
             if (activeForm != null) activeForm.Close(); 
@@ -66,7 +66,38 @@ namespace AgroLink.Pantallas
         }
 
 
-        //este se usa en la pantalla de login 
+        //Para abrir/cerrar subpantalllas de otras pantallas
+        public void ToggleDetailForms(Form parentForm, Form childForm)
+        {
+            //cierra el form actual
+           if (activeForm == parentForm) { 
+
+            //configura el form a abrir
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+
+            //agrega el form al panel
+            panelChildForm.Controls.Add(childForm);
+            panelChildForm.Tag = childForm;
+
+            //muestra el form
+            childForm.BringToFront();
+//            parentForm.Hide();
+            childForm.Show();
+            
+            
+            }else if (activeForm == childForm) { 
+                childForm.Close();
+                activeForm = parentForm;
+            }
+
+        }
+
+
+
+        //Para mostrar u ocultar submenu
         public void TogglePanelMain()
         {
             panelMain.Visible = !panelMain.Visible;
