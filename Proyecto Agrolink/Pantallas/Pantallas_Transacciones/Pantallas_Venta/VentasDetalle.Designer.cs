@@ -70,6 +70,7 @@
             // 
             comboTipoPago.Enabled = false;
             comboTipoPago.FormattingEnabled = true;
+            comboTipoPago.Items.AddRange(new object[] { "Contado", "Credito" });
             comboTipoPago.Location = new Point(2072, 265);
             comboTipoPago.Name = "comboTipoPago";
             comboTipoPago.Size = new Size(438, 49);
@@ -353,6 +354,7 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Visible = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnEditar
             // 
@@ -362,6 +364,7 @@
             btnEditar.TabIndex = 24;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnAceptar
             // 
@@ -372,6 +375,7 @@
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Visible = false;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // btnVolver
             // 
