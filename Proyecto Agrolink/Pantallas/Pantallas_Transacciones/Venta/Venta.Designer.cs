@@ -92,10 +92,10 @@
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(72, 134);
+            tbBuscar.Location = new Point(51, 134);
             tbBuscar.Name = "tbBuscar";
-            tbBuscar.PlaceholderText = "VEN01.....";
-            tbBuscar.Size = new Size(542, 47);
+            tbBuscar.PlaceholderText = "Código de Venta o Nombre de Socio...";
+            tbBuscar.Size = new Size(572, 47);
             tbBuscar.TabIndex = 0;
             // 
             // panel2
@@ -121,6 +121,7 @@
             tablaVenta.RowHeadersWidth = 102;
             tablaVenta.Size = new Size(2768, 1225);
             tablaVenta.TabIndex = 0;
+            tablaVenta.CellDoubleClick += tablaVenta_CellDoubleClick;
             // 
             // VentaID
             // 

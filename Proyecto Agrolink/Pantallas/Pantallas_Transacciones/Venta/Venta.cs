@@ -25,34 +25,43 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         #endregion
 
 
-
         private void Venta_Load(object sender, EventArgs e)
         {
-
-
-            this.tablaVenta.DataSource = recSQL.EjecutarVista("vTraeVentas");
-
-
-
-
+            tablaVenta.DataSource = recSQL.EjecutarVista("vTraeVentas");
         }
 
         private void btnRecargar_Click(object sender, EventArgs e)
         {
-            this.tablaVenta.DataSource = recSQL.EjecutarVista("vTraeVentas");
+            tablaVenta.DataSource = recSQL.EjecutarVista("vTraeVentas");
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            //tbBuscar.Text
-
             Dictionary<string, object> parametros = new Dictionary<string, object>()
             {
                 { "cod", tbBuscar.Text.Trim() }
             };
 
-            this.tablaVenta.DataSource = recSQL.EjecutarSPDataTable("spBuscarVenta", parametros);
+            tablaVenta.DataSource = recSQL.EjecutarSPDataTable("spBuscarVenta", parametros);
 
         }
+
+
+        private void tablaVenta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Toma el indice de la fila seleccionada y el valor seleccionado 
+            int row = tablaVenta.CurrentRow.Index;
+            int id = (int)tablaVenta.Rows[row].Cells[0].Value;
+            string? rangoIni = (string)tablaVenta.Rows[row].Cells[1].Value;
+
+
+
+
+
+        }
+
+
+
+
     }
 }
