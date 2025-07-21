@@ -84,7 +84,6 @@ namespace AgroLink.Pantallas
 
             //muestra el form
             childForm.BringToFront();
-//            parentForm.Hide();
             childForm.Show();
             
             

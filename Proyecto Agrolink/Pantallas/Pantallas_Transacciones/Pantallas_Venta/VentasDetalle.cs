@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgroLink.Recursos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,43 +14,67 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 {
     public partial class VentasDetalle : Form
     {
+        public Venta ventaForm { get; set; }  //Formulario Padre
+
         public int ventaID { get; set; }
+        public string codigo     {get; set;}
 
-        public Venta ventaForm { get; set; }
+        //public  string  fecha   {get; set;}
+        
+        public int socioID       {get; set;}
+        public string socio      {get; set;}
+        public string tipoSocio  {get; set;}
+        public int listaPreID    {get; set;}
+        public string listaPrecio{get; set;}
+        public string tipoPago   {get; set;}
+        public string estado     {get; set;}
 
 
 
-        public VentasDetalle( )
+        public VentasDetalle()
         {
             InitializeComponent();
-            ObtenerDatos(ventaID);
         }
 
+
+        Recursos_SQL recSQL = new Recursos_SQL();
 
         #region Metodos
 
-
-        public void ObtenerDatos(int ventaID)
+        public void ObtenerDatos()
         {
+            //Llena campos superiores
+            tbCodigo.Text = codigo;
+            tbEstado.Text = estado;
 
-            MessageBox.Show($"{ventaID}");
 
+            //Llena tabla detalle
+            Dictionary<string, object> parametros = new Dictionary<string, object>() {
+                {"ventID", ventaID }
+            };
 
+            tablaDetalle.DataSource = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
+
+            
+        
         }
-
 
 
         #endregion
 
+        private void VentasDetalle_Load(object sender, EventArgs e)
+        {
+            ObtenerDatos();
+        }
 
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
 
-            //ventaForm.Show();
-            //this.Close();
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(ventaForm, this);
 
         }
+
+      
     }
 }

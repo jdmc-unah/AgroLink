@@ -36,6 +36,8 @@
             panel2 = new Panel();
             tablaVenta = new DataGridView();
             VentaID = new DataGridViewTextBoxColumn();
+            SocioID = new DataGridViewTextBoxColumn();
+            ListaPreciosID = new DataGridViewTextBoxColumn();
             CodigoVenta = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
             Socio = new DataGridViewTextBoxColumn();
@@ -112,7 +114,7 @@
             tablaVenta.AllowUserToAddRows = false;
             tablaVenta.AllowUserToDeleteRows = false;
             tablaVenta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaVenta.Columns.AddRange(new DataGridViewColumn[] { VentaID, CodigoVenta, Fecha, Socio, TipoSocio, ListaPrecio, TipoPago, Estado, Total });
+            tablaVenta.Columns.AddRange(new DataGridViewColumn[] { VentaID, SocioID, ListaPreciosID, CodigoVenta, Fecha, Socio, TipoSocio, ListaPrecio, TipoPago, Estado, Total });
             tablaVenta.Dock = DockStyle.Fill;
             tablaVenta.Location = new Point(0, 0);
             tablaVenta.MultiSelect = false;
@@ -132,6 +134,26 @@
             VentaID.ReadOnly = true;
             VentaID.Visible = false;
             VentaID.Width = 250;
+            // 
+            // SocioID
+            // 
+            SocioID.DataPropertyName = "SocioID";
+            SocioID.HeaderText = "SocioID";
+            SocioID.MinimumWidth = 12;
+            SocioID.Name = "SocioID";
+            SocioID.ReadOnly = true;
+            SocioID.Visible = false;
+            SocioID.Width = 250;
+            // 
+            // ListaPreciosID
+            // 
+            ListaPreciosID.DataPropertyName = "ListaPreciosID";
+            ListaPreciosID.HeaderText = "ListaPreciosID";
+            ListaPreciosID.MinimumWidth = 12;
+            ListaPreciosID.Name = "ListaPreciosID";
+            ListaPreciosID.ReadOnly = true;
+            ListaPreciosID.Visible = false;
+            ListaPreciosID.Width = 250;
             // 
             // CodigoVenta
             // 
@@ -232,7 +254,10 @@
         private TextBox tbBuscar;
         private Panel panel2;
         private DataGridView tablaVenta;
+        private Button btnRecargar;
         private DataGridViewTextBoxColumn VentaID;
+        private DataGridViewTextBoxColumn SocioID;
+        private DataGridViewTextBoxColumn ListaPreciosID;
         private DataGridViewTextBoxColumn CodigoVenta;
         private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn Socio;
@@ -241,6 +266,5 @@
         private DataGridViewTextBoxColumn TipoPago;
         private DataGridViewTextBoxColumn Estado;
         private DataGridViewTextBoxColumn Total;
-        private Button btnRecargar;
     }
 }
