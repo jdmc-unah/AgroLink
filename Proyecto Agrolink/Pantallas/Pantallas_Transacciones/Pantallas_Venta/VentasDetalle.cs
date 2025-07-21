@@ -19,9 +19,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         public int ventaID { get; set; }
         public string codigo { get; set; }
-
-        //public  string  fecha   {get; set;}
-
+        public DateTime fecha { get; set; }
         public int socioID { get; set; }
         public string socio { get; set; }
         public string tipoSocio { get; set; }
@@ -42,19 +40,33 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         #region Metodos
 
-        public void ObtenerDatos()
+        public void ObtenerDatos(int id)
         {
-            //Llena campos superiores
+
+            //Llena Campos Superiores
+
             tbCodigo.Text = codigo;
-            tbEstado.Text = estado;
+
+            dateTimePicker1.Value = fecha;
+
+            LlenaSocio();
+            comboSocio.SelectedValue = socioID;
+
+            LlenaListaPrecios();
+            comboListaPrecio.SelectedValue = listaPreID;
+
+            comboTipoPago.SelectedItem = tipoPago;
+
+            comboEstado.SelectedItem = estado;
 
 
             //Llena tabla detalle
             Dictionary<string, object> parametros = new Dictionary<string, object>() {
-                {"ventID", ventaID }
+                {"ventID", id }
             };
 
             tablaDetalle.DataSource = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
+
 
         }
 
@@ -62,16 +74,17 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         public void ToggleReadOnly(bool esSoloLectura)
         {
 
-            tbEstado.ReadOnly = esSoloLectura;
-
+            comboEstado.Enabled = !esSoloLectura;
             comboSocio.Enabled = !esSoloLectura;
             comboTipoPago.Enabled = !esSoloLectura;
             comboListaPrecio.Enabled = !esSoloLectura;
+            dateTimePicker1.Enabled = !esSoloLectura;
 
             tablaDetalle.ReadOnly = esSoloLectura;
 
             btnAceptar.Visible = !esSoloLectura;
             btnCancelar.Visible = !esSoloLectura;
+
         }
 
 
@@ -98,24 +111,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         private void VentasDetalle_Load(object sender, EventArgs e)
         {
-            ObtenerDatos();
-
-
-            //Llena comboboxes de departamento y municipio
-            LlenaSocio();
-            comboSocio.SelectedValue = socioID;
-
-            LlenaListaPrecios();
-            comboListaPrecio.SelectedValue = listaPreID;
-
-            //comboTipoPago.SelectedValue = tipoPago; pendiente
-
+            ObtenerDatos(ventaID);
 
         }
-
-
-
-
 
 
 
@@ -131,6 +129,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         private void btnEditar_Click(object sender, EventArgs e)
         {
             ToggleReadOnly(false);
+
+
+
         }
 
 
@@ -138,25 +139,32 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         {
             ToggleReadOnly(true);
 
+
+
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             ToggleReadOnly(true);
+
         }
 
 
-        
+
 
         #endregion
 
 
 
+        private void tablaDetalle_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
+
+        }
 
 
 
 
-
-        
     }
 }

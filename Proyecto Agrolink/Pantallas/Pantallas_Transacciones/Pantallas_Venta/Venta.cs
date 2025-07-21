@@ -62,7 +62,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
                             
             detalle.ventaID =   (int) this.tablaVenta.Rows[row].Cells[0].Value;
             detalle.codigo =    (string) this.tablaVenta.Rows[row].Cells[1].Value;
-           // detalle. fecha =     (string)this.tablaVenta.Rows[row].Cells[2].Value;
+            detalle.fecha =     (DateTime) this.tablaVenta.Rows[row].Cells[2].Value;
             detalle.socioID =   (int) this.tablaVenta.Rows[row].Cells[3].Value;
             detalle.socio =     (string)this.tablaVenta.Rows[row].Cells[4].Value;
             detalle.tipoSocio = (string)this.tablaVenta.Rows[row].Cells[5].Value;

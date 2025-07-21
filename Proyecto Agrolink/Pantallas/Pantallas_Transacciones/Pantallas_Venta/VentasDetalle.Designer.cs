@@ -37,8 +37,8 @@
             tbCodigo = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            tbEstado = new TextBox();
             panel1 = new Panel();
+            comboEstado = new ComboBox();
             label6 = new Label();
             dateTimePicker1 = new DateTimePicker();
             panel2 = new Panel();
@@ -79,7 +79,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(2072, 200);
+            label5.Location = new Point(2082, 200);
             label5.Name = "label5";
             label5.Size = new Size(194, 41);
             label5.TabIndex = 19;
@@ -97,7 +97,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1153, 200);
+            label4.Location = new Point(1163, 200);
             label4.Name = "label4";
             label4.Size = new Size(222, 41);
             label4.TabIndex = 17;
@@ -115,7 +115,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(180, 200);
+            label3.Location = new Point(190, 200);
             label3.Name = "label3";
             label3.Size = new Size(91, 41);
             label3.TabIndex = 15;
@@ -132,7 +132,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(50, 69);
+            label1.Location = new Point(60, 69);
             label1.Name = "label1";
             label1.Size = new Size(116, 41);
             label1.TabIndex = 13;
@@ -141,27 +141,19 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(498, 66);
+            label2.Location = new Point(508, 66);
             label2.Name = "label2";
             label2.Size = new Size(107, 41);
             label2.TabIndex = 14;
             label2.Text = "Estado";
             // 
-            // tbEstado
-            // 
-            tbEstado.Location = new Point(623, 63);
-            tbEstado.Name = "tbEstado";
-            tbEstado.ReadOnly = true;
-            tbEstado.Size = new Size(256, 47);
-            tbEstado.TabIndex = 11;
-            // 
             // panel1
             // 
+            panel1.Controls.Add(comboEstado);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(tbCodigo);
             panel1.Controls.Add(comboTipoPago);
-            panel1.Controls.Add(tbEstado);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(comboListaPrecio);
@@ -172,13 +164,24 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
+            panel1.Padding = new Padding(10, 0, 0, 0);
             panel1.Size = new Size(2768, 386);
             panel1.TabIndex = 21;
+            // 
+            // comboEstado
+            // 
+            comboEstado.Enabled = false;
+            comboEstado.FormattingEnabled = true;
+            comboEstado.Items.AddRange(new object[] { "Abierto", "Cerrado", "Cancelado" });
+            comboEstado.Location = new Point(631, 62);
+            comboEstado.Name = "comboEstado";
+            comboEstado.Size = new Size(256, 49);
+            comboEstado.TabIndex = 23;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(2329, 60);
+            label6.Location = new Point(2274, 60);
             label6.Name = "label6";
             label6.Size = new Size(95, 41);
             label6.TabIndex = 22;
@@ -187,10 +190,11 @@
             // dateTimePicker1
             // 
             dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(2435, 57);
+            dateTimePicker1.Enabled = false;
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(2400, 57);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(213, 47);
+            dateTimePicker1.Size = new Size(248, 47);
             dateTimePicker1.TabIndex = 21;
             // 
             // panel2
@@ -213,6 +217,7 @@
             tablaDetalle.RowHeadersWidth = 102;
             tablaDetalle.Size = new Size(2768, 991);
             tablaDetalle.TabIndex = 0;
+            tablaDetalle.DataError += tablaDetalle_DataError;
             // 
             // VentaID
             // 
@@ -421,7 +426,6 @@
         private TextBox tbCodigo;
         private Label label1;
         private Label label2;
-        private TextBox tbEstado;
         private Panel panel1;
         private Panel panel2;
         private DataGridView tablaDetalle;
@@ -445,5 +449,6 @@
         private DataGridViewTextBoxColumn Impuesto;
         private DataGridViewTextBoxColumn Subtotal;
         private DataGridViewTextBoxColumn Total;
+        private ComboBox comboEstado;
     }
 }
