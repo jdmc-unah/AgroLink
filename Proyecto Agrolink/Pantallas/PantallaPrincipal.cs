@@ -18,7 +18,7 @@ namespace AgroLink.Pantallas
 
         public PantallaPrincipal()
         {
-            
+
             InitializeComponent();
             OpenChildForm(new Login());
             instanciaPantPrincipal = this; //guarda la instancia del form de la pantalla principal
@@ -47,7 +47,7 @@ namespace AgroLink.Pantallas
         public void OpenChildForm(Form childForm)
         {
             //cierra el form actual
-            if (activeForm != null) activeForm.Close(); 
+            if (activeForm != null) activeForm.Close();
 
             //configura el form a abrir
             activeForm = childForm;
@@ -70,24 +70,27 @@ namespace AgroLink.Pantallas
         public void ToggleDetailForms(Form parentForm, Form childForm)
         {
             //cierra el form actual
-           if (activeForm == parentForm) { 
+            if (activeForm == parentForm)
+            {
 
-            //configura el form a abrir
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
+                //configura el form a abrir
+                activeForm = childForm;
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
 
-            //agrega el form al panel
-            panelChildForm.Controls.Add(childForm);
-            panelChildForm.Tag = childForm;
+                //agrega el form al panel
+                panelChildForm.Controls.Add(childForm);
+                panelChildForm.Tag = childForm;
 
-            //muestra el form
-            childForm.BringToFront();
-            childForm.Show();
-            
-            
-            }else if (activeForm == childForm) { 
+                //muestra el form
+                childForm.BringToFront();
+                childForm.Show();
+
+
+            }
+            else if (activeForm == childForm)
+            {
                 childForm.Close();
                 activeForm = parentForm;
             }
@@ -123,7 +126,7 @@ namespace AgroLink.Pantallas
 
         }
 
-       #endregion
+        #endregion
 
 
         #region Menu de Configuraciones
@@ -172,14 +175,18 @@ namespace AgroLink.Pantallas
         #region Cerrar Sesion
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             OpenChildForm(new Login());
             panelMain.Visible = false;
         }
         #endregion
-    
-    
-    
+
+
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

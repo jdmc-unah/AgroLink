@@ -13,10 +13,16 @@
     <Compile Update="Pantallas\Pantallas_Objetos\Producto.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Pantallas\RegistroUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Pantallas\Pantallas_Transacciones\Pantallas_Venta\Venta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Pantallas\Pantallas_Transacciones\Pantallas_Venta\VentasDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Pantallas\ResetearClave.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

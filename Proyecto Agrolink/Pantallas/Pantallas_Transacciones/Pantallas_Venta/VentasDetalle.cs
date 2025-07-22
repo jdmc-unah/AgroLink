@@ -163,8 +163,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         }
 
+        private void comboEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
