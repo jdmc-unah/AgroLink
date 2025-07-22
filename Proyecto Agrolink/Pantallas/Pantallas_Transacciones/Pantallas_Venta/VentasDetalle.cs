@@ -66,7 +66,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             dt.Columns["VentaID"].DefaultValue = 0;
             dt.Columns["CodigoProducto"].DefaultValue = "PRO";
             dt.Columns["Subtotal"].DefaultValue = 0;
-
+            dt.Columns["SubTotal"].ReadOnly = false;
 
             tablaDetalle.AutoGenerateColumns = false; //esto es para que le haga caso al orden de columnas del datagridview
 
@@ -196,7 +196,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         //Hace calculos automaticos para reflejar cambios en subtotal y total
 
-        int cant = 0; double precio = 0 , imp = 0 , subtotal = 0;
+        int cant; double precio, imp = 0 , subtotal;
 
         private void tablaDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -205,32 +205,21 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             int row = tablaDetalle.CurrentRow.Index;
             int column = tablaDetalle.CurrentCell.ColumnIndex;
 
+            cant = Convert.ToInt32((this.tablaDetalle.Rows[row].Cells["Cantidad"].Value.GetType() == typeof(DBNull)) ? 0 : this.tablaDetalle.Rows[row].Cells["Cantidad"].Value);
+            precio = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["Precio"].Value.GetType() == typeof(DBNull)) ? 0 : this.tablaDetalle.Rows[row].Cells["Precio"].Value);
+            
+            double impID = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value.GetType() == typeof(DBNull)) ? 0 : this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value);
 
-            switch (column)
+            if (impID != 0)
             {
-                case 4:
-                    cant = Convert.ToInt32(this.tablaDetalle.Rows[row].Cells["Cantidad"].Value);
-                    break;
-
-                case 5:
-                    precio = Convert.ToDouble(this.tablaDetalle.Rows[row].Cells["Precio"].Value);
-
-                    break;
-                case 7:
-                    double impID = Convert.ToDouble(this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value);
-
-                    foreach (DataRow fila in comboImp.Rows)
+                foreach (DataRow fila in comboImp.Rows)
+                {
+                    if ((int)fila["ImpuestoID"] == impID)
                     {
-                        if ((int)fila["ImpuestoID"] == impID)
-                        {
-                            imp = Convert.ToDouble( fila["Impuesto"]);
-                            break;
-                        }
+                        imp = Convert.ToDouble(fila["Impuesto"]);
+                        break;
                     }
-
-                    break;
-                default:
-                    break;
+                }
             }
 
             if (cant != 0 && precio != 0)
@@ -243,6 +232,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             {
                 tablaDetalle.Rows[row].Cells["Total"].Value = subtotal * (imp +1);
             }
+
+
+
+
+
+
 
 
         }
