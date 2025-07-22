@@ -60,7 +60,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2768, 287);
+            panel1.Size = new Size(2761, 287);
             panel1.TabIndex = 0;
             // 
             // btnRecargar
@@ -106,7 +106,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 287);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2768, 1225);
+            panel2.Size = new Size(2761, 1204);
             panel2.TabIndex = 1;
             // 
             // tablaVenta
@@ -121,7 +121,7 @@
             tablaVenta.Name = "tablaVenta";
             tablaVenta.ReadOnly = true;
             tablaVenta.RowHeadersWidth = 102;
-            tablaVenta.Size = new Size(2768, 1225);
+            tablaVenta.Size = new Size(2761, 1204);
             tablaVenta.TabIndex = 0;
             tablaVenta.CellDoubleClick += tablaVenta_CellDoubleClick;
             // 
@@ -232,7 +232,7 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2768, 1512);
+            ClientSize = new Size(2761, 1491);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;

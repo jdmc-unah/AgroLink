@@ -1,6 +1,7 @@
 ﻿using AgroLink.Recursos;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 {
@@ -29,6 +30,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         Recursos_SQL recSQL = new Recursos_SQL();
 
+        DataTable comboImp;
+
+
         #region Metodos
 
         public void ObtenerDatos(int id)
@@ -51,17 +55,26 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             comboEstado.SelectedItem = estado;
 
 
-            //Llena tabla detalle
+            //Trae y configura datos de venta detalle
             Dictionary<string, object> parametros = new Dictionary<string, object>() {
                 {"ventID", id }
             };
 
-            tablaDetalle.AutoGenerateColumns = false;
-            tablaDetalle.DataSource = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
+            DataTable dt = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
+            dt.Columns["VentaID"].AutoIncrement = false;
+
+            dt.Columns["VentaID"].DefaultValue = 0;
+            dt.Columns["CodigoProducto"].DefaultValue = "PRO";
+            dt.Columns["Subtotal"].DefaultValue = 0;
+
+
+            tablaDetalle.AutoGenerateColumns = false; //esto es para que le haga caso al orden de columnas del datagridview
+
+            tablaDetalle.DataSource = dt;
 
 
             //Llena los comboboxes de tabla detalle
-            DataGridViewComboBoxColumn colProducto = (DataGridViewComboBoxColumn) tablaDetalle.Columns["ProductoID"];
+            DataGridViewComboBoxColumn colProducto = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ProductoID"];
             colProducto.DataSource = recSQL.EjecutarVista("vTraeProductos");
             colProducto.DisplayMember = "Producto";
             colProducto.ValueMember = "ProductoID";
@@ -72,12 +85,14 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             colBodega.ValueMember = "BodegaID";
 
             DataGridViewComboBoxColumn colImpuesto = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ImpuestoID"];
-            colImpuesto.DataSource = recSQL.EjecutarVista("vTraeImpuesto");
+            comboImp = recSQL.EjecutarVista("vTraeImpuesto");
+            colImpuesto.DataSource = comboImp;
             colImpuesto.DisplayMember = "Impuesto";
             colImpuesto.ValueMember = "ImpuestoID";
 
 
-
+            /* OJO Si por defecto los campos dentro de una vista o sp que sean de 
+             * otra tabla que no sea la tabla principal son solo lectura asi que cuidado con eso  */
 
         }
 
@@ -168,12 +183,71 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
 
+        #region Tabla Venta
+
+
         private void tablaDetalle_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            e.Cancel = true;
+            MessageBox.Show(e.Exception.ToString());
+            //e.Cancel = true;
+        }
+
+
+
+        //Hace calculos automaticos para reflejar cambios en subtotal y total
+
+        int cant = 0; double precio = 0 , imp = 0 , subtotal = 0;
+
+        private void tablaDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            //Toma el indice de la fila seleccionada y el valor seleccionado 
+            int row = tablaDetalle.CurrentRow.Index;
+            int column = tablaDetalle.CurrentCell.ColumnIndex;
+
+
+            switch (column)
+            {
+                case 4:
+                    cant = Convert.ToInt32(this.tablaDetalle.Rows[row].Cells["Cantidad"].Value);
+                    break;
+
+                case 5:
+                    precio = Convert.ToDouble(this.tablaDetalle.Rows[row].Cells["Precio"].Value);
+
+                    break;
+                case 7:
+                    double impID = Convert.ToDouble(this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value);
+
+                    foreach (DataRow fila in comboImp.Rows)
+                    {
+                        if ((int)fila["ImpuestoID"] == impID)
+                        {
+                            imp = Convert.ToDouble( fila["Impuesto"]);
+                            break;
+                        }
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+
+            if (cant != 0 && precio != 0)
+            {
+                subtotal = cant * precio;
+                tablaDetalle.Rows[row].Cells["Subtotal"].Value = subtotal;
+            }
+
+            if (imp != 0 && subtotal != 0)
+            {
+                tablaDetalle.Rows[row].Cells["Total"].Value = subtotal * (imp +1);
+            }
+
 
         }
 
+        #endregion
 
     }
 }

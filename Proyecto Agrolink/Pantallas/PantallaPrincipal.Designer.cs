@@ -80,7 +80,7 @@
             panelMain.Dock = DockStyle.Left;
             panelMain.Location = new Point(0, 0);
             panelMain.Name = "panelMain";
-            panelMain.Size = new Size(500, 1424);
+            panelMain.Size = new Size(500, 1491);
             panelMain.TabIndex = 1;
             panelMain.Visible = false;
             // 
@@ -110,7 +110,7 @@
             panelSubMenuConfig.Dock = DockStyle.Top;
             panelSubMenuConfig.Location = new Point(0, 1150);
             panelSubMenuConfig.Name = "panelSubMenuConfig";
-            panelSubMenuConfig.Size = new Size(476, 66);
+            panelSubMenuConfig.Size = new Size(500, 66);
             panelSubMenuConfig.TabIndex = 17;
             panelSubMenuConfig.Visible = false;
             // 
@@ -121,7 +121,7 @@
             subMenuEmpresa.Location = new Point(0, 0);
             subMenuEmpresa.Name = "subMenuEmpresa";
             subMenuEmpresa.Padding = new Padding(31, 0, 0, 0);
-            subMenuEmpresa.Size = new Size(476, 71);
+            subMenuEmpresa.Size = new Size(500, 71);
             subMenuEmpresa.TabIndex = 1;
             subMenuEmpresa.Text = "Empresa";
             subMenuEmpresa.TextAlign = ContentAlignment.MiddleLeft;
@@ -135,7 +135,7 @@
             menuConfig.Location = new Point(0, 1075);
             menuConfig.Name = "menuConfig";
             menuConfig.Padding = new Padding(10, 0, 0, 0);
-            menuConfig.Size = new Size(476, 75);
+            menuConfig.Size = new Size(500, 75);
             menuConfig.TabIndex = 16;
             menuConfig.Text = "Configuración";
             menuConfig.TextAlign = ContentAlignment.MiddleLeft;
@@ -149,7 +149,7 @@
             panelSubMenuProductos.Dock = DockStyle.Top;
             panelSubMenuProductos.Location = new Point(0, 937);
             panelSubMenuProductos.Name = "panelSubMenuProductos";
-            panelSubMenuProductos.Size = new Size(476, 138);
+            panelSubMenuProductos.Size = new Size(500, 138);
             panelSubMenuProductos.TabIndex = 15;
             panelSubMenuProductos.Visible = false;
             // 
@@ -160,7 +160,7 @@
             subMenuAlmacenes.Location = new Point(0, 71);
             subMenuAlmacenes.Name = "subMenuAlmacenes";
             subMenuAlmacenes.Padding = new Padding(31, 0, 0, 0);
-            subMenuAlmacenes.Size = new Size(476, 71);
+            subMenuAlmacenes.Size = new Size(500, 71);
             subMenuAlmacenes.TabIndex = 2;
             subMenuAlmacenes.Text = "Almacenes";
             subMenuAlmacenes.TextAlign = ContentAlignment.MiddleLeft;
@@ -173,7 +173,7 @@
             subMenuProductos.Location = new Point(0, 0);
             subMenuProductos.Name = "subMenuProductos";
             subMenuProductos.Padding = new Padding(31, 0, 0, 0);
-            subMenuProductos.Size = new Size(476, 71);
+            subMenuProductos.Size = new Size(500, 71);
             subMenuProductos.TabIndex = 1;
             subMenuProductos.Text = "Productos";
             subMenuProductos.TextAlign = ContentAlignment.MiddleLeft;
@@ -187,7 +187,7 @@
             menuProductos.Location = new Point(0, 862);
             menuProductos.Name = "menuProductos";
             menuProductos.Padding = new Padding(10, 0, 0, 0);
-            menuProductos.Size = new Size(476, 75);
+            menuProductos.Size = new Size(500, 75);
             menuProductos.TabIndex = 14;
             menuProductos.Text = "Productos";
             menuProductos.TextAlign = ContentAlignment.MiddleLeft;
@@ -201,7 +201,7 @@
             panelSubMenuSocios.Dock = DockStyle.Top;
             panelSubMenuSocios.Location = new Point(0, 724);
             panelSubMenuSocios.Name = "panelSubMenuSocios";
-            panelSubMenuSocios.Size = new Size(476, 138);
+            panelSubMenuSocios.Size = new Size(500, 138);
             panelSubMenuSocios.TabIndex = 13;
             panelSubMenuSocios.Visible = false;
             // 
@@ -212,7 +212,7 @@
             subMenuSocios.Location = new Point(0, 71);
             subMenuSocios.Name = "subMenuSocios";
             subMenuSocios.Padding = new Padding(31, 0, 0, 0);
-            subMenuSocios.Size = new Size(476, 71);
+            subMenuSocios.Size = new Size(500, 71);
             subMenuSocios.TabIndex = 2;
             subMenuSocios.Text = "Socios";
             subMenuSocios.TextAlign = ContentAlignment.MiddleLeft;
@@ -225,7 +225,7 @@
             subMenuAgricultores.Location = new Point(0, 0);
             subMenuAgricultores.Name = "subMenuAgricultores";
             subMenuAgricultores.Padding = new Padding(31, 0, 0, 0);
-            subMenuAgricultores.Size = new Size(476, 71);
+            subMenuAgricultores.Size = new Size(500, 71);
             subMenuAgricultores.TabIndex = 1;
             subMenuAgricultores.Text = "Agricultores";
             subMenuAgricultores.TextAlign = ContentAlignment.MiddleLeft;
@@ -238,7 +238,7 @@
             menuSocios.Location = new Point(0, 649);
             menuSocios.Name = "menuSocios";
             menuSocios.Padding = new Padding(10, 0, 0, 0);
-            menuSocios.Size = new Size(476, 75);
+            menuSocios.Size = new Size(500, 75);
             menuSocios.TabIndex = 12;
             menuSocios.Text = "Socios";
             menuSocios.TextAlign = ContentAlignment.MiddleLeft;
@@ -256,7 +256,7 @@
             panelSubMenuTrans.Dock = DockStyle.Top;
             panelSubMenuTrans.Location = new Point(0, 288);
             panelSubMenuTrans.Name = "panelSubMenuTrans";
-            panelSubMenuTrans.Size = new Size(476, 361);
+            panelSubMenuTrans.Size = new Size(500, 361);
             panelSubMenuTrans.TabIndex = 9;
             panelSubMenuTrans.Visible = false;
             // 
@@ -266,7 +266,7 @@
             subMenuSalida.Location = new Point(0, 355);
             subMenuSalida.Name = "subMenuSalida";
             subMenuSalida.Padding = new Padding(31, 0, 0, 0);
-            subMenuSalida.Size = new Size(476, 71);
+            subMenuSalida.Size = new Size(500, 71);
             subMenuSalida.TabIndex = 9;
             subMenuSalida.Text = "Salida de Producto";
             subMenuSalida.TextAlign = ContentAlignment.MiddleLeft;
@@ -279,7 +279,7 @@
             subMenuEntrada.Location = new Point(0, 284);
             subMenuEntrada.Name = "subMenuEntrada";
             subMenuEntrada.Padding = new Padding(31, 0, 0, 0);
-            subMenuEntrada.Size = new Size(476, 71);
+            subMenuEntrada.Size = new Size(500, 71);
             subMenuEntrada.TabIndex = 8;
             subMenuEntrada.Text = "Entrada de Producto";
             subMenuEntrada.TextAlign = ContentAlignment.MiddleLeft;
@@ -292,7 +292,7 @@
             subMenuRecibos.Location = new Point(0, 213);
             subMenuRecibos.Name = "subMenuRecibos";
             subMenuRecibos.Padding = new Padding(31, 0, 0, 0);
-            subMenuRecibos.Size = new Size(476, 71);
+            subMenuRecibos.Size = new Size(500, 71);
             subMenuRecibos.TabIndex = 7;
             subMenuRecibos.Text = "Recibos";
             subMenuRecibos.TextAlign = ContentAlignment.MiddleLeft;
@@ -305,7 +305,7 @@
             subMenuFacturas.Location = new Point(0, 142);
             subMenuFacturas.Name = "subMenuFacturas";
             subMenuFacturas.Padding = new Padding(31, 0, 0, 0);
-            subMenuFacturas.Size = new Size(476, 71);
+            subMenuFacturas.Size = new Size(500, 71);
             subMenuFacturas.TabIndex = 6;
             subMenuFacturas.Text = "Facturas";
             subMenuFacturas.TextAlign = ContentAlignment.MiddleLeft;
@@ -318,7 +318,7 @@
             subMenuCompras.Location = new Point(0, 71);
             subMenuCompras.Name = "subMenuCompras";
             subMenuCompras.Padding = new Padding(31, 0, 0, 0);
-            subMenuCompras.Size = new Size(476, 71);
+            subMenuCompras.Size = new Size(500, 71);
             subMenuCompras.TabIndex = 5;
             subMenuCompras.Text = "Compras";
             subMenuCompras.TextAlign = ContentAlignment.MiddleLeft;
@@ -331,7 +331,7 @@
             subMenuVent.Location = new Point(0, 0);
             subMenuVent.Name = "subMenuVent";
             subMenuVent.Padding = new Padding(31, 0, 0, 0);
-            subMenuVent.Size = new Size(476, 71);
+            subMenuVent.Size = new Size(500, 71);
             subMenuVent.TabIndex = 4;
             subMenuVent.Text = "Ventas";
             subMenuVent.TextAlign = ContentAlignment.MiddleLeft;
@@ -345,7 +345,7 @@
             menuTrans.Location = new Point(0, 213);
             menuTrans.Name = "menuTrans";
             menuTrans.Padding = new Padding(10, 0, 0, 0);
-            menuTrans.Size = new Size(476, 75);
+            menuTrans.Size = new Size(500, 75);
             menuTrans.TabIndex = 3;
             menuTrans.Text = "Transacciones";
             menuTrans.TextAlign = ContentAlignment.MiddleLeft;
@@ -358,7 +358,7 @@
             panelImage.Dock = DockStyle.Top;
             panelImage.Location = new Point(0, 0);
             panelImage.Name = "panelImage";
-            panelImage.Size = new Size(476, 213);
+            panelImage.Size = new Size(500, 213);
             panelImage.TabIndex = 2;
             // 
             // pictureBox1
@@ -367,7 +367,7 @@
             pictureBox1.Image = Properties.Resources.LogoCOPRAG;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(476, 213);
+            pictureBox1.Size = new Size(500, 213);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -378,7 +378,7 @@
             panelChildForm.Dock = DockStyle.Fill;
             panelChildForm.Location = new Point(500, 0);
             panelChildForm.Name = "panelChildForm";
-            panelChildForm.Size = new Size(2236, 1424);
+            panelChildForm.Size = new Size(2761, 1491);
             panelChildForm.TabIndex = 2;
             // 
             // PantallaPrincipal
@@ -386,7 +386,7 @@
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(2736, 1424);
+            ClientSize = new Size(3261, 1491);
             Controls.Add(panelChildForm);
             Controls.Add(panelMain);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;

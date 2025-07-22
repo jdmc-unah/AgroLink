@@ -13,6 +13,7 @@ as
 go
 
 SELECT * FROM vTraeSocio
+go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Lista de Precios Activas para ComboBox >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -23,7 +24,7 @@ as
 go
 
 SELECT * FROM vTraeListaPrecios
-
+go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Lista Productos para ComboBox >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -34,6 +35,24 @@ go
 
 SELECT * FROM vTraeProductos
 
+go
 
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Lista Bodegas para ComboBox >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+CREATE OR ALTER VIEW vTraeBodega
+as
+	SELECT BodegaID, Nombre as 'Bodega' FROM PRUEBAS.Bodega 
+go
 
+SELECT * FROM vTraeBodega
+
+go
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Impuestos para ComboBox >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER VIEW vTraeImpuesto
+as
+	SELECT ImpuestoID, Valor as 'Impuesto' FROM PRUEBAS.Impuesto 
+go
+
+SELECT * FROM vTraeImpuesto

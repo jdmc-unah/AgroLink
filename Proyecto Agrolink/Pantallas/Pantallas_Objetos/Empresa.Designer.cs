@@ -138,8 +138,8 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
-            splitContainer1.Size = new Size(2768, 1512);
-            splitContainer1.SplitterDistance = 1281;
+            splitContainer1.Size = new Size(2761, 1491);
+            splitContainer1.SplitterDistance = 1277;
             splitContainer1.SplitterWidth = 5;
             splitContainer1.TabIndex = 5;
             // 
@@ -346,8 +346,8 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(splitContainer3);
-            splitContainer2.Size = new Size(1482, 1512);
-            splitContainer2.SplitterDistance = 752;
+            splitContainer2.Size = new Size(1479, 1491);
+            splitContainer2.SplitterDistance = 741;
             splitContainer2.SplitterWidth = 3;
             splitContainer2.TabIndex = 1;
             // 
@@ -365,8 +365,8 @@
             // splitContainer4.Panel2
             // 
             splitContainer4.Panel2.Controls.Add(dataGridView1);
-            splitContainer4.Size = new Size(1482, 752);
-            splitContainer4.SplitterDistance = 102;
+            splitContainer4.Size = new Size(1479, 741);
+            splitContainer4.SplitterDistance = 100;
             splitContainer4.TabIndex = 1;
             // 
             // label7
@@ -496,8 +496,8 @@
             // splitContainer3.Panel2
             // 
             splitContainer3.Panel2.Controls.Add(dataGridView2);
-            splitContainer3.Size = new Size(1482, 757);
-            splitContainer3.SplitterDistance = 80;
+            splitContainer3.Size = new Size(1479, 747);
+            splitContainer3.SplitterDistance = 78;
             splitContainer3.TabIndex = 3;
             // 
             // label6
@@ -596,7 +596,7 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2768, 1512);
+            ClientSize = new Size(2761, 1491);
             Controls.Add(splitContainer1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2, 3, 2, 3);
