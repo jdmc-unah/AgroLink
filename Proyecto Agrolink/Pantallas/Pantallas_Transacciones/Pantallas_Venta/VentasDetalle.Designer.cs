@@ -43,24 +43,23 @@
             dateTimePicker1 = new DateTimePicker();
             panel2 = new Panel();
             tablaDetalle = new DataGridView();
-            VentaID = new DataGridViewTextBoxColumn();
-            ProductoID = new DataGridViewTextBoxColumn();
-            ImpuestoID = new DataGridViewTextBoxColumn();
-            NomImpuesto = new DataGridViewTextBoxColumn();
-            BodegaID = new DataGridViewTextBoxColumn();
-            CodigoProducto = new DataGridViewTextBoxColumn();
-            Producto = new DataGridViewTextBoxColumn();
-            Bodega = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Impuesto = new DataGridViewTextBoxColumn();
-            Subtotal = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             btnNuevo = new Button();
             btnCancelar = new Button();
             btnEditar = new Button();
             btnAceptar = new Button();
             btnVolver = new Button();
+            VentaID = new DataGridViewTextBoxColumn();
+            ProductoID = new DataGridViewComboBoxColumn();
+            ImpuestoID = new DataGridViewTextBoxColumn();
+            Producto = new DataGridViewTextBoxColumn();
+            NomImpuesto = new DataGridViewTextBoxColumn();
+            Bodega = new DataGridViewTextBoxColumn();
+            CodigoProducto = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Subtotal = new DataGridViewTextBoxColumn();
+            Impuesto = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaDetalle).BeginInit();
@@ -209,137 +208,14 @@
             // tablaDetalle
             // 
             tablaDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaDetalle.Columns.AddRange(new DataGridViewColumn[] { VentaID, ProductoID, ImpuestoID, NomImpuesto, BodegaID, CodigoProducto, Producto, Bodega, Cantidad, Precio, Impuesto, Subtotal, Total });
-            tablaDetalle.Dock = DockStyle.Fill;
+            tablaDetalle.Columns.AddRange(new DataGridViewColumn[] { VentaID, ProductoID, ImpuestoID, Producto, NomImpuesto, Bodega, CodigoProducto, Cantidad, Precio, Subtotal, Impuesto, Total });
+            tablaDetalle.Dock = DockStyle.Top;
             tablaDetalle.Location = new Point(0, 0);
             tablaDetalle.Name = "tablaDetalle";
             tablaDetalle.ReadOnly = true;
             tablaDetalle.RowHeadersWidth = 102;
-            tablaDetalle.Size = new Size(2768, 991);
-            tablaDetalle.TabIndex = 0;
-            tablaDetalle.DataError += tablaDetalle_DataError;
-            // 
-            // VentaID
-            // 
-            VentaID.DataPropertyName = "VentaID";
-            VentaID.HeaderText = "VentaID";
-            VentaID.MinimumWidth = 12;
-            VentaID.Name = "VentaID";
-            VentaID.ReadOnly = true;
-            VentaID.Visible = false;
-            VentaID.Width = 250;
-            // 
-            // ProductoID
-            // 
-            ProductoID.DataPropertyName = "ProductoID";
-            ProductoID.HeaderText = "ProductoID";
-            ProductoID.MinimumWidth = 12;
-            ProductoID.Name = "ProductoID";
-            ProductoID.ReadOnly = true;
-            ProductoID.Visible = false;
-            ProductoID.Width = 250;
-            // 
-            // ImpuestoID
-            // 
-            ImpuestoID.DataPropertyName = "ImpuestoID";
-            ImpuestoID.HeaderText = "ImpuestoID";
-            ImpuestoID.MinimumWidth = 12;
-            ImpuestoID.Name = "ImpuestoID";
-            ImpuestoID.ReadOnly = true;
-            ImpuestoID.Visible = false;
-            ImpuestoID.Width = 250;
-            // 
-            // NomImpuesto
-            // 
-            NomImpuesto.DataPropertyName = "NomImpuesto";
-            NomImpuesto.HeaderText = "NomImpuesto";
-            NomImpuesto.MinimumWidth = 12;
-            NomImpuesto.Name = "NomImpuesto";
-            NomImpuesto.ReadOnly = true;
-            NomImpuesto.Visible = false;
-            NomImpuesto.Width = 250;
-            // 
-            // BodegaID
-            // 
-            BodegaID.DataPropertyName = "BodegaID";
-            BodegaID.HeaderText = "BodegaID";
-            BodegaID.MinimumWidth = 12;
-            BodegaID.Name = "BodegaID";
-            BodegaID.ReadOnly = true;
-            BodegaID.Visible = false;
-            BodegaID.Width = 250;
-            // 
-            // CodigoProducto
-            // 
-            CodigoProducto.DataPropertyName = "CodigoProducto";
-            CodigoProducto.HeaderText = "Codigo";
-            CodigoProducto.MinimumWidth = 12;
-            CodigoProducto.Name = "CodigoProducto";
-            CodigoProducto.ReadOnly = true;
-            CodigoProducto.Width = 250;
-            // 
-            // Producto
-            // 
-            Producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Producto.DataPropertyName = "Producto";
-            Producto.HeaderText = "Producto";
-            Producto.MinimumWidth = 12;
-            Producto.Name = "Producto";
-            Producto.ReadOnly = true;
-            // 
-            // Bodega
-            // 
-            Bodega.DataPropertyName = "Bodega";
-            Bodega.HeaderText = "Bodega";
-            Bodega.MinimumWidth = 12;
-            Bodega.Name = "Bodega";
-            Bodega.ReadOnly = true;
-            Bodega.Width = 300;
-            // 
-            // Cantidad
-            // 
-            Cantidad.DataPropertyName = "Cantidad";
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 12;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 250;
-            // 
-            // Precio
-            // 
-            Precio.DataPropertyName = "Precio";
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 12;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 250;
-            // 
-            // Impuesto
-            // 
-            Impuesto.DataPropertyName = "Impuesto";
-            Impuesto.HeaderText = "Impuesto";
-            Impuesto.MinimumWidth = 12;
-            Impuesto.Name = "Impuesto";
-            Impuesto.ReadOnly = true;
-            Impuesto.Width = 250;
-            // 
-            // Subtotal
-            // 
-            Subtotal.DataPropertyName = "Subtotal";
-            Subtotal.HeaderText = "Subtotal";
-            Subtotal.MinimumWidth = 12;
-            Subtotal.Name = "Subtotal";
-            Subtotal.ReadOnly = true;
-            Subtotal.Width = 250;
-            // 
-            // Total
-            // 
-            Total.DataPropertyName = "Total";
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 12;
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            Total.Width = 250;
+            tablaDetalle.Size = new Size(2768, 375);
+            tablaDetalle.TabIndex = 1;
             // 
             // btnNuevo
             // 
@@ -392,6 +268,117 @@
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
+            // VentaID
+            // 
+            VentaID.DataPropertyName = "VentaID";
+            VentaID.HeaderText = "VentaID";
+            VentaID.MinimumWidth = 12;
+            VentaID.Name = "VentaID";
+            VentaID.ReadOnly = true;
+            VentaID.Visible = false;
+            VentaID.Width = 250;
+            // 
+            // ProductoID
+            // 
+            ProductoID.HeaderText = "ProductoID";
+            ProductoID.MinimumWidth = 12;
+            ProductoID.Name = "ProductoID";
+            ProductoID.ReadOnly = true;
+            ProductoID.Width = 250;
+            // 
+            // ImpuestoID
+            // 
+            ImpuestoID.DataPropertyName = "ImpuestoID";
+            ImpuestoID.HeaderText = "ImpuestoID";
+            ImpuestoID.MinimumWidth = 12;
+            ImpuestoID.Name = "ImpuestoID";
+            ImpuestoID.ReadOnly = true;
+            ImpuestoID.Visible = false;
+            ImpuestoID.Width = 250;
+            // 
+            // Producto
+            // 
+            Producto.DataPropertyName = "Producto";
+            Producto.HeaderText = "Producto";
+            Producto.MinimumWidth = 12;
+            Producto.Name = "Producto";
+            Producto.ReadOnly = true;
+            Producto.Visible = false;
+            Producto.Width = 250;
+            // 
+            // NomImpuesto
+            // 
+            NomImpuesto.DataPropertyName = "NomImpuesto";
+            NomImpuesto.HeaderText = "NomImpuesto";
+            NomImpuesto.MinimumWidth = 12;
+            NomImpuesto.Name = "NomImpuesto";
+            NomImpuesto.ReadOnly = true;
+            NomImpuesto.Visible = false;
+            NomImpuesto.Width = 250;
+            // 
+            // Bodega
+            // 
+            Bodega.DataPropertyName = "Bodega";
+            Bodega.HeaderText = "Bodega";
+            Bodega.MinimumWidth = 12;
+            Bodega.Name = "Bodega";
+            Bodega.ReadOnly = true;
+            Bodega.Width = 250;
+            // 
+            // CodigoProducto
+            // 
+            CodigoProducto.DataPropertyName = "CodigoProducto";
+            CodigoProducto.HeaderText = "Codigo";
+            CodigoProducto.MinimumWidth = 12;
+            CodigoProducto.Name = "CodigoProducto";
+            CodigoProducto.ReadOnly = true;
+            CodigoProducto.Width = 250;
+            // 
+            // Cantidad
+            // 
+            Cantidad.DataPropertyName = "Cantidad";
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 12;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 250;
+            // 
+            // Precio
+            // 
+            Precio.DataPropertyName = "Precio";
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 12;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 250;
+            // 
+            // Subtotal
+            // 
+            Subtotal.DataPropertyName = "Subtotal";
+            Subtotal.HeaderText = "Subtotal";
+            Subtotal.MinimumWidth = 12;
+            Subtotal.Name = "Subtotal";
+            Subtotal.ReadOnly = true;
+            Subtotal.Width = 250;
+            // 
+            // Impuesto
+            // 
+            Impuesto.DataPropertyName = "Impuesto";
+            Impuesto.HeaderText = "Impuesto";
+            Impuesto.MinimumWidth = 12;
+            Impuesto.Name = "Impuesto";
+            Impuesto.ReadOnly = true;
+            Impuesto.Width = 250;
+            // 
+            // Total
+            // 
+            Total.DataPropertyName = "Total";
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 12;
+            Total.Name = "Total";
+            Total.ReadOnly = true;
+            Total.Width = 250;
+            // 
             // VentasDetalle
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -428,7 +415,6 @@
         private Label label2;
         private Panel panel1;
         private Panel panel2;
-        private DataGridView tablaDetalle;
         private Button btnNuevo;
         private Button btnCancelar;
         private Button btnEditar;
@@ -436,19 +422,19 @@
         private Button btnVolver;
         private Label label6;
         private DateTimePicker dateTimePicker1;
+        private ComboBox comboEstado;
+        private DataGridView tablaDetalle;
         private DataGridViewTextBoxColumn VentaID;
-        private DataGridViewTextBoxColumn ProductoID;
+        private DataGridViewComboBoxColumn ProductoID;
         private DataGridViewTextBoxColumn ImpuestoID;
-        private DataGridViewTextBoxColumn NomImpuesto;
-        private DataGridViewTextBoxColumn BodegaID;
-        private DataGridViewTextBoxColumn CodigoProducto;
         private DataGridViewTextBoxColumn Producto;
+        private DataGridViewTextBoxColumn NomImpuesto;
         private DataGridViewTextBoxColumn Bodega;
+        private DataGridViewTextBoxColumn CodigoProducto;
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn Precio;
-        private DataGridViewTextBoxColumn Impuesto;
         private DataGridViewTextBoxColumn Subtotal;
+        private DataGridViewTextBoxColumn Impuesto;
         private DataGridViewTextBoxColumn Total;
-        private ComboBox comboEstado;
     }
 }

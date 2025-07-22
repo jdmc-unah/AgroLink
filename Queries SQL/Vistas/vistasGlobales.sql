@@ -25,6 +25,14 @@ go
 SELECT * FROM vTraeListaPrecios
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Lista Productos para ComboBox >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER VIEW vTraeProductos
+as
+	SELECT ProductoID, Nombre as 'Producto' FROM PRUEBAS.Producto 
+go
+
+SELECT * FROM vTraeProductos
 
 
 
