@@ -78,7 +78,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             col2.DisplayMember = "Producto";
             col2.ReadOnly = false;
 
-           // tablaDetalle.DataSource = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
+            // tablaDetalle.DataSource = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
 
 
 
@@ -180,10 +180,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         }
 
-        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            e.Cancel = true;
 
-        }
     }
+}
 }

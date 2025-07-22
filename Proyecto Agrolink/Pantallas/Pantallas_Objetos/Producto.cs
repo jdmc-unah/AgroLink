@@ -80,5 +80,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
                 MessageBox.Show("Error al eliminar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
