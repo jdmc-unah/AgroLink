@@ -344,3 +344,6 @@ C:\Users\Kisha M\Desktop\AgroLinkDB\Codigo Agrolink\AgroLink\Proyecto Agrolink\o
 C:\Users\Kisha M\Desktop\AgroLinkDB\Codigo Agrolink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Producto.resources
 C:\Users\Kisha M\Desktop\AgroLinkDB\Codigo Agrolink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.RegistroUsuario.resources
 C:\Users\Kisha M\Desktop\AgroLinkDB\Codigo Agrolink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.ResetearClave.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Producto.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.RegistroUsuario.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.ResetearClave.resources

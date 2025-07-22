@@ -178,6 +178,7 @@ namespace AgroLink.Pantallas
 
             OpenChildForm(new Login());
             panelMain.Visible = false;
+
         }
         #endregion
 

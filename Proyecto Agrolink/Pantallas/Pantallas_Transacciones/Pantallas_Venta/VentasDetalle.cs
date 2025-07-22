@@ -1,15 +1,6 @@
 ﻿using AgroLink.Recursos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 {
@@ -65,22 +56,25 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
                 {"ventID", id }
             };
 
-
-            //DataGridViewComboBoxColumn col = (DataGridViewComboBoxColumn) tablaDetalle.Columns["Producto"];
-            //col.DataSource = recSQL.EjecutarVista("vTraeProductos");
-            //col.ValueMember = "ProductoID";
-            //col.DisplayMember = "Producto";
+            tablaDetalle.AutoGenerateColumns = false;
+            tablaDetalle.DataSource = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
 
 
-            DataGridViewComboBoxColumn col2 = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ProductoID"];
-            col2.DataSource = recSQL.EjecutarVista("vTraeProductos");
-            col2.ValueMember = "ProductoID";
-            col2.DisplayMember = "Producto";
-            col2.ReadOnly = false;
+            //Llena los comboboxes de tabla detalle
+            DataGridViewComboBoxColumn colProducto = (DataGridViewComboBoxColumn) tablaDetalle.Columns["ProductoID"];
+            colProducto.DataSource = recSQL.EjecutarVista("vTraeProductos");
+            colProducto.DisplayMember = "Producto";
+            colProducto.ValueMember = "ProductoID";
 
-            // tablaDetalle.DataSource = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
+            DataGridViewComboBoxColumn colBodega = (DataGridViewComboBoxColumn)tablaDetalle.Columns["BodegaID"];
+            colBodega.DataSource = recSQL.EjecutarVista("vTraeBodega");
+            colBodega.DisplayMember = "Bodega";
+            colBodega.ValueMember = "BodegaID";
 
-
+            DataGridViewComboBoxColumn colImpuesto = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ImpuestoID"];
+            colImpuesto.DataSource = recSQL.EjecutarVista("vTraeImpuesto");
+            colImpuesto.DisplayMember = "Impuesto";
+            colImpuesto.ValueMember = "ImpuestoID";
 
 
 
@@ -182,5 +176,4 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
     }
-}
 }

@@ -21,7 +21,7 @@ go
 CREATE OR ALTER PROCEDURE spTraeVentaDetalle @ventID int
 as
 	begin
-		SELECT VD.VentaID, P.ProductoID , P.CodigoProducto , P.Nombre as 'Producto', I.ImpuestoID, I.Nombre as 'NomImpuesto', I.Valor as 'Impuesto', B.BodegaID, 
+		SELECT VD.VentaID, VD.ProductoID , P.CodigoProducto , P.Nombre as 'Producto', VD.ImpuestoID, I.Nombre as 'NomImpuesto', I.Valor as 'Impuesto', VD.BodegaID, 
 		B.Nombre as 'Bodega', VD.Cantidad, VD.Precio, (VD.Cantidad * VD.Precio) as 'Subtotal' , VD.Total 
 
 		FROM (SELECT * FROM Pruebas.VentaDetalle WHERE VentaID = @ventID) VD 
