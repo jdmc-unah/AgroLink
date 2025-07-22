@@ -22,7 +22,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         #region Variables Globales
 
         Recursos.Recursos_SQL recSQL = new Recursos.Recursos_SQL();
-        Recursos.MetodosGlobales metGlobales = new Recursos.MetodosGlobales();
 
         #endregion
 

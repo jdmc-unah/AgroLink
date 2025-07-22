@@ -29,6 +29,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
         Recursos_SQL recSQL = new Recursos_SQL();
+        MetodosGlobales metodosGlobales = new MetodosGlobales();
 
         DataTable comboImp;
 
@@ -165,6 +166,15 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         {
             ToggleReadOnly(true);
 
+            Dictionary<string, object> parametros = new Dictionary<string, object>() {
+                {"ventID" , ventaID  }
+            };
+
+
+            if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", metodosGlobales.CrearDataTable(tablaDetalle), parametros))
+            {
+                ObtenerDatos(ventaID);
+            }
 
 
 

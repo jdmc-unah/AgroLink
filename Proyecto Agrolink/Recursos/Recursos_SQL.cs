@@ -99,9 +99,6 @@ namespace AgroLink.Recursos
 
 
 
-
-
-
         public bool EjecutarSPBool(string nombreSP, Dictionary<string, object>? parametros = null)
         {
             try
@@ -138,6 +135,55 @@ namespace AgroLink.Recursos
                 return false;
             }
         }
+
+
+
+        public bool EjecutarSPBool(string nombreSP,  string paramTabla, string nombreTipoTabla, DataTable tabla, Dictionary<string, object>? parametros = null)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(nombreSP, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Parámetro de entrada
+                        SqlParameter parameter = command.Parameters.AddWithValue($"@{paramTabla}", tabla ?? null);
+                        parameter.SqlDbType = SqlDbType.Structured;
+                        parameter.TypeName = nombreTipoTabla; //este es el tipo de tabla que se va a usar (usualmente se crea un tipo custom)
+
+
+                        // Parámetros de entrada
+                        if (parametros != null)
+                        {
+                            foreach (var param in parametros)
+                            {
+                                command.Parameters.AddWithValue($"@{param.Key}", param.Value ?? null);
+                            }
+                        }
+
+                       
+                        connection.Open();
+
+                        //ejecuta el sp
+                        command.ExecuteNonQuery();
+
+                        return true;
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //si falla devuelve falso
+                return false;
+            }
+        }
+
+
+
 
 
         //Ejecuta vistas

@@ -40,13 +40,16 @@ go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
 CREATE TYPE TipoVentaDetalle as TABLE(
 	VentaID int not null,
+	Codigo varchar(15),
 	ProductoID int not null,
 	ImpuestoID int not null,
 	BodegaID int not null,
 	Cantidad int not null,
 	Precio decimal(10,2) not null ,
+	SubTotal decimal(10,2),
 	Total decimal(10,2) not null 
 )
 
@@ -74,8 +77,6 @@ as
 					ProductoID = @prodID, ImpuestoID = @impID, BodegaID = @bodID, Cantidad = @cant, Precio = @prec , Total = @tot
 					WHERE VentaID = @ventID;
 				
-
-
 				fetch next from crsVentaDet into   @ventDetID, @prodID , @impID, @bodID , @cant , @prec , @tot 
 			end
 		
@@ -94,15 +95,21 @@ begin transaction
 DECLARE @DatosPrueba AS TipoVentaDetalle;
 
 -- Insertar datos de prueba
-INSERT INTO @DatosPrueba (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total)
-VALUES (3, 11, 1, 1, 2, 850 , 1955),
+INSERT INTO @DatosPrueba (VentaID,Codigo,  ProductoID, BodegaID, Cantidad,	Precio, SubTotal, ImpuestoID, Total)
+VALUES
+(2,'PRO11',11,1,25,25.00,625.00,1,28.75),
+(0,'PRO' ,5,2,5,5,25,2,31.25)
 
-(0, 10, 1, 1, 15, 25, 431.25),	--tomate
+
+--(2,'PRO11' , 11 , 1 , 1 , 25.00, 25 , 1 , 28.75)
+
+EXEC spAddUpdateVentaDet 2, @DatosPrueba;
+
+(3, 10, 2, 2, 15, 25, 431.25),	--tomate
 (0, 9, 1, 1, 15, 25, 431.25)	--tomate
 
 
 -- Ejecutar el procedimiento con la tabla como parámetro
-EXEC spAddUpdateVentaDet 3, @DatosPrueba;
 
 
 --insert into Pruebas.VentaDetalle (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total) values
@@ -110,6 +117,9 @@ EXEC spAddUpdateVentaDet 3, @DatosPrueba;
 
 
 select * from pruebas.VentaDetalle 
+select * from pruebas.Venta
+
+select * from pruebas.Bodega
 
 rollback
 
