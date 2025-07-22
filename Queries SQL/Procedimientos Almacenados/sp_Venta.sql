@@ -1,7 +1,7 @@
 use agrolinkdb
 
 
-
+begin transaction
 go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Busqueda por Codigo >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -35,6 +35,94 @@ go
 
 exec spTraeVentaDetalle 1
 
+go
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE TYPE TipoVentaDetalle as TABLE(
+	VentaID int not null,
+	ProductoID int not null,
+	ImpuestoID int not null,
+	BodegaID int not null,
+	Cantidad int not null,
+	Precio decimal(10,2) not null ,
+	Total decimal(10,2) not null 
+)
+
+go
+
+CREATE OR ALTER PROCEDURE spAddUpdateVentaDet @ventID int, @detalle TipoVentaDetalle READONLY
+as
+	begin
+		
+		declare @ventDetID int, @prodID int, @impID int,  @bodID int, @cant int, @prec float ,  @tot float
+
+		declare crsVentaDet cursor for
+		select VentaID,  ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total  from @detalle
+
+		open crsVentaDet; fetch next from crsVentaDet into  @ventDetID, @prodID , @impID, @bodID , @cant , @prec , @tot 
+
+		WHILE @@FETCH_STATUS = 0
+			begin
+			--el id por defecto en c# es 0 asi que si es una nueva fila se va a insertar, de lo contrario se actualiza
+				IF @ventDetID = 0 
+					insert into Pruebas.VentaDetalle (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total)  VALUES
+					(@ventID, @prodID, @impID, @bodID , @cant , @prec , @tot ) ;	
+				ELSE	
+					update Pruebas.VentaDetalle set 
+					ProductoID = @prodID, ImpuestoID = @impID, BodegaID = @bodID, Cantidad = @cant, Precio = @prec , Total = @tot
+					WHERE VentaID = @ventID;
+				
+
+
+				fetch next from crsVentaDet into   @ventDetID, @prodID , @impID, @bodID , @cant , @prec , @tot 
+			end
+		
+		deallocate crsVentaDet
+
+	end
+go
+
+
+
+
+go
+--Para probar el sp anterior
+begin transaction
+-- Declarar la variable tipo tabla
+DECLARE @DatosPrueba AS TipoVentaDetalle;
+
+-- Insertar datos de prueba
+INSERT INTO @DatosPrueba (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total)
+VALUES (3, 11, 1, 1, 2, 850 , 1955),
+
+(0, 10, 1, 1, 15, 25, 431.25),	--tomate
+(0, 9, 1, 1, 15, 25, 431.25)	--tomate
+
+
+-- Ejecutar el procedimiento con la tabla como parámetro
+EXEC spAddUpdateVentaDet 3, @DatosPrueba;
+
+
+--insert into Pruebas.VentaDetalle (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total) values
+--(3, 11, 1, 1, 2, 850 , 1955)
+
+
+select * from pruebas.VentaDetalle 
+
+rollback
+
+
+
+
+
+
+
+
+
+
+
 select * from Pruebas.Venta
 select * from Pruebas.Producto
 
@@ -55,3 +143,4 @@ select * from Pruebas.Producto
 
 
 
+rollback
