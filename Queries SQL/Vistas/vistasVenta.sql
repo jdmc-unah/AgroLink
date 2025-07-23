@@ -20,16 +20,10 @@ as
 go	
 
 
-
-
-
-
-
-
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-select * from vtraeventas
+select * from vtraeventas where VentaID =3
 
 
 select * from Pruebas.VentaDetalle 

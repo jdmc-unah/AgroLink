@@ -52,7 +52,6 @@ as
 go
 
 
-
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
@@ -101,24 +100,23 @@ rollback
 
 
 
--->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta Detalle >>>>>>>>>>>>PENDIENTE*************>>>>>>>>>>>>>>>>
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta Detalle >>>>>>>>>>>>*************PENDIENTE*************>>>>>>>>>>>>>>>>
 
-/*
 CREATE TYPE TipoVentaDetalle as TABLE(
 	VentaID int not null,
 	Codigo varchar(15),
 	ProductoID int not null,
-	ImpuestoID int not null,
 	BodegaID int not null,
 	Cantidad int not null,
 	Precio decimal(10,2) not null ,
 	SubTotal decimal(10,2),
+	ImpuestoID int not null,
 	Total decimal(10,2) not null 
 )
 
 go
 
-CREATE OR ALTER PROCEDURE spAddUpdateVentaDet @ventID int, @detalle TipoVentaDetalle READONLY
+CREATE OR ALTER PROCEDURE spAddUpdateVentaDet @ventID int,  @detalle TipoVentaDetalle READONLY
 as
 	begin
 		
@@ -132,14 +130,14 @@ as
 		WHILE @@FETCH_STATUS = 0
 			begin
 			--el id por defecto en c# es 0 asi que si es una nueva fila se va a insertar, de lo contrario se actualiza
-				--IF @ventDetID = 0 
-					--insert into Pruebas.VentaDetalle (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total)  VALUES
-					--(@ventID, @prodID, @impID, @bodID , @cant , @prec , @tot ) ;	
+				IF @ventDetID = 0 
+					insert into Pruebas.VentaDetalle (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total)  VALUES
+					(@ventID, @prodDetID, @impID, @bodID , @cant , @prec , @tot ) ;	
 				
-				--IF	@ventDetID <> 0 
+				ELSE
 					update Pruebas.VentaDetalle set 
 					ProductoID = @prodDetID, ImpuestoID = @impID, BodegaID = @bodID, Cantidad = @cant, Precio = @prec , Total = @tot
-					WHERE VentaID = @ventID --and ProductoID = @prodID;
+					WHERE VentaID = @ventID -- AND ProductoID = @prodID; queda adaptar esto bien
 				
 				fetch next from crsVentaDet into   @ventDetID, @prodDetID , @impID, @bodID , @cant , @prec , @tot 
 			end
@@ -192,7 +190,7 @@ rollback
 
 
 
-*/
+
 
 
 

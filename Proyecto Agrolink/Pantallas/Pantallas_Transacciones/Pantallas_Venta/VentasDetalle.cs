@@ -180,17 +180,17 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             if (recSQL.EjecutarSPBool("spAddUpdateVenta", paramsVent))
             {
 
-                ObtenerDatos(ventaID); //aqui realmente va lo de abajo
+               // ObtenerDatos(ventaID); //aqui realmente va lo de abajo
 
                 //no borrar esto
-                //Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
-                //{"ventID" , ventaID  }
-                //};
+                Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
+                {"ventID" , ventaID  }
+                };
 
-                //if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", metodosGlobales.CrearDataTable(tablaDetalle), paramsDet))
-                //{
-                //    ObtenerDatos(ventaID);
-                //}
+                if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", metodosGlobales.CrearDataTable(tablaDetalle), paramsDet))
+                {
+                    ObtenerDatos(ventaID);
+                }
 
             }
             else
