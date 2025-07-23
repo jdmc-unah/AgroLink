@@ -1,0 +1,11 @@
+use AgroLinkDB
+
+
+create or alter view vTraerAgricultores
+as
+select PS.CodigoSocio,ps.Nombre,ps.Identidad,ps.Correo,ps.Telefono,
+pf.CodigoFinca,pf.Nombre as 'Finca',PM.Nombre as Municipio,pd.Detalle as 'DetalleUbicacion'
+from Pruebas.Socio PS inner join Pruebas.Finca PF  on PS.SocioID=PF.SocioID inner join Pruebas.Direccion PD on PD.DireccionID=PF.DireccionID
+inner join Pruebas.Municipio PM on pm.MunicipioID=pd.MunicipioID
+
+
