@@ -188,7 +188,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker1.CustomFormat = "yyyy/MM/dd";
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.Location = new Point(2400, 57);

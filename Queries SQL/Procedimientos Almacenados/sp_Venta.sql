@@ -37,10 +37,73 @@ exec spTraeVentaDetalle 1
 
 go
 
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Venta Filtrada >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
--->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER PROCEDURE spTraeVentaFiltrada @ventID int
+as
+	begin
+		SELECT VentaID, CodigoVenta, Fecha, SocioID, ListaPreciosID, TipoPago, Estado
+		FROM vTraeVentas WHERE VentaID = @ventID
+
+	end
 
 
+go
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+CREATE OR ALTER PROCEDURE spAddUpdateVenta 
+@ventID int , @fecha date,  @socID int , @listPrecID int , @tipoPago varchar(50) , @estado varchar(50)
+as 
+	begin
+		
+		--IF @ventID = 0
+		--	--aqui va lo del insert
+		--	INSERT INTO Pruebas.Venta (Fecha, SocioID, ListaPreciosID, TipoPago, Estado) VALUES
+		--	(@fecha ,  @socID  , @listPrecID  , @tipoPago  , @estado )
+
+		--ELSE
+			UPDATE Pruebas.Venta SET Fecha = @fecha , SocioID = @socID , ListaPreciosID = @listPrecID, 
+			TipoPago = @tipoPago , Estado = @estado
+			WHERE VentaID = @ventID
+			
+	
+	end
+go
+
+select * from pruebas.Venta
+
+--pruebas del sp
+begin transaction
+
+--exec spAddUpdateVenta 0, '20250723' , 1,2,'Credito', 'Abierto'
+exec spAddUpdateVenta 
+3,
+'2025/07/09',
+4,
+1,
+'Credito',
+'Abierto'
+
+select * from pruebas.Venta
+
+rollback
+
+
+
+
+
+
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta Detalle >>>>>>>>>>>>PENDIENTE*************>>>>>>>>>>>>>>>>
+
+/*
 CREATE TYPE TipoVentaDetalle as TABLE(
 	VentaID int not null,
 	Codigo varchar(15),
@@ -59,25 +122,26 @@ CREATE OR ALTER PROCEDURE spAddUpdateVentaDet @ventID int, @detalle TipoVentaDet
 as
 	begin
 		
-		declare @ventDetID int, @prodID int, @impID int,  @bodID int, @cant int, @prec float ,  @tot float
+		declare @ventDetID int, @prodDetID int, @impID int,  @bodID int, @cant int, @prec float ,  @tot float
 
 		declare crsVentaDet cursor for
 		select VentaID,  ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total  from @detalle
 
-		open crsVentaDet; fetch next from crsVentaDet into  @ventDetID, @prodID , @impID, @bodID , @cant , @prec , @tot 
+		open crsVentaDet; fetch next from crsVentaDet into  @ventDetID, @prodDetID , @impID, @bodID , @cant , @prec , @tot 
 
 		WHILE @@FETCH_STATUS = 0
 			begin
 			--el id por defecto en c# es 0 asi que si es una nueva fila se va a insertar, de lo contrario se actualiza
-				IF @ventDetID = 0 
-					insert into Pruebas.VentaDetalle (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total)  VALUES
-					(@ventID, @prodID, @impID, @bodID , @cant , @prec , @tot ) ;	
-				ELSE	
-					update Pruebas.VentaDetalle set 
-					ProductoID = @prodID, ImpuestoID = @impID, BodegaID = @bodID, Cantidad = @cant, Precio = @prec , Total = @tot
-					WHERE VentaID = @ventID;
+				--IF @ventDetID = 0 
+					--insert into Pruebas.VentaDetalle (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total)  VALUES
+					--(@ventID, @prodID, @impID, @bodID , @cant , @prec , @tot ) ;	
 				
-				fetch next from crsVentaDet into   @ventDetID, @prodID , @impID, @bodID , @cant , @prec , @tot 
+				--IF	@ventDetID <> 0 
+					update Pruebas.VentaDetalle set 
+					ProductoID = @prodDetID, ImpuestoID = @impID, BodegaID = @bodID, Cantidad = @cant, Precio = @prec , Total = @tot
+					WHERE VentaID = @ventID --and ProductoID = @prodID;
+				
+				fetch next from crsVentaDet into   @ventDetID, @prodDetID , @impID, @bodID , @cant , @prec , @tot 
 			end
 		
 		deallocate crsVentaDet
@@ -97,13 +161,14 @@ DECLARE @DatosPrueba AS TipoVentaDetalle;
 -- Insertar datos de prueba
 INSERT INTO @DatosPrueba (VentaID,Codigo,  ProductoID, BodegaID, Cantidad,	Precio, SubTotal, ImpuestoID, Total)
 VALUES
-(2,'PRO11',11,1,25,25.00,625.00,1,28.75),
-(0,'PRO' ,5,2,5,5,25,2,31.25)
+(1,'PRO11',11,1,1,25.00,25,1,28.75),
+(1,'PRO14',14,1,1,850.00,850,1,977.5)
+EXEC spAddUpdateVentaDet 1, @DatosPrueba;
 
 
---(2,'PRO11' , 11 , 1 , 1 , 25.00, 25 , 1 , 28.75)
+select * from pruebas.VentaDetalle 
 
-EXEC spAddUpdateVentaDet 2, @DatosPrueba;
+
 
 (3, 10, 2, 2, 15, 25, 431.25),	--tomate
 (0, 9, 1, 1, 15, 25, 431.25)	--tomate
@@ -116,8 +181,8 @@ EXEC spAddUpdateVentaDet 2, @DatosPrueba;
 --(3, 11, 1, 1, 2, 850 , 1955)
 
 
-select * from pruebas.VentaDetalle 
 select * from pruebas.Venta
+select * from pruebas.produ
 
 select * from pruebas.Bodega
 
@@ -126,6 +191,8 @@ rollback
 
 
 
+
+*/
 
 
 

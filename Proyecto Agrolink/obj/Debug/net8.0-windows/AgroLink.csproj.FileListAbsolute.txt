@@ -421,3 +421,4 @@ C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.pdb
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.genruntimeconfig.cache
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\ref\AgroLink.dll
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Agricultor.resources

@@ -121,7 +121,7 @@ namespace AgroLink.Recursos
                         connection.Open();
 
                         //ejecuta el sp
-                        command.ExecuteNonQuery();
+                        int filas = command.ExecuteNonQuery();
 
                         return true;
 

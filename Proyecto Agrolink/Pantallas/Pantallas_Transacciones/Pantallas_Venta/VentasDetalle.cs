@@ -10,17 +10,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         public Venta ventaForm { get; set; }  //Formulario Padre
 
         public int ventaID { get; set; }
-        public string codigo { get; set; }
-        public DateTime fecha { get; set; }
-        public int socioID { get; set; }
-        public string socio { get; set; }
-        public string tipoSocio { get; set; }
-        public int listaPreID { get; set; }
-        public string listaPrecio { get; set; }
-        public string tipoPago { get; set; }
-        public string estado { get; set; }
-
-
 
         public VentasDetalle()
         {
@@ -39,28 +28,35 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         public void ObtenerDatos(int id)
         {
 
-            //Llena Campos Superiores
+            //Trae Campos Superiores
 
-            tbCodigo.Text = codigo;
-
-            dateTimePicker1.Value = fecha;
-
-            LlenaSocio();
-            comboSocio.SelectedValue = socioID;
-
-            LlenaListaPrecios();
-            comboListaPrecio.SelectedValue = listaPreID;
-
-            comboTipoPago.SelectedItem = tipoPago;
-
-            comboEstado.SelectedItem = estado;
-
-
-            //Trae y configura datos de venta detalle
             Dictionary<string, object> parametros = new Dictionary<string, object>() {
                 {"ventID", id }
             };
 
+            DataTable ventaFiltrada = recSQL.EjecutarSPDataTable("spTraeVentaFiltrada", parametros);
+
+
+            //Llena Campos superiores
+
+            tbCodigo.Text = ventaFiltrada.Rows[0]["CodigoVenta"].ToString();
+
+            dateTimePicker1.Value = Convert.ToDateTime( ventaFiltrada.Rows[0]["Fecha"]);
+
+            LlenaSocio();
+            comboSocio.SelectedValue = Convert.ToInt32( ventaFiltrada.Rows[0]["SocioID"]);
+
+            LlenaListaPrecios();
+            comboListaPrecio.SelectedValue = Convert.ToInt32(ventaFiltrada.Rows[0]["ListaPreciosID"]);
+
+            comboTipoPago.SelectedItem = ventaFiltrada.Rows[0]["TipoPago"].ToString();
+
+            comboEstado.SelectedItem = (ventaFiltrada.Rows[0]["Estado"]).ToString();
+
+
+
+
+            //Trae y configura datos de venta detalle
             DataTable dt = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
             dt.Columns["VentaID"].AutoIncrement = false;
 
@@ -132,6 +128,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         }
 
+
+
+
+
         #endregion
 
 
@@ -166,15 +166,41 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         {
             ToggleReadOnly(true);
 
-            Dictionary<string, object> parametros = new Dictionary<string, object>() {
-                {"ventID" , ventaID  }
+            Dictionary<string, object> paramsVent = new Dictionary<string, object>() {
+                {"ventID" , ventaID  },
+                {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
+                {"socID"  , comboSocio.SelectedValue     },
+                {"listPrecID", comboListaPrecio.SelectedValue  },
+                {"tipoPago" , comboTipoPago.SelectedItem },
+                {"estado" , comboEstado.SelectedItem }
             };
 
-
-            if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", metodosGlobales.CrearDataTable(tablaDetalle), parametros))
+         
+            
+            if (recSQL.EjecutarSPBool("spAddUpdateVenta", paramsVent))
             {
-                ObtenerDatos(ventaID);
+
+                ObtenerDatos(ventaID); //aqui realmente va lo de abajo
+
+                //no borrar esto
+                //Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
+                //{"ventID" , ventaID  }
+                //};
+
+                //if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", metodosGlobales.CrearDataTable(tablaDetalle), paramsDet))
+                //{
+                //    ObtenerDatos(ventaID);
+                //}
+
             }
+            else
+            {
+                MessageBox.Show("Ocurrio un error inesperado");
+            }
+            
+
+
+
 
 
 
