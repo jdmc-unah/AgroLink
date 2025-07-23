@@ -53,6 +53,7 @@
             btnCancelar.TabIndex = 27;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnRestablecer
             // 
@@ -117,6 +118,7 @@
             txtNombreRC.Name = "txtNombreRC";
             txtNombreRC.Size = new Size(436, 31);
             txtNombreRC.TabIndex = 20;
+            txtNombreRC.TextChanged += txtNombreRC_TextChanged;
             // 
             // label2
             // 

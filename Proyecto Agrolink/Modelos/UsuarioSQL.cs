@@ -53,6 +53,34 @@ namespace AgroLink.Modelos
             return resultado;
         }
 
+        public bool VerificarUsuarioYNombre(string usuario, string nombre)
+        {
+            try
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "Usuario", usuario }
+                };
+
+                var tabla = recSQL.EjecutarSPDataTable("spObtenerUsuarioPorNombreUsuario", parametros);
+
+                if (tabla.Rows.Count > 0)
+                {
+                    var fila = tabla.Rows[0];
+                    string nombreRegistrado = fila["Nombre"].ToString().Trim();
+
+                    return string.Equals(nombreRegistrado, nombre, StringComparison.OrdinalIgnoreCase);
+                }
+            }
+            catch
+            {
+
+            }
+
+            return false;
+        }
+
+
         public bool ResetearClave(string usuario, string nuevaClave)
         {
             try
@@ -73,6 +101,7 @@ namespace AgroLink.Modelos
                 return false;
             }
         }
+
 
     }
 }

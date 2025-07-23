@@ -30,9 +30,19 @@ namespace AgroLink.Pantallas
             string nuevaClave = txtClaveRC.Text.Trim();
             string confirmarClave = txtConfirmarClaveRC.Text.Trim();
 
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(nuevaClave) || string.IsNullOrEmpty(confirmarClave))
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(nuevaClave) || string.IsNullOrEmpty(confirmarClave))
             {
                 MessageBox.Show("Todos los campos son obligatorios.");
+                return;
+            }
+
+            UsuarioSQL usuarioSQL = new UsuarioSQL();
+            bool coincide = usuarioSQL.VerificarUsuarioYNombre(usuario, nombre);
+            bool exito = usuarioSQL.ResetearClave(usuario, nuevaClave);
+
+            if (!coincide)
+            {
+                MessageBox.Show("El nombre no coincide con el usuario ingresado.");
                 return;
             }
 
@@ -42,18 +52,25 @@ namespace AgroLink.Pantallas
                 return;
             }
 
-            UsuarioSQL usuarioSQL = new UsuarioSQL();
-            bool exito = usuarioSQL.ResetearClave(usuario, nuevaClave);
-
             if (exito)
             {
                 MessageBox.Show("Contraseña actualizada correctamente.");
-                this.Close(); // Cierra este form
+                this.Close(); // cierra este form
             }
             else
             {
                 MessageBox.Show("Error al actualizar la contraseña.");
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtNombreRC_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

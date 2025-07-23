@@ -44,19 +44,19 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(36, 139);
+            txtUsuario.Location = new Point(95, 228);
             txtUsuario.Margin = new Padding(2);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(295, 31);
+            txtUsuario.Size = new Size(275, 31);
             txtUsuario.TabIndex = 0;
             txtUsuario.TextChanged += textBox1_TextChanged;
             // 
             // txtClave
             // 
-            txtClave.Location = new Point(36, 213);
+            txtClave.Location = new Point(95, 321);
             txtClave.Margin = new Padding(2);
             txtClave.Name = "txtClave";
-            txtClave.Size = new Size(295, 31);
+            txtClave.Size = new Size(275, 31);
             txtClave.TabIndex = 1;
             // 
             // label1
@@ -64,7 +64,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(46, 39);
+            label1.Location = new Point(95, 78);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(275, 41);
@@ -76,11 +76,12 @@
             // btnLogin
             // 
             btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.Font = new Font("Segoe UI", 10F);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(119, 312);
+            btnLogin.Location = new Point(160, 490);
             btnLogin.Margin = new Padding(2);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(125, 35);
+            btnLogin.Size = new Size(134, 44);
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Iniciar sesión";
             btnLogin.UseVisualStyleBackColor = true;
@@ -97,9 +98,9 @@
             panel1.Controls.Add(btnLogin);
             panel1.Controls.Add(txtUsuario);
             panel1.Controls.Add(txtClave);
-            panel1.Location = new Point(118, 81);
+            panel1.Location = new Point(262, 117);
             panel1.Name = "panel1";
-            panel1.Size = new Size(365, 436);
+            panel1.Size = new Size(480, 652);
             panel1.TabIndex = 4;
             // 
             // linkLabel2
@@ -107,7 +108,7 @@
             linkLabel2.ActiveLinkColor = Color.FromArgb(255, 222, 89);
             linkLabel2.AutoSize = true;
             linkLabel2.LinkColor = Color.Gray;
-            linkLabel2.Location = new Point(72, 273);
+            linkLabel2.Location = new Point(123, 445);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new Size(214, 25);
             linkLabel2.TabIndex = 7;
@@ -120,7 +121,7 @@
             linkLabel1.ActiveLinkColor = Color.FromArgb(255, 222, 89);
             linkLabel1.AutoSize = true;
             linkLabel1.LinkColor = Color.Gray;
-            linkLabel1.Location = new Point(95, 358);
+            linkLabel1.Location = new Point(146, 548);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(175, 25);
             linkLabel1.TabIndex = 6;
@@ -131,22 +132,22 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(36, 186);
+            label3.Location = new Point(91, 289);
             label3.Name = "label3";
-            label3.Size = new Size(108, 25);
+            label3.Size = new Size(118, 28);
             label3.TabIndex = 5;
             label3.Text = "Contraseña";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(36, 112);
+            label2.Location = new Point(90, 196);
             label2.Name = "label2";
-            label2.Size = new Size(77, 25);
+            label2.Size = new Size(84, 28);
             label2.TabIndex = 4;
             label2.Text = "Usuario";
             label2.Click += label2_Click;
@@ -157,7 +158,7 @@
             pictureBox2.Image = Properties.Resources.fondoInicioSesionCOPRAG;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1132, 640);
+            pictureBox2.Size = new Size(1878, 994);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
@@ -166,7 +167,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1132, 640);
+            ClientSize = new Size(1878, 994);
             Controls.Add(panel1);
             Controls.Add(pictureBox2);
             Font = new Font("Segoe UI", 9F);
