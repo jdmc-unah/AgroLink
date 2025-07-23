@@ -120,26 +120,31 @@ CREATE OR ALTER PROCEDURE spAddUpdateVentaDet @ventID int,  @detalle TipoVentaDe
 as
 	begin
 		
-		declare @ventDetID int, @prodDetID int, @impID int,  @bodID int, @cant int, @prec float ,  @tot float
+		declare @ventDetID int, @prodNuevo int, @impID int,  @bodID int, @cant int, @prec float ,  @tot float , @prodViejo int
+
+		select ISNULL(VentaID, 0) as 'VentaProdViejo', ISNULL(ProductoID, 0) as 'ProdViejo' into #tablaProd from Pruebas.VentaDetalle Where VentaID = @ventID
 
 		declare crsVentaDet cursor for
-		select VentaID,  ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total  from @detalle
-
-		open crsVentaDet; fetch next from crsVentaDet into  @ventDetID, @prodDetID , @impID, @bodID , @cant , @prec , @tot 
+		select d.VentaID,  d.ProductoID as 'ProdNuevo', ImpuestoID, BodegaID, Cantidad, Precio, Total, tp.ProdViejo
+		from @detalle d inner join #tablaProd tp on d.VentaID = tp.VentaProdViejo
+			   
+		open crsVentaDet; fetch next from crsVentaDet into  @ventDetID, @prodNuevo , @impID, @bodID , @cant , @prec , @tot , @prodViejo
 
 		WHILE @@FETCH_STATUS = 0
 			begin
 			--el id por defecto en c# es 0 asi que si es una nueva fila se va a insertar, de lo contrario se actualiza
 				IF @ventDetID = 0 
 					insert into Pruebas.VentaDetalle (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total)  VALUES
-					(@ventID, @prodDetID, @impID, @bodID , @cant , @prec , @tot ) ;	
+					(@ventID, @prodNuevo, @impID, @bodID , @cant , @prec , @tot ) ;	
 				
 				ELSE
+					print(@prodViejo)
+
 					update Pruebas.VentaDetalle set 
-					ProductoID = @prodDetID, ImpuestoID = @impID, BodegaID = @bodID, Cantidad = @cant, Precio = @prec , Total = @tot
-					WHERE VentaID = @ventID -- AND ProductoID = @prodID; queda adaptar esto bien
+					ProductoID = @prodNuevo, ImpuestoID = @impID, BodegaID = @bodID, Cantidad = @cant, Precio = @prec , Total = @tot
+					WHERE VentaID = @ventID  AND ProductoID = @prodViejo;  --queda adaptar esto bien
 				
-				fetch next from crsVentaDet into   @ventDetID, @prodDetID , @impID, @bodID , @cant , @prec , @tot 
+				fetch next from crsVentaDet into   @ventDetID, @prodNuevo , @impID, @bodID , @cant , @prec , @tot , @prodViejo
 			end
 		
 		deallocate crsVentaDet
@@ -162,6 +167,11 @@ VALUES
 (1,'PRO11',11,1,1,25.00,25,1,28.75),
 (1,'PRO14',14,1,1,850.00,850,1,977.5)
 EXEC spAddUpdateVentaDet 1, @DatosPrueba;
+
+
+update Pruebas.VentaDetalle set 
+ProductoID = 14, ImpuestoID = 1, BodegaID = 1, Cantidad = 25, Precio = 25 , Total = 28.75
+WHERE VentaID = 1  AND ProductoID = 11; 
 
 
 select * from pruebas.VentaDetalle 
