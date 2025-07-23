@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jdvar\\onedrive\\desktop\\ingenieria sistemas\\proyecto_bases2\\agrolink\\proyecto agrolink\\pantallas\\pantallas_transacciones\\pantallas_venta\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_venta\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jdvar\\onedrive\\desktop\\ingenieria sistemas\\proyecto_bases2\\agrolink\\proyecto agrolink\\pantallas\\pantallas_transacciones\\pantallas_venta\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_venta\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jdvar\\onedrive\\desktop\\ingenieria sistemas\\proyecto_bases2\\agrolink\\proyecto agrolink\\pantallas\\pantallas_socios\\agricultor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_socios\\agricultor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jdvar\\onedrive\\desktop\\ingenieria sistemas\\proyecto_bases2\\agrolink\\proyecto agrolink\\pantallas\\pantallas_socios\\agricultor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_socios\\agricultor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jdvar\\onedrive\\desktop\\ingenieria sistemas\\proyecto_bases2\\agrolink\\proyecto agrolink\\pantallas\\pantallaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\pantallas\\pantallaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\pantallas\\pantallas_socios\\agricultor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_socios\\agricultor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jdvar\\onedrive\\desktop\\ingenieria sistemas\\proyecto_bases2\\agrolink\\proyecto agrolink\\pantallas\\pantallas_transacciones\\pantallas_venta\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_venta\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\pantallas\\pantallas_transacciones\\pantallas_venta\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_venta\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\jdvar\\onedrive\\desktop\\ingenieria sistemas\\proyecto_bases2\\agrolink\\proyecto agrolink\\pantallas\\pantallas_socios\\agricultor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_socios\\agricultor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,24 +34,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Venta.cs",
               "DocumentMoniker": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Venta\\Venta.cs",
               "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Venta\\Venta.cs",
               "ToolTip": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Venta\\Venta.cs",
               "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Venta\\Venta.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAD4vy0AAABcAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAIA4wC0AAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-23T02:12:16.031Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Agricultor.cs",
               "DocumentMoniker": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Socios\\Agricultor.cs",
               "RelativeDocumentMoniker": "Pantallas\\Pantallas_Socios\\Agricultor.cs",
@@ -64,15 +64,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Venta.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Venta\\Venta.cs",
               "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Venta\\Venta.cs",
               "ToolTip": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Venta\\Venta.cs [Dise\u00F1o]",
               "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Venta\\Venta.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T02:12:13.395Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-07-23T02:12:13.395Z"
             },
             {
               "$type": "Document",
@@ -88,20 +87,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "PantallaPrincipal.cs",
               "DocumentMoniker": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\Pantallas\\PantallaPrincipal.cs",
               "RelativeDocumentMoniker": "Pantallas\\PantallaPrincipal.cs",
               "ToolTip": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\Pantallas\\PantallaPrincipal.cs",
               "RelativeToolTip": "Pantallas\\PantallaPrincipal.cs",
-              "ViewState": "AgIAAKsAAAAAAAAAAAAmwL4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-20T04:27:57.153Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "PantallaPrincipal.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\Pantallas\\PantallaPrincipal.cs",
               "RelativeDocumentMoniker": "Pantallas\\PantallaPrincipal.cs",
