@@ -1,9 +1,9 @@
 use AgroLinkDB
-create or alter procedure spBuscarAgricultor @NomCodigo varchar(100)
+create or alter procedure spBuscarAgricultor @cod varchar(100)
 as
 begin
 
-select * from vTraerAgricultores a where a.CodigoSocio=@NomCodigo or a.Nombre  like '%' + @NomCodigo + '%'
+select * from vTraerAgricultores a where a.CodigoSocio=@cod or a.Nombre  like '%' + @cod + '%'
 
 end
 go
