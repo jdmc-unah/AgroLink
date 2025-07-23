@@ -52,6 +52,7 @@ namespace AgroLink.Pantallas
                 return;
             }
 
+
             if (exito)
             {
                 MessageBox.Show("Contraseña actualizada correctamente.");

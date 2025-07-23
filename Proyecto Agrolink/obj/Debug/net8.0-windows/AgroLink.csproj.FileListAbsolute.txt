@@ -421,3 +421,5 @@ C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.pdb
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.genruntimeconfig.cache
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\ref\AgroLink.dll
+C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra.Compra.resources
+C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra.CompraDetalle.resources

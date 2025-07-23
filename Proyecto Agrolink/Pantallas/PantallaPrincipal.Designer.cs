@@ -344,6 +344,7 @@
             subMenuCompras.Text = "Compras";
             subMenuCompras.TextAlign = ContentAlignment.MiddleLeft;
             subMenuCompras.UseVisualStyleBackColor = false;
+            subMenuCompras.Click += subMenuCompras_Click;
             // 
             // subMenuVent
             // 

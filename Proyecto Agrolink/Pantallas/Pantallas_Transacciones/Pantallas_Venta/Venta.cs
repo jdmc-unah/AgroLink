@@ -58,25 +58,23 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
 
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = tablaVenta.CurrentRow.Index;
-                            
-            detalle.ventaID =   (int) this.tablaVenta.Rows[row].Cells[0].Value;
-            detalle.codigo =    (string) this.tablaVenta.Rows[row].Cells[1].Value;
-            detalle.fecha =     (DateTime) this.tablaVenta.Rows[row].Cells[2].Value;
-            detalle.socioID =   (int) this.tablaVenta.Rows[row].Cells[3].Value;
-            detalle.socio =     (string)this.tablaVenta.Rows[row].Cells[4].Value;
+
+            detalle.ventaID = (int)this.tablaVenta.Rows[row].Cells[0].Value;
+            detalle.codigo = (string)this.tablaVenta.Rows[row].Cells[1].Value;
+            detalle.fecha = (DateTime)this.tablaVenta.Rows[row].Cells[2].Value;
+            detalle.socioID = (int)this.tablaVenta.Rows[row].Cells[3].Value;
+            detalle.socio = (string)this.tablaVenta.Rows[row].Cells[4].Value;
             detalle.tipoSocio = (string)this.tablaVenta.Rows[row].Cells[5].Value;
-            detalle.listaPreID= (int)this.tablaVenta.Rows[row].Cells[6].Value;
-            detalle.listaPrecio=(string)this.tablaVenta.Rows[row].Cells[7].Value;
-            detalle.tipoPago =  (string)this.tablaVenta.Rows[row].Cells[8].Value;
-            detalle.estado =    (string)this.tablaVenta.Rows[row].Cells[9].Value;
+            detalle.listaPreID = (int)this.tablaVenta.Rows[row].Cells[6].Value;
+            detalle.listaPrecio = (string)this.tablaVenta.Rows[row].Cells[7].Value;
+            detalle.tipoPago = (string)this.tablaVenta.Rows[row].Cells[8].Value;
+            detalle.estado = (string)this.tablaVenta.Rows[row].Cells[9].Value;
 
 
             //Llama al metodo de la pantalla principal para mostrar VentaDetalle
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, detalle);
 
         }
-
-
 
 
     }

@@ -125,6 +125,11 @@ namespace AgroLink.Pantallas
             OpenChildForm(new Pantallas.Pantallas_Transacciones.Venta());
 
         }
+        private void subMenuCompras_Click(object sender, EventArgs e)
+        {
+            //... codigo que abre la ventana de ventas
+            OpenChildForm(new Pantallas.Pantallas_Transacciones.Pantallas_Compra.Compra());
+        }
 
         #endregion
 
@@ -193,6 +198,8 @@ namespace AgroLink.Pantallas
         {
             OpenChildForm(new Pantallas.Pantallas_Socios.Agricultor());
         }
+
+        
     }
 
 }
