@@ -60,17 +60,24 @@ CREATE OR ALTER PROCEDURE spAddUpdateVenta
 as 
 	begin
 		
-		--IF @ventID = 0
-		--	--aqui va lo del insert
-		--	INSERT INTO Pruebas.Venta (Fecha, SocioID, ListaPreciosID, TipoPago, Estado) VALUES
-		--	(@fecha ,  @socID  , @listPrecID  , @tipoPago  , @estado )
+		IF @ventID IS NULL
 
-		--ELSE
+			begin
+				--aqui va lo del insert
+				INSERT INTO Pruebas.Venta (Fecha, SocioID, ListaPreciosID, TipoPago, Estado) VALUES
+				(@fecha ,  @socID  , @listPrecID  , @tipoPago  , @estado )
+				
+				select top 1 ventaid from pruebas.Venta order by ventaid desc
+
+			end
+
+		ELSE
 			UPDATE Pruebas.Venta SET Fecha = @fecha , SocioID = @socID , ListaPreciosID = @listPrecID, 
 			TipoPago = @tipoPago , Estado = @estado
 			WHERE VentaID = @ventID
 			
-	
+		
+
 	end
 go
 
@@ -81,7 +88,7 @@ begin transaction
 
 --exec spAddUpdateVenta 0, '20250723' , 1,2,'Credito', 'Abierto'
 exec spAddUpdateVenta 
-3,
+null,
 '2025/07/09',
 4,
 1,
@@ -95,9 +102,11 @@ rollback
 
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta Detalle >>>>>>>>>>>>*************PENDIENTE*************>>>>>>>>>>>>>>>>
+drop PROCEDURE spAddUpdateVentaDet
+drop TYPE TipoVentaDetalle 
 
 CREATE TYPE TipoVentaDetalle as TABLE(
-	VentaID int not null,
+	VentaID int ,
 	Codigo varchar(15),
 	ProductoID int not null,
 	BodegaID int not null,
@@ -114,10 +123,17 @@ CREATE OR ALTER PROCEDURE spAddUpdateVentaDet @ventID int,  @detalle TipoVentaDe
 as
 	begin
 		
-		delete from pruebas.VentaDetalle where VentaID = @ventID
+		IF @ventID IS NULL
+			insert into Pruebas.VentaDetalle
+			SELECT @ventID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total FROM @detalle
 
-		insert into Pruebas.VentaDetalle
-		SELECT @ventID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total FROM @detalle
+			
+
+		ELSE
+			delete from pruebas.VentaDetalle where VentaID = @ventID
+			insert into Pruebas.VentaDetalle
+			SELECT @ventID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total FROM @detalle
+
 	end
 go
 
@@ -141,7 +157,6 @@ EXEC spAddUpdateVentaDet 1, @DatosPrueba;
 
 
 select * from pruebas.VentaDetalle 
-
 
 rollback
 

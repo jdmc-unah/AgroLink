@@ -25,74 +25,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         #region Metodos
 
-        public void ObtenerDatos(int id)
-        {
-
-            //Trae Campos Superiores
-
-            Dictionary<string, object> parametros = new Dictionary<string, object>() {
-                {"ventID", id }
-            };
-
-            DataTable ventaFiltrada = recSQL.EjecutarSPDataTable("spTraeVentaFiltrada", parametros);
-
-
-            //Llena Campos superiores
-
-            tbCodigo.Text = ventaFiltrada.Rows[0]["CodigoVenta"].ToString();
-
-            dateTimePicker1.Value = Convert.ToDateTime( ventaFiltrada.Rows[0]["Fecha"]);
-
-            LlenaSocio();
-            comboSocio.SelectedValue = Convert.ToInt32( ventaFiltrada.Rows[0]["SocioID"]);
-
-            LlenaListaPrecios();
-            comboListaPrecio.SelectedValue = Convert.ToInt32(ventaFiltrada.Rows[0]["ListaPreciosID"]);
-
-            comboTipoPago.SelectedItem = ventaFiltrada.Rows[0]["TipoPago"].ToString();
-
-            comboEstado.SelectedItem = (ventaFiltrada.Rows[0]["Estado"]).ToString();
-
-
-
-
-            //Trae y configura datos de venta detalle
-            DataTable dt = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
-            dt.Columns["VentaID"].AutoIncrement = false;
-
-            dt.Columns["VentaID"].DefaultValue = 0;
-            dt.Columns["CodigoProducto"].DefaultValue = "PRO";
-            dt.Columns["Subtotal"].DefaultValue = 0;
-            dt.Columns["SubTotal"].ReadOnly = false;
-
-            tablaDetalle.AutoGenerateColumns = false; //esto es para que le haga caso al orden de columnas del datagridview
-
-            tablaDetalle.DataSource = dt;
-
-
-            //Llena los comboboxes de tabla detalle
-            DataGridViewComboBoxColumn colProducto = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ProductoID"];
-            colProducto.DataSource = recSQL.EjecutarVista("vTraeProductos");
-            colProducto.DisplayMember = "Producto";
-            colProducto.ValueMember = "ProductoID";
-
-            DataGridViewComboBoxColumn colBodega = (DataGridViewComboBoxColumn)tablaDetalle.Columns["BodegaID"];
-            colBodega.DataSource = recSQL.EjecutarVista("vTraeBodega");
-            colBodega.DisplayMember = "Bodega";
-            colBodega.ValueMember = "BodegaID";
-
-            DataGridViewComboBoxColumn colImpuesto = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ImpuestoID"];
-            comboImp = recSQL.EjecutarVista("vTraeImpuesto");
-            colImpuesto.DataSource = comboImp;
-            colImpuesto.DisplayMember = "Impuesto";
-            colImpuesto.ValueMember = "ImpuestoID";
-
-
-            /* OJO Si por defecto los campos dentro de una vista o sp que sean de 
-             * otra tabla que no sea la tabla principal son solo lectura asi que cuidado con eso  */
-
-        }
-
 
         public void ToggleReadOnly(bool esSoloLectura)
         {
@@ -118,25 +50,90 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         }
 
 
-        void LlenaSocio()
+
+
+        void LlenaCombosSuperiores()
         {
             comboSocio.DataSource = recSQL.EjecutarVista("vTraeSocio");  // Asignar el origen de datos
             comboSocio.DisplayMember = "Socio";         // Columna que se mostrará
             comboSocio.ValueMember = "SocioID";   // Valor interno que se usará
 
+            comboListaPrecio.DataSource = recSQL.EjecutarVista("vTraeListaPrecios"); 
+            comboListaPrecio.DisplayMember = "ListPrecios";    
+            comboListaPrecio.ValueMember = "ListaPreciosID";   
         }
 
 
-        void LlenaListaPrecios()
+
+        void LlenaComboDetalle()
         {
-            comboListaPrecio.DataSource = recSQL.EjecutarVista("vTraeListaPrecios");  // Asignar el origen de datos
-            comboListaPrecio.DisplayMember = "ListPrecios";         // Columna que se mostrará
-            comboListaPrecio.ValueMember = "ListaPreciosID";   // Valor interno que se usará
 
+            //Llena los comboboxes de tabla detalle
+            DataGridViewComboBoxColumn colProducto = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ProductoID"];
+            colProducto.DataSource = recSQL.EjecutarVista("vTraeProductos");
+            colProducto.DisplayMember = "Producto";
+            colProducto.ValueMember = "ProductoID";
+
+            DataGridViewComboBoxColumn colBodega = (DataGridViewComboBoxColumn)tablaDetalle.Columns["BodegaID"];
+            colBodega.DataSource = recSQL.EjecutarVista("vTraeBodega");
+            colBodega.DisplayMember = "Bodega";
+            colBodega.ValueMember = "BodegaID";
+
+            DataGridViewComboBoxColumn colImpuesto = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ImpuestoID"];
+            comboImp = recSQL.EjecutarVista("vTraeImpuesto");
+            colImpuesto.DataSource = comboImp;
+            colImpuesto.DisplayMember = "Impuesto";
+            colImpuesto.ValueMember = "ImpuestoID";
         }
 
 
+        public void ObtenerDatos(int id)
+        {
 
+            //Trae Campos Superiores
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>() {
+                {"ventID", id }
+            };
+
+            DataTable ventaFiltrada = recSQL.EjecutarSPDataTable("spTraeVentaFiltrada", parametros);
+
+
+            //Llena Campos superiores
+
+            tbCodigo.Text = ventaFiltrada.Rows[0]["CodigoVenta"].ToString();
+
+            dateTimePicker1.Value = Convert.ToDateTime(ventaFiltrada.Rows[0]["Fecha"]);
+
+            LlenaCombosSuperiores();
+            comboSocio.SelectedValue = Convert.ToInt32(ventaFiltrada.Rows[0]["SocioID"]);
+            comboListaPrecio.SelectedValue = Convert.ToInt32(ventaFiltrada.Rows[0]["ListaPreciosID"]);
+
+            comboTipoPago.SelectedItem = ventaFiltrada.Rows[0]["TipoPago"].ToString();
+
+            comboEstado.SelectedItem = (ventaFiltrada.Rows[0]["Estado"]).ToString();
+
+
+
+            //Trae y configura datos de venta detalle
+            DataTable dt = recSQL.EjecutarSPDataTable("spTraeVentaDetalle", parametros);
+            dt.Columns["VentaID"].AutoIncrement = false;
+
+            dt.Columns["VentaID"].DefaultValue = 0;
+            dt.Columns["CodigoProducto"].DefaultValue = "PRO";
+            dt.Columns["Subtotal"].DefaultValue = 0;
+            dt.Columns["SubTotal"].ReadOnly = false;
+
+            tablaDetalle.AutoGenerateColumns = false; //esto es para que le haga caso al orden de columnas del datagridview
+
+            tablaDetalle.DataSource = dt;
+
+            LlenaComboDetalle();
+
+            /* OJO Si por defecto los campos dentro de una vista o sp que sean de 
+             * otra tabla que no sea la tabla principal son solo lectura asi que cuidado con eso  */
+
+        }
 
 
         #endregion
@@ -145,7 +142,19 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         private void VentasDetalle_Load(object sender, EventArgs e)
         {
-            ObtenerDatos(ventaID);
+
+            //Valida si es para actualizar una venta o crear una nueva venta
+            if (ventaID != 0)
+            {
+                //carga los datos de la venta a actualizar
+                ObtenerDatos(ventaID);
+            }
+            else
+            {
+                //carga la pantalla para agregar una nueva venta
+                LlenaCombosSuperiores();
+                LlenaComboDetalle();
+            }
 
         }
 
@@ -180,13 +189,13 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             };
 
          
+            //aqui habria que traer el id que devvuelve la venta cuando es creada 
             
             if (recSQL.EjecutarSPBool("spAddUpdateVenta", paramsVent))
             {
 
-               // ObtenerDatos(ventaID); //aqui realmente va lo de abajo
 
-                //no borrar esto
+                    
                 Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
                 {"ventID" , ventaID  }
                 };
@@ -194,6 +203,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
                 if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", metodosGlobales.CrearDataTable(tablaDetalle), paramsDet))
                 {
                     ObtenerDatos(ventaID);
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrio un error inesperado");
                 }
 
             }
@@ -211,7 +224,16 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             ToggleReadOnly(true);
-            ObtenerDatos(ventaID);
+
+            if (ventaID != 0)
+            {
+                ObtenerDatos(ventaID);
+            }
+            else
+            {
+                PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(ventaForm, this);
+            }
+
 
         }
 
@@ -227,8 +249,8 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         private void tablaDetalle_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            MessageBox.Show(e.Exception.ToString());
-            //e.Cancel = true;
+            //MessageBox.Show(e.Exception.ToString());
+            e.Cancel = true;
         }
 
 
@@ -240,15 +262,15 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         private void tablaDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
+            
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = tablaDetalle.CurrentRow.Index;
             int column = tablaDetalle.CurrentCell.ColumnIndex;
 
-            cant = Convert.ToInt32((this.tablaDetalle.Rows[row].Cells["Cantidad"].Value.GetType() == typeof(DBNull)) ? 0 : this.tablaDetalle.Rows[row].Cells["Cantidad"].Value);
-            precio = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["Precio"].Value.GetType() == typeof(DBNull)) ? 0 : this.tablaDetalle.Rows[row].Cells["Precio"].Value);
+            cant = Convert.ToInt32((this.tablaDetalle.Rows[row].Cells["Cantidad"].Value == null) ? 0 : this.tablaDetalle.Rows[row].Cells["Cantidad"].Value);
+            precio = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["Precio"].Value == null) ? 0 : this.tablaDetalle.Rows[row].Cells["Precio"].Value);
 
-            double impID = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value.GetType() == typeof(DBNull)) ? 0 : this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value);
+            double impID = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value == null) ? 0 : this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value);
 
             if (impID != 0)
             {
@@ -272,7 +294,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             {
                 tablaDetalle.Rows[row].Cells["Total"].Value = subtotal * (imp + 1);
             }
-
+            
         }
 
         #endregion

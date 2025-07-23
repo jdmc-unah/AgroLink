@@ -66,6 +66,16 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
 
         }
 
+        private void btnNuevaVenta_Click(object sender, EventArgs e)
+        {
+            //Crea una nueva instancia de VentaDetalle y le pasa este form junto con el id de la venta
+            Pantallas_Venta.VentasDetalle nuevaVenta = new Pantallas_Venta.VentasDetalle();
+            nuevaVenta.ventaForm = this;
 
+            nuevaVenta.ventaID = 0;
+
+            //Llama al metodo de la pantalla principal para mostrar VentaDetalle
+            PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, nuevaVenta);
+        }
     }
 }
