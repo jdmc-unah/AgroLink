@@ -58,15 +58,13 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
 
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = tablaVenta.CurrentRow.Index;
-                            
-            detalle.ventaID =   (int) this.tablaVenta.Rows[row].Cells[0].Value;
+
+            detalle.ventaID = (int)this.tablaVenta.Rows[row].Cells[0].Value;
 
             //Llama al metodo de la pantalla principal para mostrar VentaDetalle
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, detalle);
 
         }
-
-
 
 
     }

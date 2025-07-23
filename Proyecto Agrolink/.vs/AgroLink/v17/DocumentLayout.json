@@ -51,6 +51,18 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CompraDetalle.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\CompraDetalle.cs",
+              "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\CompraDetalle.cs",
+              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\CompraDetalle.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\CompraDetalle.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T13:54:02.265Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Venta.cs [Design]",
               "DocumentMoniker": "C:\\Users\\jose.mejia\\Documents\\jdmc\\AgroLink\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Venta\\Venta.cs",

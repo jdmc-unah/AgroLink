@@ -232,7 +232,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         //Hace calculos automaticos para reflejar cambios en subtotal y total
 
-        int cant; double precio, imp = 0 , subtotal;
+        int cant; double precio, imp = 0, subtotal;
 
         private void tablaDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -243,7 +243,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
             cant = Convert.ToInt32((this.tablaDetalle.Rows[row].Cells["Cantidad"].Value.GetType() == typeof(DBNull)) ? 0 : this.tablaDetalle.Rows[row].Cells["Cantidad"].Value);
             precio = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["Precio"].Value.GetType() == typeof(DBNull)) ? 0 : this.tablaDetalle.Rows[row].Cells["Precio"].Value);
-            
+
             double impID = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value.GetType() == typeof(DBNull)) ? 0 : this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value);
 
             if (impID != 0)
@@ -266,7 +266,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
             if (imp != 0 && subtotal != 0)
             {
-                tablaDetalle.Rows[row].Cells["Total"].Value = subtotal * (imp +1);
+                tablaDetalle.Rows[row].Cells["Total"].Value = subtotal * (imp + 1);
             }
 
 

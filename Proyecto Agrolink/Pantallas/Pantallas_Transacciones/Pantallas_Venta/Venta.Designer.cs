@@ -59,15 +59,17 @@
             panel1.Controls.Add(tbBuscar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2761, 287);
+            panel1.Size = new Size(1584, 175);
             panel1.TabIndex = 0;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(1131, 147);
+            btnRecargar.Location = new Point(665, 90);
+            btnRecargar.Margin = new Padding(2);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(293, 58);
+            btnRecargar.Size = new Size(172, 35);
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
@@ -75,18 +77,20 @@
             // 
             // btnNuevaVenta
             // 
-            btnNuevaVenta.Location = new Point(1131, 71);
+            btnNuevaVenta.Location = new Point(665, 43);
+            btnNuevaVenta.Margin = new Padding(2);
             btnNuevaVenta.Name = "btnNuevaVenta";
-            btnNuevaVenta.Size = new Size(293, 58);
+            btnNuevaVenta.Size = new Size(172, 35);
             btnNuevaVenta.TabIndex = 2;
             btnNuevaVenta.Text = "Nueva Venta";
             btnNuevaVenta.UseVisualStyleBackColor = true;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(647, 128);
+            btnBuscar.Location = new Point(381, 78);
+            btnBuscar.Margin = new Padding(2);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(188, 58);
+            btnBuscar.Size = new Size(111, 35);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -94,19 +98,21 @@
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(51, 134);
+            tbBuscar.Location = new Point(30, 82);
+            tbBuscar.Margin = new Padding(2);
             tbBuscar.Name = "tbBuscar";
             tbBuscar.PlaceholderText = "Código de Venta o Nombre de Socio...";
-            tbBuscar.Size = new Size(572, 47);
+            tbBuscar.Size = new Size(338, 31);
             tbBuscar.TabIndex = 0;
             // 
             // panel2
             // 
             panel2.Controls.Add(tablaVenta);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 287);
+            panel2.Location = new Point(0, 175);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2761, 1204);
+            panel2.Size = new Size(1584, 819);
             panel2.TabIndex = 1;
             // 
             // tablaVenta
@@ -117,11 +123,12 @@
             tablaVenta.Columns.AddRange(new DataGridViewColumn[] { VentaID, SocioID, ListaPreciosID, CodigoVenta, Fecha, Socio, TipoSocio, ListaPrecio, TipoPago, Estado, Total });
             tablaVenta.Dock = DockStyle.Fill;
             tablaVenta.Location = new Point(0, 0);
+            tablaVenta.Margin = new Padding(2);
             tablaVenta.MultiSelect = false;
             tablaVenta.Name = "tablaVenta";
             tablaVenta.ReadOnly = true;
             tablaVenta.RowHeadersWidth = 102;
-            tablaVenta.Size = new Size(2761, 1204);
+            tablaVenta.Size = new Size(1584, 819);
             tablaVenta.TabIndex = 0;
             tablaVenta.CellDoubleClick += tablaVenta_CellDoubleClick;
             // 
@@ -163,7 +170,7 @@
             CodigoVenta.MinimumWidth = 12;
             CodigoVenta.Name = "CodigoVenta";
             CodigoVenta.ReadOnly = true;
-            CodigoVenta.Width = 170;
+            CodigoVenta.Width = 107;
             // 
             // Fecha
             // 
@@ -230,12 +237,13 @@
             // 
             // Venta
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2761, 1491);
+            ClientSize = new Size(1584, 994);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2);
             Name = "Venta";
             Text = "Venta";
             Load += Venta_Load;
