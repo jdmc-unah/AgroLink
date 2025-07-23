@@ -104,9 +104,16 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             dateTimePicker1.Enabled = !esSoloLectura;
 
             tablaDetalle.ReadOnly = esSoloLectura;
+            tablaDetalle.AllowUserToDeleteRows = !esSoloLectura;
 
             btnAceptar.Visible = !esSoloLectura;
             btnCancelar.Visible = !esSoloLectura;
+            btnEditar.Visible = esSoloLectura;
+
+
+            string estadoEdicion = esSoloLectura ?  "desactivado" : "activado";
+            MessageBox.Show($"El modo edicion esta {estadoEdicion} ");
+
 
         }
 
@@ -156,9 +163,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         private void btnEditar_Click(object sender, EventArgs e)
         {
             ToggleReadOnly(false);
-
-
-
         }
 
 
@@ -199,16 +203,15 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             }
             
 
-
-
-
-
-
         }
+
+
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             ToggleReadOnly(true);
+            ObtenerDatos(ventaID);
 
         }
 
@@ -231,6 +234,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
         //Hace calculos automaticos para reflejar cambios en subtotal y total
+        //PENDIENTE DE CONVERTIRLO A UNA FUNCION SQL
 
         int cant; double precio, imp = 0, subtotal;
 
@@ -268,13 +272,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             {
                 tablaDetalle.Rows[row].Cells["Total"].Value = subtotal * (imp + 1);
             }
-
-
-
-
-
-
-
 
         }
 

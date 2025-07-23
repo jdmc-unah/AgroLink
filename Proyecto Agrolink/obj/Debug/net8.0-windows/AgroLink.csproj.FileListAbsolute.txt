@@ -424,3 +424,5 @@ C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG\AgroLink\Proyecto Agrolink\obj\Debug\
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Agricultor.resources
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra.Compra.resources
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra.CompraDetalle.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura.Factura.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura.FacturaDetalle.resources
