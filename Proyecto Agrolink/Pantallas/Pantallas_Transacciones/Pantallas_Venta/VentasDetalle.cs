@@ -5,11 +5,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 {
+
+    
+
     public partial class VentasDetalle : Form
     {
         public Venta ventaForm { get; set; }  //Formulario Padre
 
-        public int ventaID { get; set; }
+        public int ventaID { get; set; }    //si esto es 0 es porque es una nueva venta, de lo contrario toma el dato de la venta a editar
 
         public VentasDetalle()
         {
@@ -17,10 +20,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         }
 
 
+        #region Variables Globales
         Recursos_SQL recSQL = new Recursos_SQL();
         MetodosGlobales metodosGlobales = new MetodosGlobales();
-
         DataTable comboImp;
+        #endregion
 
 
         #region Metodos
@@ -42,10 +46,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             btnCancelar.Visible = !esSoloLectura;
             btnEditar.Visible = esSoloLectura;
 
-
-            string estadoEdicion = esSoloLectura ?  "desactivado" : "activado";
-            MessageBox.Show($"El modo edicion esta {estadoEdicion} ");
-
+            if (ventaID != 0)
+            { 
+                string estadoEdicion = esSoloLectura ? "desactivado" : "activado";
+                MessageBox.Show($"El modo edicion esta {estadoEdicion} ");
+            }
 
         }
 
@@ -68,7 +73,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         void LlenaComboDetalle()
         {
 
-            //Llena los comboboxes de tabla detalle
+            //Llena los comboboxes de tabla detalle con las vistas
             DataGridViewComboBoxColumn colProducto = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ProductoID"];
             colProducto.DataSource = recSQL.EjecutarVista("vTraeProductos");
             colProducto.DisplayMember = "Producto";
@@ -153,7 +158,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             {
                 //carga la pantalla para agregar una nueva venta
                 LlenaCombosSuperiores();
+                comboEstado.SelectedItem = "Abierto";
+
                 LlenaComboDetalle();
+                ToggleReadOnly(false);
             }
 
         }
@@ -171,13 +179,25 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            ToggleReadOnly(false);
+
+            if (comboEstado.SelectedItem == "Abierto"  )
+            {
+                ToggleReadOnly(false);
+            }
+            else
+            {
+                MessageBox.Show("Las ventas Cerradas o Canceladas no pueden editarse");
+            }
+
+            
         }
 
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ToggleReadOnly(true);
+
+            //Toma los datos de la parte superior y los asigna a los parametros del sp
 
             Dictionary<string, object> paramsVent = new Dictionary<string, object>() {
                 {"ventID" , ventaID  },
@@ -188,33 +208,40 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
                 {"estado" , comboEstado.SelectedItem }
             };
 
-         
-            //aqui habria que traer el id que devvuelve la venta cuando es creada 
-            
-            if (recSQL.EjecutarSPBool("spAddUpdateVenta", paramsVent))
+            //Agrega o actualiza la venta
+            DataTable tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateVenta", paramsVent);
+
+            if (tablaResultante != null )
             {
+                //Actualiza la propiedad ventaid con el resultado de la operacion anterior
+                ventaID = ventaID == 0 ?  Convert.ToInt32(tablaResultante.Rows[0][0]): ventaID ;
 
 
-                    
+
                 Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
                 {"ventID" , ventaID  }
                 };
 
+                //Agrega o actualiza la ventadetalle
                 if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", metodosGlobales.CrearDataTable(tablaDetalle), paramsDet))
                 {
+                    MessageBox.Show("Cambios guardados con exito");
                     ObtenerDatos(ventaID);
                 }
                 else
                 {
                     MessageBox.Show("Ocurrio un error inesperado");
+                    //this.btnCancelar_Click(sender, e);
                 }
 
             }
             else
             {
                 MessageBox.Show("Ocurrio un error inesperado");
+                //this.btnCancelar_Click(sender, e);
+
             }
-            
+
 
         }
 
@@ -233,8 +260,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             {
                 PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(ventaForm, this);
             }
-
-
         }
 
 
@@ -249,17 +274,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         private void tablaDetalle_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            //MessageBox.Show(e.Exception.ToString());
             e.Cancel = true;
         }
 
 
 
         //Hace calculos automaticos para reflejar cambios en subtotal y total
-        //PENDIENTE DE CONVERTIRLO A UNA FUNCION SQL
-
-        int cant; double precio, imp = 0, subtotal;
-
         private void tablaDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -267,35 +287,44 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             int row = tablaDetalle.CurrentRow.Index;
             int column = tablaDetalle.CurrentCell.ColumnIndex;
 
-            cant = Convert.ToInt32((this.tablaDetalle.Rows[row].Cells["Cantidad"].Value == null) ? 0 : this.tablaDetalle.Rows[row].Cells["Cantidad"].Value);
-            precio = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["Precio"].Value == null) ? 0 : this.tablaDetalle.Rows[row].Cells["Precio"].Value);
+            int cant = 0; double precio = 0;  int impID = 0;
 
-            double impID = Convert.ToDouble((this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value == null) ? 0 : this.tablaDetalle.Rows[row].Cells["ImpuestoID"].Value);
+            //Trae los datos del datagridview
+            object celdaCant = tablaDetalle.Rows[row].Cells["Cantidad"].Value;
+            object celdaPrecio = tablaDetalle.Rows[row].Cells["Precio"].Value;
+            object celdaImpID = tablaDetalle.Rows[row].Cells["ImpuestoID"].Value;
 
-            if (impID != 0)
-            {
-                foreach (DataRow fila in comboImp.Rows)
-                {
-                    if ((int)fila["ImpuestoID"] == impID)
-                    {
-                        imp = Convert.ToDouble(fila["Impuesto"]);
-                        break;
-                    }
-                }
-            }
+                       
+            if (celdaCant != null && celdaCant.GetType() != typeof(DBNull)  )       
+                cant = Convert.ToInt32(celdaCant);
 
-            if (cant != 0 && precio != 0)
-            {
-                subtotal = cant * precio;
-                tablaDetalle.Rows[row].Cells["Subtotal"].Value = subtotal;
-            }
+            if (celdaPrecio != null && celdaPrecio.GetType() != typeof(DBNull) )    
+                precio = Convert.ToDouble(celdaPrecio);
 
-            if (imp != 0 && subtotal != 0)
-            {
-                tablaDetalle.Rows[row].Cells["Total"].Value = subtotal * (imp + 1);
-            }
+            if (celdaImpID != null && celdaImpID.GetType() != typeof(DBNull)  )     
+                impID = Convert.ToInt32(celdaImpID);
+
+
+
+            //Prepara y ejecuta la funcion sql
+            Dictionary<string, object> parametros = new Dictionary<string, object>() {
+                { "cant", cant  },
+                { "precio", precio },
+                { "impID", impID }
+            };
             
+            DataTable totales =  recSQL.EjecutarFuncion("dbo.fCalcularTotales", parametros);
+
+
+            //Edita los datos en el datagridview
+            tablaDetalle.Rows[row].Cells["Subtotal"].Value = totales.Rows[0][0];
+            tablaDetalle.Rows[row].Cells["Total"].Value = totales.Rows[0][1];
+
+
         }
+
+
+
 
         #endregion
 

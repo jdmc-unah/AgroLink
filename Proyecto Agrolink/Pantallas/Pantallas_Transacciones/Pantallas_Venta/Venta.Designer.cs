@@ -240,6 +240,7 @@
             Name = "Venta";
             Text = "Venta";
             Load += Venta_Load;
+            VisibleChanged += Venta_VisibleChanged;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

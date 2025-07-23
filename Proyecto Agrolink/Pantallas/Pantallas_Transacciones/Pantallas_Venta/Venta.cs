@@ -77,5 +77,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             //Llama al metodo de la pantalla principal para mostrar VentaDetalle
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, nuevaVenta);
         }
+
+        private void Venta_VisibleChanged(object sender, EventArgs e)
+        {
+            tablaVenta.DataSource = recSQL.EjecutarVista("vTraeVentas");
+
+        }
     }
 }

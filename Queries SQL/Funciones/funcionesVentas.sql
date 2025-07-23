@@ -1,0 +1,34 @@
+use agrolinkdb
+
+go
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Calculo Subtotal y Total >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+CREATE OR ALTER FUNCTION dbo.fCalcularTotales (@cant int , @precio float , @impID int) returns @resultado table (Subtotal float, Total float)
+as
+	begin
+		declare @subtotal float, @total float, @impVal float
+
+		
+		IF @impID = 0
+			SET @impVal = 0
+		ELSE
+			select @impVal = valor FROM pruebas.Impuesto where ImpuestoID = @impID
+		
+
+		SET @subtotal = ( @cant * @precio) 
+		SET @total = (@subtotal * (1+ @impVal))
+
+		INSERT INTO @resultado VALUES (@subtotal, @total )
+
+
+		return
+	end
+
+GO
+
+
+	SELECT * FROM dbo.fCalcularTotales(1,1,0) 
+

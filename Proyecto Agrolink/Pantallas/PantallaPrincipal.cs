@@ -84,6 +84,7 @@ namespace AgroLink.Pantallas
                 panelChildForm.Tag = childForm;
 
                 //muestra el form
+                parentForm.Visible = false;
                 childForm.BringToFront();
                 childForm.Show();
 
@@ -91,6 +92,8 @@ namespace AgroLink.Pantallas
             }
             else if (activeForm == childForm)
             {
+                parentForm.Visible = true;
+
                 childForm.Close();
                 activeForm = parentForm;
             }

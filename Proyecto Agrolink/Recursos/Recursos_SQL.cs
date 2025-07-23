@@ -183,6 +183,44 @@ namespace AgroLink.Recursos
         }
 
 
+        //Ejecutar Funciones
+        public DataTable EjecutarFuncion(string nombreFuncion, Dictionary<string, object>? parametros = null)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand($"SELECT * FROM {nombreFuncion}({string.Join(", ", parametros.Keys.Select(k => "@" + k))})", connection))
+                //aqui habria que evaluar si se pone directamente asi la consulta o se modifica
+                {
+                    command.CommandType = CommandType.Text;
+
+                    // Parámetros de entrada
+                    if (parametros != null)
+                    {
+                        foreach (var param in parametros)
+                        {
+                            command.Parameters.AddWithValue($"@{param.Key}", param.Value ?? null);
+                        }
+                    }
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        dataTable = new DataTable();
+
+                        dataTable.Load(reader);
+
+                        return dataTable;
+                    }
+
+                }
+            }
+
+        }
+
+
+
+
 
 
 
