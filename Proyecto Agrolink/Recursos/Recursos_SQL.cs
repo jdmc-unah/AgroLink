@@ -137,7 +137,7 @@ namespace AgroLink.Recursos
         }
 
 
-
+            //tiene tabla como parametro
         public bool EjecutarSPBool(string nombreSP,  string paramTabla, string nombreTipoTabla, DataTable tabla, Dictionary<string, object>? parametros = null)
         {
             try
@@ -183,7 +183,66 @@ namespace AgroLink.Recursos
         }
 
 
-        //Ejecutar Funciones
+
+
+        //Ejecutar Funciones con param tipo tabla
+        public DataTable EjecutarFuncion(string nombreFuncion, string paramTabla, string nombreTipoTabla, DataTable tabla, Dictionary<string, object>? parametros = null)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //string cmdText = $"SELECT * FROM {nombreFuncion}({string.Join(", ", parametros.Keys.Select(k => "@" + k).Append("@" +  paramTabla))})";
+
+                // Construye lista de argumentos, colocando primero el parámetro de tabla
+                var argumentosFuncion = new List<string> { "@" + paramTabla };
+
+                if (parametros != null)
+                {
+                    argumentosFuncion.AddRange(parametros.Keys.Select(k => "@" + k));
+                }
+                
+
+                // Arma la consulta completa con los argumentos ordenados
+                string cmdText = $"SELECT {nombreFuncion}({string.Join(", ", argumentosFuncion)})";
+
+
+
+                using (SqlCommand command = new SqlCommand(cmdText, connection))
+                //aqui habria que evaluar si se pone directamente asi la consulta o se modifica
+                {
+                    command.CommandType = CommandType.Text;
+
+                    // Parámetros de entrada
+                    if (parametros != null)
+                    {
+                        foreach (var param in parametros)
+                        {
+                            command.Parameters.AddWithValue($"@{param.Key}", param.Value ?? null);
+                        }
+                    }
+
+                    // Parámetro de tipo tabla
+                    SqlParameter parameter = command.Parameters.AddWithValue($"@{paramTabla}", tabla ?? null);
+                    parameter.SqlDbType = SqlDbType.Structured;
+                    parameter.TypeName = nombreTipoTabla; //este es el tipo de tabla que se va a usar (usualmente se crea un tipo custom)
+
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        dataTable = new DataTable();
+
+                        dataTable.Load(reader);
+
+                        return dataTable;
+                    }
+
+                }
+            }
+
+        }
+
+
         public DataTable EjecutarFuncion(string nombreFuncion, Dictionary<string, object>? parametros = null)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -217,9 +276,6 @@ namespace AgroLink.Recursos
             }
 
         }
-
-
-
 
 
 

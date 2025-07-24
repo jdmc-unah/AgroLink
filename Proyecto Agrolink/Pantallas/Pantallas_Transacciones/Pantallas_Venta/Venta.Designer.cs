@@ -65,7 +65,7 @@
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(1130, 148);
+            btnRecargar.Location = new Point(1245, 124);
             btnRecargar.Name = "btnRecargar";
             btnRecargar.Size = new Size(292, 57);
             btnRecargar.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             // btnNuevaVenta
             // 
-            btnNuevaVenta.Location = new Point(1130, 71);
+            btnNuevaVenta.Location = new Point(1567, 124);
             btnNuevaVenta.Name = "btnNuevaVenta";
             btnNuevaVenta.Size = new Size(292, 57);
             btnNuevaVenta.TabIndex = 2;

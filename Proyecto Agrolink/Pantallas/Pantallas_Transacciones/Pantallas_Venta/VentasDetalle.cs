@@ -1,6 +1,7 @@
 ﻿using AgroLink.Recursos;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
@@ -197,9 +198,19 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         {
             ToggleReadOnly(true);
 
-            //Toma los datos de la parte superior y los asigna a los parametros del sp
 
-            Dictionary<string, object> paramsVent = new Dictionary<string, object>() {
+
+            DataTable tbDet = metodosGlobales.CrearDataTable(tablaDetalle);
+            DataTable validacion = recSQL.EjecutarFuncion("dbo.fValidaVenta", "detalle", "TipoVentaDetalle", tbDet);
+
+            //este if valida si devolvio un error la validacion usando la funcion que esta arriba
+            if (validacion.Rows[0][0].ToString() == "")
+            {
+
+
+                //Toma los datos de la parte superior y los asigna a los parametros del sp
+
+                Dictionary<string, object> paramsVent = new Dictionary<string, object>() {
                 {"ventID" , ventaID  },
                 {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
                 {"socID"  , comboSocio.SelectedValue     },
@@ -208,36 +219,43 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
                 {"estado" , comboEstado.SelectedItem }
             };
 
-            //Agrega o actualiza la venta
-            DataTable tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateVenta", paramsVent);
+                //Agrega o actualiza la venta
+                DataTable tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateVenta", paramsVent);
 
-            if (tablaResultante != null )
-            {
-                //Actualiza la propiedad ventaid con el resultado de la operacion anterior
-                ventaID = ventaID == 0 ?  Convert.ToInt32(tablaResultante.Rows[0][0]): ventaID ;
+                if (tablaResultante != null)
+                {
+                    //Actualiza la propiedad ventaid con el resultado de la operacion anterior
+                    ventaID = ventaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : ventaID;
 
 
-                Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
+                    Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
                 {"ventID" , ventaID  }
                 };
 
-                //Agrega o actualiza la ventadetalle
-                if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", metodosGlobales.CrearDataTable(tablaDetalle), paramsDet))
-                {
-                    MessageBox.Show("Cambios guardados con exito");
-                    ObtenerDatos(ventaID);
+                    //Agrega o actualiza la ventadetalle
+                    if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", tbDet, paramsDet))
+                    {
+                        MessageBox.Show("Cambios guardados con exito");
+                        ObtenerDatos(ventaID);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocurrio un error inesperado");
+                        //this.btnCancelar_Click(sender, e);
+                    }
+
                 }
                 else
                 {
                     MessageBox.Show("Ocurrio un error inesperado");
                     //this.btnCancelar_Click(sender, e);
+
                 }
 
             }
             else
             {
-                MessageBox.Show("Ocurrio un error inesperado");
-                //this.btnCancelar_Click(sender, e);
+                MessageBox.Show(validacion.Rows[0][0].ToString());
 
             }
 

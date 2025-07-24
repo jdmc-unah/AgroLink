@@ -75,19 +75,11 @@ as
 	end
 go
 
-select * from pruebas.Venta
 
 --pruebas del sp
 begin transaction
-
 --exec spAddUpdateVenta 0, '20250723' , 1,2,'Credito', 'Abierto'
-exec spAddUpdateVenta 
-0,
-'2025/07/09',
-4,
-1,
-'Credito',
-'Abierto'
+exec spAddUpdateVenta 0,'2025/07/09',4,1,'Credito','Abierto'
 
 select * from pruebas.Venta
 
