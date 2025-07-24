@@ -217,7 +217,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
                 ventaID = ventaID == 0 ?  Convert.ToInt32(tablaResultante.Rows[0][0]): ventaID ;
 
 
-
                 Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
                 {"ventID" , ventaID  }
                 };

@@ -192,17 +192,14 @@ rollback
 				
 				ELSE
 					
-					insert into Pruebas.VentaDetalle (VentaID, ProductoID,	ImpuestoID,	BodegaID,	Cantidad,	Precio,	Total)  VALUES
-					(@ventID, @prodNuevo, @impID, @bodID , @cant , @prec , @tot ) ;	
-
-
-
-					--update Pruebas.VentaDetalle set 
-					--ProductoID = @prodNuevo, ImpuestoID = @impID, BodegaID = @bodID, Cantidad = @cant, Precio = @prec , Total = @tot
-					--WHERE VentaID = @ventID -- AND ProductoID = @prodViejo;  --queda adaptar esto bien
+					update Pruebas.VentaDetalle set 
+					ProductoID = @prodNuevo, ImpuestoID = @impID, BodegaID = @bodID, Cantidad = @cant, Precio = @prec , Total = @tot
+					WHERE VentaID = @ventID -- AND ProductoID = @prodViejo;  --queda adaptar esto bien
 				
 				fetch next from crsVentaDet into   @ventDetID, @prodNuevo , @impID, @bodID , @cant , @prec , @tot , @prodViejo
 			end
 		
 		deallocate crsVentaDet
 		*/
+
+

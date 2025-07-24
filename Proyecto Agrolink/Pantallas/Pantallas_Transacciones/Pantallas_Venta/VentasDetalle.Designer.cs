@@ -199,7 +199,7 @@
             // btnCancelar
             // 
             btnCancelar.Location = new Point(2438, 1386);
-            btnCancelar.Margin = new Padding(5, 5, 5, 5);
+            btnCancelar.Margin = new Padding(5);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(224, 67);
             btnCancelar.TabIndex = 25;
@@ -211,7 +211,7 @@
             // btnEditar
             // 
             btnEditar.Location = new Point(316, 1386);
-            btnEditar.Margin = new Padding(5, 5, 5, 5);
+            btnEditar.Margin = new Padding(5);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(224, 67);
             btnEditar.TabIndex = 24;
@@ -222,7 +222,7 @@
             // btnAceptar
             // 
             btnAceptar.Location = new Point(2193, 1386);
-            btnAceptar.Margin = new Padding(5, 5, 5, 5);
+            btnAceptar.Margin = new Padding(5);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(224, 67);
             btnAceptar.TabIndex = 23;
@@ -234,7 +234,7 @@
             // btnVolver
             // 
             btnVolver.Location = new Point(60, 1386);
-            btnVolver.Margin = new Padding(5, 5, 5, 5);
+            btnVolver.Margin = new Padding(5);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(218, 67);
             btnVolver.TabIndex = 27;
