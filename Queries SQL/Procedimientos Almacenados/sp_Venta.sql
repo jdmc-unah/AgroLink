@@ -82,7 +82,6 @@ begin transaction
 exec spAddUpdateVenta 0,'2025/07/09',4,1,'Credito','Abierto'
 
 select * from pruebas.Venta
-
 rollback
 
 
@@ -108,17 +107,69 @@ go
 CREATE OR ALTER PROCEDURE spAddUpdateVentaDet @ventID int,  @detalle TipoVentaDetalle READONLY
 as
 	begin
+		declare  @tipoPago varchar(50), @socID int, @totalNuevo float, @totalAnterior float, @saldo float		
+
+		select @tipoPago = TipoPago, @socID = SocioID from pruebas.Venta where VentaID = @ventID
+
+
+		--Actualiza saldo de socio con ventas al credito
+		IF @tipoPago = 'Credito'
+			begin
+				select @totalNuevo = ISNULL(SUM(Total), 0) from @detalle 
+				select @totalAnterior = ISNULL(SUM(Total), 0) from pruebas.VentaDetalle where VentaID = @ventID 
+			
+				--valida que no quede negativo
+				select @saldo = ( CASE  WHEN Saldo - @totalAnterior < 0 THEN 0 ELSE Saldo - @totalAnterior  END ) 
+				from pruebas.Socio where SocioID = @socID 
+
+				update pruebas.Socio set Saldo = @saldo + @totalNuevo
+				where SocioID = @socID
+			end
+
 		
-		IF @ventID = 0
-			insert into Pruebas.VentaDetalle
-			SELECT @ventID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total FROM @detalle
-		ELSE
-			delete from pruebas.VentaDetalle where VentaID = @ventID
-			insert into Pruebas.VentaDetalle
-			SELECT @ventID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total FROM @detalle
+		--Actualiza Stock
+	
+		declare @prod int,  @bodID int, @cantNueva float , @cantAnterior float, @compromet float
+
+		declare crsVentaDet cursor for
+		select ProductoID, BodegaID, Cantidad from @detalle 
+			   
+		open crsVentaDet; fetch next from crsVentaDet into  @prod , @bodID , @cantNueva  
+
+		WHILE @@FETCH_STATUS = 0
+			begin
+				select @cantAnterior = Cantidad from pruebas.VentaDetalle where VentaID = @ventID and ProductoID = @prod
+
+				--valida que no quede negativo ni nulo
+				select @compromet  = ( 
+				CASE  
+					WHEN @cantAnterior IS NULL THEN Comprometido
+					WHEN Comprometido - @cantAnterior < 0 THEN 0 
+					ELSE Comprometido - @cantAnterior  
+				END ) from pruebas.BodegaDetalle WHERE BodegaID = @bodID AND ProductoID = @prod
+
+				print(isnull(@compromet,0))
+
+				UPDATE Pruebas.BodegaDetalle SET Comprometido = @compromet + @cantNueva
+				WHERE BodegaID = @bodID AND ProductoID = @prod
+				
+				fetch next from crsVentaDet into  @prod , @bodID , @cantNueva 
+			end
+		
+		deallocate crsVentaDet
+
+		--hace la actualizacion 
+		delete from pruebas.VentaDetalle where VentaID = @ventID
+		insert into Pruebas.VentaDetalle
+		SELECT @ventID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total FROM @detalle
+		
+			
 
 	end
 go
+
+
+
 
 
 
@@ -132,19 +183,36 @@ DECLARE @DatosPrueba AS TipoVentaDetalle;
 -- Insertar datos de prueba
 INSERT INTO @DatosPrueba (VentaID,Codigo,  ProductoID, BodegaID, Cantidad,	Precio, SubTotal, ImpuestoID, Total)
 VALUES
-(1,'PRO11',11,1,1,25.00,25,1,28.75),
-(1,'PRO14',14,1,1,850.00,850,1,977.5),
-(0,'PRO14',6,1,1,850.00,850,1,977.5)
+(35,'PRO11',2,2,1,25.00,25,1,28.75),
+(35,'PRO11',3,3,1,25.00,25,1,1)
 
-EXEC spAddUpdateVentaDet 1, @DatosPrueba;
+--,(22,'PRO14',14,1,1,850.00,850,1,977.5)
+--,(0,'PRO14',6,1,1,850.00,850,1,977.5)
+
+EXEC spAddUpdateVentaDet 35, @DatosPrueba;
 
 
 select * from pruebas.VentaDetalle 
 
+
+
+INSERT INTO  pruebas.Venta (fecha, SocioID, ListaPreciosID, TipoPago, Estado) 
+values (GETDATE(), 2,1,'Credito','Cerrado' )
+
 rollback
 
 
+--update pruebas.BodegaDetalle set Comprometido = 5 where BodegaID = 2
+--update pruebas.socio set saldo = 0 where SocioID = 2
+select * from pruebas.Socio where socioid=1
 
+select * from pruebas.ventaDetalle --where VentaID = 22
+select * from pruebas.venta --where VentaID = 22
+
+select * from pruebas.BodegaDetalle
+select * from pruebas.Bodega
+
+select * from pruebas.Producto
 
 
 

@@ -12,6 +12,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 {
     public partial class FacturaDetalle : Form
     {
+
+        public Factura FacturaForm { get; set; }  //Formulario Padre
+
+        public int facturaID { get; set; }
+
         public FacturaDetalle()
         {
             InitializeComponent();

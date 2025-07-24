@@ -235,8 +235,18 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
                     //Agrega o actualiza la ventadetalle
                     if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", tbDet, paramsDet))
                     {
-                        MessageBox.Show("Cambios guardados con exito");
-                        ObtenerDatos(ventaID);
+                        //MessageBox.Show("Cambios guardados con exito");
+
+                        if(metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una factura?"))
+                        {
+                            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm( new Pantallas_Factura.Factura() );
+                        }
+                        else
+                        {
+                            ObtenerDatos(ventaID);
+                        }
+
+                        
                     }
                     else
                     {

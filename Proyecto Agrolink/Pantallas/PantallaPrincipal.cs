@@ -134,6 +134,11 @@ namespace AgroLink.Pantallas
             OpenChildForm(new Pantallas.Pantallas_Transacciones.Pantallas_Compra.Compra());
         }
 
+
+
+
+
+
         #endregion
 
 
@@ -202,7 +207,11 @@ namespace AgroLink.Pantallas
             OpenChildForm(new Pantallas.Pantallas_Socios.Agricultor());
         }
 
-        
+        private void subMenuFacturas_Click(object sender, EventArgs e)
+        {
+            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantallas_Factura.Factura() );
+
+        }
     }
 
 }

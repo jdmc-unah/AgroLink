@@ -42,15 +42,14 @@ CREATE OR ALTER FUNCTION dbo.fValidaVenta( @detalle TipoVentaDetalle READONLY   
 as
 	begin	
 		
-		declare @ventDetID int, @prod int, @impID int,  @bodID int, @cant int, @prec float ,  @tot float 
-
+		declare @prod int,  @bodID int, @cant float 
 		declare @error varchar(50) = '', @stockLibre float, @stockTot float
 
 		declare crsVentaDet cursor for
-		select d.VentaID,  d.ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total 
+		select d.ProductoID, BodegaID, Cantidad  
 		from @detalle d
 			   
-		open crsVentaDet; fetch next from crsVentaDet into  @ventDetID, @prod , @impID, @bodID , @cant , @prec , @tot 
+		open crsVentaDet; fetch next from crsVentaDet into  @prod , @bodID , @cant  
 
 		WHILE @@FETCH_STATUS = 0
 			begin
@@ -64,15 +63,12 @@ as
 						return @error 
 					end
 				
-				fetch next from crsVentaDet into   @ventDetID, @prod , @impID, @bodID , @cant , @prec , @tot 
+				fetch next from crsVentaDet into  @prod , @bodID , @cant 
 			end
 		
 		deallocate crsVentaDet
 
-
 		return @error
-
-
 	end
 
 go
@@ -87,7 +83,13 @@ DECLARE @DatosPrueba AS TipoVentaDetalle;
 -- Insertar datos de prueba
 INSERT INTO @DatosPrueba (VentaID,Codigo,  ProductoID, BodegaID, Cantidad,	Precio, SubTotal, ImpuestoID, Total)
 VALUES
-(1,'PRO11',2,2,1,25.00,25,1,28.75)
+(1,'PRO11',1,2,1,25.00,25,1,28.75)
+
+
+
+SELECT dbo.fValidaVenta(@DatosPrueba) 
+
+
 
 
 SELECT top 1 dbo.fValidaVenta(1, @DatosPrueba) FROM pruebas.VentaDetalle  

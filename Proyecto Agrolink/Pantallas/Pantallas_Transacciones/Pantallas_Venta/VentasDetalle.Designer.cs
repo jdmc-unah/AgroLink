@@ -60,9 +60,11 @@
             ImpuestoID = new DataGridViewComboBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
+            panel3 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaDetalle).BeginInit();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // comboTipoPago
@@ -198,7 +200,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(2438, 1386);
+            btnCancelar.Location = new Point(2415, 119);
             btnCancelar.Margin = new Padding(5);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(224, 67);
@@ -210,7 +212,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(316, 1386);
+            btnEditar.Location = new Point(325, 119);
             btnEditar.Margin = new Padding(5);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(224, 67);
@@ -221,7 +223,7 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(2193, 1386);
+            btnAceptar.Location = new Point(2146, 119);
             btnAceptar.Margin = new Padding(5);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(224, 67);
@@ -233,7 +235,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(60, 1386);
+            btnVolver.Location = new Point(50, 119);
             btnVolver.Margin = new Padding(5);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(218, 67);
@@ -360,15 +362,24 @@
             panel2.Size = new Size(2693, 954);
             panel2.TabIndex = 22;
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(btnVolver);
+            panel3.Controls.Add(btnCancelar);
+            panel3.Controls.Add(btnEditar);
+            panel3.Controls.Add(btnAceptar);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(0, 1339);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(2693, 291);
+            panel3.TabIndex = 28;
+            // 
             // VentasDetalle
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2693, 1630);
-            Controls.Add(btnVolver);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnEditar);
-            Controls.Add(btnAceptar);
+            Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -379,6 +390,7 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)tablaDetalle).EndInit();
             panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -412,5 +424,6 @@
         private DataGridViewTextBoxColumn Subtotal;
         private DataGridViewComboBoxColumn ImpuestoID;
         private DataGridViewTextBoxColumn Total;
+        private Panel panel3;
     }
 }

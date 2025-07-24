@@ -311,6 +311,7 @@
             subMenuFacturas.Text = "Facturas";
             subMenuFacturas.TextAlign = ContentAlignment.MiddleLeft;
             subMenuFacturas.UseVisualStyleBackColor = false;
+            subMenuFacturas.Click += subMenuFacturas_Click;
             // 
             // subMenuCompras
             // 
