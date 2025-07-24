@@ -42,10 +42,6 @@
             label1 = new Label();
             tbCodigoCompra = new TextBox();
             tablaCompraDetalle = new DataGridView();
-            btnVolver = new Button();
-            btnEditar = new Button();
-            btnAceptarCompra = new Button();
-            btnCancelarCompra = new Button();
             CompraID = new DataGridViewTextBoxColumn();
             CodigoProducto = new DataGridViewTextBoxColumn();
             ProductoID = new DataGridViewComboBoxColumn();
@@ -54,8 +50,14 @@
             PrecioUnitario = new DataGridViewTextBoxColumn();
             ImpuestoID = new DataGridViewComboBoxColumn();
             Total = new DataGridViewTextBoxColumn();
+            btnVolver = new Button();
+            btnEditarCompra = new Button();
+            btnAceptarCompra = new Button();
+            btnCancelarCompra = new Button();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaCompraDetalle).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -209,58 +211,20 @@
             // 
             // tablaCompraDetalle
             // 
+            tablaCompraDetalle.AllowUserToDeleteRows = false;
             tablaCompraDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaCompraDetalle.Columns.AddRange(new DataGridViewColumn[] { CompraID, CodigoProducto, ProductoID, BodegaID, Cantidad, PrecioUnitario, ImpuestoID, Total });
-            tablaCompraDetalle.Location = new Point(0, 235);
+            tablaCompraDetalle.Dock = DockStyle.Fill;
+            tablaCompraDetalle.Location = new Point(0, 0);
             tablaCompraDetalle.Margin = new Padding(2);
             tablaCompraDetalle.Name = "tablaCompraDetalle";
             tablaCompraDetalle.ReadOnly = true;
             tablaCompraDetalle.RowHeadersWidth = 102;
             tablaCompraDetalle.Size = new Size(1584, 582);
             tablaCompraDetalle.TabIndex = 1;
+            tablaCompraDetalle.CellContentClick += tablaCompraDetalle_CellContentClick;
             tablaCompraDetalle.CellEndEdit += tablaCompraDetalle_CellEndEdit;
             tablaCompraDetalle.DataError += tablaCompraDetalle_DataError;
-            // 
-            // btnVolver
-            // 
-            btnVolver.Location = new Point(35, 845);
-            btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(128, 41);
-            btnVolver.TabIndex = 27;
-            btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
-            btnVolver.Click += btnVolver_Click;
-            // 
-            // btnEditar
-            // 
-            btnEditar.Location = new Point(186, 845);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(132, 41);
-            btnEditar.TabIndex = 24;
-            btnEditar.Text = "Editar";
-            btnEditar.UseVisualStyleBackColor = true;
-            btnEditar.Click += btnEditar_Click;
-            // 
-            // btnAceptarCompra
-            // 
-            btnAceptarCompra.Location = new Point(1290, 845);
-            btnAceptarCompra.Name = "btnAceptarCompra";
-            btnAceptarCompra.Size = new Size(132, 41);
-            btnAceptarCompra.TabIndex = 23;
-            btnAceptarCompra.Text = "Aceptar";
-            btnAceptarCompra.UseVisualStyleBackColor = true;
-            btnAceptarCompra.Visible = false;
-            btnAceptarCompra.Click += btnAceptarCompra_Click;
-            // 
-            // btnCancelarCompra
-            // 
-            btnCancelarCompra.Location = new Point(1434, 845);
-            btnCancelarCompra.Name = "btnCancelarCompra";
-            btnCancelarCompra.Size = new Size(132, 41);
-            btnCancelarCompra.TabIndex = 25;
-            btnCancelarCompra.Text = "Cancelar";
-            btnCancelarCompra.UseVisualStyleBackColor = true;
-            btnCancelarCompra.Click += btnCancelarCompra_Click;
             // 
             // CompraID
             // 
@@ -340,16 +304,67 @@
             Total.ReadOnly = true;
             Total.Width = 250;
             // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(35, 845);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(128, 41);
+            btnVolver.TabIndex = 27;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
+            // 
+            // btnEditarCompra
+            // 
+            btnEditarCompra.Location = new Point(186, 845);
+            btnEditarCompra.Name = "btnEditarCompra";
+            btnEditarCompra.Size = new Size(132, 41);
+            btnEditarCompra.TabIndex = 24;
+            btnEditarCompra.Text = "Editar";
+            btnEditarCompra.UseVisualStyleBackColor = true;
+            btnEditarCompra.Click += btnEditar_Click;
+            // 
+            // btnAceptarCompra
+            // 
+            btnAceptarCompra.Location = new Point(1290, 845);
+            btnAceptarCompra.Name = "btnAceptarCompra";
+            btnAceptarCompra.Size = new Size(132, 41);
+            btnAceptarCompra.TabIndex = 23;
+            btnAceptarCompra.Text = "Aceptar";
+            btnAceptarCompra.UseVisualStyleBackColor = true;
+            btnAceptarCompra.Visible = false;
+            btnAceptarCompra.Click += btnAceptarCompra_Click;
+            // 
+            // btnCancelarCompra
+            // 
+            btnCancelarCompra.Location = new Point(1434, 845);
+            btnCancelarCompra.Name = "btnCancelarCompra";
+            btnCancelarCompra.Size = new Size(132, 41);
+            btnCancelarCompra.TabIndex = 25;
+            btnCancelarCompra.Text = "Cancelar";
+            btnCancelarCompra.UseVisualStyleBackColor = true;
+            btnCancelarCompra.Click += btnCancelarCompra_Click;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(tablaCompraDetalle);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 235);
+            panel2.Margin = new Padding(2);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1584, 582);
+            panel2.TabIndex = 22;
+            // 
             // CompraDetalle
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 994);
+            Controls.Add(panel2);
             Controls.Add(btnCancelarCompra);
             Controls.Add(btnAceptarCompra);
-            Controls.Add(btnEditar);
+            Controls.Add(btnEditarCompra);
             Controls.Add(btnVolver);
-            Controls.Add(tablaCompraDetalle);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "CompraDetalle";
@@ -358,6 +373,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)tablaCompraDetalle).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -378,7 +394,7 @@
         private DateTimePicker dateTimePicker1;
         private Label label6;
         private Button btnVolver;
-        private Button btnEditar;
+        private Button btnEditarCompra;
         private Button btnAceptarCompra;
         private Button btnCancelarCompra;
         private DataGridViewTextBoxColumn CompraID;
@@ -389,5 +405,6 @@
         private DataGridViewTextBoxColumn PrecioUnitario;
         private DataGridViewComboBoxColumn ImpuestoID;
         private DataGridViewTextBoxColumn Total;
+        private Panel panel2;
     }
 }

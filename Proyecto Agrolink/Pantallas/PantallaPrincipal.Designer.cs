@@ -79,20 +79,29 @@
             panelMain.Controls.Add(panelImage);
             panelMain.Dock = DockStyle.Left;
             panelMain.Location = new Point(0, 0);
+<<<<<<< HEAD
             panelMain.Margin = new Padding(2);
+=======
+            panelMain.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             panelMain.Name = "panelMain";
-            panelMain.Size = new Size(500, 1630);
+            panelMain.Size = new Size(294, 640);
             panelMain.TabIndex = 1;
             panelMain.Visible = false;
             // 
             // button1
             // 
             button1.BackColor = Color.FromArgb(133, 183, 157);
+<<<<<<< HEAD
             button1.Location = new Point(75, 1384);
             button1.Margin = new Padding(2);
+=======
+            button1.Location = new Point(44, 844);
+            button1.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             button1.Name = "button1";
-            button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(299, 75);
+            button1.Padding = new Padding(6, 0, 0, 0);
+            button1.Size = new Size(176, 46);
             button1.TabIndex = 19;
             button1.Text = "Salir";
             button1.UseVisualStyleBackColor = false;
@@ -101,20 +110,30 @@
             // panelSeparador
             // 
             panelSeparador.BackColor = Color.FromArgb(192, 229, 200);
+<<<<<<< HEAD
             panelSeparador.Location = new Point(26, 1360);
             panelSeparador.Margin = new Padding(2);
+=======
+            panelSeparador.Location = new Point(15, 829);
+            panelSeparador.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             panelSeparador.Name = "panelSeparador";
-            panelSeparador.Size = new Size(450, 2);
+            panelSeparador.Size = new Size(265, 1);
             panelSeparador.TabIndex = 18;
             // 
             // panelSubMenuConfig
             // 
             panelSubMenuConfig.Controls.Add(subMenuEmpresa);
             panelSubMenuConfig.Dock = DockStyle.Top;
+<<<<<<< HEAD
             panelSubMenuConfig.Location = new Point(0, 1150);
             panelSubMenuConfig.Margin = new Padding(2);
+=======
+            panelSubMenuConfig.Location = new Point(0, 702);
+            panelSubMenuConfig.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             panelSubMenuConfig.Name = "panelSubMenuConfig";
-            panelSubMenuConfig.Size = new Size(500, 66);
+            panelSubMenuConfig.Size = new Size(280, 40);
             panelSubMenuConfig.TabIndex = 17;
             panelSubMenuConfig.Visible = false;
             // 
@@ -123,10 +142,14 @@
             subMenuEmpresa.BackColor = Color.FromArgb(192, 229, 200);
             subMenuEmpresa.Dock = DockStyle.Top;
             subMenuEmpresa.Location = new Point(0, 0);
+<<<<<<< HEAD
             subMenuEmpresa.Margin = new Padding(2);
+=======
+            subMenuEmpresa.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuEmpresa.Name = "subMenuEmpresa";
-            subMenuEmpresa.Padding = new Padding(32, 0, 0, 0);
-            subMenuEmpresa.Size = new Size(500, 72);
+            subMenuEmpresa.Padding = new Padding(19, 0, 0, 0);
+            subMenuEmpresa.Size = new Size(280, 44);
             subMenuEmpresa.TabIndex = 1;
             subMenuEmpresa.Text = "Empresa";
             subMenuEmpresa.TextAlign = ContentAlignment.MiddleLeft;
@@ -137,11 +160,16 @@
             // 
             menuConfig.BackColor = Color.FromArgb(133, 183, 157);
             menuConfig.Dock = DockStyle.Top;
+<<<<<<< HEAD
             menuConfig.Location = new Point(0, 1075);
             menuConfig.Margin = new Padding(2);
+=======
+            menuConfig.Location = new Point(0, 656);
+            menuConfig.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             menuConfig.Name = "menuConfig";
-            menuConfig.Padding = new Padding(10, 0, 0, 0);
-            menuConfig.Size = new Size(500, 75);
+            menuConfig.Padding = new Padding(6, 0, 0, 0);
+            menuConfig.Size = new Size(280, 46);
             menuConfig.TabIndex = 16;
             menuConfig.Text = "Configuración";
             menuConfig.TextAlign = ContentAlignment.MiddleLeft;
@@ -153,10 +181,15 @@
             panelSubMenuProductos.Controls.Add(subMenuAlmacenes);
             panelSubMenuProductos.Controls.Add(subMenuProductos);
             panelSubMenuProductos.Dock = DockStyle.Top;
+<<<<<<< HEAD
             panelSubMenuProductos.Location = new Point(0, 937);
             panelSubMenuProductos.Margin = new Padding(2);
+=======
+            panelSubMenuProductos.Location = new Point(0, 572);
+            panelSubMenuProductos.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             panelSubMenuProductos.Name = "panelSubMenuProductos";
-            panelSubMenuProductos.Size = new Size(500, 138);
+            panelSubMenuProductos.Size = new Size(280, 84);
             panelSubMenuProductos.TabIndex = 15;
             panelSubMenuProductos.Visible = false;
             // 
@@ -164,11 +197,16 @@
             // 
             subMenuAlmacenes.BackColor = Color.FromArgb(192, 229, 200);
             subMenuAlmacenes.Dock = DockStyle.Top;
+<<<<<<< HEAD
             subMenuAlmacenes.Location = new Point(0, 72);
             subMenuAlmacenes.Margin = new Padding(2);
+=======
+            subMenuAlmacenes.Location = new Point(0, 44);
+            subMenuAlmacenes.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuAlmacenes.Name = "subMenuAlmacenes";
-            subMenuAlmacenes.Padding = new Padding(32, 0, 0, 0);
-            subMenuAlmacenes.Size = new Size(500, 72);
+            subMenuAlmacenes.Padding = new Padding(19, 0, 0, 0);
+            subMenuAlmacenes.Size = new Size(280, 44);
             subMenuAlmacenes.TabIndex = 2;
             subMenuAlmacenes.Text = "Almacenes";
             subMenuAlmacenes.TextAlign = ContentAlignment.MiddleLeft;
@@ -179,10 +217,14 @@
             subMenuProductos.BackColor = Color.FromArgb(192, 229, 200);
             subMenuProductos.Dock = DockStyle.Top;
             subMenuProductos.Location = new Point(0, 0);
+<<<<<<< HEAD
             subMenuProductos.Margin = new Padding(2);
+=======
+            subMenuProductos.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuProductos.Name = "subMenuProductos";
-            subMenuProductos.Padding = new Padding(32, 0, 0, 0);
-            subMenuProductos.Size = new Size(500, 72);
+            subMenuProductos.Padding = new Padding(19, 0, 0, 0);
+            subMenuProductos.Size = new Size(280, 44);
             subMenuProductos.TabIndex = 1;
             subMenuProductos.Text = "Productos";
             subMenuProductos.TextAlign = ContentAlignment.MiddleLeft;
@@ -193,11 +235,16 @@
             // 
             menuProductos.BackColor = Color.FromArgb(133, 183, 157);
             menuProductos.Dock = DockStyle.Top;
+<<<<<<< HEAD
             menuProductos.Location = new Point(0, 862);
             menuProductos.Margin = new Padding(2);
+=======
+            menuProductos.Location = new Point(0, 526);
+            menuProductos.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             menuProductos.Name = "menuProductos";
-            menuProductos.Padding = new Padding(10, 0, 0, 0);
-            menuProductos.Size = new Size(500, 75);
+            menuProductos.Padding = new Padding(6, 0, 0, 0);
+            menuProductos.Size = new Size(280, 46);
             menuProductos.TabIndex = 14;
             menuProductos.Text = "Productos";
             menuProductos.TextAlign = ContentAlignment.MiddleLeft;
@@ -209,10 +256,15 @@
             panelSubMenuSocios.Controls.Add(subMenuSocios);
             panelSubMenuSocios.Controls.Add(subMenuAgricultores);
             panelSubMenuSocios.Dock = DockStyle.Top;
+<<<<<<< HEAD
             panelSubMenuSocios.Location = new Point(0, 724);
             panelSubMenuSocios.Margin = new Padding(2);
+=======
+            panelSubMenuSocios.Location = new Point(0, 442);
+            panelSubMenuSocios.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             panelSubMenuSocios.Name = "panelSubMenuSocios";
-            panelSubMenuSocios.Size = new Size(500, 138);
+            panelSubMenuSocios.Size = new Size(280, 84);
             panelSubMenuSocios.TabIndex = 13;
             panelSubMenuSocios.Visible = false;
             // 
@@ -220,11 +272,16 @@
             // 
             subMenuSocios.BackColor = Color.FromArgb(192, 229, 200);
             subMenuSocios.Dock = DockStyle.Top;
+<<<<<<< HEAD
             subMenuSocios.Location = new Point(0, 72);
             subMenuSocios.Margin = new Padding(2);
+=======
+            subMenuSocios.Location = new Point(0, 44);
+            subMenuSocios.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuSocios.Name = "subMenuSocios";
-            subMenuSocios.Padding = new Padding(32, 0, 0, 0);
-            subMenuSocios.Size = new Size(500, 72);
+            subMenuSocios.Padding = new Padding(19, 0, 0, 0);
+            subMenuSocios.Size = new Size(280, 44);
             subMenuSocios.TabIndex = 2;
             subMenuSocios.Text = "Socios";
             subMenuSocios.TextAlign = ContentAlignment.MiddleLeft;
@@ -235,10 +292,14 @@
             subMenuAgricultores.BackColor = Color.FromArgb(192, 229, 200);
             subMenuAgricultores.Dock = DockStyle.Top;
             subMenuAgricultores.Location = new Point(0, 0);
+<<<<<<< HEAD
             subMenuAgricultores.Margin = new Padding(2);
+=======
+            subMenuAgricultores.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuAgricultores.Name = "subMenuAgricultores";
-            subMenuAgricultores.Padding = new Padding(32, 0, 0, 0);
-            subMenuAgricultores.Size = new Size(500, 72);
+            subMenuAgricultores.Padding = new Padding(19, 0, 0, 0);
+            subMenuAgricultores.Size = new Size(280, 44);
             subMenuAgricultores.TabIndex = 1;
             subMenuAgricultores.Text = "Agricultores";
             subMenuAgricultores.TextAlign = ContentAlignment.MiddleLeft;
@@ -249,11 +310,16 @@
             // 
             menuSocios.BackColor = Color.FromArgb(133, 183, 157);
             menuSocios.Dock = DockStyle.Top;
+<<<<<<< HEAD
             menuSocios.Location = new Point(0, 649);
             menuSocios.Margin = new Padding(2);
+=======
+            menuSocios.Location = new Point(0, 396);
+            menuSocios.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             menuSocios.Name = "menuSocios";
-            menuSocios.Padding = new Padding(10, 0, 0, 0);
-            menuSocios.Size = new Size(500, 75);
+            menuSocios.Padding = new Padding(6, 0, 0, 0);
+            menuSocios.Size = new Size(280, 46);
             menuSocios.TabIndex = 12;
             menuSocios.Text = "Socios";
             menuSocios.TextAlign = ContentAlignment.MiddleLeft;
@@ -269,21 +335,31 @@
             panelSubMenuTrans.Controls.Add(subMenuCompras);
             panelSubMenuTrans.Controls.Add(subMenuVent);
             panelSubMenuTrans.Dock = DockStyle.Top;
+<<<<<<< HEAD
             panelSubMenuTrans.Location = new Point(0, 288);
             panelSubMenuTrans.Margin = new Padding(2);
+=======
+            panelSubMenuTrans.Location = new Point(0, 176);
+            panelSubMenuTrans.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             panelSubMenuTrans.Name = "panelSubMenuTrans";
-            panelSubMenuTrans.Size = new Size(500, 361);
+            panelSubMenuTrans.Size = new Size(280, 220);
             panelSubMenuTrans.TabIndex = 9;
             panelSubMenuTrans.Visible = false;
             // 
             // subMenuSalida
             // 
             subMenuSalida.Dock = DockStyle.Top;
+<<<<<<< HEAD
             subMenuSalida.Location = new Point(0, 360);
             subMenuSalida.Margin = new Padding(2);
+=======
+            subMenuSalida.Location = new Point(0, 220);
+            subMenuSalida.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuSalida.Name = "subMenuSalida";
-            subMenuSalida.Padding = new Padding(32, 0, 0, 0);
-            subMenuSalida.Size = new Size(500, 72);
+            subMenuSalida.Padding = new Padding(19, 0, 0, 0);
+            subMenuSalida.Size = new Size(280, 44);
             subMenuSalida.TabIndex = 9;
             subMenuSalida.Text = "Salida de Producto";
             subMenuSalida.TextAlign = ContentAlignment.MiddleLeft;
@@ -293,11 +369,16 @@
             // 
             subMenuEntrada.BackColor = Color.FromArgb(192, 229, 200);
             subMenuEntrada.Dock = DockStyle.Top;
+<<<<<<< HEAD
             subMenuEntrada.Location = new Point(0, 288);
             subMenuEntrada.Margin = new Padding(2);
+=======
+            subMenuEntrada.Location = new Point(0, 176);
+            subMenuEntrada.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuEntrada.Name = "subMenuEntrada";
-            subMenuEntrada.Padding = new Padding(32, 0, 0, 0);
-            subMenuEntrada.Size = new Size(500, 72);
+            subMenuEntrada.Padding = new Padding(19, 0, 0, 0);
+            subMenuEntrada.Size = new Size(280, 44);
             subMenuEntrada.TabIndex = 8;
             subMenuEntrada.Text = "Entrada de Producto";
             subMenuEntrada.TextAlign = ContentAlignment.MiddleLeft;
@@ -307,11 +388,16 @@
             // 
             subMenuRecibos.BackColor = Color.FromArgb(192, 229, 200);
             subMenuRecibos.Dock = DockStyle.Top;
+<<<<<<< HEAD
             subMenuRecibos.Location = new Point(0, 216);
             subMenuRecibos.Margin = new Padding(2);
+=======
+            subMenuRecibos.Location = new Point(0, 132);
+            subMenuRecibos.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuRecibos.Name = "subMenuRecibos";
-            subMenuRecibos.Padding = new Padding(32, 0, 0, 0);
-            subMenuRecibos.Size = new Size(500, 72);
+            subMenuRecibos.Padding = new Padding(19, 0, 0, 0);
+            subMenuRecibos.Size = new Size(280, 44);
             subMenuRecibos.TabIndex = 7;
             subMenuRecibos.Text = "Recibos";
             subMenuRecibos.TextAlign = ContentAlignment.MiddleLeft;
@@ -321,11 +407,16 @@
             // 
             subMenuFacturas.BackColor = Color.FromArgb(192, 229, 200);
             subMenuFacturas.Dock = DockStyle.Top;
+<<<<<<< HEAD
             subMenuFacturas.Location = new Point(0, 144);
             subMenuFacturas.Margin = new Padding(2);
+=======
+            subMenuFacturas.Location = new Point(0, 88);
+            subMenuFacturas.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuFacturas.Name = "subMenuFacturas";
-            subMenuFacturas.Padding = new Padding(32, 0, 0, 0);
-            subMenuFacturas.Size = new Size(500, 72);
+            subMenuFacturas.Padding = new Padding(19, 0, 0, 0);
+            subMenuFacturas.Size = new Size(280, 44);
             subMenuFacturas.TabIndex = 6;
             subMenuFacturas.Text = "Facturas";
             subMenuFacturas.TextAlign = ContentAlignment.MiddleLeft;
@@ -335,11 +426,16 @@
             // 
             subMenuCompras.BackColor = Color.FromArgb(192, 229, 200);
             subMenuCompras.Dock = DockStyle.Top;
+<<<<<<< HEAD
             subMenuCompras.Location = new Point(0, 72);
             subMenuCompras.Margin = new Padding(2);
+=======
+            subMenuCompras.Location = new Point(0, 44);
+            subMenuCompras.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuCompras.Name = "subMenuCompras";
-            subMenuCompras.Padding = new Padding(32, 0, 0, 0);
-            subMenuCompras.Size = new Size(500, 72);
+            subMenuCompras.Padding = new Padding(19, 0, 0, 0);
+            subMenuCompras.Size = new Size(280, 44);
             subMenuCompras.TabIndex = 5;
             subMenuCompras.Text = "Compras";
             subMenuCompras.TextAlign = ContentAlignment.MiddleLeft;
@@ -351,10 +447,14 @@
             subMenuVent.BackColor = Color.FromArgb(192, 229, 200);
             subMenuVent.Dock = DockStyle.Top;
             subMenuVent.Location = new Point(0, 0);
+<<<<<<< HEAD
             subMenuVent.Margin = new Padding(2);
+=======
+            subMenuVent.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             subMenuVent.Name = "subMenuVent";
-            subMenuVent.Padding = new Padding(32, 0, 0, 0);
-            subMenuVent.Size = new Size(500, 72);
+            subMenuVent.Padding = new Padding(19, 0, 0, 0);
+            subMenuVent.Size = new Size(280, 44);
             subMenuVent.TabIndex = 4;
             subMenuVent.Text = "Ventas";
             subMenuVent.TextAlign = ContentAlignment.MiddleLeft;
@@ -365,11 +465,16 @@
             // 
             menuTrans.BackColor = Color.FromArgb(133, 183, 157);
             menuTrans.Dock = DockStyle.Top;
+<<<<<<< HEAD
             menuTrans.Location = new Point(0, 213);
             menuTrans.Margin = new Padding(2);
+=======
+            menuTrans.Location = new Point(0, 130);
+            menuTrans.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             menuTrans.Name = "menuTrans";
-            menuTrans.Padding = new Padding(10, 0, 0, 0);
-            menuTrans.Size = new Size(500, 75);
+            menuTrans.Padding = new Padding(6, 0, 0, 0);
+            menuTrans.Size = new Size(280, 46);
             menuTrans.TabIndex = 3;
             menuTrans.Text = "Transacciones";
             menuTrans.TextAlign = ContentAlignment.MiddleLeft;
@@ -381,9 +486,13 @@
             panelImage.Controls.Add(pictureBox1);
             panelImage.Dock = DockStyle.Top;
             panelImage.Location = new Point(0, 0);
+<<<<<<< HEAD
             panelImage.Margin = new Padding(2);
+=======
+            panelImage.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             panelImage.Name = "panelImage";
-            panelImage.Size = new Size(500, 213);
+            panelImage.Size = new Size(280, 130);
             panelImage.TabIndex = 2;
             // 
             // pictureBox1
@@ -391,9 +500,13 @@
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.LogoCOPRAG;
             pictureBox1.Location = new Point(0, 0);
+<<<<<<< HEAD
             pictureBox1.Margin = new Padding(2);
+=======
+            pictureBox1.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(500, 213);
+            pictureBox1.Size = new Size(280, 130);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -402,26 +515,36 @@
             // panelChildForm
             // 
             panelChildForm.Dock = DockStyle.Fill;
+<<<<<<< HEAD
             panelChildForm.Location = new Point(500, 0);
             panelChildForm.Margin = new Padding(2);
+=======
+            panelChildForm.Location = new Point(294, 0);
+            panelChildForm.Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             panelChildForm.Name = "panelChildForm";
-            panelChildForm.Size = new Size(2693, 1630);
+            panelChildForm.Size = new Size(838, 640);
             panelChildForm.TabIndex = 2;
             // 
             // PantallaPrincipal
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(3193, 1630);
+            ClientSize = new Size(1132, 640);
             Controls.Add(panelChildForm);
             Controls.Add(panelMain);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
+<<<<<<< HEAD
             Margin = new Padding(2);
+=======
+            Margin = new Padding(1);
+>>>>>>> 808d339facbd921eb707e10e4581a79d0a5fd6e8
             MaximizeBox = false;
-            MaximumSize = new Size(4683, 2423);
-            MinimumSize = new Size(1899, 969);
+            MaximumSize = new Size(2764, 1499);
+            MinimumSize = new Size(1126, 613);
             Name = "PantallaPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             panelMain.ResumeLayout(false);
             panelSubMenuConfig.ResumeLayout(false);
             panelSubMenuProductos.ResumeLayout(false);

@@ -98,5 +98,10 @@ namespace AgroLink
             reestablecer.StartPosition = FormStartPosition.CenterScreen;
             reestablecer.ShowDialog();
         }
+
+        private void Login_Resize(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -32,31 +32,31 @@
             txtClave = new TextBox();
             label1 = new Label();
             btnLogin = new Button();
-            panel1 = new Panel();
+            panelLogin = new Panel();
             linkLabel2 = new LinkLabel();
             linkLabel1 = new LinkLabel();
             label3 = new Label();
             label2 = new Label();
             pictureBox2 = new PictureBox();
-            panel1.SuspendLayout();
+            panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(95, 228);
+            txtUsuario.Location = new Point(86, 228);
             txtUsuario.Margin = new Padding(2);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(275, 31);
+            txtUsuario.Size = new Size(299, 31);
             txtUsuario.TabIndex = 0;
             txtUsuario.TextChanged += textBox1_TextChanged;
             // 
             // txtClave
             // 
-            txtClave.Location = new Point(95, 321);
+            txtClave.Location = new Point(86, 321);
             txtClave.Margin = new Padding(2);
             txtClave.Name = "txtClave";
-            txtClave.Size = new Size(275, 31);
+            txtClave.Size = new Size(299, 31);
             txtClave.TabIndex = 1;
             // 
             // label1
@@ -87,30 +87,31 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
-            // panel1
+            // panelLogin
             // 
-            panel1.BackColor = Color.FromArgb(22, 48, 43);
-            panel1.Controls.Add(linkLabel2);
-            panel1.Controls.Add(linkLabel1);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(btnLogin);
-            panel1.Controls.Add(txtUsuario);
-            panel1.Controls.Add(txtClave);
-            panel1.Location = new Point(262, 117);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(480, 652);
-            panel1.TabIndex = 4;
+            panelLogin.BackColor = Color.FromArgb(22, 48, 43);
+            panelLogin.Controls.Add(linkLabel2);
+            panelLogin.Controls.Add(linkLabel1);
+            panelLogin.Controls.Add(label3);
+            panelLogin.Controls.Add(label2);
+            panelLogin.Controls.Add(label1);
+            panelLogin.Controls.Add(btnLogin);
+            panelLogin.Controls.Add(txtUsuario);
+            panelLogin.Controls.Add(txtClave);
+            panelLogin.Location = new Point(261, 166);
+            panelLogin.Name = "panelLogin";
+            panelLogin.Size = new Size(480, 652);
+            panelLogin.TabIndex = 4;
             // 
             // linkLabel2
             // 
             linkLabel2.ActiveLinkColor = Color.FromArgb(255, 222, 89);
             linkLabel2.AutoSize = true;
+            linkLabel2.Font = new Font("Segoe UI", 10F);
             linkLabel2.LinkColor = Color.Gray;
-            linkLabel2.Location = new Point(123, 445);
+            linkLabel2.Location = new Point(114, 447);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(214, 25);
+            linkLabel2.Size = new Size(235, 28);
             linkLabel2.TabIndex = 7;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "¿Olvidaste tu contraseña?";
@@ -120,10 +121,11 @@
             // 
             linkLabel1.ActiveLinkColor = Color.FromArgb(255, 222, 89);
             linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Segoe UI", 10F);
             linkLabel1.LinkColor = Color.Gray;
-            linkLabel1.Location = new Point(146, 548);
+            linkLabel1.Location = new Point(130, 548);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(175, 25);
+            linkLabel1.Size = new Size(193, 28);
             linkLabel1.TabIndex = 6;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Crear Nuevo Usuario";
@@ -134,7 +136,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(91, 289);
+            label3.Location = new Point(82, 289);
             label3.Name = "label3";
             label3.Size = new Size(118, 28);
             label3.TabIndex = 5;
@@ -145,7 +147,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(90, 196);
+            label2.Location = new Point(81, 196);
             label2.Name = "label2";
             label2.Size = new Size(84, 28);
             label2.TabIndex = 4;
@@ -158,7 +160,7 @@
             pictureBox2.Image = Properties.Resources.fondoInicioSesionCOPRAG;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1878, 994);
+            pictureBox2.Size = new Size(1900, 1050);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
@@ -167,16 +169,17 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1878, 994);
-            Controls.Add(panel1);
+            ClientSize = new Size(1900, 1050);
+            Controls.Add(panelLogin);
             Controls.Add(pictureBox2);
             Font = new Font("Segoe UI", 9F);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Load += Form1_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            Resize += Login_Resize;
+            panelLogin.ResumeLayout(false);
+            panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
@@ -187,7 +190,7 @@
         private TextBox txtClave;
         private Label label1;
         private Button btnLogin;
-        private Panel panel1;
+        private Panel panelLogin;
         private Label label2;
         private Label label3;
         private PictureBox pictureBox2;

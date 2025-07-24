@@ -102,6 +102,7 @@
             btnNuevaCompra.TabIndex = 2;
             btnNuevaCompra.Text = "Nueva Compra";
             btnNuevaCompra.UseVisualStyleBackColor = true;
+            btnNuevaCompra.Click += btnNuevaCompra_Click;
             // 
             // tablaCompra
             // 
@@ -122,6 +123,7 @@
             // 
             // CompraID
             // 
+            CompraID.DataPropertyName = "CompraID";
             CompraID.HeaderText = "ID";
             CompraID.MinimumWidth = 12;
             CompraID.Name = "CompraID";
@@ -131,6 +133,7 @@
             // 
             // SocioID
             // 
+            SocioID.DataPropertyName = "SocioID";
             SocioID.HeaderText = "SocioID";
             SocioID.MinimumWidth = 12;
             SocioID.Name = "SocioID";
@@ -140,6 +143,7 @@
             // 
             // ListaPreciosID
             // 
+            ListaPreciosID.DataPropertyName = "ListaPreciosID";
             ListaPreciosID.HeaderText = "ListaPreciosID";
             ListaPreciosID.MinimumWidth = 12;
             ListaPreciosID.Name = "ListaPreciosID";
@@ -150,6 +154,7 @@
             // CodigoCompra
             // 
             CodigoCompra.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            CodigoCompra.DataPropertyName = "CodigoCompra";
             CodigoCompra.HeaderText = "Código";
             CodigoCompra.MinimumWidth = 12;
             CodigoCompra.Name = "CodigoCompra";
@@ -158,6 +163,7 @@
             // 
             // Fecha
             // 
+            Fecha.DataPropertyName = "Fecha";
             Fecha.HeaderText = "Fecha";
             Fecha.MinimumWidth = 12;
             Fecha.Name = "Fecha";
@@ -166,6 +172,7 @@
             // 
             // Socio
             // 
+            Socio.DataPropertyName = "Socio";
             Socio.HeaderText = "Socio";
             Socio.MinimumWidth = 150;
             Socio.Name = "Socio";
@@ -174,6 +181,7 @@
             // 
             // TipoSocio
             // 
+            TipoSocio.DataPropertyName = "TipoSocio";
             TipoSocio.HeaderText = "Tipo de Socio";
             TipoSocio.MinimumWidth = 12;
             TipoSocio.Name = "TipoSocio";
@@ -182,6 +190,7 @@
             // 
             // ListaPrecio
             // 
+            ListaPrecio.DataPropertyName = "ListaPrecio";
             ListaPrecio.HeaderText = "Lista de Precios";
             ListaPrecio.MinimumWidth = 12;
             ListaPrecio.Name = "ListaPrecio";
@@ -190,6 +199,7 @@
             // 
             // TipoPago
             // 
+            TipoPago.DataPropertyName = "TipoPago";
             TipoPago.HeaderText = "Tipo de Pago";
             TipoPago.MinimumWidth = 12;
             TipoPago.Name = "TipoPago";
@@ -198,6 +208,7 @@
             // 
             // Estado
             // 
+            Estado.DataPropertyName = "Estado";
             Estado.HeaderText = "Estado";
             Estado.MinimumWidth = 12;
             Estado.Name = "Estado";
@@ -206,6 +217,7 @@
             // 
             // Total
             // 
+            Total.DataPropertyName = "Total";
             Total.HeaderText = "Total";
             Total.MinimumWidth = 12;
             Total.Name = "Total";
@@ -223,6 +235,7 @@
             Name = "Compra";
             Text = "Compra";
             Load += Compra_Load;
+            VisibleChanged += Compra_VisibleChanged;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)tablaCompra).EndInit();
