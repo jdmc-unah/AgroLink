@@ -12,7 +12,7 @@ as
 	SELECT F.FacturaID, F.CodigoFactura , F.Fecha , S.Nombre as 'Socio' , S.TipoSocio , 
 	LP.Nombre as 'ListaPrecio', F.MetodoPago , F.Estado,  SUM( (FD.Cantidad * FD.Precio) * (1+I.Valor) ) as 'Total'	,
 
-	F.CAI, F.EmpleadoID, F.NumFiscalID
+	F.CAI, F.EmpleadoID, F.SocioID, F.ListaPreciosID
 	
 
 	FROM Pruebas.Factura F
@@ -21,13 +21,12 @@ as
 	INNER JOIN Pruebas.ListaPrecios LP ON F.ListaPreciosID = LP.ListaPreciosID
 	INNER JOIN Pruebas.Impuesto I ON FD.ImpuestoID = I.ImpuestoID
 	GROUP BY  F.FacturaID, F.CodigoFactura , F.Fecha , S.SocioID,  S.Nombre  , S.TipoSocio , LP.ListaPreciosID, LP.Nombre,  F.MetodoPago , F.Estado,
-	F.CAI, F.EmpleadoID, F.NumFiscalID
-
+	F.CAI, F.EmpleadoID,  F.SocioID, F.ListaPreciosID
 go	
 SELECT * FROM vTraeFacturas
 
 
-
+GO
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Empleados tipo Vendedor para ComboBox >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 CREATE OR ALTER VIEW vTraeEmpleado

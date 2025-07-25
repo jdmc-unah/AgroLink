@@ -196,77 +196,39 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         {
             ToggleReadOnly(true);
 
-
-
+            //Toma datos de tablaDetalle 
             DataTable tbDet = metodosGlobales.CrearDataTable(tablaDetalle);
-            DataTable validacion = recSQL.EjecutarFuncion("dbo.fValidaVenta", "detalle", "TipoVentaDetalle", tbDet);
 
-            //este if valida si devolvio un error la validacion usando la funcion que esta arriba
-            if (validacion.Rows[0][0].ToString() == "")
-            {
-
-
-                //Toma los datos de la parte superior y los asigna a los parametros del sp
-
-                Dictionary<string, object> paramsVent = new Dictionary<string, object>() {
-                {"ventID" , ventaID  },
-                {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
-                {"socID"  , comboSocio.SelectedValue     },
-                {"listPrecID", comboListaPrecio.SelectedValue  },
-                {"tipoPago" , comboTipoPago.SelectedItem },
-                {"estado" , comboEstado.SelectedItem }
+            //Toma los datos de la parte superior y los asigna a los parametros del sp
+            Dictionary<string, object?> paramsVent = new Dictionary<string, object?>() {
+            {"ventID" , ventaID  },
+            {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
+            {"socID"  ,  comboSocio.SelectedValue },
+            {"listPrecID", comboListaPrecio.SelectedValue  },
+            {"tipoPago" , comboTipoPago.SelectedItem },
+            {"estado" , comboEstado.SelectedItem }
             };
 
-                //Agrega o actualiza la venta
-                DataTable tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateVenta", paramsVent);
+            //Agrega o actualiza la venta pasando los parametros anteriores
+            DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateVenta", "detalle", "TipoVentaDetalle", tbDet, paramsVent);
 
-                if (tablaResultante != null)
+
+            if (tablaResultante != null)
+            {
+                //si es una nueva venta, actualiza el valor con el de la tabla resultante
+                ventaID = ventaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : ventaID;
+
+                if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una factura?"))
                 {
-                    //Actualiza la propiedad ventaid con el resultado de la operacion anterior
-                    ventaID = ventaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : ventaID;
-
-
-                    Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
-                {"ventID" , ventaID  }
-                };
-
-                    //Agrega o actualiza la ventadetalle
-                    if (recSQL.EjecutarSPBool("spAddUpdateVentaDet", "detalle", "TipoVentaDetalle", tbDet, paramsDet))
-                    {
-                        //MessageBox.Show("Cambios guardados con exito");
-
-                        if(metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una factura?"))
-                        {
-                            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm( new Pantallas_Factura.Factura() );
-                        }
-                        else
-                        {
-                            ObtenerDatos(ventaID);
-                        }
-
-                        
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ocurrio un error inesperado");
-                        //this.btnCancelar_Click(sender, e);
-                    }
+                    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Factura.FacturaDetalle());
+                    //aqui habria que pasar la data a factura
 
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrio un error inesperado");
-                    //this.btnCancelar_Click(sender, e);
-
+                    ObtenerDatos(ventaID);
                 }
-
             }
-            else
-            {
-                MessageBox.Show(validacion.Rows[0][0].ToString());
-
-            }
-
 
         }
 

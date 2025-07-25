@@ -11,18 +11,15 @@ as
 	begin
 		declare @subtotal float, @total float, @impVal float
 
-		
 		IF @impID = 0
 			SET @impVal = 0
 		ELSE
 			select @impVal = valor FROM pruebas.Impuesto where ImpuestoID = @impID
-		
 
 		SET @subtotal = ( @cant * @precio) 
 		SET @total = (@subtotal * (1+ @impVal))
 
 		INSERT INTO @resultado VALUES (@subtotal, @total )
-
 
 		return
 	end
@@ -36,20 +33,20 @@ go
 
 
 
-	-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Validaciones >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Validacion de Stock >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-CREATE OR ALTER FUNCTION dbo.fValidaVenta( @detalle TipoVentaDetalle READONLY   ) returns varchar(50)
+CREATE OR ALTER FUNCTION dbo.fValidaStock( @detalle TipoVentaDetalle READONLY   ) returns varchar(50)
 as
 	begin	
 		
 		declare @prod int,  @bodID int, @cant float 
 		declare @error varchar(50) = '', @stockLibre float, @stockTot float
 
-		declare crsVentaDet cursor for
+		declare crsTablaDetalle cursor for
 		select d.ProductoID, BodegaID, Cantidad  
 		from @detalle d
 			   
-		open crsVentaDet; fetch next from crsVentaDet into  @prod , @bodID , @cant  
+		open crsTablaDetalle; fetch next from crsTablaDetalle into  @prod , @bodID , @cant  
 
 		WHILE @@FETCH_STATUS = 0
 			begin
@@ -63,10 +60,10 @@ as
 						return @error 
 					end
 				
-				fetch next from crsVentaDet into  @prod , @bodID , @cant 
+				fetch next from crsTablaDetalle into  @prod , @bodID , @cant 
 			end
 		
-		deallocate crsVentaDet
+		deallocate crsTablaDetalle
 
 		return @error
 	end
@@ -85,14 +82,7 @@ INSERT INTO @DatosPrueba (VentaID,Codigo,  ProductoID, BodegaID, Cantidad,	Preci
 VALUES
 (1,'PRO11',1,2,1,25.00,25,1,28.75)
 
-
-
-SELECT dbo.fValidaVenta(@DatosPrueba) 
-
-
-
-
-SELECT top 1 dbo.fValidaVenta(1, @DatosPrueba) FROM pruebas.VentaDetalle  
+SELECT dbo.fValidaStock(@DatosPrueba) 
 
 rollback
 

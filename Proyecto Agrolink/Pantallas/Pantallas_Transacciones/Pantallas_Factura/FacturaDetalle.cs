@@ -18,6 +18,8 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
         public int facturaID { get; set; }
 
+        public int ventaID { get; set; }
+
         public FacturaDetalle()
         {
             InitializeComponent();
@@ -41,6 +43,8 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             comboMetodoPago.Enabled = !esSoloLectura;
             comboListaPrecio.Enabled = !esSoloLectura;
             comboEmpleado.Enabled = !esSoloLectura;
+            comboVenta.Enabled = !esSoloLectura;
+
             dateTimePicker1.Enabled = !esSoloLectura;
 
             tablaDetalle.ReadOnly = esSoloLectura;
@@ -74,6 +78,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             comboEmpleado.DataSource = recSQL.EjecutarVista("vTraeEmpleado");
             comboEmpleado.DisplayMember = "Empleado";
             comboEmpleado.ValueMember = "EmpleadoID";
+
+            comboVenta.DataSource = recSQL.EjecutarVista("vTraeVentasCode");
+            comboVenta.DisplayMember = "CodigoVenta";
+            comboVenta.ValueMember = "VentaID"; 
+
+
 
         }
 
@@ -203,7 +213,42 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
         private void btnAceptar_Click(object sender, EventArgs e)
         {
 
-          //pendiente
+            ToggleReadOnly(true);
+
+            //Toma datos de tablaDetalle 
+            DataTable tbDet = metodosGlobales.CrearDataTable(tablaDetalle);
+
+
+            //Toma los datos de la parte superior y los asigna a los parametros del sp
+            Dictionary<string, object?> paramsVent = new Dictionary<string, object?>() {
+            {"ventID" , facturaID  },
+            {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
+            {"socID"  ,  comboSocio.SelectedValue },
+            {"listPrecID", comboListaPrecio.SelectedValue  },
+            {"tipoPago" , comboMetodoPago.SelectedItem },
+            {"estado" , comboEstado.SelectedItem }
+            };
+
+            //Agrega o actualiza la venta pasando los parametros anteriores
+            DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateVenta", "detalle", "TipoVentaDetalle", tbDet, paramsVent);
+
+
+            if (tablaResultante != null)
+            {
+                //si es una nueva venta, actualiza el valor con el de la tabla resultante
+                facturaID = facturaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : facturaID;
+
+                if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una salida de producto?"))
+                {
+                    //PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Factura.FacturaDetalle());
+                    //aqui habria que pasar la data a salida de producto
+
+                }
+                else
+                {
+                    ObtenerDatos(facturaID);
+                }
+            }
 
 
         }

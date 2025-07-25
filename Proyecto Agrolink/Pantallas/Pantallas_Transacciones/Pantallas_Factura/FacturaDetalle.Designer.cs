@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             comboEmpleado = new ComboBox();
             label9 = new Label();
@@ -64,6 +64,8 @@
             btnCancelar = new Button();
             btnEditar = new Button();
             btnAceptar = new Button();
+            comboVenta = new ComboBox();
+            label8 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaDetalle).BeginInit();
@@ -72,6 +74,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(comboVenta);
+            panel1.Controls.Add(label8);
             panel1.Controls.Add(comboEmpleado);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(tbCAI);
@@ -277,8 +281,8 @@
             // CodigoProducto
             // 
             CodigoProducto.DataPropertyName = "CodigoProducto";
-            dataGridViewCellStyle1.NullValue = "PRO";
-            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.NullValue = "PRO";
+            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle4;
             CodigoProducto.HeaderText = "Codigo";
             CodigoProducto.MinimumWidth = 12;
             CodigoProducto.Name = "CodigoProducto";
@@ -326,8 +330,8 @@
             // Subtotal
             // 
             Subtotal.DataPropertyName = "Subtotal";
-            dataGridViewCellStyle2.NullValue = "0";
-            Subtotal.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.NullValue = "0";
+            Subtotal.DefaultCellStyle = dataGridViewCellStyle5;
             Subtotal.HeaderText = "Subtotal";
             Subtotal.MinimumWidth = 12;
             Subtotal.Name = "Subtotal";
@@ -348,8 +352,8 @@
             // Total
             // 
             Total.DataPropertyName = "Total";
-            dataGridViewCellStyle3.NullValue = "0";
-            Total.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.NullValue = "0";
+            Total.DefaultCellStyle = dataGridViewCellStyle6;
             Total.HeaderText = "Total";
             Total.MinimumWidth = 12;
             Total.Name = "Total";
@@ -414,6 +418,24 @@
             btnAceptar.Visible = false;
             btnAceptar.Click += btnAceptar_Click;
             // 
+            // comboVenta
+            // 
+            comboVenta.Enabled = false;
+            comboVenta.FormattingEnabled = true;
+            comboVenta.Location = new Point(1096, 61);
+            comboVenta.Name = "comboVenta";
+            comboVenta.Size = new Size(256, 49);
+            comboVenta.TabIndex = 31;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(983, 65);
+            label8.Name = "label8";
+            label8.Size = new Size(93, 41);
+            label8.TabIndex = 30;
+            label8.Text = "Venta";
+            // 
             // FacturaDetalle
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -469,5 +491,7 @@
         private DataGridViewTextBoxColumn Subtotal;
         private DataGridViewComboBoxColumn ImpuestoID;
         private DataGridViewTextBoxColumn Total;
+        private ComboBox comboVenta;
+        private Label label8;
     }
 }

@@ -56,32 +56,66 @@ go
 
 
 CREATE OR ALTER PROCEDURE spAddUpdateVenta 
-@ventID int , @fecha date,  @socID int , @listPrecID int , @tipoPago varchar(50) , @estado varchar(50)
+@ventID int , @fecha date,  @socID int , @listPrecID int , @tipoPago varchar(50) , @estado varchar(50),
+@detalle TipoVentaDetalle READONLY
 as 
 	begin
 		
-		IF @ventID = 0
-				--aqui va lo del insert
-			INSERT INTO Pruebas.Venta (Fecha, SocioID, ListaPreciosID, TipoPago, Estado) VALUES
-			(@fecha ,  @socID  , @listPrecID  , @tipoPago  , @estado )
+		begin transaction
+
+			DECLARE @err varchar(50) = ''
+
+	-->Valida Stock
+			SELECT @err = dbo.fValidaStock(@detalle);
+			IF ISNULL(@err, '') <> '' THROW 50001, @err, 1; --devuelve error personalizado
+				
+	-->Crea o Edita Ventas
+			IF @ventID = 0
+				--nueva venta
+				INSERT INTO Pruebas.Venta (Fecha, SocioID, ListaPreciosID, TipoPago, Estado) VALUES
+				(@fecha ,  @socID  , @listPrecID  , @tipoPago  , @estado )
+				IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
+
+			ELSE
+				--editar venta
+				UPDATE Pruebas.Venta SET Fecha = @fecha , SocioID = @socID , ListaPreciosID = @listPrecID, 
+				TipoPago = @tipoPago , Estado = @estado
+				WHERE VentaID = @ventID
+				IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
+					
+
+	-->Valida si hubieron errores en la venta
+		IF @err = ''   
+			begin
+				
+				IF @ventID = 0  --si es una nueva venta trae la nueva venta creada
+					select top 1 @ventID = ventaid from pruebas.Venta order by ventaid desc;
+
+		-->Ejecuta y valida si hubieron errores en la venta detalle
+				exec spAddUpdateVentaDet @ventID,  @detalle 
+				IF @@ERROR = 0   --valida error al ingresar la venta detalle
+					begin
+						commit;
+						select @ventID  --devuelve la venta que se agrego o editó
+					end
+				ELSE
+					rollback;
+			end
 		ELSE
-			UPDATE Pruebas.Venta SET Fecha = @fecha , SocioID = @socID , ListaPreciosID = @listPrecID, 
-			TipoPago = @tipoPago , Estado = @estado
-			WHERE VentaID = @ventID
-			
-		
-		select top 1 ventaid from pruebas.Venta order by ventaid desc
+			rollback;
 
 	end
 go
 
 
+
+
 --pruebas del sp
 begin transaction
 --exec spAddUpdateVenta 0, '20250723' , 1,2,'Credito', 'Abierto'
-exec spAddUpdateVenta 0,'2025/07/09',4,1,'Credito','Abierto'
+exec spAddUpdateVenta 0,'2025/07/09',4,null , 'Credito','Abierto'
 
-select * from pruebas.Venta
+select * from pruebas.VentaDetalle
 rollback
 
 
@@ -124,6 +158,7 @@ as
 
 				update pruebas.Socio set Saldo = @saldo + @totalNuevo
 				where SocioID = @socID
+			
 			end
 
 		
@@ -163,8 +198,6 @@ as
 		insert into Pruebas.VentaDetalle
 		SELECT @ventID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total FROM @detalle
 		
-			
-
 	end
 go
 
@@ -190,6 +223,9 @@ VALUES
 --,(0,'PRO14',6,1,1,850.00,850,1,977.5)
 
 EXEC spAddUpdateVentaDet 35, @DatosPrueba;
+
+
+rollback
 
 
 select * from pruebas.VentaDetalle 
