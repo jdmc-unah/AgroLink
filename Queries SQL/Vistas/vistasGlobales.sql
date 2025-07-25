@@ -56,3 +56,6 @@ as
 go
 
 SELECT * FROM vTraeImpuesto
+
+
+go

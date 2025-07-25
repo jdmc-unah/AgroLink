@@ -45,7 +45,8 @@
             Total = new DataGridViewTextBoxColumn();
             CAI = new DataGridViewTextBoxColumn();
             EmpleadoID = new DataGridViewTextBoxColumn();
-            NumFiscalID = new DataGridViewTextBoxColumn();
+            SocioID = new DataGridViewTextBoxColumn();
+            ListaPreciosID = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaFactura).BeginInit();
             SuspendLayout();
@@ -105,7 +106,7 @@
             tablaFactura.AllowUserToAddRows = false;
             tablaFactura.AllowUserToDeleteRows = false;
             tablaFactura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaFactura.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, CAI, EmpleadoID, NumFiscalID });
+            tablaFactura.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, CAI, EmpleadoID, SocioID, ListaPreciosID });
             tablaFactura.Dock = DockStyle.Fill;
             tablaFactura.Location = new Point(0, 287);
             tablaFactura.MultiSelect = false;
@@ -219,15 +220,25 @@
             EmpleadoID.Visible = false;
             EmpleadoID.Width = 250;
             // 
-            // NumFiscalID
+            // SocioID
             // 
-            NumFiscalID.DataPropertyName = "NumFiscalID";
-            NumFiscalID.HeaderText = "NumFiscalID";
-            NumFiscalID.MinimumWidth = 12;
-            NumFiscalID.Name = "NumFiscalID";
-            NumFiscalID.ReadOnly = true;
-            NumFiscalID.Visible = false;
-            NumFiscalID.Width = 250;
+            SocioID.DataPropertyName = "SocioID";
+            SocioID.HeaderText = "SocioID";
+            SocioID.MinimumWidth = 12;
+            SocioID.Name = "SocioID";
+            SocioID.ReadOnly = true;
+            SocioID.Visible = false;
+            SocioID.Width = 250;
+            // 
+            // ListaPreciosID
+            // 
+            ListaPreciosID.DataPropertyName = "ListaPreciosID";
+            ListaPreciosID.HeaderText = "ListaPreciosID";
+            ListaPreciosID.MinimumWidth = 12;
+            ListaPreciosID.Name = "ListaPreciosID";
+            ListaPreciosID.ReadOnly = true;
+            ListaPreciosID.Visible = false;
+            ListaPreciosID.Width = 250;
             // 
             // Factura
             // 
@@ -266,6 +277,7 @@
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn CAI;
         private DataGridViewTextBoxColumn EmpleadoID;
-        private DataGridViewTextBoxColumn NumFiscalID;
+        private DataGridViewTextBoxColumn SocioID;
+        private DataGridViewTextBoxColumn ListaPreciosID;
     }
 }

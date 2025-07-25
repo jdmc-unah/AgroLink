@@ -277,8 +277,8 @@ delete from Pruebas.TipoSuelo
 INSERT INTO Pruebas.Puesto ( Nombre) VALUES 
 ('Vendedor'),
 ('Repartidor'),
-('Administrador')
-
+('Administrador'),
+('Comprador')
 
 select * from Pruebas.Puesto
 
@@ -287,6 +287,11 @@ select * from Pruebas.Puesto
 INSERT INTO Pruebas.Empleado ( Nombre, Identidad, RTN, Correo, Telefono, Direccion, Notas,PuestoID, Estado, Sexo, Edad ,EstadoCivil) values
 ('Empleado 1', '0501200006523', '05012000065238', 'empleado1@agrolink.com', '99887766' ,'Bo. Suyapa', 'N/A', 1, 'Activo', 'Masculino', 21, 'Casado' ),
 ('Empleado 2', '0801200006523', '08012000065238', 'empleado2@agrolink.com','99332211' ,'Bo. La Guardia', 'N/A', 2, 'Activo', 'Femenino', 30, 'Soltero' ),
-('Empleado 3', '0101200006523', '01012000065238', 'empleado3@agrolink.com','99712110' ,'Colonia Mercedes', 'N/A', 2, 'Activo', 'Masculino', 27, 'Union Libre' )
+('Empleado 3', '0101200006523', '01012000065238', 'empleado3@agrolink.com','99712110' ,'Colonia Mercedes', 'N/A', 2, 'Activo', 'Masculino', 27, 'Union Libre' ),
+('Empleado 4', '0501200006524', '05012000065248', 'empleado4@agrolink.com', '99887766' ,'Bo. Suyapa', 'N/A', 1, 'Activo', 'Femenino', 21, 'Casado' ),
+('Empleado 5', '0501200006525', '05012000065258', 'empleado5@agrolink.com', '99887765' ,'Bo. Concepcion', 'N/A', 1, 'Activo', 'Masculino', 40, 'Soltero' ),
+('Empleado 6', '0501200006526', '05012000065268', 'empleado6@agrolink.com', '99887666' ,'Colonia Satelite', 'N/A', 4, 'Activo', 'Femenino', 21, 'Casado' ),
+('Empleado 7', '0501200006527', '05012000065278', 'empleado7@agrolink.com', '99887767' ,'Los Naranjos', 'N/A', 4, 'Activo', 'Masculino', 40, 'Soltero' )
+
 
 select * from Pruebas.Empleado

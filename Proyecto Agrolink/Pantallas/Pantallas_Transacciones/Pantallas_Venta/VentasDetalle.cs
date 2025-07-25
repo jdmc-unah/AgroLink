@@ -24,7 +24,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         #region Variables Globales
         Recursos_SQL recSQL = new Recursos_SQL();
         MetodosGlobales metodosGlobales = new MetodosGlobales();
-        DataTable comboImp;
         #endregion
 
 
@@ -86,8 +85,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             colBodega.ValueMember = "BodegaID";
 
             DataGridViewComboBoxColumn colImpuesto = (DataGridViewComboBoxColumn)tablaDetalle.Columns["ImpuestoID"];
-            comboImp = recSQL.EjecutarVista("vTraeImpuesto");
-            colImpuesto.DataSource = comboImp;
+            colImpuesto.DataSource = recSQL.EjecutarVista("vTraeImpuesto");
             colImpuesto.DisplayMember = "Impuesto";
             colImpuesto.ValueMember = "ImpuestoID";
         }
@@ -296,7 +294,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
 
-        #region Tabla Venta
+        #region Tabla Detalle
 
 
         private void tablaDetalle_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -353,7 +351,13 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
 
+
+
+
         #endregion
+
+
+
 
     }
 }

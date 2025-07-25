@@ -261,6 +261,8 @@
             tablaDetalle.RowHeadersWidth = 102;
             tablaDetalle.Size = new Size(2661, 948);
             tablaDetalle.TabIndex = 1;
+            tablaDetalle.CellEndEdit += tablaDetalle_CellEndEdit;
+            tablaDetalle.DataError += tablaDetalle_DataError;
             // 
             // FacturaID
             // 
@@ -375,6 +377,7 @@
             btnVolver.TabIndex = 27;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // btnCancelar
             // 
@@ -386,6 +389,7 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Visible = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnEditar
             // 
@@ -396,6 +400,7 @@
             btnEditar.TabIndex = 24;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnAceptar
             // 
@@ -407,6 +412,7 @@
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Visible = false;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // FacturaDetalle
             // 
@@ -419,6 +425,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FacturaDetalle";
             Text = "FacturaDetalle";
+            Load += FacturaDetalle_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

@@ -15,6 +15,20 @@ as
 go
 
 
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Venta Filtrada >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+CREATE OR ALTER PROCEDURE spTraeVentaFiltrada @ventID int
+as
+	begin
+		SELECT VentaID, CodigoVenta, Fecha, SocioID, ListaPreciosID, TipoPago, Estado
+		FROM vTraeVentas WHERE VentaID = @ventID
+
+	end
+go
+
+
+
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Venta Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
@@ -34,20 +48,6 @@ go
 
 
 exec spTraeVentaDetalle 1
-
-go
-
--->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Venta Filtrada >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-CREATE OR ALTER PROCEDURE spTraeVentaFiltrada @ventID int
-as
-	begin
-		SELECT VentaID, CodigoVenta, Fecha, SocioID, ListaPreciosID, TipoPago, Estado
-		FROM vTraeVentas WHERE VentaID = @ventID
-
-	end
-
 
 go
 
