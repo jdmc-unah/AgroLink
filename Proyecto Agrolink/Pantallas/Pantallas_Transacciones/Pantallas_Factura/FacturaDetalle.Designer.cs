@@ -32,6 +32,10 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            comboNumFiscalID = new ComboBox();
+            label10 = new Label();
+            comboVenta = new ComboBox();
+            label8 = new Label();
             comboEmpleado = new ComboBox();
             label9 = new Label();
             tbCAI = new TextBox();
@@ -64,8 +68,6 @@
             btnCancelar = new Button();
             btnEditar = new Button();
             btnAceptar = new Button();
-            comboVenta = new ComboBox();
-            label8 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaDetalle).BeginInit();
@@ -74,6 +76,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(comboNumFiscalID);
+            panel1.Controls.Add(label10);
             panel1.Controls.Add(comboVenta);
             panel1.Controls.Add(label8);
             panel1.Controls.Add(comboEmpleado);
@@ -99,11 +103,47 @@
             panel1.Size = new Size(2661, 385);
             panel1.TabIndex = 22;
             // 
+            // comboNumFiscalID
+            // 
+            comboNumFiscalID.Enabled = false;
+            comboNumFiscalID.FormattingEnabled = true;
+            comboNumFiscalID.Location = new Point(1961, 69);
+            comboNumFiscalID.Name = "comboNumFiscalID";
+            comboNumFiscalID.Size = new Size(147, 49);
+            comboNumFiscalID.TabIndex = 33;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(1989, 25);
+            label10.Name = "label10";
+            label10.Size = new Size(91, 41);
+            label10.TabIndex = 32;
+            label10.Text = "Serie ";
+            // 
+            // comboVenta
+            // 
+            comboVenta.Enabled = false;
+            comboVenta.FormattingEnabled = true;
+            comboVenta.Location = new Point(1096, 73);
+            comboVenta.Name = "comboVenta";
+            comboVenta.Size = new Size(256, 49);
+            comboVenta.TabIndex = 31;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(983, 77);
+            label8.Name = "label8";
+            label8.Size = new Size(93, 41);
+            label8.TabIndex = 30;
+            label8.Text = "Venta";
+            // 
             // comboEmpleado
             // 
             comboEmpleado.Enabled = false;
             comboEmpleado.FormattingEnabled = true;
-            comboEmpleado.Location = new Point(1501, 278);
+            comboEmpleado.Location = new Point(2144, 278);
             comboEmpleado.Name = "comboEmpleado";
             comboEmpleado.Size = new Size(438, 49);
             comboEmpleado.TabIndex = 29;
@@ -111,7 +151,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(1501, 212);
+            label9.Location = new Point(2144, 212);
             label9.Name = "label9";
             label9.Size = new Size(151, 41);
             label9.TabIndex = 28;
@@ -119,7 +159,7 @@
             // 
             // tbCAI
             // 
-            tbCAI.Location = new Point(1605, 63);
+            tbCAI.Location = new Point(1514, 71);
             tbCAI.Name = "tbCAI";
             tbCAI.ReadOnly = true;
             tbCAI.Size = new Size(441, 47);
@@ -128,7 +168,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(1501, 66);
+            label7.Location = new Point(1421, 74);
             label7.Name = "label7";
             label7.Size = new Size(64, 41);
             label7.TabIndex = 25;
@@ -139,7 +179,7 @@
             comboEstado.Enabled = false;
             comboEstado.FormattingEnabled = true;
             comboEstado.Items.AddRange(new object[] { "Abierto", "Cerrado", "Cancelado" });
-            comboEstado.Location = new Point(625, 62);
+            comboEstado.Location = new Point(625, 74);
             comboEstado.Name = "comboEstado";
             comboEstado.Size = new Size(256, 49);
             comboEstado.TabIndex = 23;
@@ -147,7 +187,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(2180, 66);
+            label6.Location = new Point(2146, 78);
             label6.Name = "label6";
             label6.Size = new Size(95, 41);
             label6.TabIndex = 22;
@@ -158,14 +198,14 @@
             dateTimePicker1.CustomFormat = "yyyy/MM/dd";
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(2295, 63);
+            dateTimePicker1.Location = new Point(2262, 75);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(249, 47);
+            dateTimePicker1.Size = new Size(320, 47);
             dateTimePicker1.TabIndex = 21;
             // 
             // tbCodigo
             // 
-            tbCodigo.Location = new Point(180, 65);
+            tbCodigo.Location = new Point(180, 77);
             tbCodigo.Name = "tbCodigo";
             tbCodigo.ReadOnly = true;
             tbCodigo.Size = new Size(256, 47);
@@ -176,7 +216,7 @@
             comboMetodoPago.Enabled = false;
             comboMetodoPago.FormattingEnabled = true;
             comboMetodoPago.Items.AddRange(new object[] { "Efectivo", "Tarjeta", "Cheque" });
-            comboMetodoPago.Location = new Point(2106, 278);
+            comboMetodoPago.Location = new Point(1513, 278);
             comboMetodoPago.Name = "comboMetodoPago";
             comboMetodoPago.Size = new Size(438, 49);
             comboMetodoPago.TabIndex = 20;
@@ -184,7 +224,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(2106, 212);
+            label5.Location = new Point(1513, 212);
             label5.Name = "label5";
             label5.Size = new Size(242, 41);
             label5.TabIndex = 19;
@@ -193,7 +233,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(512, 66);
+            label2.Location = new Point(512, 78);
             label2.Name = "label2";
             label2.Size = new Size(107, 41);
             label2.TabIndex = 14;
@@ -203,7 +243,7 @@
             // 
             comboListaPrecio.Enabled = false;
             comboListaPrecio.FormattingEnabled = true;
-            comboListaPrecio.Location = new Point(896, 278);
+            comboListaPrecio.Location = new Point(882, 278);
             comboListaPrecio.Name = "comboListaPrecio";
             comboListaPrecio.Size = new Size(438, 49);
             comboListaPrecio.TabIndex = 18;
@@ -211,7 +251,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(61, 68);
+            label1.Location = new Point(61, 80);
             label1.Name = "label1";
             label1.Size = new Size(116, 41);
             label1.TabIndex = 13;
@@ -220,7 +260,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(896, 212);
+            label4.Location = new Point(882, 212);
             label4.Name = "label4";
             label4.Size = new Size(222, 41);
             label4.TabIndex = 17;
@@ -229,7 +269,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(96, 212);
+            label3.Location = new Point(56, 212);
             label3.Name = "label3";
             label3.Size = new Size(91, 41);
             label3.TabIndex = 15;
@@ -239,7 +279,7 @@
             // 
             comboSocio.Enabled = false;
             comboSocio.FormattingEnabled = true;
-            comboSocio.Location = new Point(96, 278);
+            comboSocio.Location = new Point(56, 278);
             comboSocio.Name = "comboSocio";
             comboSocio.Size = new Size(633, 49);
             comboSocio.TabIndex = 16;
@@ -418,24 +458,6 @@
             btnAceptar.Visible = false;
             btnAceptar.Click += btnAceptar_Click;
             // 
-            // comboVenta
-            // 
-            comboVenta.Enabled = false;
-            comboVenta.FormattingEnabled = true;
-            comboVenta.Location = new Point(1096, 61);
-            comboVenta.Name = "comboVenta";
-            comboVenta.Size = new Size(256, 49);
-            comboVenta.TabIndex = 31;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(983, 65);
-            label8.Name = "label8";
-            label8.Size = new Size(93, 41);
-            label8.TabIndex = 30;
-            label8.Text = "Venta";
-            // 
             // FacturaDetalle
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -493,5 +515,7 @@
         private DataGridViewTextBoxColumn Total;
         private ComboBox comboVenta;
         private Label label8;
+        private ComboBox comboNumFiscalID;
+        private Label label10;
     }
 }

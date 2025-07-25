@@ -21,16 +21,6 @@ go
 
 
 
--->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae todas las ventas (solo id y codigo) >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-CREATE OR ALTER VIEW vTraeVentasCode 
-as
-
-	SELECT VentaID, CodigoVenta FROM Pruebas.Venta Where Estado = 'Abierto'
-
-go	
-SELECT * from vTraeVentasCode
-
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

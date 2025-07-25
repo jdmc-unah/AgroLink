@@ -22,17 +22,24 @@ go
 CREATE OR ALTER PROCEDURE spTraeFacturaFiltrada @factID int
 as
 	begin
-		SELECT FacturaID, CodigoFactura, Fecha, SocioID, ListaPreciosID, EmpleadoID, MetodoPago, CAI ,Estado
+		SELECT FacturaID, CodigoFactura, Fecha, SocioID, ListaPreciosID, EmpleadoID, MetodoPago, CAI ,Estado,VentaID, NumFiscalID
 		FROM vTraeFacturas WHERE FacturaID = @factID
 
 	end
 go
 
---exec spTraeFacturaFiltrada 1
+exec spTraeFacturaFiltrada 1
+
+select * from vTraeFacturas
 
 
 
--->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Venta Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+go
+
+
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Factura Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 CREATE OR ALTER PROCEDURE spTraeFacturaDetalle @factID int
@@ -59,14 +66,28 @@ go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Factura >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-select * from pruebas.factura
+CREATE TYPE TipoFacturaDetalle as TABLE(
+	FacturaID int ,	
+	Codigo varchar(15),
+	ProductoID int not null,
+	BodegaID int not null,
+	Cantidad int not null,
+	Precio decimal(10,2) not null ,
+	SubTotal decimal(10,2),
+	ImpuestoID int not null,
+	Total decimal(10,2) not null 
+)
+
+go
+
+select * from pruebas.Factura
 
 go
 
 
 CREATE OR ALTER PROCEDURE spAddUpdateFactura
 @factID int , @ventID int , @socID int , @listPrecID int , @fecha date, @metodoPago varchar(50) , 
-@cai varchar(50) , @empleadoID int , @estado varchar(50),@detalle TipoVentaDetalle READONLY
+@cai varchar(50) , @empleadoID int , @numFiscalID int , @estado varchar(50),@detalle TipoFacturaDetalle READONLY
 as 
 	begin
 		
@@ -75,57 +96,42 @@ as
 			DECLARE @err varchar(50) = ''
 
 	-->Valida Stock
-			SELECT @err = dbo.fValidaStock(@detalle);
+			SELECT @err = dbo.fValidaStockF(@detalle);
 			IF ISNULL(@err, '') <> '' THROW 50001, @err, 1; --devuelve error personalizado
 				
+		--Asigna Siguiente Numero CAI
 
-
-
-
-
-
-
-	-->Crea o Edita Ventas
+	-->Crea o Edita Factura
 			IF @factID = 0
-				--nueva venta
+				
+				--nueva Factura
+
+				SELECT @cai = dbo.fSecuenciaCAI(@numFiscalID)  --obtiene siguiente numeracion cai
+
 				INSERT INTO Pruebas.Factura (VentaID, SocioID, ListaPreciosID, EmpresaID, Fecha,  MetodoPago, 
 				CAI, EmpleadoID, Estado, NumFiscalID) VALUES
 
-				(@ventID, @socID , @listPrecID, 1 , @fecha, @metodoPago, @cai, @empleadoID, @estado, /*pendeinte*/ 1 /*pendeinte*/   )
+				(@ventID, @socID , @listPrecID, 1 , @fecha, @metodoPago, @cai, @empleadoID, @estado,@numFiscalID  )
 				IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
-
-
-
-
-
-
-
-
-
-
-
-
 			ELSE
-				--editar venta
-				UPDATE Pruebas.Factura SET Fecha = @fecha , SocioID = @socID , ListaPreciosID = @listPrecID, 
-				TipoPago = @tipoPago , Estado = @estado
-				WHERE VentaID = @factID
+
+				--editar Factura
+				UPDATE Pruebas.Factura SET VentaID = @ventID, SocioID = @socID , ListaPreciosID = @listPrecID, EmpresaID = 1,
+				Fecha = @fecha , MetodoPago = @metodoPago, CAI = @cai, EmpleadoID = @empleadoID, Estado = @estado , NumFiscalID = @numFiscalID
+				WHERE FacturaID = @factID
 				IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
 					
 
-
-
-
-	-->Valida si hubieron errores en la venta
+	-->Valida si hubieron errores en la Factura
 		IF @err = ''   
 			begin
 				
-				IF @factID = 0  --si es una nueva venta trae la nueva venta creada
+				IF @factID = 0  --si es una nueva fact trae la nueva fact creada
 					select top 1 @factID = facturaID from pruebas.Factura order by facturaID desc;
 
-		-->Ejecuta y valida si hubieron errores en la venta detalle
+		-->Ejecuta y valida si hubieron errores en la Factura detalle
 			--	exec spAddUpdateVentaDet @ventID,  @detalle   ----------------***********PENDIENTE DE CREARLO 
-				IF @@ERROR = 0   --valida error al ingresar la venta detalle
+				IF @@ERROR = 0   --valida error al ingresar la Factura detalle
 					begin
 						commit;
 						select @factID  --devuelve la venta que se agrego o editó
@@ -139,16 +145,6 @@ as
 	end
 go
 
-
-
-
---pruebas del sp
-begin transaction
---exec spAddUpdateVenta 0, '20250723' , 1,2,'Credito', 'Abierto'
-exec spAddUpdateVenta 0,'2025/07/09',4,null , 'Credito','Abierto'
-
-select * from pruebas.VentaDetalle
-rollback
 
 
 

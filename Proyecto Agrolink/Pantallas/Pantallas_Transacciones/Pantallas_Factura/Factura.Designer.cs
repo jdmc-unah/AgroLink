@@ -47,6 +47,8 @@
             EmpleadoID = new DataGridViewTextBoxColumn();
             SocioID = new DataGridViewTextBoxColumn();
             ListaPreciosID = new DataGridViewTextBoxColumn();
+            NumFiscalID = new DataGridViewTextBoxColumn();
+            VentaID = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaFactura).BeginInit();
             SuspendLayout();
@@ -106,7 +108,7 @@
             tablaFactura.AllowUserToAddRows = false;
             tablaFactura.AllowUserToDeleteRows = false;
             tablaFactura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaFactura.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, CAI, EmpleadoID, SocioID, ListaPreciosID });
+            tablaFactura.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, CAI, EmpleadoID, SocioID, ListaPreciosID, NumFiscalID, VentaID });
             tablaFactura.Dock = DockStyle.Fill;
             tablaFactura.Location = new Point(0, 287);
             tablaFactura.MultiSelect = false;
@@ -240,6 +242,26 @@
             ListaPreciosID.Visible = false;
             ListaPreciosID.Width = 250;
             // 
+            // NumFiscalID
+            // 
+            NumFiscalID.DataPropertyName = "NumFiscalID";
+            NumFiscalID.HeaderText = "NumFiscalID";
+            NumFiscalID.MinimumWidth = 12;
+            NumFiscalID.Name = "NumFiscalID";
+            NumFiscalID.ReadOnly = true;
+            NumFiscalID.Visible = false;
+            NumFiscalID.Width = 250;
+            // 
+            // VentaID
+            // 
+            VentaID.DataPropertyName = "VentaID";
+            VentaID.HeaderText = "VentaID";
+            VentaID.MinimumWidth = 12;
+            VentaID.Name = "VentaID";
+            VentaID.ReadOnly = true;
+            VentaID.Visible = false;
+            VentaID.Width = 250;
+            // 
             // Factura
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -279,5 +301,7 @@
         private DataGridViewTextBoxColumn EmpleadoID;
         private DataGridViewTextBoxColumn SocioID;
         private DataGridViewTextBoxColumn ListaPreciosID;
+        private DataGridViewTextBoxColumn NumFiscalID;
+        private DataGridViewTextBoxColumn VentaID;
     }
 }

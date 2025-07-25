@@ -58,4 +58,12 @@ go
 SELECT * FROM vTraeImpuesto
 
 
+go-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae NumFiscalID para ComboBox >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER VIEW vTraeNumFiscal
+as
+	SELECT NumFiscalID FROM PRUEBAS.NumFiscal
 go
+
+SELECT * FROM vTraeNumFiscal
+

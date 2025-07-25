@@ -18,7 +18,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
         public int facturaID { get; set; }
 
-        public int ventaID { get; set; }
+        public int? ventaID { get; set; }
 
         public FacturaDetalle()
         {
@@ -79,11 +79,33 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             comboEmpleado.DisplayMember = "Empleado";
             comboEmpleado.ValueMember = "EmpleadoID";
 
-            comboVenta.DataSource = recSQL.EjecutarVista("vTraeVentasCode");
-            comboVenta.DisplayMember = "CodigoVenta";
-            comboVenta.ValueMember = "VentaID"; 
+
+            if (facturaID != 0) 
+            {
+               //editar factura que ya tiene venta
+
+                comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode");
+                comboVenta.DisplayMember = "CodigoVenta";
+                comboVenta.ValueMember = "VentaID";
+            }
+            else {
+
+                Dictionary<string, object> filtro = new Dictionary<string, object>() {
+                    {"filtro", "A" }
+                };
+
+                comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode", filtro);
+                comboVenta.DisplayMember = "CodigoVenta";
+                comboVenta.ValueMember = "VentaID";
+            }
 
 
+
+            comboNumFiscalID.DataSource = recSQL.EjecutarVista("vTraeNumFiscal");
+            comboNumFiscalID.DisplayMember = "NumFiscalID";
+            comboNumFiscalID.ValueMember = "NumFiscalID";
+
+            
 
         }
 
@@ -135,6 +157,8 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             comboSocio.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["SocioID"]);
             comboListaPrecio.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["ListaPreciosID"]);
             comboEmpleado.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["EmpleadoID"]);
+            comboVenta.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["VentaID"]);
+            comboNumFiscalID.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["NumFiscalID"]);
 
             comboMetodoPago.SelectedItem = facturaFiltrada.Rows[0]["MetodoPago"].ToString();
             comboEstado.SelectedItem = (facturaFiltrada.Rows[0]["Estado"]).ToString();
@@ -218,19 +242,26 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             //Toma datos de tablaDetalle 
             DataTable tbDet = metodosGlobales.CrearDataTable(tablaDetalle);
 
+            ventaID = (int) comboVenta.SelectedValue; 
+
 
             //Toma los datos de la parte superior y los asigna a los parametros del sp
-            Dictionary<string, object?> paramsVent = new Dictionary<string, object?>() {
-            {"ventID" , facturaID  },
-            {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
-            {"socID"  ,  comboSocio.SelectedValue },
-            {"listPrecID", comboListaPrecio.SelectedValue  },
-            {"tipoPago" , comboMetodoPago.SelectedItem },
-            {"estado" , comboEstado.SelectedItem }
+            Dictionary<string, object?> paramsFact = new Dictionary<string, object?>() {
+                {"factID" , facturaID  },
+                {"ventID" , ventaID  },
+           
+                {"socID"  ,  comboSocio.SelectedValue },
+                {"listPrecID", comboListaPrecio.SelectedValue  },
+                {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
+                {"metodoPago" , comboMetodoPago.SelectedItem },
+                { "cai" , tbCAI.Text },
+                { "empleadoID" , comboEmpleado.SelectedValue  },
+                { "numFiscalID" , 1 },
+                {"estado" , comboEstado.SelectedItem }
             };
 
             //Agrega o actualiza la venta pasando los parametros anteriores
-            DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateVenta", "detalle", "TipoVentaDetalle", tbDet, paramsVent);
+            DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateFactura", "detalle", "TipoFacturaDetalle", tbDet, paramsFact);
 
 
             if (tablaResultante != null)
