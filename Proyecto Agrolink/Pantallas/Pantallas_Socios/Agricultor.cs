@@ -51,7 +51,10 @@ namespace AgroLink.Pantallas.Pantallas_Socios
             this.TablaAgricultor.DataSource = recSQL.EjecutarVista("vTraerAgricultores");
         }
 
-
+        private void btnAgregarFinca_Click(object sender, EventArgs e)
+        {
+            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Socios.Finca());
+        }
     }
 
 }

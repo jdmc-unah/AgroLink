@@ -16,6 +16,9 @@
     <Compile Update="Pantallas\Pantallas_Socios\Agricultor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Pantallas\Pantallas_Socios\Finca.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Pantallas\Pantallas_Transacciones\Pantallas_Compra\Compra.cs">
       <SubType>Form</SubType>
     </Compile>

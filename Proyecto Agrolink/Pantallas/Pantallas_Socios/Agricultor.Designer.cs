@@ -34,6 +34,7 @@
             TbBuscar = new TextBox();
             btnBuscar = new Button();
             btnRecargar = new Button();
+            btnAgregarFinca = new Button();
             ((System.ComponentModel.ISupportInitialize)TablaAgricultor).BeginInit();
             SuspendLayout();
             // 
@@ -81,11 +82,22 @@
             btnRecargar.UseVisualStyleBackColor = true;
             btnRecargar.Click += btnRecargar_Click;
             // 
+            // btnAgregarFinca
+            // 
+            btnAgregarFinca.Location = new Point(12, 94);
+            btnAgregarFinca.Name = "btnAgregarFinca";
+            btnAgregarFinca.Size = new Size(117, 35);
+            btnAgregarFinca.TabIndex = 5;
+            btnAgregarFinca.Text = "Ver Finca";
+            btnAgregarFinca.UseVisualStyleBackColor = true;
+            btnAgregarFinca.Click += btnAgregarFinca_Click;
+            // 
             // Agricultor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(751, 450);
+            Controls.Add(btnAgregarFinca);
             Controls.Add(btnRecargar);
             Controls.Add(btnBuscar);
             Controls.Add(TbBuscar);
@@ -106,5 +118,6 @@
         private TextBox TbBuscar;
         private Button btnBuscar;
         private Button btnRecargar;
+        private Button btnAgregarFinca;
     }
 }
