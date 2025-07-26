@@ -52,7 +52,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
             //Crea una nueva instancia de VentaDetalle y le pasa este form junto con el id de la venta
             Pantallas_Factura.FacturaDetalle detalle = new FacturaDetalle();
-            detalle.FacturaForm = this;
+            detalle.FormPadre = this;
 
 
             //Toma el indice de la fila seleccionada y el valor seleccionado 
@@ -72,9 +72,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
             //Crea una nueva instancia de VentaDetalle y le pasa este form junto con el id de la venta
             Pantallas_Factura.FacturaDetalle detalle = new FacturaDetalle();
-            detalle.FacturaForm = this;
+            detalle.FormPadre = this;
 
             detalle.facturaID = 0;
+            detalle.ventaID = 0;
 
             //Llama al metodo de la pantalla principal para mostrar VentaDetalle
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, detalle);

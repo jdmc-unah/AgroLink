@@ -7,7 +7,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 {
 
-    
+
 
     public partial class VentasDetalle : Form
     {
@@ -45,9 +45,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             btnAceptar.Visible = !esSoloLectura;
             btnCancelar.Visible = !esSoloLectura;
             btnEditar.Visible = esSoloLectura;
+            btnCrearFact.Visible = esSoloLectura;
 
             if (ventaID != 0)
-            { 
+            {
                 string estadoEdicion = esSoloLectura ? "desactivado" : "activado";
                 MessageBox.Show($"El modo edicion esta {estadoEdicion} ");
             }
@@ -63,9 +64,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             comboSocio.DisplayMember = "Socio";         // Columna que se mostrará
             comboSocio.ValueMember = "SocioID";   // Valor interno que se usará
 
-            comboListaPrecio.DataSource = recSQL.EjecutarVista("vTraeListaPrecios"); 
-            comboListaPrecio.DisplayMember = "ListPrecios";    
-            comboListaPrecio.ValueMember = "ListaPreciosID";   
+            comboListaPrecio.DataSource = recSQL.EjecutarVista("vTraeListaPrecios");
+            comboListaPrecio.DisplayMember = "ListPrecios";
+            comboListaPrecio.ValueMember = "ListaPreciosID";
         }
 
 
@@ -137,6 +138,8 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             /* OJO Si por defecto los campos dentro de una vista o sp que sean de 
              * otra tabla que no sea la tabla principal son solo lectura asi que cuidado con eso  */
 
+
+
         }
 
 
@@ -163,6 +166,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
                 ToggleReadOnly(false);
             }
 
+
+            
+
+
+
         }
 
 
@@ -179,7 +187,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         private void btnEditar_Click(object sender, EventArgs e)
         {
 
-            if (comboEstado.SelectedItem == "Abierto"  )
+            if (comboEstado.SelectedItem == "Abierto")
             {
                 ToggleReadOnly(false);
             }
@@ -188,7 +196,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
                 MessageBox.Show("Las ventas Cerradas o Canceladas no pueden editarse");
             }
 
-            
+
         }
 
 
@@ -215,19 +223,24 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
             if (tablaResultante != null)
             {
-                //si es una nueva venta, actualiza el valor con el de la tabla resultante
-                ventaID = ventaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : ventaID;
 
-                if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una factura?"))
+                if (ventaID == 0)
                 {
-                    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Factura.FacturaDetalle());
-                    //aqui habria que pasar la data a factura
+                    //si es una nueva venta, actualiza el valor con el de la tabla resultante
+                    ventaID = Convert.ToInt32(tablaResultante.Rows[0][0]);
+
+                    if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una factura?"))
+                    {
+                        //****************PENDIENTE REVISAR SI SE PUEDE VOLVER AQUI O QUE PASA CCON VOLVVER
+                        Pantallas_Factura.FacturaDetalle formFactura = new Pantallas_Factura.FacturaDetalle();
+                        formFactura.ventaID = ventaID;
+                        formFactura.FormPadre = this;
+                        PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formFactura);
+                    }
 
                 }
-                else
-                {
-                    ObtenerDatos(ventaID);
-                }
+
+                ObtenerDatos(ventaID);
             }
 
         }
@@ -251,6 +264,27 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
 
+        //abre pantalla factura y le pasa el venta id para que llene la pantalla con esos datos
+        private void btnCrearFact_Click(object sender, EventArgs e)
+        {
+
+            if (comboEstado.SelectedItem == "Abierto" && ventaID != 0 )
+            {
+
+                Pantallas_Factura.FacturaDetalle formFactura = new Pantallas_Factura.FacturaDetalle();
+                formFactura.ventaID = ventaID;
+                formFactura.FormPadre = this;
+                PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formFactura);
+            }
+            else
+            {
+                MessageBox.Show("No puede crear facturas si la venta ha sido cerrada");
+            }
+
+
+        }
+
+
 
         #endregion
 
@@ -269,26 +303,26 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         //Hace calculos automaticos para reflejar cambios en subtotal y total
         private void tablaDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = tablaDetalle.CurrentRow.Index;
             int column = tablaDetalle.CurrentCell.ColumnIndex;
 
-            int cant = 0; double precio = 0;  int impID = 0;
+            int cant = 0; double precio = 0; int impID = 0;
 
             //Trae los datos del datagridview
             object celdaCant = tablaDetalle.Rows[row].Cells["Cantidad"].Value;
             object celdaPrecio = tablaDetalle.Rows[row].Cells["Precio"].Value;
             object celdaImpID = tablaDetalle.Rows[row].Cells["ImpuestoID"].Value;
 
-                       
-            if (celdaCant != null && celdaCant.GetType() != typeof(DBNull)  )       
+
+            if (celdaCant != null && celdaCant.GetType() != typeof(DBNull))
                 cant = Convert.ToInt32(celdaCant);
 
-            if (celdaPrecio != null && celdaPrecio.GetType() != typeof(DBNull) )    
+            if (celdaPrecio != null && celdaPrecio.GetType() != typeof(DBNull))
                 precio = Convert.ToDouble(celdaPrecio);
 
-            if (celdaImpID != null && celdaImpID.GetType() != typeof(DBNull)  )     
+            if (celdaImpID != null && celdaImpID.GetType() != typeof(DBNull))
                 impID = Convert.ToInt32(celdaImpID);
 
 
@@ -299,9 +333,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
                 { "precio", precio },
                 { "impID", impID }
             };
-            
-            DataTable totales =  recSQL.EjecutarFuncion("dbo.fCalcularTotales", parametros);
-            
+
+            DataTable totales = recSQL.EjecutarFuncion("dbo.fCalcularTotales", parametros);
+
 
             //Edita los datos en el datagridview
             tablaDetalle.Rows[row].Cells["Subtotal"].Value = totales.Rows[0][0];

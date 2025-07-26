@@ -14,11 +14,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
     public partial class FacturaDetalle : Form
     {
 
-        public Factura FacturaForm { get; set; }  //Formulario Padre
+        public Form FormPadre { get; set; }  //Formulario Padre
 
         public int facturaID { get; set; }
 
-        public int? ventaID { get; set; }
+        public int ventaID { get; set; }
 
         public FacturaDetalle()
         {
@@ -39,11 +39,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
         {
 
             comboEstado.Enabled = !esSoloLectura;
-            comboSocio.Enabled = !esSoloLectura;
+            //comboSocio.Enabled = !esSoloLectura;
             comboMetodoPago.Enabled = !esSoloLectura;
-            comboListaPrecio.Enabled = !esSoloLectura;
+            //comboListaPrecio.Enabled = !esSoloLectura;
             comboEmpleado.Enabled = !esSoloLectura;
             comboVenta.Enabled = !esSoloLectura;
+            comboNumFiscalID.Enabled = !esSoloLectura;
 
             dateTimePicker1.Enabled = !esSoloLectura;
 
@@ -80,32 +81,22 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             comboEmpleado.ValueMember = "EmpleadoID";
 
 
-            if (facturaID != 0) 
-            {
-               //editar factura que ya tiene venta
 
-                comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode");
-                comboVenta.DisplayMember = "CodigoVenta";
-                comboVenta.ValueMember = "VentaID";
-            }
-            else {
+            Dictionary<string, object> filtroVentasAbiertas = new Dictionary<string, object>() {
+                {"filtro", "A" }
+            };
 
-                Dictionary<string, object> filtro = new Dictionary<string, object>() {
-                    {"filtro", "A" }
-                };
-
-                comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode", filtro);
-                comboVenta.DisplayMember = "CodigoVenta";
-                comboVenta.ValueMember = "VentaID";
-            }
+            comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode", filtroVentasAbiertas);
+            comboVenta.DisplayMember = "CodigoVenta";
+            comboVenta.ValueMember = "VentaID";
 
 
-
+            
             comboNumFiscalID.DataSource = recSQL.EjecutarVista("vTraeNumFiscal");
             comboNumFiscalID.DisplayMember = "NumFiscalID";
             comboNumFiscalID.ValueMember = "NumFiscalID";
 
-            
+
 
         }
 
@@ -134,53 +125,61 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
 
 
-        public void ObtenerDatos(int id)
+        public void ObtenerDatos(int factID, int ventID)
         {
 
             //Trae Campos Superiores
 
             Dictionary<string, object> parametros = new Dictionary<string, object>() {
-                {"factID", id }
+                {"factID", factID },
+                {"ventID", ventID }
             };
 
             DataTable facturaFiltrada = recSQL.EjecutarSPDataTable("spTraeFacturaFiltrada", parametros);
 
+            //Verifica si es una factura que no esta vinculada a ninguna venta
+            if (facturaFiltrada.Rows.Count != 0)
+            {
+                //Llena Campos superiores
 
-            //Llena Campos superiores
+                tbCodigo.Text = facturaFiltrada.Rows[0]["CodigoFactura"].ToString();
+                tbCAI.Text = facturaFiltrada.Rows[0]["CAI"].ToString();
 
-            tbCodigo.Text = facturaFiltrada.Rows[0]["CodigoFactura"].ToString();
-            tbCAI.Text = facturaFiltrada.Rows[0]["CAI"].ToString();
+                dateTimePicker1.Value = Convert.ToDateTime(facturaFiltrada.Rows[0]["Fecha"]);
 
-            dateTimePicker1.Value = Convert.ToDateTime(facturaFiltrada.Rows[0]["Fecha"]);
+                LlenaCombosSuperiores();
+                comboSocio.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["SocioID"]);
+                comboListaPrecio.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["ListaPreciosID"]);
+                comboEmpleado.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["EmpleadoID"]);
+                comboVenta.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["VentaID"]);
+                comboNumFiscalID.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["NumFiscalID"]);
 
-            LlenaCombosSuperiores();
-            comboSocio.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["SocioID"]);
-            comboListaPrecio.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["ListaPreciosID"]);
-            comboEmpleado.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["EmpleadoID"]);
-            comboVenta.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["VentaID"]);
-            comboNumFiscalID.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["NumFiscalID"]);
-
-            comboMetodoPago.SelectedItem = facturaFiltrada.Rows[0]["MetodoPago"].ToString();
-            comboEstado.SelectedItem = (facturaFiltrada.Rows[0]["Estado"]).ToString();
+                comboMetodoPago.SelectedItem = facturaFiltrada.Rows[0]["MetodoPago"].ToString();
+                comboEstado.SelectedItem = (facturaFiltrada.Rows[0]["Estado"]).ToString();
 
 
+                //Trae y configura datos de venta detalle
+                DataTable dt = recSQL.EjecutarSPDataTable("spTraeFacturaDetalle", parametros);
+                dt.Columns["FacturaID"].AutoIncrement = false;
 
+                dt.Columns["FacturaID"].DefaultValue = 0;
+                dt.Columns["CodigoProducto"].DefaultValue = "PRO";
+                dt.Columns["Subtotal"].DefaultValue = 0;
+                dt.Columns["SubTotal"].ReadOnly = false;
 
-            //Trae y configura datos de venta detalle
-            DataTable dt = recSQL.EjecutarSPDataTable("spTraeFacturaDetalle", parametros);
-            dt.Columns["FacturaID"].AutoIncrement = false;
+                tablaDetalle.AutoGenerateColumns = false; //esto es para que le haga caso al orden de columnas del datagridview
 
-            dt.Columns["FacturaID"].DefaultValue = 0;
-            dt.Columns["CodigoProducto"].DefaultValue = "PRO";
-            dt.Columns["Subtotal"].DefaultValue = 0;
-            dt.Columns["SubTotal"].ReadOnly = false;
+                tablaDetalle.DataSource = dt;
 
-            tablaDetalle.AutoGenerateColumns = false; //esto es para que le haga caso al orden de columnas del datagridview
+                LlenaComboDetalle();
 
-            tablaDetalle.DataSource = dt;
-
-            LlenaComboDetalle();
-
+            }
+            else
+            {
+                LlenaCombosSuperiores();
+                comboEstado.SelectedItem = "Abierto";
+                LlenaComboDetalle();
+            }
 
         }
 
@@ -192,20 +191,15 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
         private void FacturaDetalle_Load(object sender, EventArgs e)
         {
             //Valida si es para actualizar una venta o crear una nueva venta
-            if (facturaID != 0)
+            if (facturaID == 0)
             {
-                //carga los datos de la venta a actualizar
-                ObtenerDatos(facturaID);
-            }
-            else
-            {
-                //carga la pantalla para agregar una nueva venta
-                LlenaCombosSuperiores();
-                comboEstado.SelectedItem = "Abierto";
+                comboVenta.Enabled = true;
 
-                LlenaComboDetalle();
-                ToggleReadOnly(false);
+                ToggleReadOnly(false);    
             }
+
+            //carga los datos 
+            ObtenerDatos(facturaID, ventaID);
         }
 
 
@@ -216,7 +210,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(FacturaForm, this);
+            PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(FormPadre, this);
 
         }
 
@@ -242,14 +236,14 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             //Toma datos de tablaDetalle 
             DataTable tbDet = metodosGlobales.CrearDataTable(tablaDetalle);
 
-            ventaID = (int) comboVenta.SelectedValue; 
+            ventaID = (int)comboVenta.SelectedValue;
 
 
             //Toma los datos de la parte superior y los asigna a los parametros del sp
             Dictionary<string, object?> paramsFact = new Dictionary<string, object?>() {
                 {"factID" , facturaID  },
                 {"ventID" , ventaID  },
-           
+
                 {"socID"  ,  comboSocio.SelectedValue },
                 {"listPrecID", comboListaPrecio.SelectedValue  },
                 {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
@@ -277,7 +271,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
                 }
                 else
                 {
-                    ObtenerDatos(facturaID);
+                    ObtenerDatos(facturaID, ventaID);
                 }
             }
 
@@ -291,11 +285,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
             if (facturaID != 0)
             {
-                ObtenerDatos(facturaID);
+                ObtenerDatos(facturaID, ventaID);
             }
             else
             {
-                PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(FacturaForm, this);
+                PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(FormPadre, this);
             }
         }
 
@@ -365,6 +359,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
 
 
-    
+
+        private void comboVenta_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ventaID = (int)comboVenta.SelectedValue;
+            ToggleReadOnly(false);
+            ObtenerDatos(facturaID, ventaID);
+        }
     }
 }

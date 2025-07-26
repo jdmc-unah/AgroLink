@@ -61,6 +61,7 @@
             Total = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             panel3 = new Panel();
+            btnCrearFact = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaDetalle).BeginInit();
             panel2.SuspendLayout();
@@ -212,7 +213,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(325, 119);
+            btnEditar.Location = new Point(327, 119);
             btnEditar.Margin = new Padding(5);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(224, 67);
@@ -364,6 +365,7 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(btnCrearFact);
             panel3.Controls.Add(btnVolver);
             panel3.Controls.Add(btnCancelar);
             panel3.Controls.Add(btnEditar);
@@ -373,6 +375,17 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(2693, 291);
             panel3.TabIndex = 28;
+            // 
+            // btnCrearFact
+            // 
+            btnCrearFact.Location = new Point(610, 119);
+            btnCrearFact.Margin = new Padding(5);
+            btnCrearFact.Name = "btnCrearFact";
+            btnCrearFact.Size = new Size(224, 67);
+            btnCrearFact.TabIndex = 28;
+            btnCrearFact.Text = "Crear Factura";
+            btnCrearFact.UseVisualStyleBackColor = true;
+            btnCrearFact.Click += btnCrearFact_Click;
             // 
             // VentasDetalle
             // 
@@ -425,5 +438,6 @@
         private DataGridViewComboBoxColumn ImpuestoID;
         private DataGridViewTextBoxColumn Total;
         private Panel panel3;
+        private Button btnCrearFact;
     }
 }

@@ -129,6 +129,7 @@
             comboVenta.Name = "comboVenta";
             comboVenta.Size = new Size(256, 49);
             comboVenta.TabIndex = 31;
+            comboVenta.SelectionChangeCommitted += comboVenta_SelectionChangeCommitted;
             // 
             // label8
             // 
