@@ -487,7 +487,6 @@ C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Pro
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Empresa.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Producto.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Agricultor.resources
-C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Finca.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra.Compra.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra.CompraDetalle.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura.Factura.resources
@@ -509,3 +508,4 @@ C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Pro
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.pdb
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.genruntimeconfig.cache
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\ref\AgroLink.dll
+C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.lote.resources
