@@ -36,7 +36,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
                 { "cod", tbBuscarLote.Text.Trim() }
             };
 
-            LoteTabla.DataSource = recSQL.EjecutarSPDataTable("spBuscarFinca", parametros);
+            LoteTabla.DataSource = recSQL.EjecutarSPDataTable("spBuscarLotes", parametros);
         }
 
         private void LoteTabla_CellContentClick(object sender, DataGridViewCellEventArgs e)

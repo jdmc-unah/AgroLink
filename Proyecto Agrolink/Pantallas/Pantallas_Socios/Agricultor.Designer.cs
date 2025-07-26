@@ -88,7 +88,7 @@
             btnAgregarFinca.Name = "btnAgregarFinca";
             btnAgregarFinca.Size = new Size(117, 35);
             btnAgregarFinca.TabIndex = 5;
-            btnAgregarFinca.Text = "Ver Finca";
+            btnAgregarFinca.Text = "Ver Lote";
             btnAgregarFinca.UseVisualStyleBackColor = true;
             btnAgregarFinca.Click += btnAgregarFinca_Click;
             // 
