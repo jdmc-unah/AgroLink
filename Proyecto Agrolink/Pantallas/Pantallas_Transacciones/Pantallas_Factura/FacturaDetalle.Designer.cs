@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             comboNumFiscalID = new ComboBox();
             label10 = new Label();
@@ -321,8 +321,8 @@
             // CodigoProducto
             // 
             CodigoProducto.DataPropertyName = "CodigoProducto";
-            dataGridViewCellStyle4.NullValue = "PRO";
-            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.NullValue = "PRO";
+            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle1;
             CodigoProducto.HeaderText = "Codigo";
             CodigoProducto.MinimumWidth = 12;
             CodigoProducto.Name = "CodigoProducto";
@@ -370,8 +370,8 @@
             // Subtotal
             // 
             Subtotal.DataPropertyName = "Subtotal";
-            dataGridViewCellStyle5.NullValue = "0";
-            Subtotal.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.NullValue = "0";
+            Subtotal.DefaultCellStyle = dataGridViewCellStyle2;
             Subtotal.HeaderText = "Subtotal";
             Subtotal.MinimumWidth = 12;
             Subtotal.Name = "Subtotal";
@@ -392,8 +392,8 @@
             // Total
             // 
             Total.DataPropertyName = "Total";
-            dataGridViewCellStyle6.NullValue = "0";
-            Total.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.NullValue = "0";
+            Total.DefaultCellStyle = dataGridViewCellStyle3;
             Total.HeaderText = "Total";
             Total.MinimumWidth = 12;
             Total.Name = "Total";

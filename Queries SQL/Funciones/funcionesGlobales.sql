@@ -9,7 +9,7 @@ go
 CREATE OR ALTER FUNCTION dbo.fCalcularTotales (@cant int , @precio float , @impID int) returns @resultado table (Subtotal float, Total float)
 as
 	begin
-		declare @subtotal float, @total float, @impVal float
+		declare @subtotal decimal(10, 2) , @total decimal(10, 2) , @impVal float
 
 		IF @impID = 0
 			SET @impVal = 0

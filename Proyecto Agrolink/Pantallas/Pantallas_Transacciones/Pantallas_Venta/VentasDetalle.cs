@@ -301,7 +301,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             };
             
             DataTable totales =  recSQL.EjecutarFuncion("dbo.fCalcularTotales", parametros);
-
+            
 
             //Edita los datos en el datagridview
             tablaDetalle.Rows[row].Cells["Subtotal"].Value = totales.Rows[0][0];

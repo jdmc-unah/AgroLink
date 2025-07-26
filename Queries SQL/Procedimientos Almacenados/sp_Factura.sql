@@ -99,28 +99,26 @@ as
 			SELECT @err = dbo.fValidaStockF(@detalle);
 			IF ISNULL(@err, '') <> '' THROW 50001, @err, 1; --devuelve error personalizado
 				
-		--Asigna Siguiente Numero CAI
 
 	-->Crea o Edita Factura
 			IF @factID = 0
-				
-				--nueva Factura
+				begin	--nueva Factura
+					--Asigna Siguiente Numero CAI
+					SELECT @cai = dbo.fSecuenciaCAI(@numFiscalID)  --obtiene siguiente numeracion cai
 
-				SELECT @cai = dbo.fSecuenciaCAI(@numFiscalID)  --obtiene siguiente numeracion cai
+					INSERT INTO Pruebas.Factura (VentaID, SocioID, ListaPreciosID, EmpresaID, Fecha,  MetodoPago, 
+					CAI, EmpleadoID, Estado, NumFiscalID) VALUES
 
-				INSERT INTO Pruebas.Factura (VentaID, SocioID, ListaPreciosID, EmpresaID, Fecha,  MetodoPago, 
-				CAI, EmpleadoID, Estado, NumFiscalID) VALUES
-
-				(@ventID, @socID , @listPrecID, 1 , @fecha, @metodoPago, @cai, @empleadoID, @estado,@numFiscalID  )
-				IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
+					(@ventID, @socID , @listPrecID, 1 , @fecha, @metodoPago, @cai, @empleadoID, @estado,@numFiscalID  )
+					IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
+				end
 			ELSE
-
-				--editar Factura
-				UPDATE Pruebas.Factura SET VentaID = @ventID, SocioID = @socID , ListaPreciosID = @listPrecID, EmpresaID = 1,
-				Fecha = @fecha , MetodoPago = @metodoPago, CAI = @cai, EmpleadoID = @empleadoID, Estado = @estado , NumFiscalID = @numFiscalID
-				WHERE FacturaID = @factID
-				IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
-					
+				begin	--editar Factura
+					UPDATE Pruebas.Factura SET VentaID = @ventID, SocioID = @socID , ListaPreciosID = @listPrecID, EmpresaID = 1,
+					Fecha = @fecha , MetodoPago = @metodoPago, CAI = @cai, EmpleadoID = @empleadoID, Estado = @estado , NumFiscalID = @numFiscalID
+					WHERE FacturaID = @factID
+					IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
+				end	
 
 	-->Valida si hubieron errores en la Factura
 		IF @err = ''   
@@ -130,7 +128,7 @@ as
 					select top 1 @factID = facturaID from pruebas.Factura order by facturaID desc;
 
 		-->Ejecuta y valida si hubieron errores en la Factura detalle
-			--	exec spAddUpdateVentaDet @ventID,  @detalle   ----------------***********PENDIENTE DE CREARLO 
+				exec spAddUpdateFactDet @factID, @ventID, @estado, @detalle 
 				IF @@ERROR = 0   --valida error al ingresar la Factura detalle
 					begin
 						commit;
@@ -146,33 +144,52 @@ as
 go
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Factura Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
+CREATE OR ALTER PROCEDURE spAddUpdateFactDet @factID int,  @ventID int, @estadoFact varchar(20),  
+@detalle TipoFacturaDetalle READONLY
+as
+	begin
+		declare  @tipoPago varchar(50), @socID int, @nuevoTotalFact float, @totalVenta float, @totFactsPagadas float,    @saldo float		
 
 
+	-->Llena variables a utilizar
+		select @tipoPago = TipoPago, @socID = SocioID from pruebas.Venta where VentaID = @ventID --credito o contado para afectar el saldo
+
+		select @nuevoTotalFact = ISNULL(SUM(Total), 0) from @detalle   --lo que se esta pagando en la transaccion actual
+		
+		select @totalVenta = ISNULL(SUM(Total), 0) from pruebas.VentaDetalle where  VentaID = @ventID --total a pagar
+
+		select @totFactsPagadas = ISNULL(SUM(FD.Total), 0)  --total que se ha pagado hasta el momento
+		from pruebas.FacturaDetalle FD inner join pruebas.Factura F ON FD.FacturaID = F.FacturaID  
+		WHERE F.VentaID = @ventID and F.Estado = 'Cerrado' AND F.FacturaID <> @factID
 
 
+	--> Actualiza saldo de socio con ventas al credito
+		IF @tipoPago = 'Credito' AND @estadoFact = 'Cerrado'
+			begin
+				--valida que no quede negativo
+				select @saldo = ( CASE  WHEN Saldo - @nuevoTotalFact < 0 THEN 0 ELSE Saldo - @nuevoTotalFact  END ) 
+				from pruebas.Socio where SocioID = @socID 
+				
+				update pruebas.Socio set Saldo = @saldo where SocioID = @socID
+			end
+
+	--> Cierra la venta en la que esta basada la factura una vez se confirme que se pago por completo
+		IF @estadoFact = 'Cerrado' AND (@totFactsPagadas + @nuevoTotalFact) = @totalVenta
+			update pruebas.Venta set Estado = 'Cerrado' where VentaID = @ventID
 
 
+	--> Actualiza factura detalle
+		delete from pruebas.FacturaDetalle where FacturaID= @factID
+		insert into Pruebas.FacturaDetalle
+		SELECT @factID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total FROM @detalle
+		
 
-
-
-
-
-
-
-
-
-
-
-
-
--->>>>>>>>>>>>>>>>>>>>>>>>>>>>
-SELECT * FROM PRUEBAS.Factura
-SELECT * FROM PRUEBAS.FacturaDetalle
-
-SELECT * FROM PRUEBAS.Socio
-
+	end
+go
+	
 
 
 
