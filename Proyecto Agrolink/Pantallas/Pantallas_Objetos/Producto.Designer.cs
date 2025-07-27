@@ -68,6 +68,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             btnNuevoProducto.TabIndex = 2;
             btnNuevoProducto.Text = "Nuevo Producto";
             btnNuevoProducto.UseVisualStyleBackColor = true;
+            btnNuevoProducto.Click += btnNuevoProducto_Click;
             // 
             // btnBuscar
             // 

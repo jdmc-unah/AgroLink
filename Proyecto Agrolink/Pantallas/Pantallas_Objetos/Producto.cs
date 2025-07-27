@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using AgroLink.Pantallas.Pantallas_Objetos;
 
 namespace AgroLink.Pantallas.Pantallas_Transacciones
 {
@@ -41,6 +42,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         private void tbBuscar_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+
+        private void btnNuevoProducto_Click(object sender, EventArgs e)
+        {
+            Pantallas.PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevoProductoForm());
         }
     }
 }
