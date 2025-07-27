@@ -20,12 +20,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
 
         private void Producto_Load(object sender, EventArgs e)
         {
-            this.tablaProducto.DataSource = recSQL.EjecutarVista("vTraeProductos");
+            tablaProducto.DataSource = recSQL.EjecutarVista("vTraeProductos");
         }
 
         private void btnRecargar_Click(object sender, EventArgs e)
         {
-            this.tablaProducto.DataSource = recSQL.EjecutarVista("vTraeProductos");
+            tablaProducto.DataSource = recSQL.EjecutarVista("vTraeProductos");
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -35,12 +35,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
                 { "cod", tbBuscar.Text.Trim() }
             };
 
-            this.tablaProducto.DataSource = recSQL.EjecutarSPDataTable("spBuscarProducto", parametros);
+            tablaProducto.DataSource = recSQL.EjecutarSPDataTable("spBuscarProducto", parametros);
         }
 
         private void tbBuscar_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
