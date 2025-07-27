@@ -48,5 +48,10 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         {
             PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas.Pantallas_Socios.Agricultor());
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
