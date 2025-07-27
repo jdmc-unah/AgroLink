@@ -39,8 +39,30 @@ namespace AgroLink.Pantallas.Pantallas_Socios
             comboBox_TipoSuelo.DisplayMember = "TipoSuelo";
             comboBox_TipoSuelo.ValueMember = "TipoSueloID";
 
+            //llenar tipo de riego
+            comboBox_TipoRiego.DataSource = recSQL.EjecutarVista("vTraerTipoRiego");
+            comboBox_TipoRiego.DisplayMember = "TipoRiego";
+            comboBox_TipoRiego.ValueMember = "TipoRiegoID";
+
+
+            //llebar tipo de semilla o cosecha no se como llamarlo
+            comboBox_productocosecha.DataSource = recSQL.EjecutarVista("vTraerSiembra");
+            comboBox_productocosecha.DisplayMember = "ProductoSiembra";
+            comboBox_productocosecha.ValueMember = "ProductoID";
+
 
         }
+
+
+
+        public void ToggleReadOnly(bool esSoloLectura)
+        {
+
+            comboBox_TipoRiego.Enabled = esSoloLectura;
+            
+
+        }
+
 
 
         #endregion
@@ -51,6 +73,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         {
             this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
             LlenaComboFincaySuelo();
+            ToggleReadOnly(false);
         }
 
         private void btnBuscarLote_Click(object sender, EventArgs e)

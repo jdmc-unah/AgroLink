@@ -47,16 +47,18 @@
             label6 = new Label();
             label7 = new Label();
             tbCodigo = new TextBox();
+            label8 = new Label();
+            comboBox_productocosecha = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)LoteTabla).BeginInit();
             SuspendLayout();
             // 
             // LoteTabla
             // 
             LoteTabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            LoteTabla.Location = new Point(2, 201);
+            LoteTabla.Location = new Point(5, 214);
             LoteTabla.Name = "LoteTabla";
             LoteTabla.RowHeadersWidth = 51;
-            LoteTabla.Size = new Size(911, 281);
+            LoteTabla.Size = new Size(922, 288);
             LoteTabla.TabIndex = 0;
             LoteTabla.CellContentClick += LoteTabla_CellContentClick;
             // 
@@ -136,7 +138,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(596, 104);
+            label3.Location = new Point(594, 101);
             label3.Name = "label3";
             label3.Size = new Size(103, 20);
             label3.TabIndex = 9;
@@ -145,7 +147,7 @@
             // comboBox_TipoRiego
             // 
             comboBox_TipoRiego.FormattingEnabled = true;
-            comboBox_TipoRiego.Location = new Point(735, 101);
+            comboBox_TipoRiego.Location = new Point(716, 101);
             comboBox_TipoRiego.Name = "comboBox_TipoRiego";
             comboBox_TipoRiego.Size = new Size(178, 28);
             comboBox_TipoRiego.TabIndex = 10;
@@ -217,11 +219,30 @@
             tbCodigo.Size = new Size(136, 27);
             tbCodigo.TabIndex = 18;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(913, 109);
+            label8.Name = "label8";
+            label8.Size = new Size(143, 20);
+            label8.TabIndex = 19;
+            label8.Text = "Producto a cosechar";
+            // 
+            // comboBox_productocosecha
+            // 
+            comboBox_productocosecha.FormattingEnabled = true;
+            comboBox_productocosecha.Location = new Point(1062, 106);
+            comboBox_productocosecha.Name = "comboBox_productocosecha";
+            comboBox_productocosecha.Size = new Size(178, 28);
+            comboBox_productocosecha.TabIndex = 20;
+            // 
             // Lote
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1034, 559);
+            ClientSize = new Size(1283, 559);
+            Controls.Add(comboBox_productocosecha);
+            Controls.Add(label8);
             Controls.Add(tbCodigo);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -271,5 +292,7 @@
         private Label label6;
         private Label label7;
         private TextBox tbCodigo;
+        private Label label8;
+        private ComboBox comboBox_productocosecha;
     }
 }
