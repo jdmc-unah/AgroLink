@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj": {}
+    "C:\\Github\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj": {
+    "C:\\Github\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj",
+        "projectUniqueName": "C:\\Github\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj",
         "projectName": "AgroLink",
-        "projectPath": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj",
-        "packagesPath": "C:\\Users\\jdvar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\obj\\",
+        "projectPath": "C:\\Github\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj",
+        "packagesPath": "C:\\Users\\arlet\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\AgroLink\\Proyecto Agrolink\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jdvar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\arlet\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0-windows"
@@ -37,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -59,6 +60,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -67,7 +86,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

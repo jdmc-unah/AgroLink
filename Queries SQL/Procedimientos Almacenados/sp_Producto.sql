@@ -22,25 +22,3 @@ begin
        or P.Nombre like '%' + @cod + '%'
 end
 go
-
-create or alter procedure spEliminarProducto
-    @ProductoID int
-as
-begin
-    set nocount on;
-
-    delete from Pruebas.ProductoDetalle where ProductoID = @ProductoID;
-    delete from Pruebas.VentaDetalle where ProductoID = @ProductoID;
-    delete from Pruebas.CompraDetalle where ProductoID = @ProductoID;
-    delete from Pruebas.EntradaProductoDetalle where ProductoID = @ProductoID;
-    delete from Pruebas.FacturaDetalle where ProductoID = @ProductoID;
-    delete from Pruebas.ReciboDetalle where ProductoID = @ProductoID;
-    delete from Pruebas.SalidaProductoDetalle where ProductoID = @ProductoID;
-    delete from Pruebas.BodegaDetalle where ProductoID = @ProductoID;
-    delete from Pruebas.Lote where ProductoID = @ProductoID;
-    delete from Pruebas.EntregaDetalle where ProductoID = @ProductoID;
-
-    delete from Pruebas.Producto
-    where ProductoID = @ProductoID;
-end
-go

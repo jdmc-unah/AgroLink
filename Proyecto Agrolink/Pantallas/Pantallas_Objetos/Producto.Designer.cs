@@ -18,7 +18,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnEliminar = new Button();
             btnRecargar = new Button();
             btnNuevoProducto = new Button();
             btnBuscar = new Button();
@@ -38,7 +37,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnEliminar);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnNuevoProducto);
             panel1.Controls.Add(btnBuscar);
@@ -49,17 +47,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             panel1.Name = "panel1";
             panel1.Size = new Size(2761, 266);
             panel1.TabIndex = 0;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Location = new Point(1474, 164);
-            btnEliminar.Margin = new Padding(5, 7, 5, 7);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(189, 82);
-            btnEliminar.TabIndex = 4;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnRecargar
             // 
@@ -209,7 +196,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         private Button btnRecargar;
         private Button btnNuevoProducto;
         private Button btnBuscar;
-        private Button btnEliminar;
         private TextBox tbBuscar;
         private Panel panel2;
         private DataGridView tablaProducto;
