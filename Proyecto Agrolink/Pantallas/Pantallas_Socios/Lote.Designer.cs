@@ -39,12 +39,14 @@
             label2 = new Label();
             label3 = new Label();
             comboBox_TipoRiego = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
-            textBox1 = new TextBox();
+            dateTimePicker_siembra = new DateTimePicker();
+            dateTimePicker_cosecha = new DateTimePicker();
+            tbExtencion = new TextBox();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            label7 = new Label();
+            tbCodigo = new TextBox();
             ((System.ComponentModel.ISupportInitialize)LoteTabla).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             LoteTabla.Location = new Point(2, 201);
             LoteTabla.Name = "LoteTabla";
             LoteTabla.RowHeadersWidth = 51;
-            LoteTabla.Size = new Size(976, 296);
+            LoteTabla.Size = new Size(911, 281);
             LoteTabla.TabIndex = 0;
             LoteTabla.CellContentClick += LoteTabla_CellContentClick;
             // 
@@ -68,9 +70,9 @@
             // 
             // btnBuscarLote
             // 
-            btnBuscarLote.Location = new Point(428, 34);
+            btnBuscarLote.Location = new Point(419, 34);
             btnBuscarLote.Name = "btnBuscarLote";
-            btnBuscarLote.Size = new Size(116, 27);
+            btnBuscarLote.Size = new Size(137, 31);
             btnBuscarLote.TabIndex = 2;
             btnBuscarLote.Text = "Buscar";
             btnBuscarLote.UseVisualStyleBackColor = true;
@@ -78,9 +80,9 @@
             // 
             // btnRegrsar
             // 
-            btnRegrsar.Location = new Point(716, 512);
+            btnRegrsar.Location = new Point(716, 508);
             btnRegrsar.Name = "btnRegrsar";
-            btnRegrsar.Size = new Size(167, 35);
+            btnRegrsar.Size = new Size(174, 39);
             btnRegrsar.TabIndex = 3;
             btnRegrsar.Text = "Regresar";
             btnRegrsar.UseVisualStyleBackColor = true;
@@ -88,12 +90,13 @@
             // 
             // btnAgregarLote
             // 
-            btnAgregarLote.Location = new Point(561, 34);
+            btnAgregarLote.Location = new Point(562, 32);
             btnAgregarLote.Name = "btnAgregarLote";
-            btnAgregarLote.Size = new Size(121, 27);
+            btnAgregarLote.Size = new Size(135, 31);
             btnAgregarLote.TabIndex = 4;
             btnAgregarLote.Text = "AgregarLote";
             btnAgregarLote.UseVisualStyleBackColor = true;
+            btnAgregarLote.Click += btnAgregarLote_Click;
             // 
             // label1
             // 
@@ -106,6 +109,7 @@
             // 
             // comboBox_Finca
             // 
+            comboBox_Finca.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Finca.FormattingEnabled = true;
             comboBox_Finca.Location = new Point(113, 96);
             comboBox_Finca.Name = "comboBox_Finca";
@@ -146,26 +150,28 @@
             comboBox_TipoRiego.Size = new Size(178, 28);
             comboBox_TipoRiego.TabIndex = 10;
             // 
-            // dateTimePicker1
+            // dateTimePicker_siembra
             // 
-            dateTimePicker1.Location = new Point(136, 154);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(145, 27);
-            dateTimePicker1.TabIndex = 11;
+            dateTimePicker_siembra.Format = DateTimePickerFormat.Short;
+            dateTimePicker_siembra.Location = new Point(136, 154);
+            dateTimePicker_siembra.Name = "dateTimePicker_siembra";
+            dateTimePicker_siembra.Size = new Size(145, 27);
+            dateTimePicker_siembra.TabIndex = 11;
             // 
-            // dateTimePicker2
+            // dateTimePicker_cosecha
             // 
-            dateTimePicker2.Location = new Point(462, 152);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(172, 27);
-            dateTimePicker2.TabIndex = 12;
+            dateTimePicker_cosecha.Format = DateTimePickerFormat.Short;
+            dateTimePicker_cosecha.Location = new Point(462, 152);
+            dateTimePicker_cosecha.Name = "dateTimePicker_cosecha";
+            dateTimePicker_cosecha.Size = new Size(172, 27);
+            dateTimePicker_cosecha.TabIndex = 12;
             // 
-            // textBox1
+            // tbExtencion
             // 
-            textBox1.Location = new Point(800, 157);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(178, 27);
-            textBox1.TabIndex = 13;
+            tbExtencion.Location = new Point(800, 157);
+            tbExtencion.Name = "tbExtencion";
+            tbExtencion.Size = new Size(162, 27);
+            tbExtencion.TabIndex = 13;
             // 
             // label4
             // 
@@ -195,17 +201,35 @@
             label6.TabIndex = 16;
             label6.Text = "extension de terreno";
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(716, 41);
+            label7.Name = "label7";
+            label7.Size = new Size(60, 20);
+            label7.TabIndex = 17;
+            label7.Text = "codigo ";
+            // 
+            // tbCodigo
+            // 
+            tbCodigo.Location = new Point(791, 41);
+            tbCodigo.Name = "tbCodigo";
+            tbCodigo.Size = new Size(136, 27);
+            tbCodigo.TabIndex = 18;
+            // 
             // Lote
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1034, 559);
+            Controls.Add(tbCodigo);
+            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(textBox1);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(tbExtencion);
+            Controls.Add(dateTimePicker_cosecha);
+            Controls.Add(dateTimePicker_siembra);
             Controls.Add(comboBox_TipoRiego);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -239,11 +263,13 @@
         private Label label2;
         private Label label3;
         private ComboBox comboBox_TipoRiego;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
-        private TextBox textBox1;
+        private DateTimePicker dateTimePicker_siembra;
+        private DateTimePicker dateTimePicker_cosecha;
+        private TextBox tbExtencion;
         private Label label4;
         private Label label5;
         private Label label6;
+        private Label label7;
+        private TextBox tbCodigo;
     }
 }
