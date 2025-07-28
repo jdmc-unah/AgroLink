@@ -59,7 +59,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         {
 
             comboBox_TipoRiego.Enabled = esSoloLectura;
-            
+
 
         }
 
@@ -73,17 +73,17 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         {
             this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
             LlenaComboFincaySuelo();
-            ToggleReadOnly(false);
+            
         }
 
         private void btnBuscarLote_Click(object sender, EventArgs e)
         {
-            Dictionary<string, object> parametros = new Dictionary<string, object>()
+            Dictionary<string, object> parametrosLote = new Dictionary<string, object>()
             {
                 { "cod", tbBuscarLote.Text.Trim() }
             };
 
-            LoteTabla.DataSource = recSQL.EjecutarSPDataTable("spBuscarLotes", parametros);
+            LoteTabla.DataSource = recSQL.EjecutarSPDataTable("spBuscarLotes", parametrosLote);
         }
 
         private void LoteTabla_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -105,10 +105,19 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         {
             //agarrar los datos de las otros componentes
             Dictionary<string, object?> paramsLote = new Dictionary<string, object?>() {
+
                 {"fechasiembra",dateTimePicker_siembra.Value.ToString("yyyy/MM/dd")},
                 { "fechacosecha",dateTimePicker_cosecha.Value.ToString("yyyy/MM/dd")}
             };
 
         }
+
+        private void comboBox_TipoRiego_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
     }
+
+
+
 }

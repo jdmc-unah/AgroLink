@@ -55,6 +55,12 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         {
             PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Socios.Lote());
         }
+
+        private void btnAgregarFinca1_Click(object sender, EventArgs e)
+        {
+            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Socios.Finca());
+
+        }
     }
 
 }

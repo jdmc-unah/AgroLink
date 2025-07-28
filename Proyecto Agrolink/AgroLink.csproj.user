@@ -7,16 +7,19 @@
     <Compile Update="Pantallas\PantallaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Pantallas\Pantallas_Objetos\Empresa.cs">
+    <Compile Update="Pantallas\Pantallas_Objetos\Bodega.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Pantallas\Pantallas_Objetos\NuevoProductoForm.cs">
+    <Compile Update="Pantallas\Pantallas_Objetos\Empresa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Pantallas\Pantallas_Objetos\Producto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Pantallas\Pantallas_Socios\Agricultor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Pantallas\Pantallas_Socios\Finca.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Pantallas\Pantallas_Socios\Lote.cs">

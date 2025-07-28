@@ -151,6 +151,7 @@
             comboBox_TipoRiego.Name = "comboBox_TipoRiego";
             comboBox_TipoRiego.Size = new Size(178, 28);
             comboBox_TipoRiego.TabIndex = 10;
+            comboBox_TipoRiego.SelectedIndexChanged += comboBox_TipoRiego_SelectedIndexChanged;
             // 
             // dateTimePicker_siembra
             // 

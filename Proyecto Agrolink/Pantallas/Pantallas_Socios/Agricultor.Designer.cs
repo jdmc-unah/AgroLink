@@ -35,6 +35,7 @@
             btnBuscar = new Button();
             btnRecargar = new Button();
             btnAgregarFinca = new Button();
+            btnAgregarFinca1 = new Button();
             ((System.ComponentModel.ISupportInitialize)TablaAgricultor).BeginInit();
             SuspendLayout();
             // 
@@ -92,11 +93,22 @@
             btnAgregarFinca.UseVisualStyleBackColor = true;
             btnAgregarFinca.Click += btnAgregarFinca_Click;
             // 
+            // btnAgregarFinca1
+            // 
+            btnAgregarFinca1.Location = new Point(147, 96);
+            btnAgregarFinca1.Name = "btnAgregarFinca1";
+            btnAgregarFinca1.Size = new Size(119, 33);
+            btnAgregarFinca1.TabIndex = 6;
+            btnAgregarFinca1.Text = "AgregarFinca";
+            btnAgregarFinca1.UseVisualStyleBackColor = true;
+            btnAgregarFinca1.Click += btnAgregarFinca1_Click;
+            // 
             // Agricultor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(751, 450);
+            Controls.Add(btnAgregarFinca1);
             Controls.Add(btnAgregarFinca);
             Controls.Add(btnRecargar);
             Controls.Add(btnBuscar);
@@ -119,5 +131,6 @@
         private Button btnBuscar;
         private Button btnRecargar;
         private Button btnAgregarFinca;
+        private Button btnAgregarFinca1;
     }
 }
