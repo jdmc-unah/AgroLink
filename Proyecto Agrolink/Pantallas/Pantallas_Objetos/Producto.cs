@@ -44,10 +44,5 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             
         }
 
-
-        private void btnNuevoProducto_Click(object sender, EventArgs e)
-        {
-            Pantallas.PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevoProductoForm());
-        }
     }
 }

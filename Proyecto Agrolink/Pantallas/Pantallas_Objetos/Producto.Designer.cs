@@ -58,17 +58,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             btnRecargar.UseVisualStyleBackColor = true;
             btnRecargar.Click += btnRecargar_Click;
             // 
-            // btnNuevoProducto
-            // 
-            btnNuevoProducto.Location = new Point(1474, 62);
-            btnNuevoProducto.Margin = new Padding(5, 7, 5, 7);
-            btnNuevoProducto.Name = "btnNuevoProducto";
-            btnNuevoProducto.Size = new Size(340, 82);
-            btnNuevoProducto.TabIndex = 2;
-            btnNuevoProducto.Text = "Nuevo Producto";
-            btnNuevoProducto.UseVisualStyleBackColor = true;
-            btnNuevoProducto.Click += btnNuevoProducto_Click;
-            // 
             // btnBuscar
             // 
             btnBuscar.Location = new Point(1134, 62);

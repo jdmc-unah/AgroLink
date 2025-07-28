@@ -26,12 +26,17 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void btnRecargar_Click(object sender, EventArgs e)
         {
-
+            tablaBodega.DataSource = recSQL.EjecutarVista("vTraeBodega");
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            Dictionary<string, object> parametros = new Dictionary<string, object>()
+            {
+                { "cod", tbBuscar.Text.Trim() }
+            };
 
+            tablaBodega.DataSource = recSQL.EjecutarSPDataTable("spBuscarBodega", parametros);
         }
 
         private void tbBuscar_TextChanged(object sender, EventArgs e)
