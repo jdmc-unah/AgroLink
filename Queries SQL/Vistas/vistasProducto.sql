@@ -1,7 +1,4 @@
-use agrolinkdb
-go
-
-create or alter VIEW vTraeProductos
+create or alter view vPantallaProductos
 as
 select 
     P.ProductoID,
@@ -15,6 +12,4 @@ inner join Pruebas.TipoProducto TP on P.TipoID = TP.TipoID
 inner join Pruebas.UnidadMedida UM on P.UnidadMedidaID = UM.UnidadMedidaID
 left join Pruebas.ProductoDetalle PD on P.ProductoID = PD.ProductoID
 go
-
-select * from vTraeProductos
 

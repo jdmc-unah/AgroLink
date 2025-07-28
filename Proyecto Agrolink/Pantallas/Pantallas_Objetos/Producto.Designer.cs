@@ -19,7 +19,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         {
             panel1 = new Panel();
             btnRecargar = new Button();
-            btnNuevoProducto = new Button();
             btnBuscar = new Button();
             tbBuscar = new TextBox();
             panel2 = new Panel();
@@ -37,7 +36,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             // panel1
             // 
             panel1.Controls.Add(btnRecargar);
-            panel1.Controls.Add(btnNuevoProducto);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
             panel1.Dock = DockStyle.Top;
@@ -177,7 +175,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
 
         private Panel panel1;
         private Button btnRecargar;
-        private Button btnNuevoProducto;
         private Button btnBuscar;
         private TextBox tbBuscar;
         private Panel panel2;

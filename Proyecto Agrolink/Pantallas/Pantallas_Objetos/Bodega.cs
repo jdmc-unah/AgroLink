@@ -21,12 +21,12 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void Bodega_Load(object sender, EventArgs e)
         {
-            tablaBodega.DataSource = recSQL.EjecutarVista("vTraeBodega");
+            tablaBodega.DataSource = recSQL.EjecutarVista("vPantallaBodega");
         }
 
         private void btnRecargar_Click(object sender, EventArgs e)
         {
-            tablaBodega.DataSource = recSQL.EjecutarVista("vTraeBodega");
+            tablaBodega.DataSource = recSQL.EjecutarVista("vPantallaBodega");
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
