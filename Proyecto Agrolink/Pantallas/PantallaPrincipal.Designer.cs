@@ -173,6 +173,7 @@
             subMenuBodegas.Text = "Bodegas";
             subMenuBodegas.TextAlign = ContentAlignment.MiddleLeft;
             subMenuBodegas.UseVisualStyleBackColor = false;
+            subMenuBodegas.Click += subMenuBodegas_Click;
             // 
             // subMenuProductos
             // 

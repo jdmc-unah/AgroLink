@@ -1,4 +1,4 @@
-﻿using Microsoft.Identity.Client;
+﻿﻿using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -209,9 +209,14 @@ namespace AgroLink.Pantallas
 
         private void subMenuFacturas_Click(object sender, EventArgs e)
         {
-            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantallas_Factura.Factura() );
+            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantallas_Factura.Factura());
+        }
 
+        private void subMenuBodegas_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Objetos.Bodega());
         }
     }
-
 }
+
+
