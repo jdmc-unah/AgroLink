@@ -29,7 +29,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             Nombre = new DataGridViewTextBoxColumn();
             TipoProducto = new DataGridViewTextBoxColumn();
             UnidadMedida = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaProducto).BeginInit();
@@ -106,7 +105,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             tablaProducto.AllowUserToAddRows = false;
             tablaProducto.AllowUserToDeleteRows = false;
             tablaProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaProducto.Columns.AddRange(new DataGridViewColumn[] { ProductoID, CodigoProducto, Nombre, TipoProducto, UnidadMedida, Precio });
+            tablaProducto.Columns.AddRange(new DataGridViewColumn[] { ProductoID, CodigoProducto, Nombre, TipoProducto, UnidadMedida });
             tablaProducto.Dock = DockStyle.Fill;
             tablaProducto.Location = new Point(0, 0);
             tablaProducto.Margin = new Padding(5, 7, 5, 7);
@@ -165,12 +164,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             // 
             // Precio
             // 
-            Precio.DataPropertyName = "Precio";
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 8;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 150;
             // 
             // Producto
             // 
@@ -205,6 +198,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn TipoProducto;
         private DataGridViewTextBoxColumn UnidadMedida;
-        private DataGridViewTextBoxColumn Precio;
+
     }
 }

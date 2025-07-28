@@ -35,7 +35,7 @@
             subMenuEmpresa = new Button();
             menuConfig = new Button();
             panelSubMenuProductos = new Panel();
-            subMenuAlmacenes = new Button();
+            subMenuBodegas = new Button();
             subMenuProductos = new Button();
             menuProductos = new Button();
             panelSubMenuSocios = new Panel();
@@ -150,7 +150,7 @@
             // 
             // panelSubMenuProductos
             // 
-            panelSubMenuProductos.Controls.Add(subMenuAlmacenes);
+            panelSubMenuProductos.Controls.Add(subMenuBodegas);
             panelSubMenuProductos.Controls.Add(subMenuProductos);
             panelSubMenuProductos.Dock = DockStyle.Top;
             panelSubMenuProductos.Location = new Point(0, 458);
@@ -162,17 +162,17 @@
             // 
             // subMenuAlmacenes
             // 
-            subMenuAlmacenes.BackColor = Color.FromArgb(192, 229, 200);
-            subMenuAlmacenes.Dock = DockStyle.Top;
-            subMenuAlmacenes.Location = new Point(0, 35);
-            subMenuAlmacenes.Margin = new Padding(1, 1, 1, 1);
-            subMenuAlmacenes.Name = "subMenuAlmacenes";
-            subMenuAlmacenes.Padding = new Padding(15, 0, 0, 0);
-            subMenuAlmacenes.Size = new Size(233, 35);
-            subMenuAlmacenes.TabIndex = 2;
-            subMenuAlmacenes.Text = "Almacenes";
-            subMenuAlmacenes.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuAlmacenes.UseVisualStyleBackColor = false;
+            subMenuBodegas.BackColor = Color.FromArgb(192, 229, 200);
+            subMenuBodegas.Dock = DockStyle.Top;
+            subMenuBodegas.Location = new Point(0, 35);
+            subMenuBodegas.Margin = new Padding(1, 1, 1, 1);
+            subMenuBodegas.Name = "subMenuAlmacenes";
+            subMenuBodegas.Padding = new Padding(15, 0, 0, 0);
+            subMenuBodegas.Size = new Size(233, 35);
+            subMenuBodegas.TabIndex = 2;
+            subMenuBodegas.Text = "Bodegas";
+            subMenuBodegas.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuBodegas.UseVisualStyleBackColor = false;
             // 
             // subMenuProductos
             // 
@@ -449,7 +449,7 @@
         private Button subMenuFacturas;
         private Button subMenuCompras;
         private Panel panelSubMenuProductos;
-        private Button subMenuAlmacenes;
+        private Button subMenuBodegas;
         private Button subMenuProductos;
         private Button menuProductos;
         private Panel panelSubMenuSocios;
