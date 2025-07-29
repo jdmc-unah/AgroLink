@@ -72,7 +72,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             tbBuscar.Location = new System.Drawing.Point(37, 62);
             tbBuscar.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             tbBuscar.Name = "tbBuscar";
-            tbBuscar.PlaceholderText = "BODEGA...";
+            tbBuscar.PlaceholderText = "BOD...";
             tbBuscar.Size = new System.Drawing.Size(1036, 47);
             tbBuscar.TabIndex = 0;
             tbBuscar.TextChanged += tbBuscar_TextChanged;

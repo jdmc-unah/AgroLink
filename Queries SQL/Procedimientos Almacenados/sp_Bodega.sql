@@ -1,10 +1,7 @@
-CREATE OR ALTER PROCEDURE spBuscarBodega @cod NVARCHAR(50)
-AS
-BEGIN
-    SELECT 
-    FROM 
-        Pruebas.Bodega
-    WHERE 
-        CodigoBodega LIKE '%' + @cod + '%'
-        OR Nombre LIKE '%' + @cod + '%';
-END
+create or alter procedure spBuscarBodega @cod nvarchar(50)
+as
+begin
+    select * from vPantallaBodega b
+    where b.CodigoBodega like '%' + @cod + '%' or b.Nombre like '%' + @cod + '%';
+end
+go
