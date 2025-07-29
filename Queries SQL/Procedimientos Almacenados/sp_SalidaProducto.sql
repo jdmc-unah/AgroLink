@@ -102,7 +102,7 @@ as
 			DECLARE @err varchar(50) = ''
 
 	-->Valida Stock
-			SELECT @err = dbo.fValidaStockSalProd(@detalle);
+			SELECT @err = dbo.fValidaStockSalProd(@ventID ,@bodDest, @detalle);
 			IF ISNULL(@err, '') <> '' THROW 50001, @err, 1; --devuelve error personalizado
 				
 
@@ -128,7 +128,7 @@ as
 					select top 1 @salID = SalidaID from pruebas.SalidaProducto order by SalidaID desc;
 
 		-->Ejecuta y valida si hubieron errores en la Factura detalle
-				--exec spAddUpdateFactDet @factID, @ventID, @estado, @detalle  --************PENDIENTE
+				exec spAddUpdateSalidaDet @salID, @ventID, @detalle  --************PENDIENTE
 				IF @@ERROR = 0   --valida error al ingresar la Factura detalle
 					begin
 						commit;
@@ -142,3 +142,46 @@ as
 
 	end
 go
+
+
+select * from pruebas.SalidaProducto
+
+
+go
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Salida Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+CREATE OR ALTER PROCEDURE spAddUpdateSalidaDet @salID int,  @ventID int,
+@detalle TipoSalidaProducto READONLY
+as
+	begin
+		declare @socID int	
+
+
+		IF @ventID = 0 or @ventID IS NULL
+			begin
+			--> transferencia interna, reduce el stock libre osea el stock total
+				update pruebas.BodegaDetalle set TotalExistencias = TotalExistencias - d.Cantidad
+				from pruebas.BodegaDetalle bd
+				inner join @detalle d on bd.BodegaID = d.BodegaID
+
+			end
+		else
+			begin
+			--> transferencia interna, reduce el stock libre osea el stock total
+				update pruebas.BodegaDetalle set Comprometido = Comprometido - d.Cantidad --*******pendiente
+				from pruebas.BodegaDetalle bd
+				inner join @detalle d on bd.BodegaID = d.BodegaID
+
+			end
+
+	--> Actualiza factura detalle
+		delete from pruebas.SalidaProductoDetalle where SalidaID = @salID
+		insert into Pruebas.SalidaProductoDetalle
+		SELECT @salID, ProductoID, Cantidad, BodegaID FROM @detalle
+		
+
+	end
+go
+	
+	select * from pruebas.SalidaProductoDetalle

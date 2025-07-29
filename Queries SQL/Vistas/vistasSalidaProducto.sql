@@ -4,8 +4,9 @@ go
 
 CREATE OR ALTER VIEW vTraeSalidaProducto
 as 
-	SELECT SP.SalidaID, SP.CodigoSalida,  SP.Fecha, ISNULL(S.Nombre, 'Transferencia Interna' )as 'Socio', S.TipoSocio, V.CodigoVenta as 'Venta',
-	ISNULL(SP.VentaID,0) AS 'VentaID' , ISNULL(SP.SocioID, 0) as 'SocioID' , ISNULL( SP.BodegaDestino, 0) as 'BodegaDestinoID', ISNULL(B.Nombre, 'No Aplica') as 'BodegaDestino' 
+	SELECT SP.SalidaID, SP.CodigoSalida,  SP.Fecha, ISNULL(S.Nombre, 'Transferencia Interna' )as 'Socio',
+	ISNULL(S.TipoSocio,'N/A')AS 'TipoSocio' , ISNULL(V.CodigoVenta, 'N/A') as 'Venta',
+	ISNULL(SP.VentaID,0) AS 'VentaID' , ISNULL(SP.SocioID, 0) as 'SocioID' , ISNULL( SP.BodegaDestino, 0) as 'BodegaDestinoID', ISNULL(B.Nombre, 'N/A') as 'BodegaDestino' 
 
 	FROM PRUEBAS.SalidaProducto SP
 	LEFT JOIN PRUEBAS.Socio S ON SP.SocioID = S.SocioID
@@ -19,7 +20,7 @@ select * from vTraeSalidaProducto
 select * from PRUEBAS.SalidaProducto
 select * from PRUEBAS.SalidaProductodetalle
 
-insert into PRUEBAS.SalidaProducto values (GETDATE(), null,null, 1 ) 
+insert into PRUEBAS.SalidaProductodetalle values (4, 4,4, 2) 
 
 
 

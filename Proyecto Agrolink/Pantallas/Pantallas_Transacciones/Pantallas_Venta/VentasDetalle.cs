@@ -241,7 +241,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
                     if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una factura?"))
                     {
-                        //****************PENDIENTE REVISAR SI SE PUEDE VOLVER AQUI O QUE PASA CCON VOLVVER
                         Pantallas_Factura.FacturaDetalle formFactura = new Pantallas_Factura.FacturaDetalle();
                         formFactura.ventaID = ventaID;
                         formFactura.FormPadre = this;

@@ -214,6 +214,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             ToggleReadOnly(false);
 
             ObtenerDatos(salidaID, ventaID);
+
+            groupTipoOperacion.Visible = false;
+
         }
         private void radioTransfInterna_CheckedChanged(object sender, EventArgs e)
         {
@@ -262,13 +265,13 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             //Agrega o actualiza la venta pasando los parametros anteriores
             DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateSalProd", "detalle", "TipoSalidaProducto", tbDet, paramsFact);
 
-            /*
+            
             if (tablaResultante != null)
             {
                 //si es una nueva venta, actualiza el valor con el de la tabla resultante
-                facturaID = facturaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : facturaID;
+                salidaID = salidaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : salidaID;
 
-                if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una salida de producto?"))
+                if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una entrega?"))
                 {
                     //PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Factura.FacturaDetalle());
                     //aqui habria que pasar la data a salida de producto
@@ -276,9 +279,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
                 }
                 else
                 {
-                    ObtenerDatos(facturaID, ventaID);
+                    ObtenerDatos(salidaID, ventaID);
                 }
-            }*/
+            }
 
         }
 

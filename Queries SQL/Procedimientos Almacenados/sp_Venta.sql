@@ -72,7 +72,7 @@ as
 go
 
 
-exec spTraeVentasCode 'AC'
+exec spTraeVentasCode ''
 
 go
 

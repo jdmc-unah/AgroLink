@@ -81,7 +81,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
 
             Dictionary<string, object> filtroVentasAbiertas = new Dictionary<string, object>() {
-                {"filtro",  comboEstado.SelectedItem == "Abierto" ? "A" : "X" }
+                {"filtro",  comboEstado.SelectedItem == "Abierto" || comboEstado.SelectedItem == null  ?   "A" : "X"  }
             };
 
             comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode", filtroVentasAbiertas);
@@ -296,9 +296,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
                 if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una salida de producto?"))
                 {
-                    //PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Factura.FacturaDetalle());
-                    //aqui habria que pasar la data a salida de producto
-
+                
+                    Pantalla_SalidaProducto.SalidaProductoDetalle formSalidaDet = new Pantalla_SalidaProducto.SalidaProductoDetalle();
+                    formSalidaDet.ventaID = ventaID;
+                    formSalidaDet.FormPadre = this;
+                    PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formSalidaDet);
                 }
                 else
                 {
