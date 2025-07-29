@@ -39,20 +39,13 @@
             btnBuscar = new Button();
             tbBuscar = new TextBox();
             tablaSalida = new DataGridView();
-            FacturaID = new DataGridViewTextBoxColumn();
-            CodigoFactura = new DataGridViewTextBoxColumn();
+            SalidaID = new DataGridViewTextBoxColumn();
+            CodigoSalida = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
             Socio = new DataGridViewTextBoxColumn();
             TipoSocio = new DataGridViewTextBoxColumn();
-            ListaPrecio = new DataGridViewTextBoxColumn();
-            MetodoPago = new DataGridViewTextBoxColumn();
-            Estado = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
-            CAI = new DataGridViewTextBoxColumn();
-            EmpleadoID = new DataGridViewTextBoxColumn();
+            Venta = new DataGridViewTextBoxColumn();
             SocioID = new DataGridViewTextBoxColumn();
-            ListaPreciosID = new DataGridViewTextBoxColumn();
-            NumFiscalID = new DataGridViewTextBoxColumn();
             VentaID = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -92,6 +85,7 @@
             btnRecargarSal.TabIndex = 3;
             btnRecargarSal.Text = "Recargar";
             btnRecargarSal.UseVisualStyleBackColor = true;
+            btnRecargarSal.Click += btnRecargarSal_Click;
             // 
             // btnNuevaSalProd
             // 
@@ -101,6 +95,7 @@
             btnNuevaSalProd.TabIndex = 2;
             btnNuevaSalProd.Text = "Nueva Salida de Producto";
             btnNuevaSalProd.UseVisualStyleBackColor = true;
+            btnNuevaSalProd.Click += btnNuevaSalProd_Click;
             // 
             // btnBuscarSal
             // 
@@ -110,12 +105,13 @@
             btnBuscarSal.TabIndex = 1;
             btnBuscarSal.Text = "Buscar";
             btnBuscarSal.UseVisualStyleBackColor = true;
+            btnBuscarSal.Click += btnBuscarSal_Click;
             // 
             // tbBuscarSal
             // 
             tbBuscarSal.Location = new Point(51, 134);
             tbBuscarSal.Name = "tbBuscarSal";
-            tbBuscarSal.PlaceholderText = "Código de Factura o Nombre de Socio...";
+            tbBuscarSal.PlaceholderText = "Código de Salida o Nombre de Socio...";
             tbBuscarSal.Size = new Size(572, 47);
             tbBuscarSal.TabIndex = 0;
             // 
@@ -159,7 +155,7 @@
             tablaSalida.AllowUserToAddRows = false;
             tablaSalida.AllowUserToDeleteRows = false;
             tablaSalida.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaSalida.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, CAI, EmpleadoID, SocioID, ListaPreciosID, NumFiscalID, VentaID });
+            tablaSalida.Columns.AddRange(new DataGridViewColumn[] { SalidaID, CodigoSalida, Fecha, Socio, TipoSocio, Venta, SocioID, VentaID });
             tablaSalida.Dock = DockStyle.Fill;
             tablaSalida.Location = new Point(0, 287);
             tablaSalida.MultiSelect = false;
@@ -168,26 +164,26 @@
             tablaSalida.RowHeadersWidth = 102;
             tablaSalida.Size = new Size(2661, 1255);
             tablaSalida.TabIndex = 3;
+            tablaSalida.DoubleClick += tablaSalida_DoubleClick;
             // 
-            // FacturaID
+            // SalidaID
             // 
-            FacturaID.DataPropertyName = "FacturaID";
-            FacturaID.HeaderText = "ID";
-            FacturaID.MinimumWidth = 12;
-            FacturaID.Name = "FacturaID";
-            FacturaID.ReadOnly = true;
-            FacturaID.Visible = false;
-            FacturaID.Width = 250;
+            SalidaID.DataPropertyName = "SalidaID";
+            SalidaID.HeaderText = "ID";
+            SalidaID.MinimumWidth = 12;
+            SalidaID.Name = "SalidaID";
+            SalidaID.ReadOnly = true;
+            SalidaID.Width = 250;
             // 
-            // CodigoFactura
+            // CodigoSalida
             // 
-            CodigoFactura.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            CodigoFactura.DataPropertyName = "CodigoFactura";
-            CodigoFactura.HeaderText = "Código";
-            CodigoFactura.MinimumWidth = 12;
-            CodigoFactura.Name = "CodigoFactura";
-            CodigoFactura.ReadOnly = true;
-            CodigoFactura.Width = 170;
+            CodigoSalida.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            CodigoSalida.DataPropertyName = "CodigoSalida";
+            CodigoSalida.HeaderText = "Código";
+            CodigoSalida.MinimumWidth = 12;
+            CodigoSalida.Name = "CodigoSalida";
+            CodigoSalida.ReadOnly = true;
+            CodigoSalida.Width = 170;
             // 
             // Fecha
             // 
@@ -209,68 +205,21 @@
             // 
             // TipoSocio
             // 
+            TipoSocio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             TipoSocio.DataPropertyName = "TipoSocio";
             TipoSocio.HeaderText = "Tipo de Socio";
             TipoSocio.MinimumWidth = 12;
             TipoSocio.Name = "TipoSocio";
             TipoSocio.ReadOnly = true;
-            TipoSocio.Width = 250;
             // 
-            // ListaPrecio
+            // Venta
             // 
-            ListaPrecio.DataPropertyName = "ListaPrecio";
-            ListaPrecio.HeaderText = "Lista de Precios";
-            ListaPrecio.MinimumWidth = 12;
-            ListaPrecio.Name = "ListaPrecio";
-            ListaPrecio.ReadOnly = true;
-            ListaPrecio.Width = 300;
-            // 
-            // MetodoPago
-            // 
-            MetodoPago.DataPropertyName = "MetodoPago";
-            MetodoPago.HeaderText = "Metodo de Pago";
-            MetodoPago.MinimumWidth = 12;
-            MetodoPago.Name = "MetodoPago";
-            MetodoPago.ReadOnly = true;
-            MetodoPago.Width = 250;
-            // 
-            // Estado
-            // 
-            Estado.DataPropertyName = "Estado";
-            Estado.HeaderText = "Estado";
-            Estado.MinimumWidth = 12;
-            Estado.Name = "Estado";
-            Estado.ReadOnly = true;
-            Estado.Width = 250;
-            // 
-            // Total
-            // 
-            Total.DataPropertyName = "Total";
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 12;
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            Total.Width = 250;
-            // 
-            // CAI
-            // 
-            CAI.DataPropertyName = "CAI";
-            CAI.HeaderText = "CAI";
-            CAI.MinimumWidth = 12;
-            CAI.Name = "CAI";
-            CAI.ReadOnly = true;
-            CAI.Visible = false;
-            CAI.Width = 250;
-            // 
-            // EmpleadoID
-            // 
-            EmpleadoID.DataPropertyName = "EmpleadoID";
-            EmpleadoID.HeaderText = "EmpleadoID";
-            EmpleadoID.MinimumWidth = 12;
-            EmpleadoID.Name = "EmpleadoID";
-            EmpleadoID.ReadOnly = true;
-            EmpleadoID.Visible = false;
-            EmpleadoID.Width = 250;
+            Venta.DataPropertyName = "Venta";
+            Venta.HeaderText = "Venta";
+            Venta.MinimumWidth = 12;
+            Venta.Name = "Venta";
+            Venta.ReadOnly = true;
+            Venta.Width = 250;
             // 
             // SocioID
             // 
@@ -281,26 +230,6 @@
             SocioID.ReadOnly = true;
             SocioID.Visible = false;
             SocioID.Width = 250;
-            // 
-            // ListaPreciosID
-            // 
-            ListaPreciosID.DataPropertyName = "ListaPreciosID";
-            ListaPreciosID.HeaderText = "ListaPreciosID";
-            ListaPreciosID.MinimumWidth = 12;
-            ListaPreciosID.Name = "ListaPreciosID";
-            ListaPreciosID.ReadOnly = true;
-            ListaPreciosID.Visible = false;
-            ListaPreciosID.Width = 250;
-            // 
-            // NumFiscalID
-            // 
-            NumFiscalID.DataPropertyName = "NumFiscalID";
-            NumFiscalID.HeaderText = "NumFiscalID";
-            NumFiscalID.MinimumWidth = 12;
-            NumFiscalID.Name = "NumFiscalID";
-            NumFiscalID.ReadOnly = true;
-            NumFiscalID.Visible = false;
-            NumFiscalID.Width = 250;
             // 
             // VentaID
             // 
@@ -323,6 +252,7 @@
             Name = "SalidaProducto";
             Text = "SalidaProducto";
             Load += SalidaProducto_Load;
+            VisibleChanged += SalidaProducto_VisibleChanged;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -344,20 +274,13 @@
         private Button btnBuscar;
         private TextBox tbBuscar;
         private DataGridView tablaSalida;
-        private DataGridViewTextBoxColumn FacturaID;
-        private DataGridViewTextBoxColumn CodigoFactura;
+        private DataGridViewTextBoxColumn SalidaID;
+        private DataGridViewTextBoxColumn CodigoSalida;
         private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn Socio;
         private DataGridViewTextBoxColumn TipoSocio;
-        private DataGridViewTextBoxColumn ListaPrecio;
-        private DataGridViewTextBoxColumn MetodoPago;
-        private DataGridViewTextBoxColumn Estado;
-        private DataGridViewTextBoxColumn Total;
-        private DataGridViewTextBoxColumn CAI;
-        private DataGridViewTextBoxColumn EmpleadoID;
+        private DataGridViewTextBoxColumn Venta;
         private DataGridViewTextBoxColumn SocioID;
-        private DataGridViewTextBoxColumn ListaPreciosID;
-        private DataGridViewTextBoxColumn NumFiscalID;
         private DataGridViewTextBoxColumn VentaID;
     }
 }

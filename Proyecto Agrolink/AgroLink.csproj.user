@@ -40,6 +40,9 @@
     <Compile Update="Pantallas\Pantallas_Transacciones\Pantalla_SalidaProducto\SalidaProducto.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Pantallas\Pantallas_Transacciones\Pantalla_SalidaProducto\SalidaProductoDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Pantallas\RegistroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
