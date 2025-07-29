@@ -245,7 +245,7 @@ INSERT INTO Pruebas.SalidaProductoDetalle (SalidaID, ProductoID, Cantidad, Bodeg
 select * from pruebas.SalidaProducto s 
 inner join pruebas.SalidaProductoDetalle sd on s.SalidaID = sd.SalidaID
 
-
+select * from pruebas.SalidaProductoDetalle
 
 
 

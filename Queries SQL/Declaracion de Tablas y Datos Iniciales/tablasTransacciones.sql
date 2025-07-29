@@ -103,10 +103,10 @@ Create table Pruebas.CompraDetalle --ya creada
 go
 
 --EntradProducto
-
 Create Table Pruebas.EntradaProducto --ya creada
 (
 	EntradaID int identity(1,1)  primary key not null,
+	CodigoEntrada as concat('ENT', EntradaID) persisted,
 	SocioID int,						--CAMBIO
 	Fecha Datetime not null,
 	LoteID int,
@@ -225,6 +225,7 @@ Create Table Pruebas.ReciboDetalle --ya creada
 create Table Pruebas.SalidaProducto --ya creada
 (
 	SalidaID int identity(1,1) primary key not null,
+	CodigoSalida as concat('SAL', SalidaID) persisted,
 	Fecha datetime not null,			--CAMBIO
 	SocioID int not null,
 	VentaID int not null,						--CAMBIO

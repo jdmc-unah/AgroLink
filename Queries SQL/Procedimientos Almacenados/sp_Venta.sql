@@ -181,7 +181,7 @@ as
 			end
 
 		
-		--Actualiza Stock
+		--Actualiza Stock  --*****HAY UN BUG RARO PENDIENTE DE RESOLVER CANT CORRECTA********************
 	
 		declare @prod int,  @bodID int, @cantNueva float , @cantAnterior float, @compromet float
 
@@ -190,13 +190,13 @@ as
 			   
 		open crsVentaDet; fetch next from crsVentaDet into  @prod , @bodID , @cantNueva  
 
-		WHILE @@FETCH_STATUS = 0
+		WHILE @@FETCH_STATUS = 0 
 			begin
 				select @cantAnterior = Cantidad from pruebas.VentaDetalle where VentaID = @ventID and ProductoID = @prod
 
 				print( @cantAnterior)
 
-				--valida que no quede negativo ni nulo
+				--valida que no quede negativo ni nulo 
 				select @compromet  = ( 
 				CASE  
 					WHEN Comprometido - isnull(@cantAnterior,0) < 0 THEN 0 

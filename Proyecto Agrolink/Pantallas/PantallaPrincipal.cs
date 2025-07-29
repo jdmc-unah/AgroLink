@@ -135,7 +135,21 @@ namespace AgroLink.Pantallas
         }
 
 
+        private void subMenuFacturas_Click(object sender, EventArgs e)
+        {
+            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantallas_Factura.Factura());
+        }
 
+
+
+
+
+        private void subMenuSalida_Click(object sender, EventArgs e)
+        {
+
+            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProducto());
+
+        }
 
 
 
@@ -166,6 +180,14 @@ namespace AgroLink.Pantallas
 
         }
 
+
+
+        private void subMenuAgricultores_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Socios.Agricultor());
+        }
+
+
         #endregion
 
 
@@ -182,6 +204,12 @@ namespace AgroLink.Pantallas
             OpenChildForm(new Pantallas.Pantallas_Transacciones.Producto());
         }
 
+
+
+        private void subMenuBodegas_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Objetos.Bodega());
+        }
         #endregion
 
 
@@ -202,20 +230,6 @@ namespace AgroLink.Pantallas
 
         }
 
-        private void subMenuAgricultores_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Pantallas.Pantallas_Socios.Agricultor());
-        }
-
-        private void subMenuFacturas_Click(object sender, EventArgs e)
-        {
-            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantallas_Factura.Factura());
-        }
-
-        private void subMenuBodegas_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Pantallas.Pantallas_Objetos.Bodega());
-        }
     }
 }
 

@@ -1,6 +1,6 @@
-﻿namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
+﻿namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
 {
-    partial class Factura
+    partial class SalidaProducto
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,16 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            panel2 = new Panel();
+            btnRecargarSal = new Button();
+            btnNuevaSalProd = new Button();
+            btnBuscarSal = new Button();
+            tbBuscarSal = new TextBox();
             btnRecargar = new Button();
             btnNuevaFactura = new Button();
             btnBuscar = new Button();
             tbBuscar = new TextBox();
-            tablaFactura = new DataGridView();
+            tablaSalida = new DataGridView();
             FacturaID = new DataGridViewTextBoxColumn();
             CodigoFactura = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
@@ -50,11 +55,13 @@
             NumFiscalID = new DataGridViewTextBoxColumn();
             VentaID = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)tablaFactura).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tablaSalida).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(panel2);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnNuevaFactura);
             panel1.Controls.Add(btnBuscar);
@@ -62,8 +69,55 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2693, 287);
-            panel1.TabIndex = 1;
+            panel1.Size = new Size(2661, 287);
+            panel1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnRecargarSal);
+            panel2.Controls.Add(btnNuevaSalProd);
+            panel2.Controls.Add(btnBuscarSal);
+            panel2.Controls.Add(tbBuscarSal);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(2661, 287);
+            panel2.TabIndex = 4;
+            // 
+            // btnRecargarSal
+            // 
+            btnRecargarSal.Location = new Point(1121, 124);
+            btnRecargarSal.Name = "btnRecargarSal";
+            btnRecargarSal.Size = new Size(292, 57);
+            btnRecargarSal.TabIndex = 3;
+            btnRecargarSal.Text = "Recargar";
+            btnRecargarSal.UseVisualStyleBackColor = true;
+            // 
+            // btnNuevaSalProd
+            // 
+            btnNuevaSalProd.Location = new Point(1467, 124);
+            btnNuevaSalProd.Name = "btnNuevaSalProd";
+            btnNuevaSalProd.Size = new Size(394, 57);
+            btnNuevaSalProd.TabIndex = 2;
+            btnNuevaSalProd.Text = "Nueva Salida de Producto";
+            btnNuevaSalProd.UseVisualStyleBackColor = true;
+            // 
+            // btnBuscarSal
+            // 
+            btnBuscarSal.Location = new Point(648, 128);
+            btnBuscarSal.Name = "btnBuscarSal";
+            btnBuscarSal.Size = new Size(189, 57);
+            btnBuscarSal.TabIndex = 1;
+            btnBuscarSal.Text = "Buscar";
+            btnBuscarSal.UseVisualStyleBackColor = true;
+            // 
+            // tbBuscarSal
+            // 
+            tbBuscarSal.Location = new Point(51, 134);
+            tbBuscarSal.Name = "tbBuscarSal";
+            tbBuscarSal.PlaceholderText = "Código de Factura o Nombre de Socio...";
+            tbBuscarSal.Size = new Size(572, 47);
+            tbBuscarSal.TabIndex = 0;
             // 
             // btnRecargar
             // 
@@ -73,7 +127,6 @@
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
-            btnRecargar.Click += btnRecargar_Click;
             // 
             // btnNuevaFactura
             // 
@@ -83,7 +136,6 @@
             btnNuevaFactura.TabIndex = 2;
             btnNuevaFactura.Text = "Nueva Factura";
             btnNuevaFactura.UseVisualStyleBackColor = true;
-            btnNuevaFactura.Click += btnNuevaFactura_Click;
             // 
             // btnBuscar
             // 
@@ -93,7 +145,6 @@
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
             // 
             // tbBuscar
             // 
@@ -103,21 +154,20 @@
             tbBuscar.Size = new Size(572, 47);
             tbBuscar.TabIndex = 0;
             // 
-            // tablaFactura
+            // tablaSalida
             // 
-            tablaFactura.AllowUserToAddRows = false;
-            tablaFactura.AllowUserToDeleteRows = false;
-            tablaFactura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaFactura.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, CAI, EmpleadoID, SocioID, ListaPreciosID, NumFiscalID, VentaID });
-            tablaFactura.Dock = DockStyle.Fill;
-            tablaFactura.Location = new Point(0, 287);
-            tablaFactura.MultiSelect = false;
-            tablaFactura.Name = "tablaFactura";
-            tablaFactura.ReadOnly = true;
-            tablaFactura.RowHeadersWidth = 102;
-            tablaFactura.Size = new Size(2693, 1343);
-            tablaFactura.TabIndex = 2;
-            tablaFactura.DoubleClick += tablaFactura_DoubleClick;
+            tablaSalida.AllowUserToAddRows = false;
+            tablaSalida.AllowUserToDeleteRows = false;
+            tablaSalida.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tablaSalida.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, CAI, EmpleadoID, SocioID, ListaPreciosID, NumFiscalID, VentaID });
+            tablaSalida.Dock = DockStyle.Fill;
+            tablaSalida.Location = new Point(0, 287);
+            tablaSalida.MultiSelect = false;
+            tablaSalida.Name = "tablaSalida";
+            tablaSalida.ReadOnly = true;
+            tablaSalida.RowHeadersWidth = 102;
+            tablaSalida.Size = new Size(2661, 1255);
+            tablaSalida.TabIndex = 3;
             // 
             // FacturaID
             // 
@@ -262,32 +312,38 @@
             VentaID.Visible = false;
             VentaID.Width = 250;
             // 
-            // Factura
+            // SalidaProducto
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2693, 1630);
-            Controls.Add(tablaFactura);
+            ClientSize = new Size(2661, 1542);
+            Controls.Add(tablaSalida);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Factura";
-            Text = "Factura";
-            Load += Factura_Load;
-            VisibleChanged += Factura_VisibleChanged;
+            Name = "SalidaProducto";
+            Text = "SalidaProducto";
+            Load += SalidaProducto_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)tablaFactura).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tablaSalida).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
+        private Panel panel2;
+        private Button btnRecargarSal;
+        private Button btnNuevaSalProd;
+        private Button btnBuscarSal;
+        private TextBox tbBuscarSal;
         private Button btnRecargar;
         private Button btnNuevaFactura;
         private Button btnBuscar;
         private TextBox tbBuscar;
-        private DataGridView tablaFactura;
+        private DataGridView tablaSalida;
         private DataGridViewTextBoxColumn FacturaID;
         private DataGridViewTextBoxColumn CodigoFactura;
         private DataGridViewTextBoxColumn Fecha;

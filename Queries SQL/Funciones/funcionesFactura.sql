@@ -125,7 +125,7 @@ go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Calculo Subtotal y Total de Factura >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-CREATE OR ALTER FUNCTION dbo.fCalcularTotalesFinales (@tablaTotales TipoFacturaDetalle READONLY  )  
+CREATE OR ALTER FUNCTION dbo.fCalcularTotalesFact (@tablaTotales TipoFacturaDetalle READONLY  )  
 returns @resultado table (Subtotal decimal(10, 2), Total decimal(10, 2))
 as  
 	begin
@@ -136,9 +136,8 @@ as
 		return
 	end
 
-GO
+GO 
 
-SELECT * FROM dbo.fCalcularTotalesFinales
 
 
 go
