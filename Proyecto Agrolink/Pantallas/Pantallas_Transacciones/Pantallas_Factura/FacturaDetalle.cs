@@ -1,4 +1,5 @@
-﻿using AgroLink.Recursos;
+﻿using AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta;
+using AgroLink.Recursos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 {
@@ -39,17 +41,13 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
         {
 
             comboEstado.Enabled = !esSoloLectura;
-            //comboSocio.Enabled = !esSoloLectura;
             comboMetodoPago.Enabled = !esSoloLectura;
-            //comboListaPrecio.Enabled = !esSoloLectura;
             comboEmpleado.Enabled = !esSoloLectura;
-            comboVenta.Enabled = !esSoloLectura;
-            comboNumFiscalID.Enabled = !esSoloLectura;
+
+            comboVenta.Enabled = facturaID == 0 ? !esSoloLectura : esSoloLectura;
+            comboNumFiscalID.Enabled = facturaID == 0 ? !esSoloLectura : esSoloLectura;
 
             dateTimePicker1.Enabled = !esSoloLectura;
-
-            tablaDetalle.ReadOnly = esSoloLectura;
-            tablaDetalle.AllowUserToDeleteRows = !esSoloLectura;
 
             btnAceptar.Visible = !esSoloLectura;
             btnCancelar.Visible = !esSoloLectura;
@@ -83,7 +81,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
 
             Dictionary<string, object> filtroVentasAbiertas = new Dictionary<string, object>() {
-                {"filtro", "A" }
+                {"filtro",  comboEstado.SelectedItem == "Abierto" ? "A" : "X" }
             };
 
             comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode", filtroVentasAbiertas);
@@ -91,7 +89,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             comboVenta.ValueMember = "VentaID";
 
 
-            
+
             comboNumFiscalID.DataSource = recSQL.EjecutarVista("vTraeNumFiscal");
             comboNumFiscalID.DisplayMember = "NumFiscalID";
             comboNumFiscalID.ValueMember = "NumFiscalID";
@@ -173,6 +171,16 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
                 LlenaComboDetalle();
 
+
+                if (tablaDetalle.Rows.Count <= 2)
+                {
+                    tablaDetalle.AllowUserToDeleteRows = false;
+                }
+                else
+                {
+                    tablaDetalle.AllowUserToDeleteRows = true;
+                }
+
             }
             else
             {
@@ -181,8 +189,18 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
                 LlenaComboDetalle();
             }
 
+            CalculaTotalFinal();
+
         }
 
+
+
+        public void CalculaTotalFinal()
+        {
+            DataTable tablaTotales = recSQL.EjecutarFuncion("dbo.fCalcularTotalesFact", "tablaTotales", "TipoFacturaDetalle", metodosGlobales.CrearDataTable(tablaDetalle));
+            tbSubtotal.Text = tablaTotales.Rows[0][0].ToString();
+            tbTotal.Text = tablaTotales.Rows[0][1].ToString();
+        }
 
         #endregion
 
@@ -195,15 +213,25 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             {
                 comboVenta.Enabled = true;
 
-                ToggleReadOnly(false);    
+                ToggleReadOnly(false);
             }
 
             //carga los datos 
             ObtenerDatos(facturaID, ventaID);
+
+
         }
 
 
 
+        private void comboVenta_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ventaID = (int)comboVenta.SelectedValue;
+
+            ToggleReadOnly(false);
+
+            ObtenerDatos(facturaID, ventaID);
+        }
 
 
         #region Botones
@@ -225,6 +253,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             {
                 MessageBox.Show("Las facturas Cerradas o Canceladas no pueden editarse");
             }
+
+
+
         }
 
 
@@ -250,7 +281,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
                 {"metodoPago" , comboMetodoPago.SelectedItem },
                 { "cai" , tbCAI.Text },
                 { "empleadoID" , comboEmpleado.SelectedValue  },
-                { "numFiscalID" , 1 },
+                { "numFiscalID" , comboNumFiscalID.SelectedValue },
                 {"estado" , comboEstado.SelectedItem }
             };
 
@@ -295,11 +326,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
 
 
-
-
-
-
-
         #endregion
 
 
@@ -314,43 +340,25 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
         private void tablaDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            //Toma el indice de la fila seleccionada y el valor seleccionado 
-            int row = tablaDetalle.CurrentRow.Index;
-
-            int cant = 0; double precio = 0; int impID = 0;
-
-            //Trae los datos del datagridview
-            object celdaCant = tablaDetalle.Rows[row].Cells["Cantidad"].Value;
-            object celdaPrecio = tablaDetalle.Rows[row].Cells["Precio"].Value;
-            object celdaImpID = tablaDetalle.Rows[row].Cells["ImpuestoID"].Value;
-
-
-            if (celdaCant != null && celdaCant.GetType() != typeof(DBNull))
-                cant = Convert.ToInt32(celdaCant);
-
-            if (celdaPrecio != null && celdaPrecio.GetType() != typeof(DBNull))
-                precio = Convert.ToDouble(celdaPrecio);
-
-            if (celdaImpID != null && celdaImpID.GetType() != typeof(DBNull))
-                impID = Convert.ToInt32(celdaImpID);
-
-
-
-            //Prepara y ejecuta la funcion sql
-            Dictionary<string, object> parametros = new Dictionary<string, object>() {
-                { "cant", cant  },
-                { "precio", precio },
-                { "impID", impID }
-            };
-
-            DataTable totales = recSQL.EjecutarFuncion("dbo.fCalcularTotales", parametros);
-
-
-            //Edita los datos en el datagridview
-            tablaDetalle.Rows[row].Cells["Subtotal"].Value = totales.Rows[0][0];
-            tablaDetalle.Rows[row].Cells["Total"].Value = totales.Rows[0][1];
+           
 
         }
+
+
+
+        private void tablaDetalle_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+
+            if (tablaDetalle.Rows.Count <= 2)
+            {
+                tablaDetalle.AllowUserToDeleteRows = false;
+            }
+
+            CalculaTotalFinal();
+
+        }
+
+
 
         #endregion
 
@@ -360,11 +368,5 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
 
 
-        private void comboVenta_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            ventaID = (int)comboVenta.SelectedValue;
-            ToggleReadOnly(false);
-            ObtenerDatos(facturaID, ventaID);
-        }
     }
 }

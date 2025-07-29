@@ -121,3 +121,24 @@ as
 go
 
 
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Calculo Subtotal y Total de Factura >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER FUNCTION dbo.fCalcularTotalesFinales (@tablaTotales TipoFacturaDetalle READONLY  )  
+returns @resultado table (Subtotal decimal(10, 2), Total decimal(10, 2))
+as  
+	begin
+		
+		INSERT INTO @resultado 
+		SELECT SUM(TT.Subtotal), SUM(TT.Total) FROM @tablaTotales TT
+
+		return
+	end
+
+GO
+
+SELECT * FROM dbo.fCalcularTotalesFinales
+
+
+go

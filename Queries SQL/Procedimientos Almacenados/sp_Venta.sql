@@ -194,15 +194,17 @@ as
 			begin
 				select @cantAnterior = Cantidad from pruebas.VentaDetalle where VentaID = @ventID and ProductoID = @prod
 
+				print( @cantAnterior)
+
 				--valida que no quede negativo ni nulo
 				select @compromet  = ( 
 				CASE  
-					WHEN @cantAnterior IS NULL THEN Comprometido
-					WHEN Comprometido - @cantAnterior < 0 THEN 0 
-					ELSE Comprometido - @cantAnterior  
+					WHEN Comprometido - isnull(@cantAnterior,0) < 0 THEN 0 
+					ELSE Comprometido - isnull(@cantAnterior,0)
 				END ) from pruebas.BodegaDetalle WHERE BodegaID = @bodID AND ProductoID = @prod
 
-				print(isnull(@compromet,0))
+				print( @compromet)
+				print( @cantNueva)
 
 				UPDATE Pruebas.BodegaDetalle SET Comprometido = @compromet + @cantNueva
 				WHERE BodegaID = @bodID AND ProductoID = @prod
@@ -221,7 +223,14 @@ as
 go
 
 
+--select Cantidad from pruebas.VentaDetalle where VentaID = 46 and ProductoID = 3
 
+				--select ( 	
+				--CASE  
+				--	--WHEN NULL IS NULL THEN Comprometido
+				--	WHEN Comprometido - 0 < 0 THEN 0 
+				--	ELSE Comprometido - 0
+				--END ) from pruebas.BodegaDetalle WHERE BodegaID = 3 AND ProductoID = 3
 
 
 
@@ -231,24 +240,26 @@ go
 begin transaction
 -- Declarar la variable tipo tabla
 DECLARE @DatosPrueba AS TipoVentaDetalle;
-
+	
 -- Insertar datos de prueba
-INSERT INTO @DatosPrueba (VentaID,Codigo,  ProductoID, BodegaID, Cantidad,	Precio, SubTotal, ImpuestoID, Total)
+INSERT INTO @DatosPrueba (VentaID,Codigo,  ProductoID, ImpuestoID, BodegaID, Cantidad,	Precio, SubTotal, Total)
 VALUES
-(35,'PRO11',2,2,1,25.00,25,1,28.75),
-(35,'PRO11',3,3,1,25.00,25,1,1)
+(54,'PRO2',	2	, 2,	2,	1,	4.00, 4.00,	5.00 ),
+(54,'PRO3',	3	, 1,	3,	2,	2.00, 4.00,	4.60 ),
+(54,'PRO4',	4	, 1,	4,	6,	2.00, 8.00,	9.20 )
 
---,(22,'PRO14',14,1,1,850.00,850,1,977.5)
---,(0,'PRO14',6,1,1,850.00,850,1,977.5)
+--insert into pruebas.Venta values (GETDATE(), 3,6,'Contado' , 'Abierto' )
 
-EXEC spAddUpdateVentaDet 35, @DatosPrueba;
+EXEC spAddUpdateVentaDet 54, @DatosPrueba;
 
 
 rollback
 
 
-select * from pruebas.VentaDetalle 
+select * from pruebas.Venta where ventaid = 54
+select * from pruebas.VentaDetalle where ventaid = 54
 
+select * from pruebas.BodegaDetalle
 
 
 INSERT INTO  pruebas.Venta (fecha, SocioID, ListaPreciosID, TipoPago, Estado) 

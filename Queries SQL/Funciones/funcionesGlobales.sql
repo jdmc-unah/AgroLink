@@ -2,11 +2,9 @@ use agrolinkdb
 
 go
 
--->>>>>>>>>>>>>>>>>>>>>>>>>>>> Calculo Subtotal y Total >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Calculo Subtotal y Total por linea >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
-
-CREATE OR ALTER FUNCTION dbo.fCalcularTotales (@cant int , @precio float , @impID int) returns @resultado table (Subtotal float, Total float)
+CREATE OR ALTER FUNCTION dbo.fCalcularTotales (@cant int , @precio float , @impID int) returns @resultado table (Subtotal decimal(10, 2), Total decimal(10, 2))
 as
 	begin
 		declare @subtotal decimal(10, 2) , @total decimal(10, 2) , @impVal float
@@ -30,6 +28,9 @@ SELECT * FROM dbo.fCalcularTotales(1,1,0)
 
 
 go
+
+
+
 
 
 

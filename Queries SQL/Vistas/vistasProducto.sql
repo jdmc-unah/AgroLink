@@ -6,7 +6,7 @@ as
 select 
     P.ProductoID,
     P.CodigoProducto,
-    P.Nombre,
+    P.Nombre as 'Producto', --cambio
     TP.NombreTipo as TipoProducto,
     UM.Nombre as UnidadMedida,
     PD.Precio

@@ -138,12 +138,22 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             /* OJO Si por defecto los campos dentro de una vista o sp que sean de 
              * otra tabla que no sea la tabla principal son solo lectura asi que cuidado con eso  */
 
-
+            CalculaTotalFinal();
 
         }
 
 
+
+        public void CalculaTotalFinal()
+        {
+            DataTable tablaTotales = recSQL.EjecutarFuncion("dbo.fCalcularTotalesVenta", "tablaTotales", "TipoVentaDetalle", metodosGlobales.CrearDataTable(tablaDetalle));
+            tbSubtotal.Text = tablaTotales.Rows[0][0].ToString();
+            tbTotal.Text = tablaTotales.Rows[0][1].ToString();
+        }
+
         #endregion
+
+
 
 
 
@@ -341,7 +351,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             tablaDetalle.Rows[row].Cells["Subtotal"].Value = totales.Rows[0][0];
             tablaDetalle.Rows[row].Cells["Total"].Value = totales.Rows[0][1];
 
-
+            CalculaTotalFinal();
         }
 
 

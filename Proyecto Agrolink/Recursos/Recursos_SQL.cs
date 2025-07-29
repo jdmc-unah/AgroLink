@@ -243,7 +243,7 @@ namespace AgroLink.Recursos
                 
 
                 // Arma la consulta completa con los argumentos ordenados
-                string cmdText = $"SELECT {nombreFuncion}({string.Join(", ", argumentosFuncion)})";
+                string cmdText = $"SELECT * FROM {nombreFuncion}({string.Join(", ", argumentosFuncion)})";
 
 
 
