@@ -28,39 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            labelBodDest = new Label();
+            comboBodDestino = new ComboBox();
+            groupTipoOperacion = new GroupBox();
+            radioTransfInterna = new RadioButton();
+            radioSalidaVenta = new RadioButton();
             comboVenta = new ComboBox();
-            label8 = new Label();
+            labelVent = new Label();
             label6 = new Label();
             dateTimePicker1 = new DateTimePicker();
             tbCodigo = new TextBox();
             label1 = new Label();
-            label3 = new Label();
+            labelSocio = new Label();
             comboSocio = new ComboBox();
             panel2 = new Panel();
             tablaDetalle = new DataGridView();
-            FacturaID = new DataGridViewTextBoxColumn();
-            CodigoProducto = new DataGridViewTextBoxColumn();
-            ProductoID = new DataGridViewComboBoxColumn();
-            BodegaID = new DataGridViewComboBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Subtotal = new DataGridViewTextBoxColumn();
-            ImpuestoID = new DataGridViewComboBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             panel3 = new Panel();
-            tbSubtotal = new TextBox();
-            label12 = new Label();
-            tbTotal = new TextBox();
-            label11 = new Label();
             btnVolver = new Button();
             btnCancelar = new Button();
             btnEditar = new Button();
             btnAceptar = new Button();
+            SalidaID = new DataGridViewTextBoxColumn();
+            CodigoProducto = new DataGridViewTextBoxColumn();
+            ProductoID = new DataGridViewComboBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            BodegaID = new DataGridViewComboBoxColumn();
             panel1.SuspendLayout();
+            groupTipoOperacion.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaDetalle).BeginInit();
             panel3.SuspendLayout();
@@ -68,13 +65,16 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(labelBodDest);
+            panel1.Controls.Add(comboBodDestino);
+            panel1.Controls.Add(groupTipoOperacion);
             panel1.Controls.Add(comboVenta);
-            panel1.Controls.Add(label8);
+            panel1.Controls.Add(labelVent);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(tbCodigo);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(label3);
+            panel1.Controls.Add(labelSocio);
             panel1.Controls.Add(comboSocio);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -84,25 +84,82 @@
             panel1.Size = new Size(2629, 385);
             panel1.TabIndex = 23;
             // 
+            // labelBodDest
+            // 
+            labelBodDest.AutoSize = true;
+            labelBodDest.Location = new Point(66, 211);
+            labelBodDest.Margin = new Padding(2, 0, 2, 0);
+            labelBodDest.Name = "labelBodDest";
+            labelBodDest.Size = new Size(230, 41);
+            labelBodDest.TabIndex = 33;
+            labelBodDest.Text = "Bodega Destino";
+            labelBodDest.Visible = false;
+            // 
+            // comboBodDestino
+            // 
+            comboBodDestino.Enabled = false;
+            comboBodDestino.FormattingEnabled = true;
+            comboBodDestino.Location = new Point(55, 279);
+            comboBodDestino.Margin = new Padding(2);
+            comboBodDestino.Name = "comboBodDestino";
+            comboBodDestino.Size = new Size(633, 49);
+            comboBodDestino.TabIndex = 34;
+            comboBodDestino.Visible = false;
+            // 
+            // groupTipoOperacion
+            // 
+            groupTipoOperacion.Controls.Add(radioTransfInterna);
+            groupTipoOperacion.Controls.Add(radioSalidaVenta);
+            groupTipoOperacion.Location = new Point(1648, 211);
+            groupTipoOperacion.Name = "groupTipoOperacion";
+            groupTipoOperacion.Size = new Size(918, 147);
+            groupTipoOperacion.TabIndex = 32;
+            groupTipoOperacion.TabStop = false;
+            groupTipoOperacion.Text = "Tipo de Operación";
+            // 
+            // radioTransfInterna
+            // 
+            radioTransfInterna.AutoSize = true;
+            radioTransfInterna.Location = new Point(564, 73);
+            radioTransfInterna.Name = "radioTransfInterna";
+            radioTransfInterna.Size = new Size(328, 45);
+            radioTransfInterna.TabIndex = 1;
+            radioTransfInterna.Text = "Transferencia Interna";
+            radioTransfInterna.UseVisualStyleBackColor = true;
+            radioTransfInterna.CheckedChanged += radioTransfInterna_CheckedChanged;
+            // 
+            // radioSalidaVenta
+            // 
+            radioSalidaVenta.AutoSize = true;
+            radioSalidaVenta.Checked = true;
+            radioSalidaVenta.Location = new Point(36, 73);
+            radioSalidaVenta.Name = "radioSalidaVenta";
+            radioSalidaVenta.Size = new Size(358, 45);
+            radioSalidaVenta.TabIndex = 0;
+            radioSalidaVenta.TabStop = true;
+            radioSalidaVenta.Text = "Salida Basada en Venta";
+            radioSalidaVenta.UseVisualStyleBackColor = true;
+            // 
             // comboVenta
             // 
             comboVenta.Enabled = false;
             comboVenta.FormattingEnabled = true;
-            comboVenta.Location = new Point(631, 77);
+            comboVenta.Location = new Point(618, 77);
             comboVenta.Margin = new Padding(2);
             comboVenta.Name = "comboVenta";
             comboVenta.Size = new Size(257, 49);
             comboVenta.TabIndex = 31;
+            comboVenta.SelectionChangeCommitted += comboVenta_SelectionChangeCommitted;
             // 
-            // label8
+            // labelVent
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(530, 81);
-            label8.Margin = new Padding(2, 0, 2, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(93, 41);
-            label8.TabIndex = 30;
-            label8.Text = "Venta";
+            labelVent.AutoSize = true;
+            labelVent.Location = new Point(517, 81);
+            labelVent.Margin = new Padding(2, 0, 2, 0);
+            labelVent.Name = "labelVent";
+            labelVent.Size = new Size(93, 41);
+            labelVent.TabIndex = 30;
+            labelVent.Text = "Venta";
             // 
             // label6
             // 
@@ -137,22 +194,22 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(73, 80);
+            label1.Location = new Point(65, 80);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(116, 41);
             label1.TabIndex = 13;
             label1.Text = "Código";
             // 
-            // label3
+            // labelSocio
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(66, 211);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(91, 41);
-            label3.TabIndex = 15;
-            label3.Text = "Socio";
+            labelSocio.AutoSize = true;
+            labelSocio.Location = new Point(66, 211);
+            labelSocio.Margin = new Padding(2, 0, 2, 0);
+            labelSocio.Name = "labelSocio";
+            labelSocio.Size = new Size(91, 41);
+            labelSocio.TabIndex = 15;
+            labelSocio.Text = "Socio";
             // 
             // comboSocio
             // 
@@ -178,7 +235,7 @@
             // 
             tablaDetalle.AllowUserToDeleteRows = false;
             tablaDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaDetalle.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoProducto, ProductoID, BodegaID, Cantidad, Precio, Subtotal, ImpuestoID, Total });
+            tablaDetalle.Columns.AddRange(new DataGridViewColumn[] { SalidaID, CodigoProducto, ProductoID, Cantidad, BodegaID });
             tablaDetalle.Dock = DockStyle.Fill;
             tablaDetalle.Location = new Point(0, 0);
             tablaDetalle.Margin = new Padding(2);
@@ -187,22 +244,84 @@
             tablaDetalle.RowHeadersWidth = 102;
             tablaDetalle.Size = new Size(2629, 947);
             tablaDetalle.TabIndex = 1;
+            tablaDetalle.DataError += tablaDetalle_DataError;
+            tablaDetalle.UserDeletedRow += tablaDetalle_UserDeletedRow;
             // 
-            // FacturaID
+            // panel3
             // 
-            FacturaID.DataPropertyName = "FacturaID";
-            FacturaID.HeaderText = "ID";
-            FacturaID.MinimumWidth = 12;
-            FacturaID.Name = "FacturaID";
-            FacturaID.ReadOnly = true;
-            FacturaID.Visible = false;
-            FacturaID.Width = 250;
+            panel3.Controls.Add(btnVolver);
+            panel3.Controls.Add(btnCancelar);
+            panel3.Controls.Add(btnEditar);
+            panel3.Controls.Add(btnAceptar);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(0, 1332);
+            panel3.Margin = new Padding(2);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(2629, 358);
+            panel3.TabIndex = 30;
+            // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(51, 86);
+            btnVolver.Margin = new Padding(4);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(219, 68);
+            btnVolver.TabIndex = 27;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(2284, 86);
+            btnCancelar.Margin = new Padding(4);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(223, 68);
+            btnCancelar.TabIndex = 25;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Visible = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(325, 86);
+            btnEditar.Margin = new Padding(4);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(223, 68);
+            btnEditar.TabIndex = 24;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
+            // btnAceptar
+            // 
+            btnAceptar.Location = new Point(2016, 86);
+            btnAceptar.Margin = new Padding(4);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(223, 68);
+            btnAceptar.TabIndex = 23;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Visible = false;
+            btnAceptar.Click += btnAceptar_Click;
+            // 
+            // SalidaID
+            // 
+            SalidaID.DataPropertyName = "SalidaID";
+            dataGridViewCellStyle1.NullValue = "0";
+            SalidaID.DefaultCellStyle = dataGridViewCellStyle1;
+            SalidaID.HeaderText = "ID";
+            SalidaID.MinimumWidth = 12;
+            SalidaID.Name = "SalidaID";
+            SalidaID.ReadOnly = true;
+            SalidaID.Width = 250;
             // 
             // CodigoProducto
             // 
             CodigoProducto.DataPropertyName = "CodigoProducto";
-            dataGridViewCellStyle7.NullValue = "PRO";
-            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.NullValue = "PRO";
+            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle2;
             CodigoProducto.HeaderText = "Codigo";
             CodigoProducto.MinimumWidth = 12;
             CodigoProducto.Name = "CodigoProducto";
@@ -218,17 +337,6 @@
             ProductoID.Name = "ProductoID";
             ProductoID.ReadOnly = true;
             // 
-            // BodegaID
-            // 
-            BodegaID.DataPropertyName = "BodegaID";
-            BodegaID.HeaderText = "Bodega";
-            BodegaID.MinimumWidth = 12;
-            BodegaID.Name = "BodegaID";
-            BodegaID.ReadOnly = true;
-            BodegaID.Resizable = DataGridViewTriState.True;
-            BodegaID.SortMode = DataGridViewColumnSortMode.Automatic;
-            BodegaID.Width = 250;
-            // 
             // Cantidad
             // 
             Cantidad.DataPropertyName = "Cantidad";
@@ -238,144 +346,16 @@
             Cantidad.ReadOnly = true;
             Cantidad.Width = 250;
             // 
-            // Precio
+            // BodegaID
             // 
-            Precio.DataPropertyName = "Precio";
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 12;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 250;
-            // 
-            // Subtotal
-            // 
-            Subtotal.DataPropertyName = "Subtotal";
-            dataGridViewCellStyle8.NullValue = "0";
-            Subtotal.DefaultCellStyle = dataGridViewCellStyle8;
-            Subtotal.HeaderText = "Subtotal";
-            Subtotal.MinimumWidth = 12;
-            Subtotal.Name = "Subtotal";
-            Subtotal.ReadOnly = true;
-            Subtotal.Width = 250;
-            // 
-            // ImpuestoID
-            // 
-            ImpuestoID.DataPropertyName = "ImpuestoID";
-            ImpuestoID.HeaderText = "Impuesto";
-            ImpuestoID.MinimumWidth = 12;
-            ImpuestoID.Name = "ImpuestoID";
-            ImpuestoID.ReadOnly = true;
-            ImpuestoID.Resizable = DataGridViewTriState.True;
-            ImpuestoID.SortMode = DataGridViewColumnSortMode.Automatic;
-            ImpuestoID.Width = 250;
-            // 
-            // Total
-            // 
-            Total.DataPropertyName = "Total";
-            dataGridViewCellStyle9.NullValue = "0";
-            Total.DefaultCellStyle = dataGridViewCellStyle9;
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 12;
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            Total.Width = 250;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(tbSubtotal);
-            panel3.Controls.Add(label12);
-            panel3.Controls.Add(tbTotal);
-            panel3.Controls.Add(label11);
-            panel3.Controls.Add(btnVolver);
-            panel3.Controls.Add(btnCancelar);
-            panel3.Controls.Add(btnEditar);
-            panel3.Controls.Add(btnAceptar);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 1332);
-            panel3.Margin = new Padding(2);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(2629, 358);
-            panel3.TabIndex = 30;
-            // 
-            // tbSubtotal
-            // 
-            tbSubtotal.Location = new Point(2385, 103);
-            tbSubtotal.Margin = new Padding(2);
-            tbSubtotal.Name = "tbSubtotal";
-            tbSubtotal.ReadOnly = true;
-            tbSubtotal.Size = new Size(257, 47);
-            tbSubtotal.TabIndex = 30;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(2218, 100);
-            label12.Margin = new Padding(2, 0, 2, 0);
-            label12.Name = "label12";
-            label12.Size = new Size(129, 41);
-            label12.TabIndex = 31;
-            label12.Text = "Subtotal";
-            // 
-            // tbTotal
-            // 
-            tbTotal.Location = new Point(2385, 187);
-            tbTotal.Margin = new Padding(2);
-            tbTotal.Name = "tbTotal";
-            tbTotal.ReadOnly = true;
-            tbTotal.Size = new Size(257, 47);
-            tbTotal.TabIndex = 28;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(2266, 189);
-            label11.Margin = new Padding(2, 0, 2, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(81, 41);
-            label11.TabIndex = 29;
-            label11.Text = "Total";
-            // 
-            // btnVolver
-            // 
-            btnVolver.Location = new Point(51, 86);
-            btnVolver.Margin = new Padding(4);
-            btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(219, 68);
-            btnVolver.TabIndex = 27;
-            btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.Location = new Point(1828, 92);
-            btnCancelar.Margin = new Padding(4);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(223, 68);
-            btnCancelar.TabIndex = 25;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Visible = false;
-            // 
-            // btnEditar
-            // 
-            btnEditar.Location = new Point(325, 86);
-            btnEditar.Margin = new Padding(4);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(223, 68);
-            btnEditar.TabIndex = 24;
-            btnEditar.Text = "Editar";
-            btnEditar.UseVisualStyleBackColor = true;
-            // 
-            // btnAceptar
-            // 
-            btnAceptar.Location = new Point(1560, 92);
-            btnAceptar.Margin = new Padding(4);
-            btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(223, 68);
-            btnAceptar.TabIndex = 23;
-            btnAceptar.Text = "Aceptar";
-            btnAceptar.UseVisualStyleBackColor = true;
-            btnAceptar.Visible = false;
+            BodegaID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BodegaID.DataPropertyName = "BodegaID";
+            BodegaID.HeaderText = "Bodega Origen";
+            BodegaID.MinimumWidth = 12;
+            BodegaID.Name = "BodegaID";
+            BodegaID.ReadOnly = true;
+            BodegaID.Resizable = DataGridViewTriState.True;
+            BodegaID.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // SalidaProductoDetalle
             // 
@@ -388,12 +368,14 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "SalidaProductoDetalle";
             Text = "SalidaProductoDetalle";
+            Load += SalidaProductoDetalle_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            groupTipoOperacion.ResumeLayout(false);
+            groupTipoOperacion.PerformLayout();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)tablaDetalle).EndInit();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -401,32 +383,29 @@
 
         private Panel panel1;
         private ComboBox comboVenta;
-        private Label label8;
+        private Label labelVent;
         private Label label6;
         private DateTimePicker dateTimePicker1;
         private TextBox tbCodigo;
         private Label label1;
-        private Label label3;
+        private Label labelSocio;
         private ComboBox comboSocio;
         private Panel panel2;
         private DataGridView tablaDetalle;
-        private DataGridViewTextBoxColumn FacturaID;
-        private DataGridViewTextBoxColumn CodigoProducto;
-        private DataGridViewComboBoxColumn ProductoID;
-        private DataGridViewComboBoxColumn BodegaID;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn Precio;
-        private DataGridViewTextBoxColumn Subtotal;
-        private DataGridViewComboBoxColumn ImpuestoID;
-        private DataGridViewTextBoxColumn Total;
         private Panel panel3;
-        private TextBox tbSubtotal;
-        private Label label12;
-        private TextBox tbTotal;
-        private Label label11;
         private Button btnVolver;
         private Button btnCancelar;
         private Button btnEditar;
         private Button btnAceptar;
+        private GroupBox groupTipoOperacion;
+        private RadioButton radioTransfInterna;
+        private RadioButton radioSalidaVenta;
+        private Label labelBodDest;
+        private ComboBox comboBodDestino;
+        private DataGridViewTextBoxColumn SalidaID;
+        private DataGridViewTextBoxColumn CodigoProducto;
+        private DataGridViewComboBoxColumn ProductoID;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewComboBoxColumn BodegaID;
     }
 }

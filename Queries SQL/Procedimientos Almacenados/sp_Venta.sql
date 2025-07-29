@@ -54,20 +54,25 @@ go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae ventas (solo id y codigo) filtrado >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-CREATE OR ALTER PROCEDURE spTraeVentasCode @filtro varchar = null
+CREATE OR ALTER PROCEDURE spTraeVentasCode @filtro varchar(2) = null
 as
 	IF @filtro = 'T' OR @filtro IS NULL  --todas
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta
-
+	
+	IF @filtro = 'AC' --solo abiertas y cerradas
+		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Cancelada'
+	
 	IF @filtro = 'A' --solo abiertas
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado = 'Abierto'
 	
 	IF @filtro = 'X' --solo canceladas y cerradas
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Abierto'
 
-go	
 
-exec spTraeVentasCode 'x'
+go
+
+
+exec spTraeVentasCode 'AC'
 
 go
 

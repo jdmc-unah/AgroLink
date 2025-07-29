@@ -76,7 +76,7 @@ namespace AgroLink.Recursos
 
         //Para usar tabla como parametro en un procedimiento almacenado
         //nombreParametro es el nombre de la tabla que va como parametro
-        public DataTable? EjecutarSPDataTable(string nombreSP, string nombreParametro, string nombreTipoTabla, DataTable tabla, Dictionary<string, object>? parametros = null)
+        public DataTable? EjecutarSPDataTable(string nombreSP, string nombreParametro, string nombreTipoTabla, DataTable tabla, Dictionary<string, object?>? parametros = null)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace AgroLink.Recursos
 
             }
             catch (SqlException ex)
-            {
+             {
                 foreach (SqlError error in ex.Errors)
                 {
                     MessageBox.Show($"Error SQL: {error.Message}\nCódigo: {error.Number}");

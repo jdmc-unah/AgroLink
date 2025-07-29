@@ -57,7 +57,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             int row = tablaSalida.CurrentRow.Index;
 
             detalle.salidaID = (int) tablaSalida.Rows[row].Cells["SalidaID"].Value;
-
+            detalle.ventaID = (int) tablaSalida.Rows[row].Cells["VentaID"].Value;
             //Llama al metodo de la pantalla principal para mostrar detalle
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, detalle);
         }

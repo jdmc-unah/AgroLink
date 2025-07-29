@@ -221,18 +221,21 @@ Create Table Pruebas.ReciboDetalle --ya creada
 	constraint fkReciboDetalleBodega2 foreign key (BodegaID) references Pruebas.Bodega(BodegaID)
 )
 
-
 create Table Pruebas.SalidaProducto --ya creada
 (
 	SalidaID int identity(1,1) primary key not null,
 	CodigoSalida as concat('SAL', SalidaID) persisted,
 	Fecha datetime not null,			--CAMBIO
-	SocioID int not null,
-	VentaID int not null,						--CAMBIO
+	SocioID int ,
+	VentaID int ,						--CAMBIO
+	BodegaDestino int,					--CAMBIO
 
 	constraint fkSalidaProductoSocio foreign key (SocioID) references Pruebas.Socio(SocioID),
-	constraint fkSalidaProductoVenta foreign key (VentaID) references Pruebas.Venta(VentaID)	--CAMBIO
+	constraint fkSalidaProductoVenta foreign key (VentaID) references Pruebas.Venta(VentaID),	--CAMBIO
+	constraint fkSalidaProductoBodega foreign key (BodegaDestino) references Pruebas.Bodega(BodegaID)	--CAMBIO
+
 )
+
 
 create table Pruebas.SalidaProductoDetalle --ya creada
 (

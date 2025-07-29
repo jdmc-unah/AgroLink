@@ -45,8 +45,10 @@
             Socio = new DataGridViewTextBoxColumn();
             TipoSocio = new DataGridViewTextBoxColumn();
             Venta = new DataGridViewTextBoxColumn();
+            BodegaDestino = new DataGridViewTextBoxColumn();
             SocioID = new DataGridViewTextBoxColumn();
             VentaID = new DataGridViewTextBoxColumn();
+            BodegaDestinoID = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaSalida).BeginInit();
@@ -155,7 +157,7 @@
             tablaSalida.AllowUserToAddRows = false;
             tablaSalida.AllowUserToDeleteRows = false;
             tablaSalida.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaSalida.Columns.AddRange(new DataGridViewColumn[] { SalidaID, CodigoSalida, Fecha, Socio, TipoSocio, Venta, SocioID, VentaID });
+            tablaSalida.Columns.AddRange(new DataGridViewColumn[] { SalidaID, CodigoSalida, Fecha, Socio, TipoSocio, Venta, BodegaDestino, SocioID, VentaID, BodegaDestinoID });
             tablaSalida.Dock = DockStyle.Fill;
             tablaSalida.Location = new Point(0, 287);
             tablaSalida.MultiSelect = false;
@@ -173,6 +175,7 @@
             SalidaID.MinimumWidth = 12;
             SalidaID.Name = "SalidaID";
             SalidaID.ReadOnly = true;
+            SalidaID.Visible = false;
             SalidaID.Width = 250;
             // 
             // CodigoSalida
@@ -221,6 +224,15 @@
             Venta.ReadOnly = true;
             Venta.Width = 250;
             // 
+            // BodegaDestino
+            // 
+            BodegaDestino.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BodegaDestino.DataPropertyName = "BodegaDestino";
+            BodegaDestino.HeaderText = "BodegaDestino";
+            BodegaDestino.MinimumWidth = 12;
+            BodegaDestino.Name = "BodegaDestino";
+            BodegaDestino.ReadOnly = true;
+            // 
             // SocioID
             // 
             SocioID.DataPropertyName = "SocioID";
@@ -240,6 +252,16 @@
             VentaID.ReadOnly = true;
             VentaID.Visible = false;
             VentaID.Width = 250;
+            // 
+            // BodegaDestinoID
+            // 
+            BodegaDestinoID.DataPropertyName = "BodegaDestinoID";
+            BodegaDestinoID.HeaderText = "BodegaDestinoID";
+            BodegaDestinoID.MinimumWidth = 12;
+            BodegaDestinoID.Name = "BodegaDestinoID";
+            BodegaDestinoID.ReadOnly = true;
+            BodegaDestinoID.Visible = false;
+            BodegaDestinoID.Width = 250;
             // 
             // SalidaProducto
             // 
@@ -280,7 +302,9 @@
         private DataGridViewTextBoxColumn Socio;
         private DataGridViewTextBoxColumn TipoSocio;
         private DataGridViewTextBoxColumn Venta;
+        private DataGridViewTextBoxColumn BodegaDestino;
         private DataGridViewTextBoxColumn SocioID;
         private DataGridViewTextBoxColumn VentaID;
+        private DataGridViewTextBoxColumn BodegaDestinoID;
     }
 }
