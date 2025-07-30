@@ -252,7 +252,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
 
 
             //Toma los datos de la parte superior y los asigna a los parametros del sp
-            Dictionary<string, object?> paramsFact = new Dictionary<string, object?>() {
+            Dictionary<string, object?> paramsSal = new Dictionary<string, object?>() {
                 {"salID" , salidaID},
                 {"ventID" , (ventaID == 0 && salidaID == 0)  ?  null : comboVenta.SelectedValue  }, //valida si es una transferencia interna
                 {"socID"  , (ventaID == 0 && salidaID == 0)  ?  null : comboSocio.SelectedValue },
@@ -263,7 +263,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
 
 
             //Agrega o actualiza la venta pasando los parametros anteriores
-            DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateSalProd", "detalle", "TipoSalidaProducto", tbDet, paramsFact);
+            DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateSalProd", "detalle", "TipoSalidaProducto", tbDet, paramsSal);
 
             
             if (tablaResultante != null)

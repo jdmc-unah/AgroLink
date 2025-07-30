@@ -77,6 +77,34 @@ exec spTraeSalidaDetalle 1, 1
 
 go
 
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae salidas (solo id y codigo) >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+CREATE OR ALTER PROCEDURE spTraeSalidasCode @filtro varchar
+as
+	declare @salidasConEntrega as table (EntregaID int, SalidaID int)
+	
+	insert into @salidasConEntrega 
+	SELECT E.EntregaID , E.SalidaID 
+	FROM Pruebas.Entrega  E
+	INNER JOIN Pruebas.SalidaProducto SP ON E.SalidaID = SP.SalidaID
+
+	IF @filtro = 'P' --Pendientes de Entrega
+		SELECT  SalidaID, CodigoSalida 
+		FROM Pruebas.SalidaProducto WHERE SalidaID NOT IN (SELECT SalidaID from @salidasConEntrega)
+		AND SocioID IS NOT NULL
+	
+		
+	IF @filtro = 'E' --Entregadas (osea salidas que ya tienen creadas una entrega)
+		SELECT  SalidaID, CodigoSalida 
+		FROM Pruebas.SalidaProducto WHERE SalidaID IN (SELECT SalidaID from @salidasConEntrega)
+		AND SocioID IS NOT NULL
+
+
+go
+
+exec spTraeSalidasCode 'p'
+go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Salida >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -145,6 +173,15 @@ go
 
 
 select * from pruebas.SalidaProducto
+
+
+GO
+
+
+
+
+
+
 
 
 go

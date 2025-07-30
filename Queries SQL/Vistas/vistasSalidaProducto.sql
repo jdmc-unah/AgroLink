@@ -26,5 +26,4 @@ select * from PRUEBAS.SalidaProductodetalle
 insert into PRUEBAS.SalidaProductodetalle values (4, 4,4, 2) 
 
 
-
-
+go

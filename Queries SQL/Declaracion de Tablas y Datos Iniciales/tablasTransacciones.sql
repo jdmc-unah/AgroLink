@@ -251,20 +251,19 @@ create table Pruebas.SalidaProductoDetalle --ya creada
 
 
 --tablas de archivo objetos II
-
-
+ 
 Create Table Pruebas.Entrega      --YA CREADA
 (
 	EntregaID		int identity(1,1) primary key not null,
 	CodigoEntrega as concat('ENTR', EntregaID) persisted,
 	Fecha			Datetime not null,
 	SocioID			int not null,
-	VentaID			int not null,
+	SalidaID		int not null,
 	DireccionID		int not null, 
 	RepartidorID	int not null,
 
 	constraint fkEntregaSocios foreign key (SocioID) references Pruebas.Socio(SocioID),
-	constraint fkEntregaVenta foreign key (VentaID) references Pruebas.Venta(VentaID),  
+	constraint fkEntregaSalida foreign key (SalidaID) references Pruebas.SalidaProducto(SalidaID),  
 	constraint fkEntregaDireccion foreign key (DireccionID) references Pruebas.Direccion(DireccionID),
 	constraint fkEntregaRepartidor foreign key (RepartidorID) references Pruebas.Empleado(EmpleadoID)
 )

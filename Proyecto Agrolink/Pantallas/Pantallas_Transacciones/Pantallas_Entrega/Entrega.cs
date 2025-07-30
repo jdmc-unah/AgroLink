@@ -61,7 +61,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
             int row = tablaEntrega.CurrentRow.Index;
 
             detalle.entregaID = (int)tablaEntrega.Rows[row].Cells["EntregaID"].Value;
-            detalle.ventaID = (int)tablaEntrega.Rows[row].Cells["VentaID"].Value;
+            detalle.salidaID = (int)tablaEntrega.Rows[row].Cells["SalidaID"].Value;
             //Llama al metodo de la pantalla principal para mostrar detalle
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, detalle);
         }
@@ -74,7 +74,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
             detalle.FormPadre = this;
 
             detalle.entregaID = 0;
-            detalle.ventaID = 0;
+            detalle.salidaID = 0;
 
             //Llama al metodo de la pantalla principal para mostrar VentaDetalle
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, detalle);

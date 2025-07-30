@@ -20,7 +20,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
 
         public int entregaID { get; set; }
 
-        public int ventaID { get; set; }
+        public int salidaID { get; set; }
 
 
         public EntregaDetalle()
@@ -39,10 +39,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
         public void ToggleReadOnly(bool esSoloLectura)
         {
 
-            tbColonia.Enabled = !esSoloLectura;
-            tbDetalle.Enabled = !esSoloLectura;
+            tbColonia.ReadOnly = esSoloLectura;
+            tbDetalle.ReadOnly = esSoloLectura;
 
-            comboVenta.Enabled = !esSoloLectura;
+            comboSalida.Enabled = salidaID != 0 && entregaID != 0 ? false : !esSoloLectura;
             comboRepartidor.Enabled = !esSoloLectura;
             comboDep.Enabled = !esSoloLectura;
             comboMuni.Enabled = !esSoloLectura;
@@ -50,10 +50,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
 
             dateTimePicker1.Enabled = !esSoloLectura;
 
-            tablaDetalle.AllowUserToDeleteRows = !esSoloLectura;
+
 
             btnAceptar.Visible = !esSoloLectura;
             btnCancelar.Visible = !esSoloLectura;
+            btnBorrarEntr.Visible = !esSoloLectura;
             btnEditar.Visible = esSoloLectura;
 
 
@@ -77,13 +78,14 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
             comboRepartidor.ValueMember = "EmpleadoID";
 
 
-            Dictionary<string, object> filtroVentasAC = new Dictionary<string, object>() {
-                {"filtro",   "AC" }
+            Dictionary<string, object> filtro = new Dictionary<string, object>(){
+                {"filtro", entregaID != 0 ? "E" : "P" }
+
             };
 
-            comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode", filtroVentasAC);
-            comboVenta.DisplayMember = "CodigoVenta";
-            comboVenta.ValueMember = "VentaID";
+            comboSalida.DataSource = recSQL.EjecutarSPDataTable("spTraeSalidasCode", filtro);
+            comboSalida.DisplayMember = "CodigoSalida";
+            comboSalida.ValueMember = "SalidaID";
 
 
             comboDep.DataSource = recSQL.EjecutarVista("Pruebas.Departamento");
@@ -93,9 +95,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
         }
 
 
-        void LlenaMuni(int depto)
+        void LlenaMuni(int? depto)
         {
-            Dictionary<string, object> parametros = new Dictionary<string, object>
+            Dictionary<string, object?> parametros = new Dictionary<string, object>
             {
                 {"depto",  depto }
             };
@@ -119,14 +121,14 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
 
         }
 
-        public void ObtenerDatos(int entrID, int ventID)
+        public void ObtenerDatos(int entrID, int salID)
         {
 
             //Trae Campos Superiores
 
             Dictionary<string, object> parametros = new Dictionary<string, object>() {
                 {"entrID", entrID },
-                {"ventID", ventID }
+                {"salID", salID }
             };
 
             DataTable entregaFiltrada = recSQL.EjecutarSPDataTable("spTraeEntregaFiltrada", parametros);
@@ -145,7 +147,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
 
                 LlenaCombosSuperiores();
                 comboSocio.SelectedValue = Convert.ToInt32(entregaFiltrada.Rows[0]["SocioID"]);
-                comboVenta.SelectedValue = Convert.ToInt32(entregaFiltrada.Rows[0]["VentaID"]);
+                comboSalida.SelectedValue = Convert.ToInt32(entregaFiltrada.Rows[0]["SalidaID"]);
                 comboRepartidor.SelectedValue = Convert.ToInt32(entregaFiltrada.Rows[0]["Repartidor"]);
 
                 comboDep.SelectedValue = Convert.ToInt32(entregaFiltrada.Rows[0]["DepartamentoID"]);
@@ -171,15 +173,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
                 LlenaComboDetalle();
 
 
-                if (tablaDetalle.Rows.Count <= 2)
-                {
-                    tablaDetalle.AllowUserToDeleteRows = false;
-                }
-                else
-                {
-                    tablaDetalle.AllowUserToDeleteRows = true;
-                }
-
             }
             else
             {
@@ -201,12 +194,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
             //Valida si es para actualizar una salida o crear una nueva salida
             if (entregaID == 0)
             {
-                comboVenta.Enabled = true;
+                comboSalida.Enabled = true;
                 ToggleReadOnly(false);
             }
-           
+
             //carga los datos 
-            ObtenerDatos(entregaID, ventaID);
+            ObtenerDatos(entregaID, salidaID);
         }
 
 
@@ -216,6 +209,151 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega
 
         }
 
-     
+        private void comboVenta_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            salidaID = (int)comboSalida.SelectedValue;
+
+            ToggleReadOnly(false);
+
+            ObtenerDatos(entregaID, salidaID);
+
+        }
+
+
+
+
+
+
+
+
+
+
+        #region Botones
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            ToggleReadOnly(false);
+
+
+        }
+
+
+
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            ToggleReadOnly(true);
+
+            //Toma datos de tablaDetalle 
+            DataTable tbDet = metodosGlobales.CrearDataTable(tablaDetalle);
+
+
+            ////Toma los datos de la parte superior y los asigna a los parametros del sp
+            Dictionary<string, object?> paramsEntr = new Dictionary<string, object?>() {
+                {"entrID" , entregaID},
+                {"salID" ,  comboSalida.SelectedValue},
+                {"socID"  ,comboSocio.SelectedValue },
+                {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
+                {"repID", comboRepartidor.SelectedValue },
+                {"depID", comboDep.SelectedValue },
+                {"munID",  comboMuni.SelectedValue},
+                {"col", tbColonia.Text },
+                {"det", tbDetalle.Text }
+            };
+
+
+
+            ////Agrega o actualiza la operacion pasando los parametros anteriores
+            DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateEntrega", "detalle", "TipoEntrega", tbDet, paramsEntr);
+
+
+            if (tablaResultante != null)
+            {
+                entregaID = entregaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : entregaID;
+
+                MessageBox.Show("Cambios Guardados con exito");
+
+                ObtenerDatos(entregaID, salidaID);
+            }
+
+
+
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ToggleReadOnly(true);
+
+            if (entregaID != 0)
+            {
+                ObtenerDatos(entregaID, salidaID);
+            }
+            else
+            {
+                PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(FormPadre, this);
+            }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(FormPadre, this);
+
+        }
+
+
+
+
+
+        private void btnBorrarEntr_Click(object sender, EventArgs e)
+        {
+            if( metodosGlobales.MensajeConfirmacion("Confirmar Eliminación", $"¿Está seguro que desea borrar la entrega {tbCodigo.Text}"))
+            {
+                Dictionary<string, object?> paramsEntr = new Dictionary<string, object?>() {
+                    {"entrID", entregaID }
+                };
+
+                if (recSQL.EjecutarSPBool("spBorrarEntrega", paramsEntr))
+                {
+                    MessageBox.Show("Entrega Borrada");
+                    PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(FormPadre, this);
+                }
+
+            }
+
+        }
+
+
+
+        #endregion
+
+
+
+
+
+
+
+
+
+        #region Tabla Detalle
+
+        private void tablaDetalle_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
+
+        }
+
+        private void tablaDetalle_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
+
+
+
+
+
     }
 }

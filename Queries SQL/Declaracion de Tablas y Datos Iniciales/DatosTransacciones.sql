@@ -253,7 +253,7 @@ go
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Entrega  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-INSERT INTO pruebas.Entrega (VentaID, SocioID, Fecha , DireccionID, RepartidorID) VALUES
+INSERT INTO pruebas.Entrega (SalidaID, SocioID, Fecha , DireccionID, RepartidorID) VALUES
 --entrega 1 basada en salida 1
 (1, 4, '2025/07/09',7 , 2),
 

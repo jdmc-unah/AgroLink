@@ -19,7 +19,7 @@ namespace AgroLink.Recursos
 
         //metodo general para ejecutar procedimientos almacenados con recibir el nombre del sp y los parametros que ocupe
         //devuelve un datatable con los datos
-        public DataTable? EjecutarSPDataTable(string nombreSP, Dictionary<string, object>? parametros = null)
+        public DataTable? EjecutarSPDataTable(string nombreSP, Dictionary<string, object?>? parametros = null)
         {
 
             try

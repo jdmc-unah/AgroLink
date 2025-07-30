@@ -35,12 +35,12 @@
             tbBuscarEntrega = new TextBox();
             tablaEntrega = new DataGridView();
             EntregaID = new DataGridViewTextBoxColumn();
-            VentaID = new DataGridViewTextBoxColumn();
+            SalidaID = new DataGridViewTextBoxColumn();
             CodigoEntrega = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
             Socio = new DataGridViewTextBoxColumn();
             TipoSocio = new DataGridViewTextBoxColumn();
-            Venta = new DataGridViewTextBoxColumn();
+            Salida = new DataGridViewTextBoxColumn();
             Repartidor = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaEntrega).BeginInit();
@@ -101,7 +101,7 @@
             tablaEntrega.AllowUserToAddRows = false;
             tablaEntrega.AllowUserToDeleteRows = false;
             tablaEntrega.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaEntrega.Columns.AddRange(new DataGridViewColumn[] { EntregaID, VentaID, CodigoEntrega, Fecha, Socio, TipoSocio, Venta, Repartidor });
+            tablaEntrega.Columns.AddRange(new DataGridViewColumn[] { EntregaID, SalidaID, CodigoEntrega, Fecha, Socio, TipoSocio, Salida, Repartidor });
             tablaEntrega.Dock = DockStyle.Fill;
             tablaEntrega.Location = new Point(0, 287);
             tablaEntrega.MultiSelect = false;
@@ -122,15 +122,15 @@
             EntregaID.Visible = false;
             EntregaID.Width = 250;
             // 
-            // VentaID
+            // SalidaID
             // 
-            VentaID.DataPropertyName = "VentaID";
-            VentaID.HeaderText = "VentaID";
-            VentaID.MinimumWidth = 12;
-            VentaID.Name = "VentaID";
-            VentaID.ReadOnly = true;
-            VentaID.Visible = false;
-            VentaID.Width = 250;
+            SalidaID.DataPropertyName = "SalidaID";
+            SalidaID.HeaderText = "SalidaID";
+            SalidaID.MinimumWidth = 12;
+            SalidaID.Name = "SalidaID";
+            SalidaID.ReadOnly = true;
+            SalidaID.Visible = false;
+            SalidaID.Width = 250;
             // 
             // CodigoEntrega
             // 
@@ -169,14 +169,14 @@
             TipoSocio.Name = "TipoSocio";
             TipoSocio.ReadOnly = true;
             // 
-            // Venta
+            // Salida
             // 
-            Venta.DataPropertyName = "Venta";
-            Venta.HeaderText = "Venta";
-            Venta.MinimumWidth = 12;
-            Venta.Name = "Venta";
-            Venta.ReadOnly = true;
-            Venta.Width = 250;
+            Salida.DataPropertyName = "Salida";
+            Salida.HeaderText = "Salida";
+            Salida.MinimumWidth = 12;
+            Salida.Name = "Salida";
+            Salida.ReadOnly = true;
+            Salida.Width = 250;
             // 
             // Repartidor
             // 
@@ -214,12 +214,12 @@
         private TextBox tbBuscarEntrega;
         private DataGridView tablaEntrega;
         private DataGridViewTextBoxColumn EntregaID;
-        private DataGridViewTextBoxColumn VentaID;
+        private DataGridViewTextBoxColumn SalidaID;
         private DataGridViewTextBoxColumn CodigoEntrega;
         private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn Socio;
         private DataGridViewTextBoxColumn TipoSocio;
-        private DataGridViewTextBoxColumn Venta;
+        private DataGridViewTextBoxColumn Salida;
         private DataGridViewTextBoxColumn Repartidor;
     }
 }
