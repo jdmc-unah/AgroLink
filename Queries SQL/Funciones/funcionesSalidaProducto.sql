@@ -47,7 +47,7 @@ as
 					begin
 					--> validaciones para salidas basadas en ventas
 
-						select @cantSalPrev = Cantidad 
+						select @cantSalPrev = ISNULL(Cantidad , 0)
 						from pruebas.SalidaProducto SP
 						inner join pruebas.SalidaProductoDetalle SPD on sp.SalidaID = spd.SalidaID
 						where SP.VentaID = @ventID and SPD.ProductoID = @prod

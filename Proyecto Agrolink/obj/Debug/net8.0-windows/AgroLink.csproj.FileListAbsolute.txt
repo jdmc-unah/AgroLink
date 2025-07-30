@@ -525,3 +525,5 @@ C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Lote.resources
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProducto.resources
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProductoDetalle.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega.Entrega.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega.EntregaDetalle.resources

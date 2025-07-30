@@ -124,15 +124,15 @@ as
 		IF @err = ''   
 			begin
 				
-				IF @salID = 0 or @salID IS NULL --si es una nueva fact trae la nueva fact creada
+				IF @salID = 0 or @salID IS NULL --si es una nueva trae la mas reciente
 					select top 1 @salID = SalidaID from pruebas.SalidaProducto order by SalidaID desc;
 
-		-->Ejecuta y valida si hubieron errores en la Factura detalle
-				exec spAddUpdateSalidaDet @salID, @ventID, @detalle  --************PENDIENTE
-				IF @@ERROR = 0   --valida error al ingresar la Factura detalle
+		-->Ejecuta y valida si hubieron errores en la SALIDA detalle
+				exec spAddUpdateSalidaDet @salID, @ventID, @bodDest, @detalle  --************PENDIENTE
+				IF @@ERROR = 0   --valida error al ingresar la SALIDA detalle
 					begin
 						commit;
-						select @salID  --devuelve la venta que se agrego o editó
+						select @salID  
 					end
 				ELSE
 					rollback;
@@ -151,30 +151,46 @@ go
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Salida Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-CREATE OR ALTER PROCEDURE spAddUpdateSalidaDet @salID int,  @ventID int,
+CREATE OR ALTER PROCEDURE spAddUpdateSalidaDet @salID int,  @ventID int, @bodDest int,
 @detalle TipoSalidaProducto READONLY
 as
 	begin
-		declare @socID int	
+		declare @cantPrev float
 
 
+		--select @cantPrev = Cantidad from
+		--pruebas.SalidaProductoDetalle where 
+
+		/*
 		IF @ventID = 0 or @ventID IS NULL
 			begin
 			--> transferencia interna, reduce el stock libre osea el stock total
-				update pruebas.BodegaDetalle set TotalExistencias = TotalExistencias - d.Cantidad
+				
+				-->decrementa stock en bodega origen
+				update pruebas.BodegaDetalle set TotalExistencias = TotalExistencias + ISNULL(spd.Cantidad,0) - d.Cantidad
 				from pruebas.BodegaDetalle bd
-				inner join @detalle d on bd.BodegaID = d.BodegaID
+				inner join @detalle d on bd.BodegaID = d.BodegaID and bd.ProductoID = d.ProductoID
+				left join pruebas.SalidaProductoDetalle spd on bd.BodegaID = spd.BodegaID
+
+				----> incrementa stock en bodega destino
+				--update pruebas.BodegaDetalle set TotalExistencias = TotalExistencias + ISNULL(spd.Cantidad,0) - d.Cantidad
+				--from pruebas.BodegaDetalle bd
+				--inner join @detalle d on bd.BodegaID = d.BodegaID and bd.ProductoID = d.ProductoID
+				--left join pruebas.SalidaProductoDetalle spd on bd.BodegaID = spd.BodegaID
+
+				
 
 			end
 		else
 			begin
-			--> transferencia interna, reduce el stock libre osea el stock total
-				update pruebas.BodegaDetalle set Comprometido = Comprometido - d.Cantidad --*******pendiente
+			--> transferencia basada en venta, reduce el stock total y comprometido
+				update pruebas.BodegaDetalle set Comprometido = Comprometido + ISNULL(spd.Cantidad,0) - d.Cantidad,
+				TotalExistencias = TotalExistencias + ISNULL(spd.Cantidad,0) - d.Cantidad
 				from pruebas.BodegaDetalle bd
 				inner join @detalle d on bd.BodegaID = d.BodegaID
-
+				left join pruebas.SalidaProductoDetalle spd on bd.BodegaID = spd.BodegaID
 			end
-
+			*/
 	--> Actualiza factura detalle
 		delete from pruebas.SalidaProductoDetalle where SalidaID = @salID
 		insert into Pruebas.SalidaProductoDetalle
@@ -184,4 +200,17 @@ as
 	end
 go
 	
+
+
 	select * from pruebas.SalidaProductoDetalle
+
+
+
+	select * from pruebas.Venta v
+	inner join pruebas.VentaDetalle vd on v.VentaID = vd.VentaID 
+	where v.VentaID = 20
+
+	select * from pruebas.bodega
+	select * from pruebas.BodegaDetalle 
+
+	select * from pruebas.Producto

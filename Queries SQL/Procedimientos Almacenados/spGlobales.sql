@@ -30,7 +30,7 @@ as
 	end
 
 go
-
+sELECT * FROM Pruebas.Municipio where DepartamentoID = 4
 
 
 

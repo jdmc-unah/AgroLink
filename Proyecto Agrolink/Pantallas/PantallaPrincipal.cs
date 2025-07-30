@@ -137,7 +137,7 @@ namespace AgroLink.Pantallas
 
         private void subMenuFacturas_Click(object sender, EventArgs e)
         {
-            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantallas_Factura.Factura());
+            instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantallas_Factura.Factura());
         }
 
 
@@ -147,7 +147,14 @@ namespace AgroLink.Pantallas
         private void subMenuSalida_Click(object sender, EventArgs e)
         {
 
-            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProducto());
+            instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProducto());
+
+        }
+
+
+        private void subMenuEntrega_Click(object sender, EventArgs e)
+        {
+            instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantallas_Entrega.Entrega());
 
         }
 
@@ -230,6 +237,7 @@ namespace AgroLink.Pantallas
 
         }
 
+      
     }
 }
 

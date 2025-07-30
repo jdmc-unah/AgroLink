@@ -252,9 +252,11 @@ create table Pruebas.SalidaProductoDetalle --ya creada
 
 --tablas de archivo objetos II
 
+
 Create Table Pruebas.Entrega      --YA CREADA
 (
 	EntregaID		int identity(1,1) primary key not null,
+	CodigoEntrega as concat('ENTR', EntregaID) persisted,
 	Fecha			Datetime not null,
 	SocioID			int not null,
 	VentaID			int not null,

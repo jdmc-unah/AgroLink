@@ -2,6 +2,9 @@ use agrolinkdb
 
 go
 
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> vTraeSalidaProducto >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 CREATE OR ALTER VIEW vTraeSalidaProducto
 as 
 	SELECT SP.SalidaID, SP.CodigoSalida,  SP.Fecha, ISNULL(S.Nombre, 'Transferencia Interna' )as 'Socio',

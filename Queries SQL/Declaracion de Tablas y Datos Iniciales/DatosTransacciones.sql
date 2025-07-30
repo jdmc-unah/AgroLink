@@ -248,6 +248,41 @@ inner join pruebas.SalidaProductoDetalle sd on s.SalidaID = sd.SalidaID
 select * from pruebas.SalidaProductoDetalle
 
 
+go
 
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Entrega  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+INSERT INTO pruebas.Entrega (VentaID, SocioID, Fecha , DireccionID, RepartidorID) VALUES
+--entrega 1 basada en salida 1
+(1, 4, '2025/07/09',7 , 2),
+
+--entrega 2 basada en salida 2
+(2, 8, '2025/07/09' ,11, 3),
+
+--entrega 3 basada en salida 3
+(3, 4, '2025/07/09' , 7 , 2)
+
+go
+select * from pruebas.Entrega
+go
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Entrega Detalle  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+INSERT INTO pruebas.EntregaDetalle (EntregaID, ProductoID, Cantidad) VALUES
+--Entrega Detalle 1
+(1,11, 15), --Tomate
+(1,14, 2 ),	--Frijol Rojo
+
+--Entrega Detalle 2
+(2,11, 15), --Tomate
+
+--Entrega Detalle 3
+(3, 14, 3)	--Frijol Rojo
+
+go
+select * from pruebas.Entrega e
+inner join pruebas.Entregadetalle ed on e.EntregaID = ed.EntregaID
+
+go
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
