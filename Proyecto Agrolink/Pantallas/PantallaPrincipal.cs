@@ -224,6 +224,11 @@ namespace AgroLink.Pantallas
             OpenChildForm(new Pantallas.Pantallas_Objetos.TipoProducto());
         }
 
+        private void subMenuListaPrecio_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Objetos.ListaPrecio());
+        }
+
 
         #region Cerrar Sesion
         private void button1_Click(object sender, EventArgs e)

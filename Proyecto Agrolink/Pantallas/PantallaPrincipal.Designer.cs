@@ -150,8 +150,8 @@
             subMenuTipoProducto.TabIndex = 2;
             subMenuTipoProducto.Text = "Tipo de Producto";
             subMenuTipoProducto.TextAlign = ContentAlignment.MiddleLeft;
-subMenuTipoProducto.UseVisualStyleBackColor = false;
-subMenuTipoProducto.Click += subMenuTipoProducto_Click;
+            subMenuTipoProducto.UseVisualStyleBackColor = false;
+            subMenuTipoProducto.Click += subMenuTipoProducto_Click;
             // 
             // subMenuListaPrecios
             // 
@@ -166,6 +166,7 @@ subMenuTipoProducto.Click += subMenuTipoProducto_Click;
             subMenuListaPrecios.Text = "Lista de precios";
             subMenuListaPrecios.TextAlign = ContentAlignment.MiddleLeft;
             subMenuListaPrecios.UseVisualStyleBackColor = false;
+            subMenuListaPrecios.Click += subMenuListaPrecio_Click;
             // 
             // menuConfig
             // 
