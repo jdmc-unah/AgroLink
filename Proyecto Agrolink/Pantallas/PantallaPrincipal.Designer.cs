@@ -150,7 +150,8 @@
             subMenuTipoProducto.TabIndex = 2;
             subMenuTipoProducto.Text = "Tipo de Producto";
             subMenuTipoProducto.TextAlign = ContentAlignment.MiddleLeft;
-            subMenuTipoProducto.UseVisualStyleBackColor = false;
+subMenuTipoProducto.UseVisualStyleBackColor = false;
+subMenuTipoProducto.Click += subMenuTipoProducto_Click;
             // 
             // subMenuListaPrecios
             // 

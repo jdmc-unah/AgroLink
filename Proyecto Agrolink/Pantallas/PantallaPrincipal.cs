@@ -219,6 +219,11 @@ namespace AgroLink.Pantallas
         }
         #endregion
 
+        private void subMenuTipoProducto_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Objetos.TipoProducto());
+        }
+
 
         #region Cerrar Sesion
         private void button1_Click(object sender, EventArgs e)
