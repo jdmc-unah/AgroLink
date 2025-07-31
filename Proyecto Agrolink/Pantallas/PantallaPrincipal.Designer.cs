@@ -33,6 +33,8 @@
             panelSeparador = new Panel();
             panelSubMenuConfig = new Panel();
             subMenuEmpresa = new Button();
+            subMenuTipoProducto = new Button();
+            subMenuListaPrecios = new Button();
             menuConfig = new Button();
             panelSubMenuProductos = new Panel();
             subMenuBodegas = new Button();
@@ -110,12 +112,14 @@
             // 
             // panelSubMenuConfig
             // 
+            panelSubMenuConfig.Controls.Add(subMenuListaPrecios);
+            panelSubMenuConfig.Controls.Add(subMenuTipoProducto);
             panelSubMenuConfig.Controls.Add(subMenuEmpresa);
             panelSubMenuConfig.Dock = DockStyle.Top;
             panelSubMenuConfig.Location = new Point(0, 1305);
             panelSubMenuConfig.Margin = new Padding(2);
             panelSubMenuConfig.Name = "panelSubMenuConfig";
-            panelSubMenuConfig.Size = new Size(510, 66);
+            panelSubMenuConfig.Size = new Size(510, 216);
             panelSubMenuConfig.TabIndex = 17;
             panelSubMenuConfig.Visible = false;
             // 
@@ -123,7 +127,7 @@
             // 
             subMenuEmpresa.BackColor = Color.FromArgb(192, 229, 200);
             subMenuEmpresa.Dock = DockStyle.Top;
-            subMenuEmpresa.Location = new Point(0, 0);
+            subMenuEmpresa.Location = new Point(0, 144);
             subMenuEmpresa.Margin = new Padding(2);
             subMenuEmpresa.Name = "subMenuEmpresa";
             subMenuEmpresa.Padding = new Padding(32, 0, 0, 0);
@@ -133,6 +137,34 @@
             subMenuEmpresa.TextAlign = ContentAlignment.MiddleLeft;
             subMenuEmpresa.UseVisualStyleBackColor = false;
             subMenuEmpresa.Click += subMenuEmpresa_Click;
+            // 
+            // subMenuTipoProducto
+            // 
+            subMenuTipoProducto.BackColor = Color.FromArgb(192, 229, 200);
+            subMenuTipoProducto.Dock = DockStyle.Top;
+            subMenuTipoProducto.Location = new Point(0, 72);
+            subMenuTipoProducto.Margin = new Padding(2);
+            subMenuTipoProducto.Name = "subMenuTipoProducto";
+            subMenuTipoProducto.Padding = new Padding(32, 0, 0, 0);
+            subMenuTipoProducto.Size = new Size(510, 72);
+            subMenuTipoProducto.TabIndex = 2;
+            subMenuTipoProducto.Text = "Tipo de Producto";
+            subMenuTipoProducto.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuTipoProducto.UseVisualStyleBackColor = false;
+            // 
+            // subMenuListaPrecios
+            // 
+            subMenuListaPrecios.BackColor = Color.FromArgb(192, 229, 200);
+            subMenuListaPrecios.Dock = DockStyle.Top;
+            subMenuListaPrecios.Location = new Point(0, 0);
+            subMenuListaPrecios.Margin = new Padding(2);
+            subMenuListaPrecios.Name = "subMenuListaPrecios";
+            subMenuListaPrecios.Padding = new Padding(32, 0, 0, 0);
+            subMenuListaPrecios.Size = new Size(510, 72);
+            subMenuListaPrecios.TabIndex = 3;
+            subMenuListaPrecios.Text = "Lista de precios";
+            subMenuListaPrecios.TextAlign = ContentAlignment.MiddleLeft;
+            subMenuListaPrecios.UseVisualStyleBackColor = false;
             // 
             // menuConfig
             // 
@@ -482,5 +514,7 @@
         private Panel panelSeparador;
         private Button button1;
         private Button subMenuEntrega;
+        private Button subMenuTipoProducto;
+        private Button subMenuListaPrecios;
     }
 }
