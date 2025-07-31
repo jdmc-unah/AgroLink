@@ -17,17 +17,17 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void InitializeComponent()
         {
-            panel1 = new System.Windows.Forms.Panel();
-            btnRecargar = new System.Windows.Forms.Button();
-            btnBuscar = new System.Windows.Forms.Button();
-            tbBuscar = new System.Windows.Forms.TextBox();
-            panel2 = new System.Windows.Forms.Panel();
-            tablaBodega = new System.Windows.Forms.DataGridView();
-            BodegaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            CodigoBodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            DireccionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            panel1 = new Panel();
+            btnRecargar = new Button();
+            btnBuscar = new Button();
+            tbBuscar = new TextBox();
+            panel2 = new Panel();
+            tablaBodega = new DataGridView();
+            BodegaID = new DataGridViewTextBoxColumn();
+            CodigoBodega = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Capacidad = new DataGridViewTextBoxColumn();
+            DireccionID = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaBodega).BeginInit();
@@ -39,18 +39,18 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
             panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
-            panel1.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(5, 7, 5, 7);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(2761, 266);
+            panel1.Size = new Size(2761, 266);
             panel1.TabIndex = 0;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new System.Drawing.Point(1889, 62);
-            btnRecargar.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            btnRecargar.Location = new Point(1889, 62);
+            btnRecargar.Margin = new Padding(5, 7, 5, 7);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new System.Drawing.Size(189, 82);
+            btnRecargar.Size = new Size(189, 82);
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
@@ -58,10 +58,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new System.Drawing.Point(1134, 62);
-            btnBuscar.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            btnBuscar.Location = new Point(1134, 62);
+            btnBuscar.Margin = new Padding(5, 7, 5, 7);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new System.Drawing.Size(189, 82);
+            btnBuscar.Size = new Size(189, 82);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -69,11 +69,11 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new System.Drawing.Point(37, 62);
-            tbBuscar.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            tbBuscar.Location = new Point(37, 62);
+            tbBuscar.Margin = new Padding(5, 7, 5, 7);
             tbBuscar.Name = "tbBuscar";
             tbBuscar.PlaceholderText = "BOD...";
-            tbBuscar.Size = new System.Drawing.Size(1036, 47);
+            tbBuscar.Size = new Size(1036, 47);
             tbBuscar.TabIndex = 0;
             tbBuscar.TextChanged += tbBuscar_TextChanged;
             // 
@@ -81,26 +81,26 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             panel2.Controls.Add(tablaBodega);
             panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            panel2.Location = new System.Drawing.Point(0, 266);
-            panel2.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            panel2.Location = new Point(0, 266);
+            panel2.Margin = new Padding(5, 7, 5, 7);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(2761, 1225);
+            panel2.Size = new Size(2761, 1225);
             panel2.TabIndex = 1;
             // 
             // tablaBodega
             // 
             tablaBodega.AllowUserToAddRows = false;
             tablaBodega.AllowUserToDeleteRows = false;
-            tablaBodega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaBodega.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { BodegaID, CodigoBodega, Nombre, Capacidad, DireccionID });
-            tablaBodega.Dock = System.Windows.Forms.DockStyle.Fill;
-            tablaBodega.Location = new System.Drawing.Point(0, 0);
-            tablaBodega.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            tablaBodega.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tablaBodega.Columns.AddRange(new DataGridViewColumn[] { BodegaID, CodigoBodega, Nombre, Capacidad, DireccionID });
+            tablaBodega.Dock = DockStyle.Fill;
+            tablaBodega.Location = new Point(0, 0);
+            tablaBodega.Margin = new Padding(5, 7, 5, 7);
             tablaBodega.MultiSelect = false;
             tablaBodega.Name = "tablaBodega";
             tablaBodega.ReadOnly = true;
             tablaBodega.RowHeadersWidth = 62;
-            tablaBodega.Size = new System.Drawing.Size(2761, 1225);
+            tablaBodega.Size = new Size(2761, 1225);
             tablaBodega.TabIndex = 0;
             // 
             // BodegaID
@@ -151,13 +151,13 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // Bodega
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(2761, 1491);
+            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(2761, 1491);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5, 7, 5, 7);
             Name = "Bodega";
             Text = "Bodega";
             Load += Bodega_Load;
@@ -170,16 +170,16 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnRecargar;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox tbBuscar;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView tablaBodega;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BodegaID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoBodega;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Capacidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DireccionID;
+        private Panel panel1;
+        private Button btnRecargar;
+        private Button btnBuscar;
+        private TextBox tbBuscar;
+        private Panel panel2;
+        private DataGridView tablaBodega;
+        private DataGridViewTextBoxColumn BodegaID;
+        private DataGridViewTextBoxColumn CodigoBodega;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Capacidad;
+        private DataGridViewTextBoxColumn DireccionID;
     }
 }

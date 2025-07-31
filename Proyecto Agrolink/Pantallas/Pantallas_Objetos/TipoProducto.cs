@@ -36,7 +36,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void tbBuscar_TextChanged(object sender, EventArgs e)
         {
-            // Optional: implement live search or leave empty
+        
         }
     }
 }

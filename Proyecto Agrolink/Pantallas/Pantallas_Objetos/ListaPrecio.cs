@@ -1,28 +1,36 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AgroLink.Pantallas.Pantallas_Objetos
 {
     public partial class ListaPrecio : Form
     {
+        Recursos.Recursos_SQL recSQL = new Recursos.Recursos_SQL();
+
         public ListaPrecio()
         {
             InitializeComponent();
         }
 
+        private void ListaPrecio_Load(object sender, EventArgs e)
+        {
+            tablaListaPrecio.DataSource = recSQL.EjecutarVista("vPantallaListaPrecio");
+        }
+
         private void btnRecargar_Click(object sender, EventArgs e)
         {
-            // To be implemented: reload data
+            tablaListaPrecio.DataSource = recSQL.EjecutarVista("vPantallaListaPrecio");
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            // To be implemented: search data
+            
         }
 
         private void tbBuscar_TextChanged(object sender, EventArgs e)
         {
-            // Optional: implement live search or leave empty
+            
         }
     }
 }
