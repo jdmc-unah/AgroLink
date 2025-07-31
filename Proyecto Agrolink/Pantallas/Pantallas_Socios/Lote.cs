@@ -34,22 +34,27 @@ namespace AgroLink.Pantallas.Pantallas_Socios
             comboBox_Finca.DataSource = recSQL.EjecutarVista("vTraerFinca");  // Asignar el origen de datos
             comboBox_Finca.DisplayMember = "Finca";         // Columna que se mostrará
             comboBox_Finca.ValueMember = "FincaID";   // Valor interno que se usará
+            comboBox_Finca.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
 
             comboBox_TipoSuelo.DataSource = recSQL.EjecutarVista("vTraerTipoSuelo");
             comboBox_TipoSuelo.DisplayMember = "TipoSuelo";
             comboBox_TipoSuelo.ValueMember = "TipoSueloID";
+            comboBox_TipoSuelo.DropDownStyle = ComboBoxStyle.DropDownList;
+
 
             //llenar tipo de riego
             comboBox_TipoRiego.DataSource = recSQL.EjecutarVista("vTraerTipoRiego");
             comboBox_TipoRiego.DisplayMember = "TipoRiego";
             comboBox_TipoRiego.ValueMember = "TipoRiegoID";
-
+            comboBox_TipoRiego.DropDownStyle = ComboBoxStyle.DropDownList;
 
             //llebar tipo de semilla o cosecha no se como llamarlo
             comboBox_productocosecha.DataSource = recSQL.EjecutarVista("vTraerSiembra");
             comboBox_productocosecha.DisplayMember = "ProductoSiembra";
             comboBox_productocosecha.ValueMember = "ProductoID";
-
+            comboBox_productocosecha.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 
