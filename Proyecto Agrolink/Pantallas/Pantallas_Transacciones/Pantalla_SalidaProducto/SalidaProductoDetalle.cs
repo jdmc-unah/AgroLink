@@ -41,7 +41,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
         {
 
             comboBodDestino.Enabled = !esSoloLectura;
-            comboVenta.Enabled = !esSoloLectura;
+            //comboVenta.Enabled = !esSoloLectura;
             dateTimePicker1.Enabled = !esSoloLectura;
 
             tablaDetalle.AllowUserToDeleteRows = !esSoloLectura;
@@ -71,6 +71,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             comboSocio.Visible = !esTransferencia;
 
             tablaDetalle.ReadOnly = !esTransferencia;
+
+            groupTipoOperacion.Visible = false;
+
         }
 
         void LlenaCombosSuperiores()
@@ -83,7 +86,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
                 {"filtro",   "AC" }
             };
 
-            comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode", filtroVentasAC);
+            comboVenta.DataSource =   salidaID != 0 ? recSQL.EjecutarSPDataTable("spTraeVentasCode", filtroVentasAC)  :   recSQL.EjecutarSPDataTable( "spTraeVentasSalidaComp" );
             comboVenta.DisplayMember = "CodigoVenta";
             comboVenta.ValueMember = "VentaID";
 
@@ -190,14 +193,15 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             }
             else
             {
-                //si la salida y la venta es 0 quiere decir que es una transferencia
                 if (ventaID == 0) radioTransfInterna.Checked = true;
-                groupTipoOperacion.Visible = false; //deshabilita la opcion para cambiar a salida basada en venta
             }
 
-            //si la venta es distinto de cero es porque es basada en una venta
-            if (ventaID != 0) groupTipoOperacion.Visible = false;
+            //si la venta es distinto de cero es porque la salida es basada en una venta
+            if (ventaID != 0) { 
+                comboVenta.Enabled = false;
+                groupTipoOperacion.Visible = false;
 
+            }
 
 
             //carga los datos 
@@ -218,12 +222,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             groupTipoOperacion.Visible = false;
 
         }
+
+
+        //controla el check para elegir si es salida por transferencia interna o basada en una venta
         private void radioTransfInterna_CheckedChanged(object sender, EventArgs e)
         {
-
             ToggleCheckVisibility(!comboBodDestino.Visible);
-
-
         }
 
 
@@ -257,7 +261,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
                 {"ventID" , (ventaID == 0 && salidaID == 0)  ?  null : comboVenta.SelectedValue  }, //valida si es una transferencia interna
                 {"socID"  , (ventaID == 0 && salidaID == 0)  ?  null : comboSocio.SelectedValue },
                 {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
-                {"bodDest", (ventaID == 0 && salidaID != 0)  ? comboBodDestino.SelectedValue :  null }
+                {"bodDest", (ventaID == 0 && salidaID == 0)  ? comboBodDestino.SelectedValue :  null }
             };
 
 
@@ -271,16 +275,29 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
                 //si es una nueva venta, actualiza el valor con el de la tabla resultante
                 salidaID = salidaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : salidaID;
 
-                if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una entrega?"))
-                {
-                    //PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Factura.FacturaDetalle());
-                    //aqui habria que pasar la data a salida de producto
 
+                if (radioTransfInterna.Checked)
+                {
+                    MessageBox.Show("Cambios guardados con exito");
+                    ObtenerDatos(salidaID, ventaID);
                 }
                 else
                 {
-                    ObtenerDatos(salidaID, ventaID);
+
+                    if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una entrega?"))
+                    {
+                        Pantallas_Entrega.EntregaDetalle formEntrDet = new Pantallas_Entrega.EntregaDetalle();
+                        formEntrDet.salidaID = salidaID;
+                        formEntrDet.FormPadre = this;
+                        PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formEntrDet);
+                    }
+                    else
+                    {
+                        ObtenerDatos(salidaID, ventaID);
+                    }
                 }
+
+
             }
 
         }

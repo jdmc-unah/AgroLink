@@ -130,7 +130,7 @@ as
 			DECLARE @err varchar(50) = ''
 
 	-->Valida Stock
-			SELECT @err = dbo.fValidaStockSalProd(@ventID ,@bodDest, @detalle);
+		SELECT @err = dbo.fValidaStockSalProd(@salID, @ventID , @detalle ,@bodDest);
 			IF ISNULL(@err, '') <> '' THROW 50001, @err, 1; --devuelve error personalizado
 				
 
@@ -178,11 +178,7 @@ select * from pruebas.SalidaProducto
 GO
 
 
-
-
-
-
-
+select * from pruebas.SalidaProductoDetalle
 
 go
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Salida Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -192,42 +188,65 @@ CREATE OR ALTER PROCEDURE spAddUpdateSalidaDet @salID int,  @ventID int, @bodDes
 @detalle TipoSalidaProducto READONLY
 as
 	begin
-		declare @cantPrev float
+		
+		declare @prod int,  @bodID int, @cantNueva float , @cantAnterior float, @compromet float, @totExist float, @valBodDest int
+
+		declare crsSalDet cursor for
+		select ProductoID, BodegaID, Cantidad from @detalle 
+		
+		open crsSalDet; fetch next from crsSalDet into  @prod , @bodID , @cantNueva  
 
 
-		--select @cantPrev = Cantidad from
-		--pruebas.SalidaProductoDetalle where 
-
-		/*
-		IF @ventID = 0 or @ventID IS NULL
+		IF @ventID = 0 or @ventID IS NULL 	-->Transferencias internas
 			begin
-			--> transferencia interna, reduce el stock libre osea el stock total
-				
-				-->decrementa stock en bodega origen
-				update pruebas.BodegaDetalle set TotalExistencias = TotalExistencias + ISNULL(spd.Cantidad,0) - d.Cantidad
-				from pruebas.BodegaDetalle bd
-				inner join @detalle d on bd.BodegaID = d.BodegaID and bd.ProductoID = d.ProductoID
-				left join pruebas.SalidaProductoDetalle spd on bd.BodegaID = spd.BodegaID
 
-				----> incrementa stock en bodega destino
-				--update pruebas.BodegaDetalle set TotalExistencias = TotalExistencias + ISNULL(spd.Cantidad,0) - d.Cantidad
-				--from pruebas.BodegaDetalle bd
-				--inner join @detalle d on bd.BodegaID = d.BodegaID and bd.ProductoID = d.ProductoID
-				--left join pruebas.SalidaProductoDetalle spd on bd.BodegaID = spd.BodegaID
+				WHILE @@FETCH_STATUS = 0 
+					begin
+					
+						select @cantAnterior = Cantidad from pruebas.SalidaProductoDetalle where SalidaID = @salID and ProductoID = @prod
+					
+					--> reduce stock bodega origen
+						UPDATE Pruebas.BodegaDetalle SET TotalExistencias = TotalExistencias + ISNULL(@cantAnterior,0) - @cantNueva
+						WHERE BodegaID = @bodID AND ProductoID = @prod
 
-				
+					--> valida bodega destino
+						select @valBodDest = TotalExistencias
+						from pruebas.BodegaDetalle where BodegaID =  @bodDest  and ProductoID = @prod
 
+						IF @valBodDest IS NULL
+							INSERT INTO Pruebas.BodegaDetalle VALUES (@bodDest, @prod , 0, @cantNueva)
+
+						ELSE
+							UPDATE Pruebas.BodegaDetalle SET TotalExistencias = TotalExistencias - ISNULL(@cantAnterior,0) + @cantNueva
+							WHERE BodegaID = @bodDest AND ProductoID = @prod
+							
+						fetch next from crsSalDet into  @prod , @bodID , @cantNueva 
+					end
+		
+				deallocate crsSalDet
+
+		
 			end
-		else
+		ELSE 	-->Salidas Basadas en Ventas
 			begin
-			--> transferencia basada en venta, reduce el stock total y comprometido
-				update pruebas.BodegaDetalle set Comprometido = Comprometido + ISNULL(spd.Cantidad,0) - d.Cantidad,
-				TotalExistencias = TotalExistencias + ISNULL(spd.Cantidad,0) - d.Cantidad
-				from pruebas.BodegaDetalle bd
-				inner join @detalle d on bd.BodegaID = d.BodegaID
-				left join pruebas.SalidaProductoDetalle spd on bd.BodegaID = spd.BodegaID
+				WHILE @@FETCH_STATUS = 0 
+					begin
+						select @cantAnterior = ISNULL( Cantidad, 0) from pruebas.SalidaProductoDetalle where SalidaID = @salID and ProductoID = @prod
+
+						--valida que no quede negativo ni nulo 
+						--select @totExist = TotalExistencias , @compromet = Comprometido
+						--from pruebas.BodegaDetalle WHERE BodegaID = @bodID AND ProductoID = @prod
+
+						UPDATE Pruebas.BodegaDetalle SET TotalExistencias = TotalExistencias +  ISNULL(@cantAnterior,0) - @cantNueva, 
+						Comprometido = Comprometido +  ISNULL(@cantAnterior,0) - @cantNueva
+						WHERE BodegaID = @bodID AND ProductoID = @prod
+				
+						fetch next from crsSalDet into  @prod , @bodID , @cantNueva 
+					end
+		
+				deallocate crsSalDet
 			end
-			*/
+		
 	--> Actualiza factura detalle
 		delete from pruebas.SalidaProductoDetalle where SalidaID = @salID
 		insert into Pruebas.SalidaProductoDetalle

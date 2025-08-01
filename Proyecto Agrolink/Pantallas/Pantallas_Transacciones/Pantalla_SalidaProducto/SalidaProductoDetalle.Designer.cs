@@ -315,6 +315,7 @@
             SalidaID.MinimumWidth = 12;
             SalidaID.Name = "SalidaID";
             SalidaID.ReadOnly = true;
+            SalidaID.Visible = false;
             SalidaID.Width = 250;
             // 
             // CodigoProducto

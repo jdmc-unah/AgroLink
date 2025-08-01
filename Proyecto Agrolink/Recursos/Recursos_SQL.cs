@@ -101,7 +101,7 @@ namespace AgroLink.Recursos
                         }
 
 
-                        connection.Open();
+                         connection.Open();
 
 
                         //lee el resultado del sp

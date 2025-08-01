@@ -11,7 +11,7 @@ go
 	-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Validaciones salida producto >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	
 
-CREATE OR ALTER FUNCTION dbo.fValidaStockSalProd(@ventID int, @bodDest int,  @detalle TipoSalidaProducto READONLY   ) returns varchar(50)
+CREATE OR ALTER FUNCTION dbo.fValidaStockSalProd(@salID int, @ventID int, @detalle TipoSalidaProducto READONLY ,@bodDest int= null  ) returns varchar(50)
 as
 	begin	
 		
@@ -43,26 +43,14 @@ as
 							SET @error = 'La cantidad a transferir sobrepasa el stock libre'
 							return @error 
 					end
-				ELSE
+				
+
+				IF @salID = 0
 					begin
 					--> validaciones para salidas basadas en ventas
-
-						select @cantSalPrev = ISNULL(Cantidad , 0)
-						from pruebas.SalidaProducto SP
-						inner join pruebas.SalidaProductoDetalle SPD on sp.SalidaID = spd.SalidaID
-						where SP.VentaID = @ventID and SPD.ProductoID = @prod
-
-
 						IF (@stckComprometido - @cant) < 0 
 							begin
 								SET @error = 'El stock comprometido para vender es menor que la cantidad requerida'
-								return @error 
-							end
-				
-						
-						IF @cantSalPrev > 0
-							begin
-								SET @error = 'Ya existe una salida para el producto de esa venta'
 								return @error 
 							end
 

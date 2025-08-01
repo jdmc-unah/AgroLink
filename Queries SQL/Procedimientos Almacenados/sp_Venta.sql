@@ -52,15 +52,13 @@ exec spTraeVentaDetalle 1
 
 go
 
+
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae ventas (solo id y codigo) filtrado >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-CREATE OR ALTER PROCEDURE spTraeVentasCode @filtro varchar(2) = null
+CREATE OR ALTER PROCEDURE spTraeVentasCode @filtro varchar(5) = null
 as
 	IF @filtro = 'T' OR @filtro IS NULL  --todas
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta
-	
-	IF @filtro = 'AC' --solo abiertas y cerradas
-		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Cancelada'
 	
 	IF @filtro = 'A' --solo abiertas
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado = 'Abierto'
@@ -68,17 +66,40 @@ as
 	IF @filtro = 'X' --solo canceladas y cerradas
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Abierto'
 
-
+	IF @filtro = 'AC' --solo abiertas
+		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Cancelado'
 go
 
 
-exec spTraeVentasCode ''
+exec spTraeVentasCode 'ac'
 
 go
 
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae ventas (solo id y codigo) pendientes de sacar producto completo >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER PROCEDURE spTraeVentasSalidaComp 
+as
+	
+	declare @ventasConSalidaCompleta as table (SalidaID int, VentaID int)
+
+	insert into @ventasConSalidaCompleta
+	select DISTINCT SPD.SalidaID, VD.VentaID
+	from pruebas.SalidaProducto SP
+	inner join pruebas.SalidaProductoDetalle SPD on sp.SalidaID = spd.SalidaID
+	inner join pruebas.Venta v on sp.VentaID= v.VentaID
+	inner join pruebas.VentaDetalle vd on vd.VentaID = v.VentaID
+	where vd.Cantidad = spd.Cantidad and vd.ProductoID = spd.ProductoID
+
+	SELECT VentaID, CodigoVenta FROM Pruebas.Venta 
+	WHERE VentaID NOT IN (SELECT VentaID FROM @ventasConSalidaCompleta)
+
+
+go
+
+exec spTraeVentasSalidaComp
+
+go
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
 CREATE OR ALTER PROCEDURE spAddUpdateVenta 
 @ventID int , @fecha date,  @socID int , @listPrecID int , @tipoPago varchar(50) , @estado varchar(50),
 @detalle TipoVentaDetalle READONLY
