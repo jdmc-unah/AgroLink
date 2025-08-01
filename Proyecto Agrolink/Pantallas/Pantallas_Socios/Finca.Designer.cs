@@ -150,7 +150,7 @@
             // comboBox_CapacidadAgua
             // 
             comboBox_CapacidadAgua.FormattingEnabled = true;
-            comboBox_CapacidadAgua.Location = new Point(535, 221);
+            comboBox_CapacidadAgua.Location = new Point(526, 221);
             comboBox_CapacidadAgua.Name = "comboBox_CapacidadAgua";
             comboBox_CapacidadAgua.Size = new Size(210, 28);
             comboBox_CapacidadAgua.TabIndex = 13;
@@ -158,7 +158,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(380, 229);
+            label6.Location = new Point(367, 229);
             label6.Name = "label6";
             label6.Size = new Size(140, 20);
             label6.TabIndex = 14;
@@ -186,6 +186,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Finca";
             Text = "Finca";
+            Load += Finca_Load;
             ResumeLayout(false);
             PerformLayout();
         }
