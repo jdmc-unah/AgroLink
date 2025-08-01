@@ -10,6 +10,15 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         public Producto()
         {
             InitializeComponent();
+            btnNuevoProducto.Click += btnNuevoProducto_Click;
+        }
+
+        private void btnNuevoProducto_Click(object sender, EventArgs e)
+        {
+            if (PantallaPrincipal.instanciaPantPrincipal != null)
+            {
+                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevoProducto());
+            }
         }
 
         #region Variables Globales
@@ -36,7 +45,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
                 { "cod", tbBuscar.Text.Trim() }
             };
 
-            tablaProducto.DataSource = recSQL.EjecutarSPDataTable("spBuscarProducto", parametros);
+            tablaProducto.DataSource = recSQL.EjecutarSPDataTable("spBuscarProducto");
         }
 
         private void tbBuscar_TextChanged(object sender, EventArgs e)
