@@ -10,7 +10,7 @@ CREATE OR ALTER VIEW vTraeVentas
 as
 
 	SELECT V.VentaID, V.CodigoVenta, V.Fecha , S.SocioID,  S.Nombre as 'Socio' , S.TipoSocio , 
-	LP.ListaPreciosID, LP.Nombre as 'ListaPrecio', V.TipoPago, V.Estado,  SUM( (VD.Cantidad * VD.Precio) * (1+I.Valor) ) as 'Total'	FROM Pruebas.Venta V
+	LP.ListaPreciosID, LP.Nombre as 'ListaPrecio', V.TipoPago, V.Estado, CAST(  SUM( (VD.Cantidad * VD.Precio) * (1+I.Valor) ) as float) as 'Total'	FROM Pruebas.Venta V
 	INNER JOIN Pruebas.VentaDetalle VD ON V.VentaID = VD.VentaID
 	INNER JOIN Pruebas.Socio S ON V.SocioID = S.SocioID
 	INNER JOIN Pruebas.ListaPrecios LP ON V.ListaPreciosID = LP.ListaPreciosID
@@ -19,7 +19,7 @@ as
 
 go	
 
-
+select * from vTraeVentas
 
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

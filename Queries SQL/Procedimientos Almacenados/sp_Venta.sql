@@ -99,6 +99,59 @@ go
 exec spTraeVentasSalidaComp
 
 go
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Cancelar Venta >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+CREATE OR ALTER PROCEDURE spCancelarVenta @ventID int, @socID int, @error varchar(50) OUTPUT
+as
+	begin
+		declare  @totalAnterior float, @saldo float, @tipoPago varchar(50)
+		
+		SET @error = ''
+
+		IF @ventID <> 0
+			begin
+			-->Reduce el saldo pendiente por pagar del cliente creado por la venta
+				
+				select @tipoPago = TipoPago from pruebas.Venta where VentaID = @ventID
+
+				IF @tipoPago = 'Credito'
+					begin
+						select @totalAnterior = ISNULL(SUM(Total), 0) from pruebas.VentaDetalle where VentaID = @ventID 
+			
+						--valida que no quede negativo
+						select @saldo = ( CASE  WHEN Saldo - @totalAnterior < 0 THEN 0 ELSE Saldo - @totalAnterior  END ) 
+						from pruebas.Socio where SocioID = @socID 
+
+						update pruebas.Socio set Saldo = @saldo 
+						where SocioID = @socID
+						IF @@ERROR <> 0 SET @error = 'Ocurrio un error al actualizar el saldo del cliente';
+					end
+
+			-->Reduce el comprometido que habia apartado la creacion de la venta
+				UPDATE Pruebas.BodegaDetalle SET Comprometido = Comprometido - vd.Cantidad
+				FROM Pruebas.BodegaDetalle bd
+				inner join Pruebas.VentaDetalle vd on bd.BodegaID = vd.BodegaID and bd.ProductoID = vd.ProductoID
+				where vd.VentaID =  @ventID
+				IF @@ERROR <> 0 SET @error = 'Ocurrio un error al actualizar el stock comprometido';
+
+
+			--> Actualiza el estado a cancelado
+				UPDATE Pruebas.Venta SET Estado = 'Cancelado' WHERE VentaID = @ventID
+
+			end
+		ELSE
+			SET @error = 'No puede usar estado Cancelado en nueva venta'
+
+		return
+	
+	end
+	
+
+GO
+
+
+
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 CREATE OR ALTER PROCEDURE spAddUpdateVenta 
 @ventID int , @fecha date,  @socID int , @listPrecID int , @tipoPago varchar(50) , @estado varchar(50),
@@ -108,11 +161,24 @@ as
 		
 		begin transaction
 
-			DECLARE @err varchar(50) = ''
+			DECLARE @err varchar(50) = '', @resCancelacion varchar(50)
+
+			
+	--> Valida si la venta lleva estado Cancelado
+			IF @estado = 'Cancelado'
+				begin
+					exec spCancelarVenta @ventID, @socID, @error = @resCancelacion OUTPUT
+					IF ISNULL(@resCancelacion, '') <> '' THROW 50001, @resCancelacion, 1; --devuelve error personalizado
+					
+					commit;
+					select @ventID ;
+					return;
+				end
+				
 
 	-->Valida Stock
 			SELECT @err = dbo.fValidaStock(@detalle);
-			IF ISNULL(@err, '') <> '' THROW 50001, @err, 1; --devuelve error personalizado
+			IF ISNULL(@err, '') <> '' THROW 50002, @err, 1; --devuelve error personalizado
 				
 	-->Crea o Edita Ventas
 			IF @ventID = 0
@@ -127,7 +193,7 @@ as
 				TipoPago = @tipoPago , Estado = @estado
 				WHERE VentaID = @ventID
 				IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
-					
+
 
 	-->Valida si hubieron errores en la venta
 		IF @err = ''   
@@ -234,9 +300,10 @@ as
 				print( @compromet)
 				print( @cantNueva)
 
-				UPDATE Pruebas.BodegaDetalle SET Comprometido = @compromet + @cantNueva
+				UPDATE Pruebas.BodegaDetalle SET Comprometido = ISNULL(@compromet,0) + @cantNueva
 				WHERE BodegaID = @bodID AND ProductoID = @prod
 				
+
 				fetch next from crsVentaDet into  @prod , @bodID , @cantNueva 
 			end
 		
@@ -249,16 +316,6 @@ as
 		
 	end
 go
-
-
---select Cantidad from pruebas.VentaDetalle where VentaID = 46 and ProductoID = 3
-
-				--select ( 	
-				--CASE  
-				--	--WHEN NULL IS NULL THEN Comprometido
-				--	WHEN Comprometido - 0 < 0 THEN 0 
-				--	ELSE Comprometido - 0
-				--END ) from pruebas.BodegaDetalle WHERE BodegaID = 3 AND ProductoID = 3
 
 
 
@@ -284,11 +341,15 @@ EXEC spAddUpdateVentaDet 54, @DatosPrueba;
 rollback
 
 
-select * from pruebas.Venta where ventaid = 54
-select * from pruebas.VentaDetalle where ventaid = 54
+select * from pruebas.Venta where ventaid = 55
+select * from pruebas.VentaDetalle where ventaid = 55
 
 select * from pruebas.BodegaDetalle
+select * from pruebas.Socio where socioid=2
 
+
+update pruebas.venta set estado = 'Abierto'
+where ventaid = 55
 
 INSERT INTO  pruebas.Venta (fecha, SocioID, ListaPreciosID, TipoPago, Estado) 
 values (GETDATE(), 2,1,'Credito','Cerrado' )
@@ -296,9 +357,16 @@ values (GETDATE(), 2,1,'Credito','Cerrado' )
 rollback
 
 
+begin transaction
+
+delete from pruebas.Venta where ventaid = 59
+delete from pruebas.VentaDetalle where ventaid = 59
+
 --update pruebas.BodegaDetalle set Comprometido = 5 where BodegaID = 2
---update pruebas.socio set saldo = 0 where SocioID = 2
-select * from pruebas.Socio where socioid=1
+update pruebas.socio set saldo = 0 where SocioID = 2
+
+
+rollback
 
 select * from pruebas.ventaDetalle --where VentaID = 22
 select * from pruebas.venta --where VentaID = 22

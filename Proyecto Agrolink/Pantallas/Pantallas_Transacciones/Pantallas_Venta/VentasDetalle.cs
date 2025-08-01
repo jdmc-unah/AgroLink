@@ -34,13 +34,15 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         {
 
             comboEstado.Enabled = !esSoloLectura;
-            comboSocio.Enabled = !esSoloLectura;
+
+            comboSocio.Enabled =  (ventaID != 0) ? false : true;
+
             comboTipoPago.Enabled = !esSoloLectura;
             comboListaPrecio.Enabled = !esSoloLectura;
             dateTimePicker1.Enabled = !esSoloLectura;
 
             tablaDetalle.ReadOnly = esSoloLectura;
-            tablaDetalle.AllowUserToDeleteRows = !esSoloLectura;
+            tablaDetalle.AllowUserToDeleteRows = (ventaID != 0) ? false : true;
 
             btnAceptar.Visible = !esSoloLectura;
             btnCancelar.Visible = !esSoloLectura;
