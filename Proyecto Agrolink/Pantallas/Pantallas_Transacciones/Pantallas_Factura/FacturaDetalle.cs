@@ -44,7 +44,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             comboMetodoPago.Enabled = !esSoloLectura;
             comboEmpleado.Enabled = !esSoloLectura;
 
-            comboVenta.Enabled = facturaID == 0 ? !esSoloLectura : esSoloLectura;
+            comboVenta.Enabled = facturaID != 0 ? false : true;
             comboNumFiscalID.Enabled = facturaID == 0 ? !esSoloLectura : esSoloLectura;
 
             dateTimePicker1.Enabled = !esSoloLectura;
@@ -81,8 +81,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
 
             Dictionary<string, object> filtroVentasAbiertas = new Dictionary<string, object>() {
-                {"filtro",  comboEstado.SelectedItem == "Abierto" || comboEstado.SelectedItem == null  ?   "A" : "X"  }
+                {"ventID",  ventaID}
             };
+
+
 
             comboVenta.DataSource = recSQL.EjecutarSPDataTable("spTraeVentasCode", filtroVentasAbiertas);
             comboVenta.DisplayMember = "CodigoVenta";
@@ -262,12 +264,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
         private void btnAceptar_Click(object sender, EventArgs e)
         {
 
-            ToggleReadOnly(true);
+            //ToggleReadOnly(true);
 
             //Toma datos de tablaDetalle 
             DataTable tbDet = metodosGlobales.CrearDataTable(tablaDetalle);
 
-            ventaID = (int)comboVenta.SelectedValue;
+            ventaID = Convert.ToInt32(comboVenta.SelectedValue != null ? comboVenta.SelectedValue : 0);
 
 
             //Toma los datos de la parte superior y los asigna a los parametros del sp
@@ -294,9 +296,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
                 //si es una nueva venta, actualiza el valor con el de la tabla resultante
                 facturaID = facturaID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : facturaID;
 
+
                 if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear una salida de producto?"))
                 {
-                
+
                     Pantalla_SalidaProducto.SalidaProductoDetalle formSalidaDet = new Pantalla_SalidaProducto.SalidaProductoDetalle();
                     formSalidaDet.ventaID = ventaID;
                     formSalidaDet.FormPadre = this;
@@ -327,6 +330,16 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
         }
 
 
+        private void btnNuevaSalProd_Click(object sender, EventArgs e)
+        {
+
+            Pantalla_SalidaProducto.SalidaProductoDetalle formSalidaDet = new Pantalla_SalidaProducto.SalidaProductoDetalle();
+            formSalidaDet.ventaID = ventaID;
+            formSalidaDet.FormPadre = this;
+            PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formSalidaDet);
+
+        }
+
 
         #endregion
 
@@ -342,7 +355,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
         private void tablaDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-           
+
 
         }
 
@@ -370,5 +383,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
 
 
+        
     }
 }

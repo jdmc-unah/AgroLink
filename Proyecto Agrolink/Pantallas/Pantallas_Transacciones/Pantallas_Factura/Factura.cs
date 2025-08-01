@@ -54,11 +54,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             Pantallas_Factura.FacturaDetalle detalle = new FacturaDetalle();
             detalle.FormPadre = this;
 
-
             //Toma el indice de la fila seleccionada y el valor seleccionado 
             int row = tablaFactura.CurrentRow.Index;
 
             detalle.facturaID = (int) tablaFactura.Rows[row].Cells[0].Value;
+            detalle.ventaID = (int)tablaFactura.Rows[row].Cells["VentaID"].Value;
 
             //Llama al metodo de la pantalla principal para mostrar VentaDetalle
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, detalle);

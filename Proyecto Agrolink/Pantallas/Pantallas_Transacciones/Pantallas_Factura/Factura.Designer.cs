@@ -41,6 +41,7 @@
             TipoSocio = new DataGridViewTextBoxColumn();
             ListaPrecio = new DataGridViewTextBoxColumn();
             MetodoPago = new DataGridViewTextBoxColumn();
+            CodigoVenta = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             CAI = new DataGridViewTextBoxColumn();
@@ -108,7 +109,7 @@
             tablaFactura.AllowUserToAddRows = false;
             tablaFactura.AllowUserToDeleteRows = false;
             tablaFactura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaFactura.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, CAI, EmpleadoID, SocioID, ListaPreciosID, NumFiscalID, VentaID });
+            tablaFactura.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, CodigoVenta, Estado, Total, CAI, EmpleadoID, SocioID, ListaPreciosID, NumFiscalID, VentaID });
             tablaFactura.Dock = DockStyle.Fill;
             tablaFactura.Location = new Point(0, 287);
             tablaFactura.MultiSelect = false;
@@ -183,6 +184,15 @@
             MetodoPago.Name = "MetodoPago";
             MetodoPago.ReadOnly = true;
             MetodoPago.Width = 250;
+            // 
+            // CodigoVenta
+            // 
+            CodigoVenta.DataPropertyName = "CodigoVenta";
+            CodigoVenta.HeaderText = "Venta";
+            CodigoVenta.MinimumWidth = 12;
+            CodigoVenta.Name = "CodigoVenta";
+            CodigoVenta.ReadOnly = true;
+            CodigoVenta.Width = 250;
             // 
             // Estado
             // 
@@ -295,6 +305,7 @@
         private DataGridViewTextBoxColumn TipoSocio;
         private DataGridViewTextBoxColumn ListaPrecio;
         private DataGridViewTextBoxColumn MetodoPago;
+        private DataGridViewTextBoxColumn CodigoVenta;
         private DataGridViewTextBoxColumn Estado;
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn CAI;

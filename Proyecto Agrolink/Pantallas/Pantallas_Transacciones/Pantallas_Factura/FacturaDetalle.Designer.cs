@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             comboNumFiscalID = new ComboBox();
             label10 = new Label();
@@ -72,6 +72,7 @@
             btnCancelar = new Button();
             btnEditar = new Button();
             btnAceptar = new Button();
+            btnNuevaSalProd = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaDetalle).BeginInit();
@@ -350,8 +351,8 @@
             // CodigoProducto
             // 
             CodigoProducto.DataPropertyName = "CodigoProducto";
-            dataGridViewCellStyle4.NullValue = "PRO";
-            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.NullValue = "PRO";
+            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle1;
             CodigoProducto.HeaderText = "Codigo";
             CodigoProducto.MinimumWidth = 12;
             CodigoProducto.Name = "CodigoProducto";
@@ -399,8 +400,8 @@
             // Subtotal
             // 
             Subtotal.DataPropertyName = "Subtotal";
-            dataGridViewCellStyle5.NullValue = "0";
-            Subtotal.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.NullValue = "0";
+            Subtotal.DefaultCellStyle = dataGridViewCellStyle2;
             Subtotal.HeaderText = "Subtotal";
             Subtotal.MinimumWidth = 12;
             Subtotal.Name = "Subtotal";
@@ -421,8 +422,8 @@
             // Total
             // 
             Total.DataPropertyName = "Total";
-            dataGridViewCellStyle6.NullValue = "0";
-            Total.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.NullValue = "0";
+            Total.DefaultCellStyle = dataGridViewCellStyle3;
             Total.HeaderText = "Total";
             Total.MinimumWidth = 12;
             Total.Name = "Total";
@@ -431,6 +432,7 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(btnNuevaSalProd);
             panel3.Controls.Add(tbSubtotal);
             panel3.Controls.Add(label12);
             panel3.Controls.Add(tbTotal);
@@ -530,6 +532,17 @@
             btnAceptar.Visible = false;
             btnAceptar.Click += btnAceptar_Click;
             // 
+            // btnNuevaSalProd
+            // 
+            btnNuevaSalProd.Location = new Point(582, 86);
+            btnNuevaSalProd.Margin = new Padding(4);
+            btnNuevaSalProd.Name = "btnNuevaSalProd";
+            btnNuevaSalProd.Size = new Size(371, 68);
+            btnNuevaSalProd.TabIndex = 32;
+            btnNuevaSalProd.Text = "Crear Salida de Producto";
+            btnNuevaSalProd.UseVisualStyleBackColor = true;
+            btnNuevaSalProd.Click += btnNuevaSalProd_Click;
+            // 
             // FacturaDetalle
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -595,5 +608,6 @@
         private Label label12;
         private TextBox tbTotal;
         private Label label11;
+        private Button btnNuevaSalProd;
     }
 }

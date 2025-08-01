@@ -88,6 +88,28 @@ exec spTraeFacturaDetalle 0, 0
 go
 
 
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Cancelar Factura >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+CREATE OR ALTER PROCEDURE spCancelarFactura @factID int, @error varchar(50) OUTPUT
+as
+	begin		
+		SET @error = ''
+
+		IF @factID <> 0
+			begin
+			--> Actualiza el estado a cancelado
+				UPDATE Pruebas.Factura SET Estado = 'Cancelado' WHERE FacturaID = @factID
+			end
+		ELSE
+			SET @error = 'No puede usar estado Cancelado en nueva factura'
+
+		return
+	
+	end
+	
+
+GO
+
+
 
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Factura >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -119,7 +141,21 @@ as
 		
 		begin transaction
 
-			DECLARE @err varchar(50) = ''
+			DECLARE @err varchar(50) = '', @resCancelacion varchar(50)
+
+
+	--> Valida si la factura lleva estado Cancelado
+			IF @estado = 'Cancelado'
+				begin
+					exec spCancelarFactura @factID, @error = @resCancelacion OUTPUT
+					IF ISNULL(@resCancelacion, '') <> '' THROW 50001, @resCancelacion, 1; --devuelve error personalizado
+					
+					commit;
+					select @factID ;
+					return;
+				end
+
+
 
 	-->Valida Stock
 			SELECT @err = dbo.fValidaStockF(@detalle);
@@ -219,7 +255,7 @@ go
 
 
 
-select * from pruebas.socio where socioid = 5
+select * from pruebas.socio where socioid = 2
 
 select * from pruebas.Venta f
 inner join pruebas.VentaDetalle fd on f.VentaID = fd.VentaID 

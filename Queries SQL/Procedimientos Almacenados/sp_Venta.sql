@@ -55,9 +55,24 @@ go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae ventas (solo id y codigo) filtrado >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-CREATE OR ALTER PROCEDURE spTraeVentasCode @filtro varchar(5) = null
+CREATE OR ALTER PROCEDURE spTraeVentasCode  @ventID int = null, @filtro varchar(5) = null
 as
-	IF @filtro = 'T' OR @filtro IS NULL  --todas
+	declare @estadoVent varchar(20)
+
+	IF @filtro IS NULL 
+		begin
+			
+			select @estadoVent = Estado from  Pruebas.Venta where VentaID = @ventID
+			
+			IF @estadoVent = 'Abierto' or @ventID = 0
+				SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado = 'Abierto'
+			ELSE
+				SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Abierto'
+
+		end
+
+
+	IF @filtro = 'T'   --todas
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta
 	
 	IF @filtro = 'A' --solo abiertas
@@ -68,11 +83,15 @@ as
 
 	IF @filtro = 'AC' --solo abiertas
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Cancelado'
+
+
+
+
 go
 
 
-exec spTraeVentasCode 'ac'
-
+exec spTraeVentasCode 0
+select * from pruebas.Venta
 go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae ventas (solo id y codigo) pendientes de sacar producto completo >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -163,7 +182,6 @@ as
 
 			DECLARE @err varchar(50) = '', @resCancelacion varchar(50)
 
-			
 	--> Valida si la venta lleva estado Cancelado
 			IF @estado = 'Cancelado'
 				begin
@@ -174,7 +192,6 @@ as
 					select @ventID ;
 					return;
 				end
-				
 
 	-->Valida Stock
 			SELECT @err = dbo.fValidaStock(@detalle);
@@ -232,8 +249,6 @@ rollback
 
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Venta Detalle >>>>>>>>>>>>>>>>>>>>>>>>>>>>
---drop PROCEDURE spAddUpdateVentaDet
---drop TYPE TipoVentaDetalle 
 
 CREATE TYPE TipoVentaDetalle as TABLE(
 	VentaID int ,
@@ -345,38 +360,9 @@ select * from pruebas.Venta where ventaid = 55
 select * from pruebas.VentaDetalle where ventaid = 55
 
 select * from pruebas.BodegaDetalle
-select * from pruebas.Socio where socioid=2
-
-
-update pruebas.venta set estado = 'Abierto'
-where ventaid = 55
-
-INSERT INTO  pruebas.Venta (fecha, SocioID, ListaPreciosID, TipoPago, Estado) 
-values (GETDATE(), 2,1,'Credito','Cerrado' )
-
-rollback
-
-
-begin transaction
-
-delete from pruebas.Venta where ventaid = 59
-delete from pruebas.VentaDetalle where ventaid = 59
-
---update pruebas.BodegaDetalle set Comprometido = 5 where BodegaID = 2
-update pruebas.socio set saldo = 0 where SocioID = 2
-
-
-rollback
-
-select * from pruebas.ventaDetalle --where VentaID = 22
-select * from pruebas.venta --where VentaID = 22
-
-select * from pruebas.BodegaDetalle
-select * from pruebas.Bodega
+select * from pruebas.Socio where socioid=8
 
 select * from pruebas.Producto
-
-
 
 
 
