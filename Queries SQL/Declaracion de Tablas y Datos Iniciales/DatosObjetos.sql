@@ -230,14 +230,17 @@ insert into Pruebas.Bodega ( Nombre, Capacidad, DireccionID) values
 select * from Pruebas.Bodega 
 delete from Pruebas.Bodega
 
+
 -- 15. bodega detalle (inventario)
 insert into Pruebas.BodegaDetalle (BodegaID, ProductoID, Comprometido, TotalExistencias) values
 -- Bodega Central
-(1, 1, 5.00, 25.00),    -- Semilla Tomate
-(2, 2, 3.00, 20.00),    -- Semilla Lechuga
-(3, 3, 10.00, 45.00),   -- Fertilizante
-(4, 4, 8.00, 35.00),    -- Urea
-(5, 5, 2.00, 15.00);    -- Insecticida
+--(1, 1, 0, 25.00),    -- Semilla Tomate
+(2, 2, 0, 20.00),    -- Semilla Lechuga
+(3, 3, 0, 45.00),   -- Fertilizante
+(4, 4, 0, 35.00),    -- Urea
+(5, 5, 0, 15.00),    -- Insecticida 
+(1, 11, 30,  60 ),	--tomate
+(1,14, 5, 15)
 
 select * from Pruebas.BodegaDetalle 
 delete from Pruebas.BodegaDetalle

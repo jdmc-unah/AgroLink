@@ -52,3 +52,20 @@ SELECT dbo.fValidaStock(@DatosPrueba)
 
 rollback
 
+go
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Calculo Subtotal y Total de Factura >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER FUNCTION dbo.fCalcularTotalesVenta (@tablaTotales TipoVentaDetalle READONLY  )  
+returns @resultado table (Subtotal decimal(10, 2), Total decimal(10, 2))
+as  
+	begin
+		
+		INSERT INTO @resultado 
+		SELECT SUM(TT.Subtotal), SUM(TT.Total) FROM @tablaTotales TT
+
+		return
+	end
+
+GO 

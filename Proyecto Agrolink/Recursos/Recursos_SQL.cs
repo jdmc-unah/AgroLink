@@ -228,57 +228,69 @@ namespace AgroLink.Recursos
 
 
         //Ejecutar Funciones con param tipo tabla
-        public DataTable EjecutarFuncion(string nombreFuncion, string paramTabla, string nombreTipoTabla, DataTable tabla, Dictionary<string, object>? parametros = null)
+        public DataTable? EjecutarFuncion(string nombreFuncion, string paramTabla, string nombreTipoTabla, DataTable tabla, Dictionary<string, object>? parametros = null)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-
-                // Construye lista de argumentos, colocando primero el parámetro de tabla
-                var argumentosFuncion = new List<string> { "@" + paramTabla };
-
-                if (parametros != null)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    argumentosFuncion.AddRange(parametros.Keys.Select(k => "@" + k));
-                }
-                
 
-                // Arma la consulta completa con los argumentos ordenados
-                string cmdText = $"SELECT * FROM {nombreFuncion}({string.Join(", ", argumentosFuncion)})";
+                    // Construye lista de argumentos, colocando primero el parámetro de tabla
+                    var argumentosFuncion = new List<string> { "@" + paramTabla };
 
-
-
-                using (SqlCommand command = new SqlCommand(cmdText, connection))
-                //aqui habria que evaluar si se pone directamente asi la consulta o se modifica
-                {
-                    command.CommandType = CommandType.Text;
-
-                    // Parámetros de entrada
                     if (parametros != null)
                     {
-                        foreach (var param in parametros)
-                        {
-                            command.Parameters.AddWithValue($"@{param.Key}", param.Value ?? null);
-                        }
+                        argumentosFuncion.AddRange(parametros.Keys.Select(k => "@" + k));
                     }
 
-                    // Parámetro de tipo tabla
-                    SqlParameter parameter = command.Parameters.AddWithValue($"@{paramTabla}", tabla ?? null);
-                    parameter.SqlDbType = SqlDbType.Structured;
-                    parameter.TypeName = nombreTipoTabla; //este es el tipo de tabla que se va a usar (usualmente se crea un tipo custom)
+
+                    // Arma la consulta completa con los argumentos ordenados
+                    string cmdText = $"SELECT * FROM {nombreFuncion}({string.Join(", ", argumentosFuncion)})";
 
 
-                    connection.Open();
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlCommand command = new SqlCommand(cmdText, connection))
+                    //aqui habria que evaluar si se pone directamente asi la consulta o se modifica
                     {
-                        dataTable = new DataTable();
+                        command.CommandType = CommandType.Text;
 
-                        dataTable.Load(reader);
+                        // Parámetros de entrada
+                        if (parametros != null)
+                        {
+                            foreach (var param in parametros)
+                            {
+                                command.Parameters.AddWithValue($"@{param.Key}", param.Value ?? null);
+                            }
+                        }
 
-                        return dataTable;
+                        // Parámetro de tipo tabla
+                        SqlParameter parameter = command.Parameters.AddWithValue($"@{paramTabla}", tabla ?? null);
+                        parameter.SqlDbType = SqlDbType.Structured;
+                        parameter.TypeName = nombreTipoTabla; //este es el tipo de tabla que se va a usar (usualmente se crea un tipo custom)
+
+
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dataTable = new DataTable();
+
+                            dataTable.Load(reader);
+
+                            return dataTable;
+                        }
+
                     }
-
                 }
+            }
+            catch (SqlException ex)
+            {
+                foreach (SqlError error in ex.Errors)
+                {
+                    MessageBox.Show($"Error SQL: {error.Message}\nCódigo: {error.Number}");
+                }
+
+                return null;
             }
 
         }

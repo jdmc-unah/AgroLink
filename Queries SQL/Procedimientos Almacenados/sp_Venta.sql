@@ -172,14 +172,16 @@ rollback
 CREATE TYPE TipoVentaDetalle as TABLE(
 	VentaID int ,
 	Codigo varchar(15),
-	ProductoID int not null,
-	BodegaID int not null,
-	Cantidad int not null,
-	Precio decimal(10,2) not null ,
+	ProductoID int ,
+	BodegaID int ,
+	Cantidad int ,
+	Precio decimal(10,2) ,
 	SubTotal decimal(10,2),
-	ImpuestoID int not null,
-	Total decimal(10,2) not null 
+	ImpuestoID int ,
+	Total decimal(10,2) 
 )
+
+
 
 go
 
