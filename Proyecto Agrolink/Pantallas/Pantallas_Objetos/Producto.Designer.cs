@@ -2,7 +2,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
 {
     partial class Producto
     {
-        private System.ComponentModel.IContainer components = null;
 
         protected override void Dispose(bool disposing)
         {
@@ -13,14 +12,13 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
         private void InitializeComponent()
         {
             panel1 = new Panel();
             btnRecargar = new Button();
             btnBuscar = new Button();
             tbBuscar = new TextBox();
+            btnNuevoProducto = new Button();
             panel2 = new Panel();
             tablaProducto = new DataGridView();
             ProductoID = new DataGridViewTextBoxColumn();
@@ -35,6 +33,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnNuevoProducto);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
@@ -45,9 +44,19 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             panel1.Size = new Size(2761, 266);
             panel1.TabIndex = 0;
             // 
+            // btnNuevoProducto
+            // 
+            btnNuevoProducto.Location = new Point(1700, 62);
+            btnNuevoProducto.Margin = new Padding(5, 7, 5, 7);
+            btnNuevoProducto.Name = "btnNuevoProducto";
+            btnNuevoProducto.Size = new Size(378, 82);
+            btnNuevoProducto.TabIndex = 4;
+            btnNuevoProducto.Text = "Nuevo Producto";
+            btnNuevoProducto.UseVisualStyleBackColor = true;
+            // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(1889, 62);
+            btnRecargar.Location = new Point(1500, 62);
             btnRecargar.Margin = new Padding(5, 7, 5, 7);
             btnRecargar.Name = "btnRecargar";
             btnRecargar.Size = new Size(189, 82);
@@ -149,9 +158,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             UnidadMedida.ReadOnly = true;
             UnidadMedida.Width = 150;
             // 
-            // Precio
-            // 
-            // 
             // Producto
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -170,13 +176,13 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
             ((System.ComponentModel.ISupportInitialize)tablaProducto).EndInit();
             ResumeLayout(false);
         }
-
-        #endregion
-
+        
+        private System.ComponentModel.IContainer components = null;
         private Panel panel1;
         private Button btnRecargar;
         private Button btnBuscar;
         private TextBox tbBuscar;
+        private Button btnNuevoProducto;
         private Panel panel2;
         private DataGridView tablaProducto;
         private DataGridViewTextBoxColumn ProductoID;
@@ -184,6 +190,5 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn TipoProducto;
         private DataGridViewTextBoxColumn UnidadMedida;
-
     }
 }
