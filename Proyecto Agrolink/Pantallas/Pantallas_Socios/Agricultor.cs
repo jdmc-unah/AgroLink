@@ -27,7 +27,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
 
         private void Agricultor_Load(object sender, EventArgs e)
         {
-            this.TablaAgricultor.DataSource = recSQL.EjecutarVista("vTraerAgricultores");
+            this.TablaAgricultor.DataSource = recSQL.EjecutarVista("vMostrarAgricultores");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

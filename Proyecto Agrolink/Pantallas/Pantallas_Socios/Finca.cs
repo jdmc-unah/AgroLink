@@ -42,6 +42,24 @@ namespace AgroLink.Pantallas.Pantallas_Socios
             comboBox_CapacidadAgua.Items.Add("Baja");
             comboBox_CapacidadAgua.DropDownStyle = ComboBoxStyle.DropDownList; //esto para que nadie edite el tipo de agua ya que no hay un id en si ;-;
 
+
+
+            comboBox_Departamento.DataSource = recSQL.EjecutarVista("vTraerDepartamento");
+            comboBox_Departamento.DisplayMember = "Departamento";
+            comboBox_Departamento.ValueMember = "DepartamentoID";
+            comboBox_Departamento.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            //para que se llene al inicio ;-;
+            Dictionary<string, object> parametros = new Dictionary<string, object>()
+        {
+            { "cod", comboBox_Departamento.SelectedValue }
+        };
+
+            comboBox_Municipio.DataSource = recSQL.EjecutarSPDataTable("spObtenerMunicipios", parametros);
+            comboBox_Municipio.DisplayMember = "Municipios";
+            comboBox_Municipio.ValueMember = "MunicipioID";
+            comboBox_Municipio.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
         #endregion
@@ -55,6 +73,31 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         private void Finca_Load(object sender, EventArgs e)
         {
             llenar_comboboxs();
+            tbCodigoFinca.ReadOnly = true;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox_Departamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //llenamos las combobox de municipio segun su departamento ;-; NOTA: deberiamos agregar aunque sea un municipoio por depa
+            if (comboBox_Departamento.SelectedValue != null && comboBox_Departamento.SelectedValue.ToString() != "System.Data.DataRowView")
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>()
+        {
+            { "cod", comboBox_Departamento.SelectedValue }
+        };
+
+                comboBox_Municipio.DataSource = recSQL.EjecutarSPDataTable("spObtenerMunicipios", parametros);
+                comboBox_Municipio.DisplayMember = "Municipios";
+                comboBox_Municipio.ValueMember = "MunicipioID";
+                comboBox_Municipio.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+
         }
     }
 }

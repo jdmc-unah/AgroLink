@@ -485,7 +485,6 @@ C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Pro
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Login.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.PantallaPrincipal.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Empresa.resources
-C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Producto.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Agricultor.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra.Compra.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra.CompraDetalle.resources
@@ -535,3 +534,5 @@ C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Pro
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProducto.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProductoDetalle.resources
 C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Producto.resources
+C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Producto.resources
+C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Socios.resources

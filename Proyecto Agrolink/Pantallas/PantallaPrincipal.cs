@@ -247,7 +247,10 @@ namespace AgroLink.Pantallas
 
         }
 
-      
+        private void subMenuSocios_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Socios.Socios());
+        }
     }
 }
 
