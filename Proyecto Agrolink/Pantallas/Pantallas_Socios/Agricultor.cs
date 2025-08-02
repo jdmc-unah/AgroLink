@@ -48,7 +48,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
 
         private void btnRecargar_Click(object sender, EventArgs e)
         {
-            this.TablaAgricultor.DataSource = recSQL.EjecutarVista("vTraerAgricultores");
+            this.TablaAgricultor.DataSource = recSQL.EjecutarVista("vMostrarAgricultores");
         }
 
         private void btnAgregarFinca_Click(object sender, EventArgs e)

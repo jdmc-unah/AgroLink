@@ -536,3 +536,4 @@ C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Pro
 C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Producto.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Producto.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Socios.resources
+C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.SociosDetalle.resources
