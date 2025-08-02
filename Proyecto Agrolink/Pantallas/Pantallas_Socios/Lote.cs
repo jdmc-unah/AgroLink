@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AgroLink.Pantallas.Pantallas_Objetos;
 
 namespace AgroLink.Pantallas.Pantallas_Socios
 {
@@ -78,7 +79,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         {
             this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
             LlenaComboFincaySuelo();
-            tbCodigo.ReadOnly = true;
+            
             
         }
 
@@ -109,12 +110,72 @@ namespace AgroLink.Pantallas.Pantallas_Socios
 
         private void btnAgregarLote_Click(object sender, EventArgs e)
         {
-            //agarrar los datos de las otros componentes
-            Dictionary<string, object?> paramsLote = new Dictionary<string, object?>() {
 
-                {"fechasiembra",dateTimePicker_siembra.Value.ToString("yyyy/MM/dd")},
-                { "fechacosecha",dateTimePicker_cosecha.Value.ToString("yyyy/MM/dd")}
-            };
+            decimal extensionDecimal;
+            // un try por cualquier error que pueda surgir 
+            try
+            {
+                //validamos si se lleno el campo de extencion, ya que es el unico que puede quedar vacio
+                if (string.IsNullOrWhiteSpace(tbExtencion.Text))
+                {
+                    MessageBox.Show("Por favor, llene el campo de extencion.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                if (!decimal.TryParse(tbExtencion.Text.Trim(), out extensionDecimal)) //validamos si la extencion que ingreso es un decimal
+                {
+                    MessageBox.Show("Ingrese un valor decimal válido para la extensión.");
+                    return; 
+                }
+
+
+
+                //llenamos una tabla con los datos selecionados 
+
+                Dictionary<string, object> parametros = new Dictionary<string, object>()
+                {
+                    {"FincaID",comboBox_Finca.SelectedValue },
+                    {"productoID",comboBox_productocosecha.SelectedValue },
+                    {"TipoSuelo",comboBox_TipoSuelo.SelectedValue },
+                    {"tiporiego",comboBox_TipoRiego.SelectedValue },
+                    {"fechaSiembra",dateTimePicker_siembra.Value.ToString("yyyy/MM/dd") },
+                    {"FechCosecha",dateTimePicker_cosecha.Value.ToString("yyyy/MM/dd") },
+                    {"exs",extensionDecimal }
+                };
+
+                DataTable resultado = recSQL.EjecutarSPDataTable("spAgregarLote", parametros);
+
+
+                if (resultado != null && resultado.Rows.Count > 0)
+                {
+                    MessageBox.Show("lote agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Limpiar los campos después de guardar
+                    tbExtencion.Clear();
+                    comboBox_Finca.SelectedIndex = -1;
+                    comboBox_productocosecha.SelectedIndex = -1;
+                    comboBox_TipoSuelo.SelectedIndex = -1;
+                    comboBox_TipoRiego.SelectedIndex = -1;
+
+
+                    // Volver a llenar los combos por si hay nuevos valores
+                    LlenaComboFincaySuelo();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo guardar el producto. Intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al guardar nuevo lote: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 

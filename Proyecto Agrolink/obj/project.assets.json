@@ -1666,19 +1666,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kisha M\\.nuget\\packages\\": {}
+    "C:\\Users\\jdvar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj",
+      "projectUniqueName": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj",
       "projectName": "AgroLink",
-      "projectPath": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj",
-      "packagesPath": "C:\\Users\\Kisha M\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\obj\\",
+      "projectPath": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\AgroLink.csproj",
+      "packagesPath": "C:\\Users\\jdvar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jdvar\\OneDrive\\Desktop\\Ingenieria Sistemas\\proyecto_bases2\\AgroLink\\Proyecto Agrolink\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Kisha M\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\jdvar\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0-windows"
@@ -1731,7 +1731,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

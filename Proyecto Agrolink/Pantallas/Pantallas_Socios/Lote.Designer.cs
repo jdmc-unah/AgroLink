@@ -45,8 +45,6 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
-            tbCodigo = new TextBox();
             label8 = new Label();
             comboBox_productocosecha = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)LoteTabla).BeginInit();
@@ -204,22 +202,6 @@
             label6.TabIndex = 16;
             label6.Text = "extension de terreno";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(716, 41);
-            label7.Name = "label7";
-            label7.Size = new Size(60, 20);
-            label7.TabIndex = 17;
-            label7.Text = "codigo ";
-            // 
-            // tbCodigo
-            // 
-            tbCodigo.Location = new Point(791, 41);
-            tbCodigo.Name = "tbCodigo";
-            tbCodigo.Size = new Size(136, 27);
-            tbCodigo.TabIndex = 18;
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -244,8 +226,6 @@
             ClientSize = new Size(1283, 559);
             Controls.Add(comboBox_productocosecha);
             Controls.Add(label8);
-            Controls.Add(tbCodigo);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -291,8 +271,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
-        private TextBox tbCodigo;
         private Label label8;
         private ComboBox comboBox_productocosecha;
     }
