@@ -121,7 +121,7 @@ namespace AgroLink.Recursos
              {
                 foreach (SqlError error in ex.Errors)
                 {
-                    MessageBox.Show($"Error SQL: {error.Message}\nCódigo: {error.Number}");
+                    MessageBox.Show($"Error: {error.Message}");
                 }
 
                 return null;

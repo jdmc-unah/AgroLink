@@ -158,8 +158,8 @@ as
 
 
 	-->Valida Stock
-			SELECT @err = dbo.fValidaStockF(@detalle);
-			IF ISNULL(@err, '') <> '' THROW 50001, @err, 1; --devuelve error personalizado
+			--SELECT @err = dbo.fValidaStockF(@detalle);
+			--IF ISNULL(@err, '') <> '' THROW 50001, @err, 1; --devuelve error personalizado
 				
 
 	-->Crea o Edita Factura

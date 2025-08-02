@@ -55,35 +55,17 @@ go
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae ventas (solo id y codigo) filtrado >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-CREATE OR ALTER PROCEDURE spTraeVentasCode  @ventID int = null, @filtro varchar(5) = null
+CREATE OR ALTER PROCEDURE spTraeVentasCode  @ventID int = null
 as
 	declare @estadoVent varchar(20)
 
-	IF @filtro IS NULL 
-		begin
 			
-			select @estadoVent = Estado from  Pruebas.Venta where VentaID = @ventID
+	select @estadoVent = Estado from  Pruebas.Venta where VentaID = @ventID
 			
-			IF @estadoVent = 'Abierto' or @ventID = 0
-				SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado = 'Abierto'
-			ELSE
-				SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Abierto'
-
-		end
-
-
-	IF @filtro = 'T'   --todas
-		SELECT VentaID, CodigoVenta FROM Pruebas.Venta
-	
-	IF @filtro = 'A' --solo abiertas
+	IF @estadoVent = 'Abierto' or @ventID = 0
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado = 'Abierto'
-	
-	IF @filtro = 'X' --solo canceladas y cerradas
+	ELSE
 		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Abierto'
-
-	IF @filtro = 'AC' --solo abiertas
-		SELECT VentaID, CodigoVenta FROM Pruebas.Venta WHERE Estado <> 'Cancelado'
-
 
 
 
@@ -107,15 +89,19 @@ as
 	inner join pruebas.SalidaProductoDetalle SPD on sp.SalidaID = spd.SalidaID
 	inner join pruebas.Venta v on sp.VentaID= v.VentaID
 	inner join pruebas.VentaDetalle vd on vd.VentaID = v.VentaID
-	where vd.Cantidad = spd.Cantidad and vd.ProductoID = spd.ProductoID
+	where vd.Cantidad = spd.Cantidad and vd.ProductoID = spd.ProductoID 
+	
 
 	SELECT VentaID, CodigoVenta FROM Pruebas.Venta 
 	WHERE VentaID NOT IN (SELECT VentaID FROM @ventasConSalidaCompleta)
-
+	and Estado <> 'Cancelado'
 
 go
 
 exec spTraeVentasSalidaComp
+
+select * from pruebas.Venta
+
 
 go
 

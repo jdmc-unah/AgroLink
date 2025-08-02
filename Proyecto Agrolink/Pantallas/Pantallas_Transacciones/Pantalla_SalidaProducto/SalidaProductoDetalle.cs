@@ -40,16 +40,17 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
         public void ToggleReadOnly(bool esSoloLectura)
         {
 
-            comboBodDestino.Enabled = !esSoloLectura;
-            //comboVenta.Enabled = !esSoloLectura;
             dateTimePicker1.Enabled = !esSoloLectura;
 
-            tablaDetalle.AllowUserToDeleteRows = !esSoloLectura;
+
+            tablaDetalle.ReadOnly = esSoloLectura;
+
 
             btnAceptar.Visible = !esSoloLectura;
             btnCancelar.Visible = !esSoloLectura;
             btnEditar.Visible = esSoloLectura;
 
+            btnBorrarSalProd.Visible = salidaID !=0 ?  !esSoloLectura : false ;
 
             if (salidaID != 0)
             {
@@ -58,7 +59,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             }
 
         }
-        
+
         //cambia la visibilidad de los componentes si es una transferencia o no
         public void ToggleCheckVisibility(bool esTransferencia)
         {
@@ -82,11 +83,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             comboSocio.DisplayMember = "Socio";         // Columna que se mostrará
             comboSocio.ValueMember = "SocioID";   // Valor interno que se usará
 
-            Dictionary<string, object> filtroVentasAC = new Dictionary<string, object>() {
-                {"filtro",   "AC" }
+            Dictionary<string, object> filtroVentas = new Dictionary<string, object>() {
+                {"ventID",   ventaID }
             };
 
-            comboVenta.DataSource =   salidaID != 0 ? recSQL.EjecutarSPDataTable("spTraeVentasCode", filtroVentasAC)  :   recSQL.EjecutarSPDataTable( "spTraeVentasSalidaComp" );
+            comboVenta.DataSource = salidaID != 0 ? recSQL.EjecutarSPDataTable("spTraeVentasCode", filtroVentas) : recSQL.EjecutarSPDataTable("spTraeVentasSalidaComp");
             comboVenta.DisplayMember = "CodigoVenta";
             comboVenta.ValueMember = "VentaID";
 
@@ -94,6 +95,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             comboBodDestino.DataSource = recSQL.EjecutarVista("vTraeBodega");
             comboBodDestino.DisplayMember = "Bodega";
             comboBodDestino.ValueMember = "BodegaID";
+
+
+
 
 
         }
@@ -142,7 +146,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
                 LlenaCombosSuperiores();
                 comboSocio.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["SocioID"]);
                 comboVenta.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["VentaID"]);
-
+                comboBodDestino.SelectedValue = Convert.ToInt32(facturaFiltrada.Rows[0]["BodegaDestinoID"]);
 
 
                 //Trae y configura datos de venta detalle
@@ -189,6 +193,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             if (salidaID == 0)
             {
                 comboVenta.Enabled = true;
+                comboBodDestino.Enabled = true;
                 ToggleReadOnly(false);
             }
             else
@@ -197,7 +202,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             }
 
             //si la venta es distinto de cero es porque la salida es basada en una venta
-            if (ventaID != 0) { 
+            if (ventaID != 0)
+
+
+
+
+            {
                 comboVenta.Enabled = false;
                 groupTipoOperacion.Visible = false;
 
@@ -206,6 +216,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
 
             //carga los datos 
             ObtenerDatos(salidaID, ventaID);
+            tablaDetalle.AllowUserToDeleteRows = false;
 
 
         }
@@ -261,7 +272,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
                 {"ventID" , (ventaID == 0 && salidaID == 0)  ?  null : comboVenta.SelectedValue  }, //valida si es una transferencia interna
                 {"socID"  , (ventaID == 0 && salidaID == 0)  ?  null : comboSocio.SelectedValue },
                 {"fecha"  , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
-                {"bodDest", (ventaID == 0 && salidaID == 0)  ? comboBodDestino.SelectedValue :  null }
+                {"bodDest", (ventaID == 0 || ventaID == null )  ? comboBodDestino.SelectedValue :  null }
             };
 
 
@@ -269,7 +280,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             //Agrega o actualiza la venta pasando los parametros anteriores
             DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateSalProd", "detalle", "TipoSalidaProducto", tbDet, paramsSal);
 
-            
+
             if (tablaResultante != null)
             {
                 //si es una nueva venta, actualiza el valor con el de la tabla resultante
@@ -320,6 +331,22 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
 
 
 
+        private void btnBorrarSalProd_Click(object sender, EventArgs e)
+        {
+            if (metodosGlobales.MensajeConfirmacion("Confirmar Eliminación", $"¿Está seguro que desea borrar la salida de producto {tbCodigo.Text}? \nIMPORTANTE: Esta operación es irreversible!"))
+            {
+                Dictionary<string, object?> param = new Dictionary<string, object?>() {
+                    {"salID", salidaID }
+                };
+
+                DataTable? resultado = recSQL.EjecutarSPDataTable("spBorrarSalProd", param) ;
+
+                MessageBox.Show(resultado != null ? resultado.Rows[0][0].ToString() : "Operación cancelada" );
+
+                PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(FormPadre, this);
+
+            }
+        }
 
         #endregion
 
@@ -340,13 +367,21 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto
             }
         }
 
+        private void tablaDetalle_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if ( (tablaDetalle.Columns[e.ColumnIndex].Name != "Cantidad" && radioTransfInterna.Checked && salidaID !=0 ) ||  radioSalidaVenta.Checked )
+            {
+                e.Cancel = true; // Cancela la edición para otras columnas que no sea cantidad
+            }
+        }
         #endregion
 
 
-      
 
 
-       
-       
+
+
+
+
     }
 }

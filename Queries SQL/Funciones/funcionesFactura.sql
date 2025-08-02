@@ -84,7 +84,8 @@ rollback
 go
 
 	-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Validacion de Stock Factura>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+drop FUNCTION dbo.fValidaStockF
+go
 CREATE OR ALTER FUNCTION dbo.fValidaStockF( @detalle TipoFacturaDetalle READONLY   ) returns varchar(50)
 as
 	begin	

@@ -35,7 +35,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
             comboEstado.Enabled = !esSoloLectura;
 
-            comboSocio.Enabled =  (ventaID != 0) ? false : true;
+            comboSocio.Enabled = (ventaID != 0) ? false : true;
 
             comboTipoPago.Enabled = !esSoloLectura;
             comboListaPrecio.Enabled = !esSoloLectura;
@@ -48,6 +48,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             btnCancelar.Visible = !esSoloLectura;
             btnEditar.Visible = esSoloLectura;
             btnCrearFact.Visible = esSoloLectura;
+            btnNuevaSalProd.Visible = esSoloLectura;
 
             if (ventaID != 0)
             {
@@ -179,7 +180,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
             }
 
 
-            
+
 
 
 
@@ -279,7 +280,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         private void btnCrearFact_Click(object sender, EventArgs e)
         {
 
-            if (comboEstado.SelectedItem == "Abierto" && ventaID != 0 )
+            if (comboEstado.SelectedItem == "Abierto" && ventaID != 0)
             {
 
                 Pantallas_Factura.FacturaDetalle formFactura = new Pantallas_Factura.FacturaDetalle();
@@ -295,7 +296,29 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
         }
 
+        private void btnNuevaSalProd_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, object> param = new Dictionary<string, object>() {
+                { "ventID", ventaID}
+            };
 
+            DataTable resultado = recSQL.EjecutarSPDataTable("spValidaSalProdPrev", param);
+
+            if ((bool)resultado.Rows[0][0])
+            {
+
+                Pantalla_SalidaProducto.SalidaProductoDetalle formSalidaDet = new Pantalla_SalidaProducto.SalidaProductoDetalle();
+                formSalidaDet.ventaID = ventaID;
+                formSalidaDet.FormPadre = this;
+                PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formSalidaDet);
+
+            }
+            else
+            {
+
+                MessageBox.Show("Ya existe una salida de producto para esta venta");
+            }
+        }
 
         #endregion
 
@@ -366,5 +389,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
 
+       
     }
 }

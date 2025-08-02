@@ -31,26 +31,27 @@ as
 				select @stckComprometido = ISNULL(Comprometido, 0)  , @stckTotal = ISNULL(TotalExistencias,0) 
 				from pruebas.BodegaDetalle where ProductoID = @prod and BodegaID = @bodID
 
-
 				IF @ventID = 0 or @ventID IS NULL
 					begin
 					--> validaciones para transferencias internas		
 						IF  @bodDest = @bodID
-							SET @error = 'La bodega origen debe ser distinta a la bodega destino'
-							return @error 
+							begin
+								SET @error = 'Bodega origen debe ser distinta a Bodega destino' --validar porque cuando la bod dest es igual a la bod origen no tira el error 
+								return @error 
+							end
 
-						IF (@stckTotal - @stckComprometido) - @cant < 0
-							SET @error = 'La cantidad a transferir sobrepasa el stock libre'
-							return @error 
+						IF (@stckTotal - @stckComprometido) - @cant < 0 OR ISNULL(@stckTotal,0) = 0
+							begin
+								SET @error = 'Cantidad a transferir sobrepasa el stock libre'
+								return @error 
+							end
 					end
-				
-
-				IF @salID = 0
+				ELSE
 					begin
 					--> validaciones para salidas basadas en ventas
 						IF (@stckComprometido - @cant) < 0 
 							begin
-								SET @error = 'El stock comprometido para vender es menor que la cantidad requerida'
+								SET @error = 'Insuficiencia de stock en bodega origen'
 								return @error 
 							end
 
@@ -69,9 +70,30 @@ go
 
 
 
+--Para probar el sp con tabla
+begin transaction
+-- Declarar la variable tipo tabla
+DECLARE @DatosPrueba AS TipoSalidaProducto;
+	
+-- Insertar datos de prueba
+INSERT INTO @DatosPrueba (SalidaID , Codigo ,	ProductoID ,	Cantidad  ,	BodegaID )
+VALUES
+(48,'PRO2',	3	,5000,	3)
+
+
+--insert into pruebas.Venta values (GETDATE(), 3,6,'Contado' , 'Abierto' )
+select dbo.fValidaStockSalProd(48, 0 , @DatosPrueba, 3 )
+
+select * from pruebas.SalidaProductoDetalle
+select * from pruebas.SalidaProducto
+
+rollback
+
+SalidaID int ,	Codigo varchar(10),	ProductoID int not null,	Cantidad int ,	BodegaID i
 
 
 
 
-
+select ISNULL(Comprometido, 0)  , ISNULL(TotalExistencias,0) 
+from pruebas.BodegaDetalle where ProductoID = 3 and BodegaID = 3
 

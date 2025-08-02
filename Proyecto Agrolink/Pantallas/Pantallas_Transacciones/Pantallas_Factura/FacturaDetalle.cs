@@ -52,6 +52,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
             btnAceptar.Visible = !esSoloLectura;
             btnCancelar.Visible = !esSoloLectura;
             btnEditar.Visible = esSoloLectura;
+            btnNuevaSalProd.Visible = esSoloLectura;
 
             if (facturaID != 0)
             {
@@ -332,11 +333,26 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Factura
 
         private void btnNuevaSalProd_Click(object sender, EventArgs e)
         {
+            Dictionary<string, object> param = new Dictionary<string, object>() {
+                { "ventID", ventaID}
+            };
 
-            Pantalla_SalidaProducto.SalidaProductoDetalle formSalidaDet = new Pantalla_SalidaProducto.SalidaProductoDetalle();
-            formSalidaDet.ventaID = ventaID;
-            formSalidaDet.FormPadre = this;
-            PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formSalidaDet);
+            DataTable resultado = recSQL.EjecutarSPDataTable("spValidaSalProdPrev", param);
+
+            if ((bool)resultado.Rows[0][0])
+            {
+
+                Pantalla_SalidaProducto.SalidaProductoDetalle formSalidaDet = new Pantalla_SalidaProducto.SalidaProductoDetalle();
+                formSalidaDet.ventaID = ventaID;
+                formSalidaDet.FormPadre = this;
+                PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formSalidaDet);
+
+            }
+            else
+            {
+
+                MessageBox.Show("Ya existe una salida de producto para esta venta");
+            }
 
         }
 

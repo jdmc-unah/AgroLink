@@ -106,6 +106,124 @@ go
 exec spTraeSalidasCode 'p'
 go
 
+
+	-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Valida que no haya una salida de producto creada previamente para una venta >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER PROCEDURE spValidaSalProdPrev(@ventID int ) 
+as
+	begin
+		declare @ventSinSalProd as table (VentaID int, CodigoVenta varchar(20))
+		declare @resultado bit
+
+		insert into @ventSinSalProd
+		exec spTraeVentasSalidaComp
+
+		select @resultado = CASE WHEN VentaID > 0 THEN 1 END  
+		FROM @ventSinSalProd where VentaID = @ventID
+	
+		select ISNULL(@resultado,0)
+
+	end
+
+go
+
+exec spValidaSalProdPrev 64
+go
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Borrar Salida >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+CREATE OR ALTER PROCEDURE spBorrarSalProd @salID int
+as
+	begin
+		begin transaction
+		declare @error varchar(50) = '', @entrega varchar(20), @ventID int, @bodDest int
+		
+		
+		select @ventID = VentaID, @bodDest = BodegaDestino from pruebas.SalidaProducto where @salID = SalidaID
+
+		IF ISNULL(@ventID,0) = 0
+			begin
+			--> Salida por transferncia interna
+			
+				--> incrementa stock bodega origen
+				UPDATE Pruebas.BodegaDetalle SET TotalExistencias = TotalExistencias + spd.Cantidad 
+				FROM Pruebas.BodegaDetalle bd
+				inner join Pruebas.SalidaProductoDetalle spd on bd.BodegaID = spd.BodegaID and bd.ProductoID = spd.ProductoID
+				where spd.SalidaID =  @salID
+				IF @@ERROR <> 0 SET @error = 'Ocurrio un error al actualizar el stock bod Origen';
+
+
+				--> reduce stock bodega destino
+				UPDATE Pruebas.BodegaDetalle SET TotalExistencias = TotalExistencias - spd.Cantidad 
+				FROM  Pruebas.BodegaDetalle  bd
+				inner join pruebas.SalidaProducto sp on bd.BodegaID = sp.BodegaDestino
+				inner join Pruebas.SalidaProductoDetalle spd on bd.ProductoID = spd.ProductoID
+				where spd.SalidaID = @salID and sp.BodegaDestino = @bodDest and bd.BodegaID = @bodDest
+				IF @@ERROR <> 0 SET @error = 'Ocurrio un error al actualizar stock bod Destino';
+
+
+				delete from Pruebas.SalidaProductoDetalle where SalidaID = @salID
+				IF @@ERROR <> 0 SET @error = 'Ocurrio un error al eliminar el detalle de salida';
+
+				delete from Pruebas.SalidaProducto where SalidaID = @salID
+				IF @@ERROR <> 0 SET @error = 'Ocurrio un error al eliminar la salida';
+
+			end
+		ELSE
+			begin
+			-->Salida Basada en Ventas
+				select @entrega = CodigoEntrega from pruebas.Entrega where SalidaID = @salID
+
+				IF ISNULL(@entrega ,'') = ''  --si hay entregas no se puede borrar
+					begin
+
+					-->Incrementa el comprometido y total existencias que se habia restado al crear la salida basada en venta
+						UPDATE Pruebas.BodegaDetalle SET Comprometido = Comprometido + spd.Cantidad, TotalExistencias = TotalExistencias + spd.Cantidad 
+						FROM Pruebas.BodegaDetalle bd
+						inner join Pruebas.SalidaProductoDetalle spd on bd.BodegaID = spd.BodegaID and bd.ProductoID = spd.ProductoID
+						where spd.SalidaID =  @salID
+						IF @@ERROR <> 0 SET @error = 'Ocurrio un error al actualizar el stock';
+
+						delete from Pruebas.SalidaProductoDetalle where SalidaID = @salID
+						IF @@ERROR <> 0 SET @error = 'Ocurrio un error al eliminar el detalle de salida';
+
+						delete from Pruebas.SalidaProducto where SalidaID = @salID
+						IF @@ERROR <> 0 SET @error = 'Ocurrio un error al eliminar la salida';
+					end
+				ELSE
+					begin
+						SET @error = CONCAT('No se puede borrar. Existe la entrega:', @entrega )
+					end
+			end
+
+		IF @error = ''
+			begin
+				commit;
+				SELECT 'Salida de Producto Borrada con exito'
+			end
+		ELSE
+			begin
+				rollback;
+				THROW 50004, @error, 1;
+			end
+
+	
+	end
+	
+
+GO
+
+
+select * from Pruebas.SalidaProducto
+
+select * from Pruebas.SalidaProductoDetalle
+select * FROM Pruebas.BodegaDetalle
+select * FROM Pruebas.Producto
+select * 
+FROM Pruebas.BodegaDetalle bd
+inner join Pruebas.SalidaProductoDetalle spd on bd.BodegaID = spd.BodegaID and bd.ProductoID = spd.ProductoID
+where spd.SalidaID =  57
+
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Actualiza y Agrega Salida >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 CREATE TYPE TipoSalidaProducto as TABLE(
@@ -142,13 +260,13 @@ as
 					IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
 				end
 			ELSE
-				begin	--editar Factura
+				begin	--editar salida
 					UPDATE Pruebas.SalidaProducto SET Fecha = @fecha, SocioID = @socID , VentaID = @ventID, BodegaDestino = @bodDest
 					WHERE SalidaID = @salID
 					IF @@ERROR <> 0 AND @err = '' select @err = 'Error'
 				end	
 
-	-->Valida si hubieron errores en la Factura
+	-->Valida si hubieron errores en la salida
 		IF @err = ''   
 			begin
 				
@@ -156,7 +274,7 @@ as
 					select top 1 @salID = SalidaID from pruebas.SalidaProducto order by SalidaID desc;
 
 		-->Ejecuta y valida si hubieron errores en la SALIDA detalle
-				exec spAddUpdateSalidaDet @salID, @ventID, @bodDest, @detalle  --************PENDIENTE
+				exec spAddUpdateSalidaDet @salID, @ventID, @bodDest, @detalle  
 				IF @@ERROR = 0   --valida error al ingresar la SALIDA detalle
 					begin
 						commit;
@@ -190,7 +308,7 @@ as
 	begin
 		
 		declare @prod int,  @bodID int, @cantNueva float , @cantAnterior float, @compromet float, @totExist float, @valBodDest int
-
+		
 		declare crsSalDet cursor for
 		select ProductoID, BodegaID, Cantidad from @detalle 
 		
@@ -211,20 +329,27 @@ as
 
 					--> valida bodega destino
 						select @valBodDest = TotalExistencias
-						from pruebas.BodegaDetalle where BodegaID =  @bodDest  and ProductoID = @prod
+						from pruebas.BodegaDetalle where BodegaID = @bodDest  and ProductoID = @prod
+
 
 						IF @valBodDest IS NULL
-							INSERT INTO Pruebas.BodegaDetalle VALUES (@bodDest, @prod , 0, @cantNueva)
-
+							begin
+								INSERT INTO Pruebas.BodegaDetalle (BodegaID, ProductoID, Comprometido, TotalExistencias) VALUES (@bodDest, @prod , 0, @cantNueva)
+							end
+								
 						ELSE
-							UPDATE Pruebas.BodegaDetalle SET TotalExistencias = TotalExistencias - ISNULL(@cantAnterior,0) + @cantNueva
-							WHERE BodegaID = @bodDest AND ProductoID = @prod
-							
+							begin -->incrementa stock bodega destino
+								UPDATE Pruebas.BodegaDetalle SET TotalExistencias = TotalExistencias - ISNULL(@cantAnterior,0) + @cantNueva
+								WHERE BodegaID = @bodDest AND ProductoID = @prod
+
+							end
+						
+						set @valBodDest = null
+
 						fetch next from crsSalDet into  @prod , @bodID , @cantNueva 
 					end
 		
 				deallocate crsSalDet
-
 		
 			end
 		ELSE 	-->Salidas Basadas en Ventas
@@ -232,10 +357,6 @@ as
 				WHILE @@FETCH_STATUS = 0 
 					begin
 						select @cantAnterior = ISNULL( Cantidad, 0) from pruebas.SalidaProductoDetalle where SalidaID = @salID and ProductoID = @prod
-
-						--valida que no quede negativo ni nulo 
-						--select @totExist = TotalExistencias , @compromet = Comprometido
-						--from pruebas.BodegaDetalle WHERE BodegaID = @bodID AND ProductoID = @prod
 
 						UPDATE Pruebas.BodegaDetalle SET TotalExistencias = TotalExistencias +  ISNULL(@cantAnterior,0) - @cantNueva, 
 						Comprometido = Comprometido +  ISNULL(@cantAnterior,0) - @cantNueva
@@ -258,8 +379,31 @@ go
 	
 
 
-	select * from pruebas.SalidaProductoDetalle
 
+--Para probar el sp anterior
+begin transaction
+-- Declarar la variable tipo tabla
+DECLARE @DatosPrueba AS TipoSalidaProducto;
+	
+-- Insertar datos de prueba
+INSERT INTO @DatosPrueba (SalidaID , Codigo ,	ProductoID ,	Cantidad  ,	BodegaID )
+VALUES
+(0,'PRO',	3	,5,	3),
+(0,'PRO',	4	,5,	4)
+
+exec spAddUpdateSalProd 0, null , null, '2025/08/01' , 2,  @DatosPrueba
+
+select * from pruebas.SalidaProductoDetalle
+select * from pruebas.SalidaProducto
+
+rollback
+go
+
+
+
+	select * from pruebas.SalidaProducto
+
+	select * from pruebas.SalidaProductoDetalle
 
 
 	select * from pruebas.Venta v
@@ -269,4 +413,4 @@ go
 	select * from pruebas.bodega
 	select * from pruebas.BodegaDetalle 
 
-	select * from pruebas.Producto
+	select * from pruebas.Producto --
