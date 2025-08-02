@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using AgroLink.Pantallas.Pantallas_Objetos;
 
-namespace AgroLink.Pantallas.Pantallas_Transacciones
+namespace AgroLink.Pantallas.Pantallas_Objetos
 {
     public partial class Producto : Form
     {
@@ -40,17 +40,30 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            string cod = tbBuscar.Text.Trim();
+            
+            // Si el campo de búsqueda está vacío, mostrar todos los productos
+            if (string.IsNullOrEmpty(cod))
+            {
+                tablaProducto.DataSource = recSQL.EjecutarVista("vPantallaProductos");
+                return;
+            }
+            
             Dictionary<string, object> parametros = new Dictionary<string, object>()
             {
-                { "cod", tbBuscar.Text.Trim() }
+                { "cod", cod }
             };
 
-            tablaProducto.DataSource = recSQL.EjecutarSPDataTable("spBuscarProducto");
+            tablaProducto.DataSource = recSQL.EjecutarSPDataTable("spBuscarProducto", parametros);
         }
 
         private void tbBuscar_TextChanged(object sender, EventArgs e)
         {
-            
+            // Si el campo de búsqueda está vacío, mostrar todos los productos
+            if (string.IsNullOrEmpty(tbBuscar.Text.Trim()))
+            {
+                tablaProducto.DataSource = recSQL.EjecutarVista("vPantallaProductos");
+            }
         }
 
     }

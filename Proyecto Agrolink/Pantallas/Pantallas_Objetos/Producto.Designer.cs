@@ -1,4 +1,4 @@
-namespace AgroLink.Pantallas.Pantallas_Transacciones
+namespace AgroLink.Pantallas.Pantallas_Objetos
 {
     partial class Producto
     {

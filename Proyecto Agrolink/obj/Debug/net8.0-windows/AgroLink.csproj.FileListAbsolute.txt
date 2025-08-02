@@ -509,7 +509,6 @@ C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Pro
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.genruntimeconfig.cache
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\ref\AgroLink.dll
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.lote.resources
-C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Producto.resources
 C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Agricultor.resources
 C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Lote.resources
 C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra.Compra.resources
@@ -535,3 +534,4 @@ C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Pro
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Entrega.EntregaDetalle.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProducto.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProductoDetalle.resources
+C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Producto.resources
