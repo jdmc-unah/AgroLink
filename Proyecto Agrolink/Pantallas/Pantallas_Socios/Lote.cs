@@ -79,8 +79,8 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         {
             this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
             LlenaComboFincaySuelo();
-            
-            
+
+
         }
 
         private void btnBuscarLote_Click(object sender, EventArgs e)
@@ -108,6 +108,9 @@ namespace AgroLink.Pantallas.Pantallas_Socios
 
         }
 
+
+
+        #region botones_Importantes
         private void btnAgregarLote_Click(object sender, EventArgs e)
         {
 
@@ -126,7 +129,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
                 if (!decimal.TryParse(tbExtencion.Text.Trim(), out extensionDecimal)) //validamos si la extencion que ingreso es un decimal
                 {
                     MessageBox.Show("Ingrese un valor decimal válido para la extensión.");
-                    return; 
+                    return;
                 }
 
 
@@ -159,8 +162,9 @@ namespace AgroLink.Pantallas.Pantallas_Socios
                     comboBox_TipoRiego.SelectedIndex = -1;
 
 
-                    // Volver a llenar los combos por si hay nuevos valores
+                    // Volver a llenar los combos por si hay nuevos valores y recargar la tabla 
                     LlenaComboFincaySuelo();
+                    this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
                 }
                 else
                 {
@@ -179,10 +183,18 @@ namespace AgroLink.Pantallas.Pantallas_Socios
 
         }
 
+        private void btnRecargar_Click(object sender, EventArgs e)
+        {
+            this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
+        }
+#endregion
+
         private void comboBox_TipoRiego_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
         }
+
+       
     }
 
 
