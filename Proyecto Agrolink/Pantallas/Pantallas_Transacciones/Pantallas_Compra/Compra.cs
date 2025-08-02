@@ -25,15 +25,12 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
 
         private void tablaCompra_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (tablaCompra.CurrentRow == null || tablaCompra.CurrentRow.Index < 0)
-                return;
-
             Pantallas_Compra.CompraDetalle detalle = new Pantallas_Compra.CompraDetalle();
             detalle.compraForm = this;
 
             // Toma el ID de la compra seleccionada
             int row = tablaCompra.CurrentRow.Index;
-            detalle.compraID = (int)this.tablaCompra.Rows[row].Cells["CompraID"].Value;
+            detalle.compraID = (int)this.tablaCompra.Rows[row].Cells[0].Value;
 
             // Muestra la pantalla detalle
             PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, detalle);
@@ -73,5 +70,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
         {
             tablaCompra.DataSource = recSQL.EjecutarVista("vTraeCompras");
         }
+
+
     }
 }
