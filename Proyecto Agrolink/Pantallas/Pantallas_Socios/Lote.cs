@@ -78,6 +78,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         {
             this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
             LlenaComboFincaySuelo();
+            tbCodigo.ReadOnly = true;
             
         }
 
