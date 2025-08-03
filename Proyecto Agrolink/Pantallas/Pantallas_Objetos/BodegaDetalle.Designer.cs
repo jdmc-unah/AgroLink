@@ -39,11 +39,11 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.label1 = new Label();
             this.tablaBodegaDetalle = new DataGridView();
             this.Producto = new DataGridViewTextBoxColumn();
+            this.Proveedor = new DataGridViewTextBoxColumn();
             this.Comprometido = new DataGridViewTextBoxColumn();
             this.TotalExistencias = new DataGridViewTextBoxColumn();
             this.Disponible = new DataGridViewTextBoxColumn();
             this.panelBotones = new Panel();
-            this.btnEditar = new Button();
             this.btnVolver = new Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaBodegaDetalle)).BeginInit();
@@ -145,6 +145,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.tablaBodegaDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaBodegaDetalle.Columns.AddRange(new DataGridViewColumn[] {
             this.Producto,
+            this.Proveedor,
             this.Comprometido,
             this.TotalExistencias,
             this.Disponible});
@@ -163,7 +164,16 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.Producto.MinimumWidth = 6;
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
-            this.Producto.Width = 200;
+            this.Producto.Width = 180;
+            // 
+            // Proveedor
+            // 
+            this.Proveedor.DataPropertyName = "Proveedor";
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.MinimumWidth = 6;
+            this.Proveedor.Name = "Proveedor";
+            this.Proveedor.ReadOnly = true;
+            this.Proveedor.Width = 150;
             // 
             // Comprometido
             // 
@@ -194,23 +204,12 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // panelBotones
             // 
-            this.panelBotones.Controls.Add(this.btnEditar);
             this.panelBotones.Controls.Add(this.btnVolver);
             this.panelBotones.Dock = DockStyle.Bottom;
             this.panelBotones.Location = new Point(0, 400);
             this.panelBotones.Name = "panelBotones";
             this.panelBotones.Size = new Size(800, 300);
             this.panelBotones.TabIndex = 2;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new Point(540, 10);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new Size(100, 30);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new EventHandler(this.btnEditar_Click);
             // 
             // btnVolver
             // 
@@ -254,11 +253,11 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private Label label1;
         private DataGridView tablaBodegaDetalle;
         private DataGridViewTextBoxColumn Producto;
+        private DataGridViewTextBoxColumn Proveedor;
         private DataGridViewTextBoxColumn Comprometido;
         private DataGridViewTextBoxColumn TotalExistencias;
         private DataGridViewTextBoxColumn Disponible;
         private Panel panelBotones;
-        private Button btnEditar;
         private Button btnVolver;
     }
 }

@@ -23,6 +23,31 @@ as
 begin
     select 
         p.Nombre as 'Producto',
+        s.Nombre as 'Proveedor',
+        bd.Comprometido,
+        bd.TotalExistencias,
+        (bd.TotalExistencias - bd.Comprometido) as 'Disponible'
+    from Pruebas.BodegaDetalle bd
+    inner join Pruebas.Producto p on bd.ProductoID = p.ProductoID
+    left join (
+        -- Get the most recent purchase for each product in this warehouse
+        select cd.ProductoID, c.SocioID, c.Fecha,
+               ROW_NUMBER() OVER (PARTITION BY cd.ProductoID ORDER BY c.Fecha DESC) as rn
+        from Pruebas.CompraDetalle cd
+        inner join Pruebas.Compra c on cd.CompraID = c.CompraID
+        where cd.BodegaID = @bodegaID
+    ) latest_purchase on p.ProductoID = latest_purchase.ProductoID and latest_purchase.rn = 1
+    left join Pruebas.Socio s on latest_purchase.SocioID = s.SocioID
+    where bd.BodegaID = @bodegaID;
+end
+go
+
+
+create procedure spObtenerDetalleBodegaPorID @bodegaID int
+as
+begin
+    select 
+        p.Nombre as 'Producto',
         bd.Comprometido,
         bd.TotalExistencias,
         (bd.TotalExistencias - bd.Comprometido) as 'Disponible'

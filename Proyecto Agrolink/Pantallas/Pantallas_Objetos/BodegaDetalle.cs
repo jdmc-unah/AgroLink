@@ -66,9 +66,5 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Funcionalidad de edición no implementada aún.");
-        }
     }
 }

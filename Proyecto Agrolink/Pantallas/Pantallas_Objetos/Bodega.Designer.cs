@@ -28,6 +28,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             Nombre = new DataGridViewTextBoxColumn();
             Capacidad = new DataGridViewTextBoxColumn();
             DireccionID = new DataGridViewTextBoxColumn();
+            Direccion = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaBodega).BeginInit();
@@ -92,7 +93,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             tablaBodega.AllowUserToAddRows = false;
             tablaBodega.AllowUserToDeleteRows = false;
             tablaBodega.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaBodega.Columns.AddRange(new DataGridViewColumn[] { BodegaID, CodigoBodega, Nombre, Capacidad, DireccionID });
+            tablaBodega.Columns.AddRange(new DataGridViewColumn[] { BodegaID, CodigoBodega, Nombre, Capacidad, DireccionID, Direccion });
             tablaBodega.Dock = DockStyle.Fill;
             tablaBodega.Location = new Point(0, 0);
             tablaBodega.Margin = new Padding(5, 7, 5, 7);
@@ -149,6 +150,15 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             DireccionID.Name = "DireccionID";
             DireccionID.ReadOnly = true;
             DireccionID.Width = 200;
+            //
+            // Direccion
+            //
+            Direccion.DataPropertyName = "Direccion";
+            Direccion.HeaderText = "Dirección";
+            Direccion.MinimumWidth = 8;
+            Direccion.Name = "Direccion";
+            Direccion.ReadOnly = true;
+            Direccion.Width = 400;
             // 
             // Bodega
             // 
@@ -182,5 +192,6 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Capacidad;
         private DataGridViewTextBoxColumn DireccionID;
+        private DataGridViewTextBoxColumn Direccion;
     }
 }
