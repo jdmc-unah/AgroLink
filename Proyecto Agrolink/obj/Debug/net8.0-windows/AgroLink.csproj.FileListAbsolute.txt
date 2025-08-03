@@ -627,3 +627,8 @@ C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo.ReciboDetalle.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo.Recibo.resources
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\proyecto_bases2\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo.ReciboDetalle.resources
+C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.Socios.resources
+C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Socios.SociosDetalle.resources
+C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo.Recibo.resources
+C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo.ReciboDetalle.resources
+C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.BodegaDetalle.resources

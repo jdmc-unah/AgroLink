@@ -102,6 +102,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             tablaBodega.RowHeadersWidth = 62;
             tablaBodega.Size = new Size(2761, 1225);
             tablaBodega.TabIndex = 0;
+            tablaBodega.CellDoubleClick += tablaBodega_CellDoubleClick;
             // 
             // BodegaID
             // 
