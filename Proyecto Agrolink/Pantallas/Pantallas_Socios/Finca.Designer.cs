@@ -30,7 +30,6 @@
         {
             btnAceptar = new Button();
             btnCancelar = new Button();
-            tbNombreFinca = new TextBox();
             label2 = new Label();
             comboBox_Socio = new ComboBox();
             comboBox_Municipio = new ComboBox();
@@ -44,6 +43,7 @@
             label6 = new Label();
             comboBox_Departamento = new ComboBox();
             label7 = new Label();
+            tbNombreFinca = new TextBox();
             SuspendLayout();
             // 
             // btnAceptar
@@ -66,17 +66,10 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // tbNombreFinca
-            // 
-            tbNombreFinca.Location = new Point(151, 35);
-            tbNombreFinca.Name = "tbNombreFinca";
-            tbNombreFinca.Size = new Size(207, 27);
-            tbNombreFinca.TabIndex = 3;
-            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 89);
+            label2.Location = new Point(10, 95);
             label2.Name = "label2";
             label2.Size = new Size(46, 20);
             label2.TabIndex = 4;
@@ -85,7 +78,7 @@
             // comboBox_Socio
             // 
             comboBox_Socio.FormattingEnabled = true;
-            comboBox_Socio.Location = new Point(76, 89);
+            comboBox_Socio.Location = new Point(91, 95);
             comboBox_Socio.Name = "comboBox_Socio";
             comboBox_Socio.Size = new Size(168, 28);
             comboBox_Socio.TabIndex = 5;
@@ -130,7 +123,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 38);
+            label1.Location = new Point(1, 38);
             label1.Name = "label1";
             label1.Size = new Size(123, 20);
             label1.TabIndex = 10;
@@ -171,7 +164,7 @@
             // comboBox_Departamento
             // 
             comboBox_Departamento.FormattingEnabled = true;
-            comboBox_Departamento.Location = new Point(122, 155);
+            comboBox_Departamento.Location = new Point(104, 150);
             comboBox_Departamento.Name = "comboBox_Departamento";
             comboBox_Departamento.Size = new Size(168, 28);
             comboBox_Departamento.TabIndex = 15;
@@ -186,11 +179,19 @@
             label7.TabIndex = 16;
             label7.Text = "Departamento";
             // 
+            // tbNombreFinca
+            // 
+            tbNombreFinca.Location = new Point(130, 38);
+            tbNombreFinca.Name = "tbNombreFinca";
+            tbNombreFinca.Size = new Size(200, 27);
+            tbNombreFinca.TabIndex = 17;
+            // 
             // Finca
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(tbNombreFinca);
             Controls.Add(label7);
             Controls.Add(comboBox_Departamento);
             Controls.Add(label6);
@@ -204,7 +205,6 @@
             Controls.Add(comboBox_Municipio);
             Controls.Add(comboBox_Socio);
             Controls.Add(label2);
-            Controls.Add(tbNombreFinca);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             FormBorderStyle = FormBorderStyle.None;
@@ -219,7 +219,6 @@
 
         private Button btnAceptar;
         private Button btnCancelar;
-        private TextBox tbNombreFinca;
         private Label label2;
         private ComboBox comboBox_Socio;
         private ComboBox comboBox_Municipio;
@@ -233,5 +232,6 @@
         private Label label6;
         private ComboBox comboBox_Departamento;
         private Label label7;
+        private TextBox tbNombreFinca;
     }
 }
