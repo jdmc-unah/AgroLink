@@ -41,18 +41,3 @@ begin
     where bd.BodegaID = @bodegaID;
 end
 go
-
-
-create procedure spObtenerDetalleBodegaPorID @bodegaID int
-as
-begin
-    select 
-        p.Nombre as 'Producto',
-        bd.Comprometido,
-        bd.TotalExistencias,
-        (bd.TotalExistencias - bd.Comprometido) as 'Disponible'
-    from Pruebas.BodegaDetalle bd
-    inner join Pruebas.Producto p on bd.ProductoID = p.ProductoID
-    where bd.BodegaID = @bodegaID;
-end
-go
