@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            btnAceptar = new Button();
             btnCancelar = new Button();
-            tbCodigoFinca = new TextBox();
+            tbNombreFinca = new TextBox();
             label2 = new Label();
             comboBox_Socio = new ComboBox();
             comboBox_Municipio = new ComboBox();
@@ -46,31 +46,32 @@
             label7 = new Label();
             SuspendLayout();
             // 
-            // button1
+            // btnAceptar
             // 
-            button1.Location = new Point(33, 395);
-            button1.Name = "button1";
-            button1.Size = new Size(181, 33);
-            button1.TabIndex = 0;
-            button1.Text = "Aceptar";
-            button1.UseVisualStyleBackColor = true;
+            btnAceptar.Location = new Point(24, 376);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(190, 52);
+            btnAceptar.TabIndex = 0;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += button1_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(555, 395);
+            btnCancelar.Location = new Point(544, 376);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(181, 33);
+            btnCancelar.Size = new Size(192, 52);
             btnCancelar.TabIndex = 1;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // tbCodigoFinca
+            // tbNombreFinca
             // 
-            tbCodigoFinca.Location = new Point(76, 31);
-            tbCodigoFinca.Name = "tbCodigoFinca";
-            tbCodigoFinca.Size = new Size(168, 27);
-            tbCodigoFinca.TabIndex = 3;
+            tbNombreFinca.Location = new Point(151, 35);
+            tbNombreFinca.Name = "tbNombreFinca";
+            tbNombreFinca.Size = new Size(207, 27);
+            tbNombreFinca.TabIndex = 3;
             // 
             // label2
             // 
@@ -131,9 +132,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 38);
             label1.Name = "label1";
-            label1.Size = new Size(58, 20);
+            label1.Size = new Size(123, 20);
             label1.TabIndex = 10;
-            label1.Text = "Codigo";
+            label1.Text = "Nombre de Finca";
             // 
             // tbColonia
             // 
@@ -203,9 +204,9 @@
             Controls.Add(comboBox_Municipio);
             Controls.Add(comboBox_Socio);
             Controls.Add(label2);
-            Controls.Add(tbCodigoFinca);
+            Controls.Add(tbNombreFinca);
             Controls.Add(btnCancelar);
-            Controls.Add(button1);
+            Controls.Add(btnAceptar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Finca";
             Text = "Finca";
@@ -216,9 +217,9 @@
 
         #endregion
 
-        private Button button1;
+        private Button btnAceptar;
         private Button btnCancelar;
-        private TextBox tbCodigoFinca;
+        private TextBox tbNombreFinca;
         private Label label2;
         private ComboBox comboBox_Socio;
         private ComboBox comboBox_Municipio;

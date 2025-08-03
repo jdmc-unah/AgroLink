@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AgroLink.Pantallas.Pantallas_Socios
 {
@@ -64,16 +65,12 @@ namespace AgroLink.Pantallas.Pantallas_Socios
 
         #endregion
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Socios.Agricultor());
 
-        }
 
         private void Finca_Load(object sender, EventArgs e)
         {
             llenar_comboboxs();
-            tbCodigoFinca.ReadOnly = true;
+            tbNombreFinca.ReadOnly = true;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -100,6 +97,47 @@ namespace AgroLink.Pantallas.Pantallas_Socios
 
         }
 
+        #region Botones
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Socios.Agricultor());
 
+        }
+
+
+       
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //verificamos si el usuario selecciono una capacidad de agua
+                if (comboBox_CapacidadAgua.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Por favor, seleccione una capacidad de agua.", "Campo obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // lenar una tabla con los datos que hay en el formulario
+                Dictionary<string, object> parametros = new Dictionary<string, object>()
+                {
+                    {"socioID",comboBox_Socio.SelectedValue },
+                    {"MunicipioID",comboBox_Municipio.SelectedValue },
+                    { "Colonia", (object?)tbColonia ?? DBNull.Value }, //verificamos si viene nulo 
+                    { "Detalle", (object?)tbDetalleUbicacion ?? DBNull.Value },
+                    { "CapacidadAgua", comboBox_CapacidadAgua.SelectedItem.ToString() }
+                };
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+
+        }
+        #endregion
     }
 }

@@ -145,7 +145,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
                     {"fechaSiembra",dateTimePicker_siembra.Value.ToString("yyyy/MM/dd") },
                     {"FechCosecha",dateTimePicker_cosecha.Value.ToString("yyyy/MM/dd") },
                     {"exs",extensionDecimal }
-                };
+                }; 
 
                 DataTable resultado = recSQL.EjecutarSPDataTable("spAgregarLote", parametros);
 
