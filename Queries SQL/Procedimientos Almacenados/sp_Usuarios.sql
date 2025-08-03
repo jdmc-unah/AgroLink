@@ -64,3 +64,14 @@ begin try
 	end catch
 end
 go
+
+-- procedimiento para que el nombre del usuario concuerde con tal
+
+create or alter procedure spObtenerUsuarioPorNombreUsuario
+    @usuario varchar(50)
+as
+begin
+    select UsuarioID, Usuario, Nombre, Clave, TipoUsuario
+    from Pruebas.Usuario
+    where Usuario = @usuario
+end

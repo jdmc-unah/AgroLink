@@ -219,6 +219,7 @@
             SocioID.MinimumWidth = 12;
             SocioID.Name = "SocioID";
             SocioID.ReadOnly = true;
+            SocioID.Visible = false;
             SocioID.Width = 250;
             // 
             // ListaPreciosID
