@@ -373,6 +373,7 @@
             subMenuRecibos.Text = "Recibos";
             subMenuRecibos.TextAlign = ContentAlignment.MiddleLeft;
             subMenuRecibos.UseVisualStyleBackColor = false;
+            subMenuRecibos.Click += subMenuRecibos_Click;
             // 
             // subMenuFacturas
             // 

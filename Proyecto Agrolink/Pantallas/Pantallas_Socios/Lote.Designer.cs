@@ -45,10 +45,10 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
-            tbCodigo = new TextBox();
             label8 = new Label();
             comboBox_productocosecha = new ComboBox();
+            btnEliminarLote = new Button();
+            btnRecargar = new Button();
             ((System.ComponentModel.ISupportInitialize)LoteTabla).BeginInit();
             SuspendLayout();
             // 
@@ -204,22 +204,6 @@
             label6.TabIndex = 16;
             label6.Text = "extension de terreno";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(716, 41);
-            label7.Name = "label7";
-            label7.Size = new Size(60, 20);
-            label7.TabIndex = 17;
-            label7.Text = "codigo ";
-            // 
-            // tbCodigo
-            // 
-            tbCodigo.Location = new Point(791, 41);
-            tbCodigo.Name = "tbCodigo";
-            tbCodigo.Size = new Size(136, 27);
-            tbCodigo.TabIndex = 18;
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -237,15 +221,34 @@
             comboBox_productocosecha.Size = new Size(178, 28);
             comboBox_productocosecha.TabIndex = 20;
             // 
+            // btnEliminarLote
+            // 
+            btnEliminarLote.Location = new Point(716, 34);
+            btnEliminarLote.Name = "btnEliminarLote";
+            btnEliminarLote.Size = new Size(139, 31);
+            btnEliminarLote.TabIndex = 21;
+            btnEliminarLote.Text = "Eliminar Lote";
+            btnEliminarLote.UseVisualStyleBackColor = true;
+            // 
+            // btnRecargar
+            // 
+            btnRecargar.Location = new Point(22, 513);
+            btnRecargar.Name = "btnRecargar";
+            btnRecargar.Size = new Size(128, 45);
+            btnRecargar.TabIndex = 22;
+            btnRecargar.Text = "Recargar";
+            btnRecargar.UseVisualStyleBackColor = true;
+            btnRecargar.Click += btnRecargar_Click;
+            // 
             // Lote
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1283, 559);
+            Controls.Add(btnRecargar);
+            Controls.Add(btnEliminarLote);
             Controls.Add(comboBox_productocosecha);
             Controls.Add(label8);
-            Controls.Add(tbCodigo);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -291,9 +294,9 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
-        private TextBox tbCodigo;
         private Label label8;
         private ComboBox comboBox_productocosecha;
+        private Button btnEliminarLote;
+        private Button btnRecargar;
     }
 }

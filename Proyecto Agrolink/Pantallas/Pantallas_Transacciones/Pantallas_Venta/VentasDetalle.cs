@@ -389,6 +389,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
 
-       
+
     }
 }

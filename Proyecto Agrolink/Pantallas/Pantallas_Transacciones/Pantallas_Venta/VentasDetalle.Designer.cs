@@ -62,6 +62,7 @@
             panel2 = new Panel();
             panel3 = new Panel();
             btnNuevaSalProd = new Button();
+            btnNuevaSalProd = new Button();
             tbTotal = new TextBox();
             label8 = new Label();
             tbSubtotal = new TextBox();
@@ -419,7 +420,7 @@
             tbTotal.Margin = new Padding(4);
             tbTotal.Name = "tbTotal";
             tbTotal.ReadOnly = true;
-            tbTotal.Size = new Size(257, 47);
+            tbTotal.Size = new Size(320, 31);
             tbTotal.TabIndex = 31;
             // 
             // label8
@@ -428,7 +429,7 @@
             label8.Location = new Point(2437, 212);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(81, 41);
+            label8.Size = new Size(49, 25);
             label8.TabIndex = 32;
             label8.Text = "Total";
             // 

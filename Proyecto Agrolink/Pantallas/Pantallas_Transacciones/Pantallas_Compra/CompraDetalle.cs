@@ -31,6 +31,35 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
 
         #region Metodos
 
+
+
+        public void ToggleReadOnly(bool esSoloLectura)
+        {
+
+            cbEstadoCompra.Enabled = !esSoloLectura;
+
+            cbSocioCompra.Enabled = (compraID != 0) ? false : true;
+
+            cbTipoPagoCompra.Enabled = !esSoloLectura;
+            cbListaPrecioCompra.Enabled = !esSoloLectura;
+            dateTimePicker1.Enabled = !esSoloLectura;
+
+            tablaCompraDetalle.ReadOnly = esSoloLectura;
+            tablaCompraDetalle.AllowUserToDeleteRows = (compraID != 0) ? false : true;
+
+            btnAceptarCompra.Visible = !esSoloLectura;
+            btnCancelarCompra.Visible = !esSoloLectura;
+            btnEditarCompra.Visible = esSoloLectura;
+
+            if (compraID != 0)
+            {
+                string estadoEdicion = esSoloLectura ? "desactivado" : "activado";
+                MessageBox.Show($"El modo edición está {estadoEdicion}");
+            }
+        }
+
+
+
         public void ObtenerDatos(int id)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>()
@@ -62,30 +91,17 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
             tablaCompraDetalle.DataSource = dt;
 
             LlenaComboDetalle();
+
+            CalculaTotalFinal();
         }
 
-        public void ToggleReadOnly(bool esSoloLectura)
+        public void CalculaTotalFinal()
         {
-
-            cbEstadoCompra.Enabled = !esSoloLectura;
-            cbSocioCompra.Enabled = !esSoloLectura;
-            cbTipoPagoCompra.Enabled = !esSoloLectura;
-            cbListaPrecioCompra.Enabled = !esSoloLectura;
-            dateTimePicker1.Enabled = !esSoloLectura;
-
-            tablaCompraDetalle.ReadOnly = esSoloLectura;
-            tablaCompraDetalle.AllowUserToDeleteRows = !esSoloLectura;
-
-            btnAceptarCompra.Visible = !esSoloLectura;
-            btnCancelarCompra.Visible = !esSoloLectura;
-            btnEditarCompra.Visible = esSoloLectura;
-
-            if (compraID != 0)
-            {
-                string estadoEdicion = esSoloLectura ? "desactivado" : "activado";
-                MessageBox.Show($"El modo edición está {estadoEdicion}");
-            }
+            DataTable tablaTotales = recSQL.EjecutarFuncion("dbo.fCalcularTotalesCompra", "tablaTotales", "TipoCompraDetalle", metodosGlobales.CrearDataTable(tablaCompraDetalle));
+            tbSubtotal.Text = tablaTotales.Rows[0][0].ToString();
+            tbTotal.Text = tablaTotales.Rows[0][1].ToString();
         }
+
 
         void LlenaCombosSuperiores()
         {
@@ -94,7 +110,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
             cbSocioCompra.ValueMember = "SocioID";
 
             cbListaPrecioCompra.DataSource = recSQL.EjecutarVista("vTraeListaPrecios");
-            cbListaPrecioCompra.DisplayMember = "ListaPrecios";
+            cbListaPrecioCompra.DisplayMember = "ListPrecios";
             cbListaPrecioCompra.ValueMember = "ListaPreciosID";
         }
 
@@ -142,7 +158,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
         {
             ToggleReadOnly(true);
 
-            Dictionary<string, object> paramsCompra = new Dictionary<string, object>() {
+            DataTable tbDet = metodosGlobales.CrearDataTable(tablaCompraDetalle);
+
+            Dictionary<string, object> paramsCompra = new Dictionary<string, object>() 
+            {
                 {"compraID" , compraID },
                 {"fecha" , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
                 {"socID" , cbSocioCompra.SelectedValue },
@@ -151,29 +170,24 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
                 {"estado" , cbEstadoCompra.SelectedItem }
             };
 
-            DataTable tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateCompra", paramsCompra);
+            DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateCompra", "detalle", "TipoCompraDetalle", tbDet, paramsCompra);
 
             if (tablaResultante != null)
             {
-                compraID = compraID == 0 ? Convert.ToInt32(tablaResultante.Rows[0][0]) : compraID;
-
-                Dictionary<string, object> paramsDet = new Dictionary<string, object>() {
-                    {"compraID" , compraID }
-                };
-
-                if (recSQL.EjecutarSPBool("spAgregarCompraDetalle", "detalle", "TipoCompraDetalle", metodosGlobales.CrearDataTable(tablaCompraDetalle), paramsDet))
+                if (compraID != null)
                 {
-                    MessageBox.Show("Cambios guardados con éxito");
-                    ObtenerDatos(compraID);
+                    compraID = Convert.ToInt32(tablaResultante.Rows[0][0]);
+
+                    if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear un recibo?"))
+                    {
+                        Pantallas_Recibo.ReciboDetalle formRecibo = new Pantallas_Recibo.ReciboDetalle();
+                        formRecibo.compraID = compraID;
+                        formRecibo.FormPadre = this;
+                        PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formRecibo);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Ocurrió un error inesperado");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Ocurrió un error inesperado");
+                ObtenerDatos(compraID);
+                ToggleReadOnly(true);
             }
         }
 
@@ -205,16 +219,18 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
             {
                 LlenaCombosSuperiores();
                 cbEstadoCompra.SelectedItem = "Abierto";
+
                 LlenaComboDetalle();
                 ToggleReadOnly(false);
             }
         }
 
-        int cant; double precio, imp = 0, subtotal;
+        
 
         private void tablaCompraDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             int row = tablaCompraDetalle.CurrentRow.Index;
+            int column = tablaCompraDetalle.CurrentCell.ColumnIndex;
 
             int cant = 0; double precio = 0; int impID = 0;
 
@@ -241,7 +257,10 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
 
             tablaCompraDetalle.Rows[row].Cells["Subtotal"].Value = totales.Rows[0][0];
             tablaCompraDetalle.Rows[row].Cells["Total"].Value = totales.Rows[0][1];
+
+            CalculaTotalFinal();
         }
+
 
         private void tablaCompraDetalle_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {

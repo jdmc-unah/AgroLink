@@ -58,6 +58,12 @@
     <Compile Update="Pantallas\Pantallas_Transacciones\Pantallas_Factura\FacturaDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Pantallas\Pantallas_Transacciones\Pantallas_Recibo\Recibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Pantallas\Pantallas_Transacciones\Pantallas_Recibo\ReciboDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Pantallas\Pantallas_Transacciones\Pantalla_SalidaProducto\SalidaProducto.cs">
       <SubType>Form</SubType>
     </Compile>

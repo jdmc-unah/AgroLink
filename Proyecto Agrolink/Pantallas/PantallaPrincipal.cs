@@ -132,7 +132,7 @@ namespace AgroLink.Pantallas
         }
         private void subMenuCompras_Click(object sender, EventArgs e)
         {
-            //... codigo que abre la ventana de ventas
+            //... codigo que abre la ventana de compras
             OpenChildForm(new Pantallas.Pantallas_Transacciones.Pantallas_Compra.Compra());
         }
 
@@ -143,14 +143,15 @@ namespace AgroLink.Pantallas
         }
 
 
-
+        private void subMenuRecibos_Click(object sender, EventArgs e)
+        {
+            instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantallas_Recibo.Recibo());
+        }
 
 
         private void subMenuSalida_Click(object sender, EventArgs e)
         {
-
             instanciaPantPrincipal.OpenChildForm(new Pantallas_Transacciones.Pantalla_SalidaProducto.SalidaProducto());
-
         }
 
 
@@ -265,6 +266,8 @@ namespace AgroLink.Pantallas
             OpenChildForm(new Reportes());
 
         }
+
+        
     }
 }
 
