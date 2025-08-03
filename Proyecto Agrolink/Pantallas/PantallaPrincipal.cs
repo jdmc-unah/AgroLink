@@ -106,6 +106,8 @@ namespace AgroLink.Pantallas
         public void TogglePanelMain()
         {
             panelMain.Visible = !panelMain.Visible;
+            OpenChildForm(new Pantallas.Reportes());
+
         }
 
 
@@ -176,6 +178,18 @@ namespace AgroLink.Pantallas
             OpenChildForm(new Pantallas.Pantallas_Objetos.Empresa());
 
         }
+
+        private void subMenuTipoProducto_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Objetos.TipoProducto());
+        }
+
+        private void subMenuListaPrecio_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Objetos.ListaPrecio());
+        }
+
+
         #endregion
 
 
@@ -194,7 +208,10 @@ namespace AgroLink.Pantallas
             OpenChildForm(new Pantallas.Pantallas_Socios.Agricultor());
         }
 
-
+        private void subMenuSocios_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Pantallas.Pantallas_Socios.Socios());
+        }
         #endregion
 
 
@@ -219,15 +236,6 @@ namespace AgroLink.Pantallas
         }
         #endregion
 
-        private void subMenuTipoProducto_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Pantallas.Pantallas_Objetos.TipoProducto());
-        }
-
-        private void subMenuListaPrecio_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Pantallas.Pantallas_Objetos.ListaPrecio());
-        }
 
 
         #region Cerrar Sesion
@@ -247,9 +255,15 @@ namespace AgroLink.Pantallas
 
         }
 
-        private void subMenuSocios_Click(object sender, EventArgs e)
+        private void PantallaPrincipal_Load(object sender, EventArgs e)
         {
-            OpenChildForm(new Pantallas.Pantallas_Socios.Socios());
+
+        }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Reportes());
+
         }
     }
 }
