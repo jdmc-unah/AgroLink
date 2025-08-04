@@ -81,9 +81,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 43);
             label1.Name = "label1";
-            label1.Size = new Size(64, 20);
+            label1.Size = new Size(46, 20);
             label1.TabIndex = 3;
-            label1.Text = "Nombre";
+            label1.Text = "Socio";
             // 
             // tbnombre
             // 
@@ -115,6 +115,7 @@
             // 
             tbIdentidad.Location = new Point(86, 99);
             tbIdentidad.Name = "tbIdentidad";
+            tbIdentidad.PlaceholderText = "Ingrese su DNI";
             tbIdentidad.Size = new Size(196, 27);
             tbIdentidad.TabIndex = 7;
             // 
@@ -131,6 +132,7 @@
             // 
             tbCorreo.Location = new Point(80, 265);
             tbCorreo.Name = "tbCorreo";
+            tbCorreo.PlaceholderText = "Ingrese su correo";
             tbCorreo.Size = new Size(196, 27);
             tbCorreo.TabIndex = 9;
             // 
@@ -147,6 +149,7 @@
             // 
             textBox_telefono.Location = new Point(80, 316);
             textBox_telefono.Name = "textBox_telefono";
+            textBox_telefono.PlaceholderText = "Ingrese su telefono";
             textBox_telefono.Size = new Size(196, 27);
             textBox_telefono.TabIndex = 11;
             // 
@@ -216,6 +219,7 @@
             // 
             tbColonia.Location = new Point(449, 129);
             tbColonia.Name = "tbColonia";
+            tbColonia.PlaceholderText = "Ingrese donde reside";
             tbColonia.Size = new Size(232, 27);
             tbColonia.TabIndex = 19;
             // 
@@ -230,11 +234,11 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(297, 199);
+            label8.Location = new Point(336, 197);
             label8.Name = "label8";
-            label8.Size = new Size(146, 20);
+            label8.Size = new Size(79, 20);
             label8.TabIndex = 21;
-            label8.Text = "detalle de Ubicacion";
+            label8.Text = " Ubicacion";
             // 
             // label9
             // 
