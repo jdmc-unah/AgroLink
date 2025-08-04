@@ -78,6 +78,8 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         private void Lote_Load(object sender, EventArgs e)
         {
             this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
+            LoteTabla.Columns["Tipo de riego aplicado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
             LlenaComboFincaySuelo();
 
 
@@ -91,6 +93,9 @@ namespace AgroLink.Pantallas.Pantallas_Socios
             };
 
             LoteTabla.DataSource = recSQL.EjecutarSPDataTable("spBuscarLotes", parametrosLote);
+            LoteTabla.Columns["Tipo de riego aplicado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+
         }
 
         private void LoteTabla_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -165,6 +170,8 @@ namespace AgroLink.Pantallas.Pantallas_Socios
                     // Volver a llenar los combos por si hay nuevos valores y recargar la tabla 
                     LlenaComboFincaySuelo();
                     this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
+                    LoteTabla.Columns["Tipo de riego aplicado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
                 }
                 else
                 {
@@ -186,8 +193,10 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         private void btnRecargar_Click(object sender, EventArgs e)
         {
             this.LoteTabla.DataSource = recSQL.EjecutarVista("vMostrarLotes");
+            LoteTabla.Columns["Tipo de riego aplicado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
         }
-#endregion
+        #endregion
 
         private void comboBox_TipoRiego_SelectedIndexChanged(object sender, EventArgs e)
         {

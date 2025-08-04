@@ -17,6 +17,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void TipoProducto_Load(object sender, EventArgs e)
         {
             tablaTipoProducto.DataSource = recSQL.EjecutarVista("vPantallaTipoProducto");
+            tablaTipoProducto.Columns["TipoProducto"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
         }
 
         private void btnNuevoTipoProducto_Click(object sender, EventArgs e)
@@ -30,6 +32,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void btnRecargar_Click(object sender, EventArgs e)
         {
             tablaTipoProducto.DataSource = recSQL.EjecutarVista("vPantallaTipoProducto");
+            tablaTipoProducto.Columns["TipoProducto"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -39,6 +43,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             if (string.IsNullOrEmpty(cod))
             {
                 tablaTipoProducto.DataSource = recSQL.EjecutarVista("vPantallaTipoProducto");
+                tablaTipoProducto.Columns["TipoProducto"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
                 return;
             }
 
@@ -48,6 +54,8 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             };
 
             tablaTipoProducto.DataSource = recSQL.EjecutarSPDataTable("spBuscarTipoProducto", parametros);
+            tablaTipoProducto.Columns["TipoProducto"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
 
         }
 

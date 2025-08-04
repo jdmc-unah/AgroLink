@@ -824,3 +824,12 @@ C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\copia de proyecto bases\Agro
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\copia de proyecto bases\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.pdb
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\copia de proyecto bases\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.genruntimeconfig.cache
 C:\Users\jdvar\OneDrive\Desktop\Ingenieria Sistemas\copia de proyecto bases\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\ref\AgroLink.dll
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Bodega.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.BodegaDetalle.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.NuevaBodega.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.NuevoProducto.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo.Recibo.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo.ReciboDetalle.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.NuevoPrecio.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.ListaPrecio.resources
+C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.TipoProducto.resources

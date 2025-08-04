@@ -17,165 +17,178 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void InitializeComponent()
         {
-            this.panelTitulo = new Panel();
-            this.labelTitulo = new Label();
-            this.panelSuperior = new Panel();
-            this.tbNombre = new TextBox();
-            this.label3 = new Label();;
-            this.label1 = new Label();
-            this.label4 = new Label();
-            this.comboUnidadMedida = new ComboBox();
-            this.comboTipoProducto = new ComboBox();
-            this.panelInferior = new Panel();
-            this.btnVolver = new Button();
-            this.btnCancelar = new Button();
-            this.btnAgregar = new Button();
-            this.panelTitulo.SuspendLayout();
-            this.panelSuperior.SuspendLayout();
-            this.panelInferior.SuspendLayout();
-            this.SuspendLayout();
+            panelTitulo = new Panel();
+            labelTitulo = new Label();
+            panelSuperior = new Panel();
+            tbNombre = new TextBox();
+            label3 = new Label();
+            label4 = new Label();
+            label1 = new Label();
+            comboUnidadMedida = new ComboBox();
+            comboTipoProducto = new ComboBox();
+            panelInferior = new Panel();
+            btnVolver = new Button();
+            btnCancelar = new Button();
+            btnAgregar = new Button();
+            panelTitulo.SuspendLayout();
+            panelSuperior.SuspendLayout();
+            SuspendLayout();
             // 
             // panelTitulo
             // 
-            this.panelTitulo.Controls.Add(this.labelTitulo);
-            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitulo.Location = new Point(0, 0);
-            this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new Size(1200, 100);
-            this.panelTitulo.TabIndex = 2;
+            panelTitulo.Controls.Add(labelTitulo);
+            panelTitulo.Dock = DockStyle.Top;
+            panelTitulo.Location = new Point(0, 0);
+            panelTitulo.Margin = new Padding(4, 4, 4, 4);
+            panelTitulo.Name = "panelTitulo";
+            panelTitulo.Size = new Size(2273, 128);
+            panelTitulo.TabIndex = 2;
             // 
             // labelTitulo
             // 
-            this.labelTitulo.AutoSize = true;
-            this.labelTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            this.labelTitulo.Location = new Point(50, 30);
-            this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new Size(255, 45);
-            this.labelTitulo.TabIndex = 0;
-            this.labelTitulo.Text = "Nuevo Producto";
+            labelTitulo.AutoSize = true;
+            labelTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            labelTitulo.Location = new Point(65, 38);
+            labelTitulo.Margin = new Padding(4, 0, 4, 0);
+            labelTitulo.Name = "labelTitulo";
+            labelTitulo.Size = new Size(444, 72);
+            labelTitulo.TabIndex = 0;
+            labelTitulo.Text = "Nuevo Producto";
             // 
             // panelSuperior
             // 
-            this.panelSuperior.Controls.Add(this.tbNombre);
-            this.panelSuperior.Controls.Add(this.label3);
-            this.panelSuperior.Controls.Add(this.label4);
-            this.panelSuperior.Controls.Add(this.label1);
-            this.panelSuperior.Controls.Add(this.comboUnidadMedida);
-            this.panelSuperior.Controls.Add(this.comboTipoProducto);
-            this.panelSuperior.Dock = DockStyle.Top;
-            this.panelSuperior.Location = new Point(0, 100);
-            this.panelSuperior.Name = "panelSuperior";
-            this.panelSuperior.Size = new Size(1200, 300);
-            this.panelSuperior.TabIndex = 0;
+            panelSuperior.Controls.Add(btnVolver);
+            panelSuperior.Controls.Add(tbNombre);
+            panelSuperior.Controls.Add(btnCancelar);
+            panelSuperior.Controls.Add(label3);
+            panelSuperior.Controls.Add(btnAgregar);
+            panelSuperior.Controls.Add(label4);
+            panelSuperior.Controls.Add(label1);
+            panelSuperior.Controls.Add(comboUnidadMedida);
+            panelSuperior.Controls.Add(comboTipoProducto);
+            panelSuperior.Dock = DockStyle.Top;
+            panelSuperior.Location = new Point(0, 128);
+            panelSuperior.Margin = new Padding(4, 4, 4, 4);
+            panelSuperior.Name = "panelSuperior";
+            panelSuperior.Size = new Size(2273, 540);
+            panelSuperior.TabIndex = 0;
             // 
             // tbNombre
             // 
-            this.tbNombre.Location = new Point(200, 150);
-            this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new Size(300, 39);
-            this.tbNombre.TabIndex = 6;
+            tbNombre.Location = new Point(169, 142);
+            tbNombre.Margin = new Padding(4, 4, 4, 4);
+            tbNombre.Name = "tbNombre";
+            tbNombre.Size = new Size(582, 47);
+            tbNombre.TabIndex = 6;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new Point(50, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(101, 32);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Nombre";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(600, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(202, 32);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Tipo de Producto";
+            label3.AutoSize = true;
+            label3.Location = new Point(65, 72);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(128, 41);
+            label3.TabIndex = 5;
+            label3.Text = "Nombre";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new Point(600, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(203, 32);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Unidad de Medida";
+            label4.AutoSize = true;
+            label4.Location = new Point(1256, 295);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(265, 41);
+            label4.TabIndex = 7;
+            label4.Text = "Unidad de Medida";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(1256, 72);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(249, 41);
+            label1.TabIndex = 2;
+            label1.Text = "Tipo de Producto";
             // 
             // comboUnidadMedida
             // 
-            this.comboUnidadMedida.FormattingEnabled = true;
-            this.comboUnidadMedida.Location = new Point(850, 150);
-            this.comboUnidadMedida.Name = "comboUnidadMedida";
-            this.comboUnidadMedida.Size = new Size(300, 40);
-            this.comboUnidadMedida.TabIndex = 1;
+            comboUnidadMedida.FormattingEnabled = true;
+            comboUnidadMedida.Location = new Point(1541, 384);
+            comboUnidadMedida.Margin = new Padding(4, 4, 4, 4);
+            comboUnidadMedida.Name = "comboUnidadMedida";
+            comboUnidadMedida.Size = new Size(391, 49);
+            comboUnidadMedida.TabIndex = 1;
             // 
             // comboTipoProducto
             // 
-            this.comboTipoProducto.FormattingEnabled = true;
-            this.comboTipoProducto.Location = new Point(850, 50);
-            this.comboTipoProducto.Name = "comboTipoProducto";
-            this.comboTipoProducto.Size = new Size(300, 40);
-            this.comboTipoProducto.TabIndex = 0;
+            comboTipoProducto.FormattingEnabled = true;
+            comboTipoProducto.Location = new Point(1541, 129);
+            comboTipoProducto.Margin = new Padding(4, 4, 4, 4);
+            comboTipoProducto.Name = "comboTipoProducto";
+            comboTipoProducto.Size = new Size(391, 49);
+            comboTipoProducto.TabIndex = 0;
             // 
             // panelInferior
             // 
-            this.panelInferior.Controls.Add(this.btnVolver);
-            this.panelInferior.Controls.Add(this.btnCancelar);
-            this.panelInferior.Controls.Add(this.btnAgregar);
-            this.panelInferior.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInferior.Location = new Point(0, 400);
-            this.panelInferior.Name = "panelInferior";
-            this.panelInferior.Size = new Size(1200, 100);
-            this.panelInferior.TabIndex = 1;
+            panelInferior.Dock = DockStyle.Fill;
+            panelInferior.Location = new Point(0, 668);
+            panelInferior.Margin = new Padding(4, 4, 4, 4);
+            panelInferior.Name = "panelInferior";
+            panelInferior.Size = new Size(2273, 602);
+            panelInferior.TabIndex = 1;
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new Point(800, 25);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new Size(150, 50);
-            this.btnVolver.TabIndex = 2;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new EventHandler(this.btnVolver_Click);
+            btnVolver.Location = new Point(65, 418);
+            btnVolver.Margin = new Padding(4, 4, 4, 4);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(196, 64);
+            btnVolver.TabIndex = 2;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new Point(500, 25);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new Size(150, 50);
-            this.btnCancelar.TabIndex = 1;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new EventHandler(this.btnCancelar_Click);
+            btnCancelar.Location = new Point(648, 418);
+            btnCancelar.Margin = new Padding(4, 4, 4, 4);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(196, 64);
+            btnCancelar.TabIndex = 1;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new Point(200, 25);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new Size(150, 50);
-            this.btnAgregar.TabIndex = 0;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new EventHandler(this.btnGuardar_Click);
+            btnAgregar.Location = new Point(341, 418);
+            btnAgregar.Margin = new Padding(4, 4, 4, 4);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(196, 64);
+            btnAgregar.TabIndex = 0;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnGuardar_Click;
             // 
             // NuevoProducto
             // 
-            this.AutoScaleDimensions = new SizeF(13F, 32F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.ClientSize = new Size(1200, 500);
-            this.Controls.Add(this.panelInferior);
-            this.Controls.Add(this.panelSuperior);
-            this.Controls.Add(this.panelTitulo);
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.Name = "NuevoProducto";
-            this.Text = "NuevoProducto";
-            this.Load += new EventHandler(this.NuevoProducto_Load);
-            this.panelTitulo.SuspendLayout();
-            this.panelSuperior.SuspendLayout();
-            this.panelInferior.SuspendLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(2273, 1270);
+            Controls.Add(panelInferior);
+            Controls.Add(panelSuperior);
+            Controls.Add(panelTitulo);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 4, 4, 4);
+            Name = "NuevoProducto";
+            Text = "NuevoProducto";
+            Load += NuevoProducto_Load;
+            panelTitulo.ResumeLayout(false);
+            panelTitulo.PerformLayout();
+            panelSuperior.ResumeLayout(false);
+            panelSuperior.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

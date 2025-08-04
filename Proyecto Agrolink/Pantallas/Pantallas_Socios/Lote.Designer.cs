@@ -48,32 +48,45 @@
             label8 = new Label();
             comboBox_productocosecha = new ComboBox();
             btnRecargar = new Button();
+            panel1 = new Panel();
+            panelLinea = new Panel();
+            label7 = new Label();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)LoteTabla).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // LoteTabla
             // 
             LoteTabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            LoteTabla.Location = new Point(5, 214);
+            LoteTabla.Dock = DockStyle.Top;
+            LoteTabla.Location = new Point(0, 553);
+            LoteTabla.Margin = new Padding(6);
             LoteTabla.Name = "LoteTabla";
             LoteTabla.RowHeadersWidth = 51;
-            LoteTabla.Size = new Size(922, 288);
+            LoteTabla.Size = new Size(2916, 952);
             LoteTabla.TabIndex = 0;
             LoteTabla.CellContentClick += LoteTabla_CellContentClick;
             // 
             // tbBuscarLote
             // 
-            tbBuscarLote.Location = new Point(12, 34);
+            tbBuscarLote.Location = new Point(530, 41);
+            tbBuscarLote.Margin = new Padding(6);
             tbBuscarLote.Name = "tbBuscarLote";
             tbBuscarLote.PlaceholderText = "Ingresar Codgo de Lote o Codigo de Finca";
-            tbBuscarLote.Size = new Size(401, 27);
+            tbBuscarLote.Size = new Size(848, 47);
             tbBuscarLote.TabIndex = 1;
             // 
             // btnBuscarLote
             // 
-            btnBuscarLote.Location = new Point(419, 34);
+            btnBuscarLote.Location = new Point(1423, 32);
+            btnBuscarLote.Margin = new Padding(6);
             btnBuscarLote.Name = "btnBuscarLote";
-            btnBuscarLote.Size = new Size(137, 31);
+            btnBuscarLote.Size = new Size(291, 64);
             btnBuscarLote.TabIndex = 2;
             btnBuscarLote.Text = "Buscar";
             btnBuscarLote.UseVisualStyleBackColor = true;
@@ -81,9 +94,10 @@
             // 
             // btnRegrsar
             // 
-            btnRegrsar.Location = new Point(716, 508);
+            btnRegrsar.Location = new Point(44, 66);
+            btnRegrsar.Margin = new Padding(6);
             btnRegrsar.Name = "btnRegrsar";
-            btnRegrsar.Size = new Size(174, 39);
+            btnRegrsar.Size = new Size(287, 64);
             btnRegrsar.TabIndex = 3;
             btnRegrsar.Text = "Regresar";
             btnRegrsar.UseVisualStyleBackColor = true;
@@ -91,9 +105,10 @@
             // 
             // btnAgregarLote
             // 
-            btnAgregarLote.Location = new Point(562, 32);
+            btnAgregarLote.Location = new Point(2579, 327);
+            btnAgregarLote.Margin = new Padding(6);
             btnAgregarLote.Name = "btnAgregarLote";
-            btnAgregarLote.Size = new Size(135, 31);
+            btnAgregarLote.Size = new Size(287, 64);
             btnAgregarLote.TabIndex = 4;
             btnAgregarLote.Text = "Agregar Lote";
             btnAgregarLote.UseVisualStyleBackColor = true;
@@ -102,85 +117,95 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 96);
+            label1.Location = new Point(95, 158);
+            label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(95, 20);
+            label1.Size = new Size(86, 41);
             label1.TabIndex = 5;
-            label1.Text = "Ingrese Finca";
+            label1.Text = "Finca";
             // 
             // comboBox_Finca
             // 
             comboBox_Finca.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Finca.FormattingEnabled = true;
-            comboBox_Finca.Location = new Point(113, 96);
+            comboBox_Finca.Location = new Point(210, 155);
+            comboBox_Finca.Margin = new Padding(6);
             comboBox_Finca.Name = "comboBox_Finca";
-            comboBox_Finca.Size = new Size(145, 28);
+            comboBox_Finca.Size = new Size(304, 49);
             comboBox_Finca.TabIndex = 6;
             // 
             // comboBox_TipoSuelo
             // 
             comboBox_TipoSuelo.FormattingEnabled = true;
-            comboBox_TipoSuelo.Location = new Point(387, 96);
+            comboBox_TipoSuelo.Location = new Point(1316, 129);
+            comboBox_TipoSuelo.Margin = new Padding(6);
             comboBox_TipoSuelo.Name = "comboBox_TipoSuelo";
-            comboBox_TipoSuelo.Size = new Size(178, 28);
+            comboBox_TipoSuelo.Size = new Size(374, 49);
             comboBox_TipoSuelo.TabIndex = 7;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(287, 99);
+            label2.Location = new Point(1064, 137);
+            label2.Margin = new Padding(6, 0, 6, 0);
             label2.Name = "label2";
-            label2.Size = new Size(99, 20);
+            label2.Size = new Size(198, 41);
             label2.TabIndex = 8;
             label2.Text = "Tipo de suelo";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(594, 101);
+            label3.Location = new Point(1055, 319);
+            label3.Margin = new Padding(6, 0, 6, 0);
             label3.Name = "label3";
-            label3.Size = new Size(103, 20);
+            label3.Size = new Size(204, 41);
             label3.TabIndex = 9;
             label3.Text = "Tipo de Riego";
             // 
             // comboBox_TipoRiego
             // 
             comboBox_TipoRiego.FormattingEnabled = true;
-            comboBox_TipoRiego.Location = new Point(716, 101);
+            comboBox_TipoRiego.Location = new Point(1316, 315);
+            comboBox_TipoRiego.Margin = new Padding(6);
             comboBox_TipoRiego.Name = "comboBox_TipoRiego";
-            comboBox_TipoRiego.Size = new Size(178, 28);
+            comboBox_TipoRiego.Size = new Size(374, 49);
             comboBox_TipoRiego.TabIndex = 10;
             comboBox_TipoRiego.SelectedIndexChanged += comboBox_TipoRiego_SelectedIndexChanged;
             // 
             // dateTimePicker_siembra
             // 
             dateTimePicker_siembra.Format = DateTimePickerFormat.Short;
-            dateTimePicker_siembra.Location = new Point(136, 154);
+            dateTimePicker_siembra.Location = new Point(1879, 158);
+            dateTimePicker_siembra.Margin = new Padding(6);
             dateTimePicker_siembra.Name = "dateTimePicker_siembra";
-            dateTimePicker_siembra.Size = new Size(145, 27);
+            dateTimePicker_siembra.Size = new Size(304, 47);
             dateTimePicker_siembra.TabIndex = 11;
             // 
             // dateTimePicker_cosecha
             // 
             dateTimePicker_cosecha.Format = DateTimePickerFormat.Short;
-            dateTimePicker_cosecha.Location = new Point(504, 154);
+            dateTimePicker_cosecha.Location = new Point(2394, 158);
+            dateTimePicker_cosecha.Margin = new Padding(6);
             dateTimePicker_cosecha.Name = "dateTimePicker_cosecha";
-            dateTimePicker_cosecha.Size = new Size(172, 27);
+            dateTimePicker_cosecha.Size = new Size(304, 47);
             dateTimePicker_cosecha.TabIndex = 12;
             // 
             // tbExtencion
             // 
-            tbExtencion.Location = new Point(873, 156);
+            tbExtencion.Location = new Point(474, 316);
+            tbExtencion.Margin = new Padding(6);
             tbExtencion.Name = "tbExtencion";
-            tbExtencion.Size = new Size(183, 27);
+            tbExtencion.Size = new Size(384, 47);
             tbExtencion.TabIndex = 13;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(5, 157);
+            label4.Location = new Point(1906, 89);
+            label4.Margin = new Padding(6, 0, 6, 0);
             label4.Name = "label4";
-            label4.Size = new Size(125, 20);
+            label4.Size = new Size(250, 41);
             label4.TabIndex = 14;
             label4.Text = "Fecha de siembra";
             label4.Click += label4_Click;
@@ -188,80 +213,149 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(287, 157);
+            label5.Location = new Point(2336, 89);
+            label5.Margin = new Padding(6, 0, 6, 0);
             label5.Name = "label5";
-            label5.Size = new Size(211, 20);
+            label5.Size = new Size(420, 41);
             label5.TabIndex = 15;
             label5.Text = "Fecha Aproximada de cosecha";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(706, 159);
+            label6.Location = new Point(95, 316);
+            label6.Margin = new Padding(6, 0, 6, 0);
             label6.Name = "label6";
-            label6.Size = new Size(149, 20);
+            label6.Size = new Size(298, 41);
             label6.TabIndex = 16;
             label6.Text = "Extension De Terreno";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(913, 109);
+            label8.Location = new Point(2014, 271);
+            label8.Margin = new Padding(6, 0, 6, 0);
             label8.Name = "label8";
-            label8.Size = new Size(143, 20);
+            label8.Size = new Size(288, 41);
             label8.TabIndex = 19;
             label8.Text = "Producto a cosechar";
             // 
             // comboBox_productocosecha
             // 
             comboBox_productocosecha.FormattingEnabled = true;
-            comboBox_productocosecha.Location = new Point(1062, 106);
+            comboBox_productocosecha.Location = new Point(1971, 336);
+            comboBox_productocosecha.Margin = new Padding(6);
             comboBox_productocosecha.Name = "comboBox_productocosecha";
-            comboBox_productocosecha.Size = new Size(178, 28);
+            comboBox_productocosecha.Size = new Size(374, 49);
             comboBox_productocosecha.TabIndex = 20;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(22, 513);
+            btnRecargar.Location = new Point(1772, 32);
+            btnRecargar.Margin = new Padding(6);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(128, 45);
+            btnRecargar.Size = new Size(287, 64);
             btnRecargar.TabIndex = 22;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
             btnRecargar.Click += btnRecargar_Click;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(panelLinea);
+            panel1.Controls.Add(btnAgregarLote);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(comboBox_productocosecha);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(comboBox_Finca);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(comboBox_TipoSuelo);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(tbExtencion);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(dateTimePicker_cosecha);
+            panel1.Controls.Add(comboBox_TipoRiego);
+            panel1.Controls.Add(dateTimePicker_siembra);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(2916, 430);
+            panel1.TabIndex = 23;
+            // 
+            // panelLinea
+            // 
+            panelLinea.BackColor = SystemColors.ActiveCaptionText;
+            panelLinea.BorderStyle = BorderStyle.FixedSingle;
+            panelLinea.Location = new Point(189, 416);
+            panelLinea.Name = "panelLinea";
+            panelLinea.Size = new Size(2484, 2);
+            panelLinea.TabIndex = 24;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label7.Location = new Point(82, 30);
+            label7.Name = "label7";
+            label7.Size = new Size(374, 50);
+            label7.TabIndex = 23;
+            label7.Text = "Agregar Nuevo Lote";
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnRegrsar);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 1505);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(2916, 250);
+            panel2.TabIndex = 24;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(btnRecargar);
+            panel3.Controls.Add(tbBuscarLote);
+            panel3.Controls.Add(btnBuscarLote);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 430);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(2916, 123);
+            panel3.TabIndex = 25;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label9.Location = new Point(82, 41);
+            label9.Name = "label9";
+            label9.Size = new Size(270, 50);
+            label9.TabIndex = 24;
+            label9.Text = "Tabla de Lotes";
+            // 
             // Lote
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1283, 559);
-            Controls.Add(btnRecargar);
-            Controls.Add(comboBox_productocosecha);
-            Controls.Add(label8);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(tbExtencion);
-            Controls.Add(dateTimePicker_cosecha);
-            Controls.Add(dateTimePicker_siembra);
-            Controls.Add(comboBox_TipoRiego);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(comboBox_TipoSuelo);
-            Controls.Add(comboBox_Finca);
-            Controls.Add(label1);
-            Controls.Add(btnAgregarLote);
-            Controls.Add(btnRegrsar);
-            Controls.Add(btnBuscarLote);
-            Controls.Add(tbBuscarLote);
+            ClientSize = new Size(2916, 1712);
+            Controls.Add(panel2);
             Controls.Add(LoteTabla);
+            Controls.Add(panel3);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(6);
             Name = "Lote";
             Text = "Lote";
             Load += Lote_Load;
             ((System.ComponentModel.ISupportInitialize)LoteTabla).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -286,5 +380,11 @@
         private Label label8;
         private ComboBox comboBox_productocosecha;
         private Button btnRecargar;
+        private Panel panel1;
+        private Panel panel2;
+        private Label label7;
+        private Panel panel3;
+        private Label label9;
+        private Panel panelLinea;
     }
 }

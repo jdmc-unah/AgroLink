@@ -32,6 +32,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void Producto_Load(object sender, EventArgs e)
         {
             tablaProducto.DataSource = recSQL.EjecutarVista("vPantallaProductos");
+
         }
 
         private void btnRecargar_Click(object sender, EventArgs e)

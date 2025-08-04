@@ -41,19 +41,19 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
-            panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(5, 7, 5, 7);
             panel1.Name = "panel1";
             panel1.Size = new Size(2761, 266);
             panel1.TabIndex = 0;
-            //
+            // 
             // btnNuevaBodega
-            //
-            btnNuevaBodega.Location = new Point(1700, 62);
+            // 
+            btnNuevaBodega.Location = new Point(318, 149);
             btnNuevaBodega.Margin = new Padding(5, 7, 5, 7);
             btnNuevaBodega.Name = "btnNuevaBodega";
-            btnNuevaBodega.Size = new Size(378, 82);
+            btnNuevaBodega.Size = new Size(379, 66);
             btnNuevaBodega.TabIndex = 4;
             btnNuevaBodega.Text = "Nueva Bodega";
             btnNuevaBodega.UseVisualStyleBackColor = true;
@@ -61,10 +61,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(1500, 62);
+            btnRecargar.Location = new Point(88, 149);
             btnRecargar.Margin = new Padding(5, 7, 5, 7);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(189, 82);
+            btnRecargar.Size = new Size(197, 66);
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
@@ -72,10 +72,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(1134, 62);
+            btnBuscar.Location = new Point(965, 52);
             btnBuscar.Margin = new Padding(5, 7, 5, 7);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(189, 82);
+            btnBuscar.Size = new Size(197, 66);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -83,18 +83,18 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(37, 62);
+            tbBuscar.Location = new Point(88, 62);
             tbBuscar.Margin = new Padding(5, 7, 5, 7);
             tbBuscar.Name = "tbBuscar";
-            tbBuscar.PlaceholderText = "BOD...";
-            tbBuscar.Size = new Size(1036, 47);
+            tbBuscar.PlaceholderText = "Codigo de bodega...";
+            tbBuscar.Size = new Size(853, 47);
             tbBuscar.TabIndex = 0;
             tbBuscar.TextChanged += tbBuscar_TextChanged;
             // 
             // panel2
             // 
             panel2.Controls.Add(tablaBodega);
-            panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 266);
             panel2.Margin = new Padding(5, 7, 5, 7);
             panel2.Name = "panel2";
@@ -139,39 +139,40 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // Nombre
             // 
+            Nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Nombre.DataPropertyName = "Nombre";
             Nombre.HeaderText = "Nombre";
             Nombre.MinimumWidth = 8;
             Nombre.Name = "Nombre";
             Nombre.ReadOnly = true;
-            Nombre.Width = 250;
             // 
             // Capacidad
             // 
             Capacidad.DataPropertyName = "Capacidad";
             Capacidad.HeaderText = "Capacidad";
-            Capacidad.MinimumWidth = 8;
+            Capacidad.MinimumWidth = 200;
             Capacidad.Name = "Capacidad";
             Capacidad.ReadOnly = true;
-            Capacidad.Width = 150;
+            Capacidad.Width = 200;
             // 
             // DireccionID
             // 
+            DireccionID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             DireccionID.DataPropertyName = "DireccionID";
             DireccionID.HeaderText = "DireccionID";
             DireccionID.MinimumWidth = 8;
             DireccionID.Name = "DireccionID";
             DireccionID.ReadOnly = true;
             DireccionID.Width = 200;
-            //
+            // 
             // Direccion
-            //
+            // 
+            Direccion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Direccion.DataPropertyName = "Direccion";
             Direccion.HeaderText = "Dirección";
             Direccion.MinimumWidth = 8;
             Direccion.Name = "Direccion";
             Direccion.ReadOnly = true;
-            Direccion.Width = 400;
             // 
             // Bodega
             // 

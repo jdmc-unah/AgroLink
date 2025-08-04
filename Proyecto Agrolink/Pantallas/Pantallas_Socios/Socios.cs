@@ -28,6 +28,8 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         private void Socios_Load(object sender, EventArgs e)
         {
             this.TablaSocio.DataSource = recSQL.EjecutarVista("vTraerSocios");
+            TablaSocio.Columns["Socios"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
         }
 
         private void btnBuscarSocio_Click(object sender, EventArgs e)
@@ -38,12 +40,16 @@ namespace AgroLink.Pantallas.Pantallas_Socios
             };
 
             TablaSocio.DataSource = recSQL.EjecutarSPDataTable("spBuscarSocio", parametros);
+            TablaSocio.Columns["Socios"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
         }
 
         private void btnRecargar_Click(object sender, EventArgs e)
         {
             // la misma cosa
             this.TablaSocio.DataSource = recSQL.EjecutarVista("vTraerSocios");
+            TablaSocio.Columns["Socios"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
         }
 
         private void btAgregar_Click(object sender, EventArgs e)

@@ -15,10 +15,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnNuevoProducto = new Button();
             btnRecargar = new Button();
             btnBuscar = new Button();
             tbBuscar = new TextBox();
-            btnNuevoProducto = new Button();
             panel2 = new Panel();
             tablaProducto = new DataGridView();
             ProductoID = new DataGridViewTextBoxColumn();
@@ -46,20 +46,20 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // btnNuevoProducto
             // 
-            btnNuevoProducto.Location = new Point(1700, 62);
+            btnNuevoProducto.Location = new Point(304, 143);
             btnNuevoProducto.Margin = new Padding(5, 7, 5, 7);
             btnNuevoProducto.Name = "btnNuevoProducto";
-            btnNuevoProducto.Size = new Size(378, 82);
+            btnNuevoProducto.Size = new Size(329, 63);
             btnNuevoProducto.TabIndex = 4;
             btnNuevoProducto.Text = "Nuevo Producto";
             btnNuevoProducto.UseVisualStyleBackColor = true;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(1500, 62);
+            btnRecargar.Location = new Point(74, 143);
             btnRecargar.Margin = new Padding(5, 7, 5, 7);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(189, 82);
+            btnRecargar.Size = new Size(196, 63);
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
@@ -67,10 +67,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(1134, 62);
+            btnBuscar.Location = new Point(914, 55);
             btnBuscar.Margin = new Padding(5, 7, 5, 7);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(189, 82);
+            btnBuscar.Size = new Size(196, 63);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -78,11 +78,11 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(37, 62);
+            tbBuscar.Location = new Point(74, 63);
             tbBuscar.Margin = new Padding(5, 7, 5, 7);
             tbBuscar.Name = "tbBuscar";
-            tbBuscar.PlaceholderText = "PRO...";
-            tbBuscar.Size = new Size(1036, 47);
+            tbBuscar.PlaceholderText = "Codigo de producto...";
+            tbBuscar.Size = new Size(806, 47);
             tbBuscar.TabIndex = 0;
             tbBuscar.TextChanged += tbBuscar_TextChanged;
             // 
@@ -133,30 +133,30 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // Nombre
             // 
+            Nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Nombre.DataPropertyName = "Nombre";
             Nombre.HeaderText = "Nombre";
             Nombre.MinimumWidth = 8;
             Nombre.Name = "Nombre";
             Nombre.ReadOnly = true;
-            Nombre.Width = 250;
             // 
             // TipoProducto
             // 
+            TipoProducto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             TipoProducto.DataPropertyName = "TipoProducto";
             TipoProducto.HeaderText = "Tipo Producto";
             TipoProducto.MinimumWidth = 8;
             TipoProducto.Name = "TipoProducto";
             TipoProducto.ReadOnly = true;
-            TipoProducto.Width = 200;
             // 
             // UnidadMedida
             // 
+            UnidadMedida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             UnidadMedida.DataPropertyName = "UnidadMedida";
             UnidadMedida.HeaderText = "Unidad Medida";
             UnidadMedida.MinimumWidth = 8;
             UnidadMedida.Name = "UnidadMedida";
             UnidadMedida.ReadOnly = true;
-            UnidadMedida.Width = 150;
             // 
             // Producto
             // 
@@ -176,7 +176,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             ((System.ComponentModel.ISupportInitialize)tablaProducto).EndInit();
             ResumeLayout(false);
         }
-        
+
         private System.ComponentModel.IContainer components = null;
         private Panel panel1;
         private Button btnRecargar;
