@@ -99,7 +99,7 @@
             btnAgregarFinca1.Name = "btnAgregarFinca1";
             btnAgregarFinca1.Size = new Size(119, 33);
             btnAgregarFinca1.TabIndex = 6;
-            btnAgregarFinca1.Text = "AgregarFinca";
+            btnAgregarFinca1.Text = "Agregar Finca";
             btnAgregarFinca1.UseVisualStyleBackColor = true;
             btnAgregarFinca1.Click += btnAgregarFinca1_Click;
             // 
