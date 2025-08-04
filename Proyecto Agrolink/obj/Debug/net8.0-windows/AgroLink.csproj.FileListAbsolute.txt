@@ -729,3 +729,5 @@ C:\Users\Kisha M\Downloads\agro clone\AgroLink\Proyecto Agrolink\obj\Debug\net8.
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.NuevoProducto.resources
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.BodegaDetalle.resources
 C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Reportes.resources
+C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.Bodega.resources
+C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.NuevaBodega.resources

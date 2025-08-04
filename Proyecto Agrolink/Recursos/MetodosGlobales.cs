@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -49,19 +50,17 @@ namespace AgroLink.Recursos
                     myDataTable.Rows.Add(dr);
                 }
             }
-
             return myDataTable;
         }
 
+        public static class SesionGlobal
+        {
+            public static int usuarioID { get; set; }
+            public static string usuario { get; set; }
+            public static string nombreUsuario { get; set; }
+            public static string tipoUsuario { get; set; }
 
-
-
-
-
-
-
-
-
+        }
 
     }
 }

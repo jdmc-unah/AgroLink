@@ -2,6 +2,7 @@ using AgroLink.Pantallas;
 using AgroLink.Recursos;
 using AgroLink.Modelos;
 using AgroLink.Pantallas.Pantallas_Objetos;
+using static AgroLink.Recursos.MetodosGlobales;
 
 namespace AgroLink
 {
@@ -52,6 +53,10 @@ namespace AgroLink
                     };
 
                     Sesion.usuarioActual = usuarioActual;
+
+                    SesionGlobal.usuarioID = Convert.ToInt32(dt.Rows[0]["UsuarioID"]);
+                    SesionGlobal.usuario = dt.Rows[0]["Usuario"].ToString();
+                    SesionGlobal.nombreUsuario = dt.Rows[0]["Nombre"].ToString();
 
                     //si todo esta bien continue
                     PantallaPrincipal.instanciaPantPrincipal.TogglePanelMain();

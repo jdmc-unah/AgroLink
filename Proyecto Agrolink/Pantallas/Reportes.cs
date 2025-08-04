@@ -1,4 +1,5 @@
-﻿using AgroLink.Recursos;
+﻿using AgroLink.Modelos;
+using AgroLink.Recursos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,6 @@ namespace AgroLink.Pantallas
 
         Recursos_SQL recSQL = new Recursos_SQL();
         MetodosGlobales metodosGlobales = new MetodosGlobales();
-
 
 
 
@@ -75,6 +75,8 @@ namespace AgroLink.Pantallas
             lblInsumosVendidos.Text = totales.Rows[0][2].ToString();
             lblTotalVentasInsumos.Text = totales.Rows[0][3].ToString();
 
+            // clasico Bienvenido no unisex sino neutral programático 
+            lbBienvenida.Text = $"Bienvenido, {MetodosGlobales.SesionGlobal.nombreUsuario}!";
         }
 
 

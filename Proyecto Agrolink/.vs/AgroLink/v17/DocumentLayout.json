@@ -3,36 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\kisha m\\desktop\\agrolinkdb\\coprag agrolinkdb\\agrolink\\proyecto agrolink\\pantallas\\pantallas_transacciones\\pantallas_recibo\\recibodetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_recibo\\recibodetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\kisha m\\desktop\\agrolinkdb\\coprag agrolinkdb\\agrolink\\proyecto agrolink\\recursos\\metodosglobales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:recursos\\metodosglobales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\pantallas\\pantallas_transacciones\\pantallas_compra\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_compra\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\kisha m\\desktop\\agrolinkdb\\coprag agrolinkdb\\agrolink\\proyecto agrolink\\pantallas\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\pantallas\\pantallas_transacciones\\pantallas_factura\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_factura\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\kisha m\\desktop\\agrolinkdb\\coprag agrolinkdb\\agrolink\\proyecto agrolink\\pantallas\\reportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\reportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\kisha m\\desktop\\agrolinkdb\\coprag agrolinkdb\\agrolink\\proyecto agrolink\\pantallas\\pantallas_transacciones\\pantallas_factura\\facturadetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_factura\\facturadetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\kisha m\\desktop\\agrolinkdb\\coprag agrolinkdb\\agrolink\\proyecto agrolink\\pantallas\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\pantallas\\pantallas_transacciones\\pantallas_recibo\\recibodetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_recibo\\recibodetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\pantallas\\pantallas_transacciones\\pantallas_recibo\\recibo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_recibo\\recibo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\kisha m\\desktop\\agrolinkdb\\coprag agrolinkdb\\agrolink\\proyecto agrolink\\pantallas\\pantallas_transacciones\\pantallas_compra\\compradetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_compra\\compradetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\kisha m\\desktop\\agrolinkdb\\coprag agrolinkdb\\agrolink\\proyecto agrolink\\pantallas\\pantallas_transacciones\\pantallas_compra\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\pantallas_transacciones\\pantallas_compra\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|c:\\users\\kisha m\\desktop\\agrolinkdb\\coprag agrolinkdb\\agrolink\\proyecto agrolink\\pantallas\\reportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0A8697DE-1925-4722-9DB4-0E8059F02832}|AgroLink.csproj|solutionrelative:pantallas\\reportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,101 +30,70 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ReciboDetalle.cs",
-              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\ReciboDetalle.cs",
-              "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\ReciboDetalle.cs",
-              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\ReciboDetalle.cs",
-              "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\ReciboDetalle.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE0AAAA0AAAA",
+              "DocumentIndex": 3,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Login.cs",
+              "RelativeDocumentMoniker": "Pantallas\\Login.cs",
+              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Login.cs",
+              "RelativeToolTip": "Pantallas\\Login.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAgwDUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T17:01:15.372Z",
+              "WhenOpened": "2025-08-04T12:25:34.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MetodosGlobales.cs",
+              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Recursos\\MetodosGlobales.cs",
+              "RelativeDocumentMoniker": "Recursos\\MetodosGlobales.cs",
+              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Recursos\\MetodosGlobales.cs",
+              "RelativeToolTip": "Recursos\\MetodosGlobales.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAYwDYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T12:23:29.989Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Compra.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\Compra.cs",
-              "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\Compra.cs",
-              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\Compra.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\Compra.cs [Dise\u00F1o]",
+              "Title": "Login.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Login.cs",
+              "RelativeDocumentMoniker": "Pantallas\\Login.cs",
+              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Login.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Pantallas\\Login.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T01:05:49.107Z"
+              "WhenOpened": "2025-08-04T12:25:31.678Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Factura.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Factura\\Factura.cs",
-              "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Factura\\Factura.cs",
-              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Factura\\Factura.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Factura\\Factura.cs [Dise\u00F1o]",
+              "Title": "Reportes.cs",
+              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Reportes.cs",
+              "RelativeDocumentMoniker": "Pantallas\\Reportes.cs",
+              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Reportes.cs",
+              "RelativeToolTip": "Pantallas\\Reportes.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAkwEIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T06:56:45.16Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ReciboDetalle.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\ReciboDetalle.cs",
-              "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\ReciboDetalle.cs",
-              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\ReciboDetalle.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\ReciboDetalle.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T08:18:00.582Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FacturaDetalle.cs",
-              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Factura\\FacturaDetalle.cs",
-              "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Factura\\FacturaDetalle.cs",
-              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Factura\\FacturaDetalle.cs",
-              "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Factura\\FacturaDetalle.cs",
-              "ViewState": "AQIAAIYAAAAAAAAAAAAQwI4AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T09:01:20.992Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CompraDetalle.cs",
-              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\CompraDetalle.cs",
-              "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\CompraDetalle.cs",
-              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\CompraDetalle.cs",
-              "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\CompraDetalle.cs",
-              "ViewState": "AQIAAPsAAAAAAAAAAAAqwAkBAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T17:41:25.483Z",
+              "WhenOpened": "2025-08-04T12:20:58.312Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Recibo.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\Recibo.cs",
-              "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\Recibo.cs",
-              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\Recibo.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Recibo\\Recibo.cs [Dise\u00F1o]",
+              "DocumentIndex": 4,
+              "Title": "Reportes.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Reportes.cs",
+              "RelativeDocumentMoniker": "Pantallas\\Reportes.cs",
+              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Reportes.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Pantallas\\Reportes.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T08:54:25.852Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Compra.cs",
-              "DocumentMoniker": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\Compra.cs",
-              "RelativeDocumentMoniker": "Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\Compra.cs",
-              "ToolTip": "C:\\Users\\Kisha M\\Desktop\\AgroLinkDB\\COPRAG AGROLINKDB\\AgroLink\\Proyecto Agrolink\\Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\Compra.cs",
-              "RelativeToolTip": "Pantallas\\Pantallas_Transacciones\\Pantallas_Compra\\Compra.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T17:41:19.431Z"
+              "WhenOpened": "2025-08-04T12:19:56.86Z",
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

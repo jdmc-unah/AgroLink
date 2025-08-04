@@ -1,21 +1,20 @@
 -- PROCEDIMIENTOS ALMACENADOS PARA PANTALLA USUARIOS
 
-
 -- procedimiento para iniciar sesion/validar usuario
-create procedure spValidarUsuario
+create or alter procedure spValidarUsuario
     @usuario varchar(50),
     @clave varchar(50)
 as
 begin
     -- se devuelven datos del usuario si coinciden usuario y clave
-    select Usuario, Nombre, TipoUsuario
+    select UsuarioID, Usuario, Nombre, TipoUsuario
     from Pruebas.Usuario
     where usuario = @usuario and clave = @clave
 end
 go
 
 -- procedimiento para agregar nuevos usuarios
-create procedure spAgregarUsuario
+create or alter procedure spAgregarUsuario
     @usuario varchar(50),
     @clave varchar(50),
     @nombre varchar(100),
@@ -46,8 +45,8 @@ begin
 end
 go
 
--- procedimiento para reestablecer contraseña
-create procedure spResetearClave
+-- procedimiento para reestablecer contraseï¿½a
+create or alter procedure spResetearClave
     @usuario varchar(50),
     @nuevaclave varchar(50)
 as
@@ -64,14 +63,3 @@ begin try
 	end catch
 end
 go
-
--- procedimiento para que el nombre del usuario concuerde con tal
-
-create or alter procedure spObtenerUsuarioPorNombreUsuario
-    @usuario varchar(50)
-as
-begin
-    select UsuarioID, Usuario, Nombre, Clave, TipoUsuario
-    from Pruebas.Usuario
-    where Usuario = @usuario
-end
