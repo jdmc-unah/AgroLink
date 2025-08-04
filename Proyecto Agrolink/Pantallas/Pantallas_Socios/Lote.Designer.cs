@@ -47,7 +47,6 @@
             label6 = new Label();
             label8 = new Label();
             comboBox_productocosecha = new ComboBox();
-            btnEliminarLote = new Button();
             btnRecargar = new Button();
             ((System.ComponentModel.ISupportInitialize)LoteTabla).BeginInit();
             SuspendLayout();
@@ -221,15 +220,6 @@
             comboBox_productocosecha.Size = new Size(178, 28);
             comboBox_productocosecha.TabIndex = 20;
             // 
-            // btnEliminarLote
-            // 
-            btnEliminarLote.Location = new Point(716, 34);
-            btnEliminarLote.Name = "btnEliminarLote";
-            btnEliminarLote.Size = new Size(139, 31);
-            btnEliminarLote.TabIndex = 21;
-            btnEliminarLote.Text = "Eliminar Lote";
-            btnEliminarLote.UseVisualStyleBackColor = true;
-            // 
             // btnRecargar
             // 
             btnRecargar.Location = new Point(22, 513);
@@ -246,7 +236,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1283, 559);
             Controls.Add(btnRecargar);
-            Controls.Add(btnEliminarLote);
             Controls.Add(comboBox_productocosecha);
             Controls.Add(label8);
             Controls.Add(label6);
@@ -296,7 +285,6 @@
         private Label label6;
         private Label label8;
         private ComboBox comboBox_productocosecha;
-        private Button btnEliminarLote;
         private Button btnRecargar;
     }
 }
