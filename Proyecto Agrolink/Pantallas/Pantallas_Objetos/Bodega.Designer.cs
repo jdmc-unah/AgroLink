@@ -18,6 +18,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnNuevaBodega = new Button();
             btnRecargar = new Button();
             btnBuscar = new Button();
             tbBuscar = new TextBox();
@@ -36,6 +37,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnNuevaBodega);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
@@ -45,10 +47,21 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panel1.Name = "panel1";
             panel1.Size = new Size(2761, 266);
             panel1.TabIndex = 0;
+            //
+            // btnNuevaBodega
+            //
+            btnNuevaBodega.Location = new Point(1700, 62);
+            btnNuevaBodega.Margin = new Padding(5, 7, 5, 7);
+            btnNuevaBodega.Name = "btnNuevaBodega";
+            btnNuevaBodega.Size = new Size(378, 82);
+            btnNuevaBodega.TabIndex = 4;
+            btnNuevaBodega.Text = "Nueva Bodega";
+            btnNuevaBodega.UseVisualStyleBackColor = true;
+            btnNuevaBodega.Click += btnNuevaBodega_Click;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(1889, 62);
+            btnRecargar.Location = new Point(1500, 62);
             btnRecargar.Margin = new Padding(5, 7, 5, 7);
             btnRecargar.Name = "btnRecargar";
             btnRecargar.Size = new Size(189, 82);
@@ -182,6 +195,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         #endregion
 
         private Panel panel1;
+        private Button btnNuevaBodega;
         private Button btnRecargar;
         private Button btnBuscar;
         private TextBox tbBuscar;

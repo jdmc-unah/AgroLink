@@ -61,12 +61,12 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
                 if (resultado != null && resultado.Rows.Count > 0)
                 {
                     MessageBox.Show("Producto guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                     // Limpiar los campos después de guardar
                     tbNombre.Clear();
                     comboTipoProducto.SelectedIndex = -1;
                     comboUnidadMedida.SelectedIndex = -1;
-                    
+
                     // Volver a llenar los combos por si hay nuevos valores
                     LlenaCombos();
                 }
@@ -78,6 +78,11 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al guardar el producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            if (PantallaPrincipal.instanciaPantPrincipal != null)
+            {
+                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Bodega());
             }
         }
 
