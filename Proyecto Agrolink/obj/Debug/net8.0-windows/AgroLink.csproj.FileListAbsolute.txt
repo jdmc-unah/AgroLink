@@ -638,3 +638,4 @@ C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas
 C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo.ReciboDetalle.resources
 C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.BodegaDetalle.resources
 >>>>>>> da281f197bcd59001a5d4062b5ea5dcc3c5dd539
+C:\Github\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Reportes.resources

@@ -18,6 +18,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnNuevoTipoProducto = new Button();
             btnRecargar = new Button();
             btnBuscar = new Button();
             tbBuscar = new TextBox();
@@ -33,6 +34,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnNuevoTipoProducto);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
@@ -42,13 +44,24 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 100);
             panel1.TabIndex = 0;
+            //
+            // btnNuevoTipoProducto
+            //
+            btnNuevoTipoProducto.Location = new Point(650, 60);
+            btnNuevoTipoProducto.Margin = new Padding(5, 7, 5,7);
+            btnNuevoTipoProducto.Name = "btnNuevoTipoProducto";
+            btnNuevoTipoProducto.Size = new Size(200, 30);
+            btnNuevoTipoProducto.TabIndex = 3;
+            btnNuevoTipoProducto.Text = "Nuevo Tipo de Producto";
+            btnNuevoTipoProducto.UseVisualStyleBackColor = true;
+            btnNuevoTipoProducto.Click += btnNuevoTipoProducto_Click;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(600, 20);
+            btnRecargar.Location = new Point(650, 20);
             btnRecargar.Margin = new Padding(5, 7, 5, 7);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(100, 40);
+            btnRecargar.Size = new Size(100, 30);
             btnRecargar.TabIndex = 2;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
@@ -59,7 +72,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             btnBuscar.Location = new Point(480, 20);
             btnBuscar.Margin = new Padding(5, 7, 5, 7);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(100, 40);
+            btnBuscar.Size = new Size(100, 30);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -155,6 +168,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         #endregion
 
         private Panel panel1;
+        private Button btnNuevoTipoProducto;
         private Button btnRecargar;
         private Button btnBuscar;
         private TextBox tbBuscar;
