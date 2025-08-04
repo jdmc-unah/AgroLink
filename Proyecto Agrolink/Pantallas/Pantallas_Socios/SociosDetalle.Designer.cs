@@ -96,7 +96,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 99);
+            label2.Location = new Point(12, 217);
             label2.Name = "label2";
             label2.Size = new Size(36, 20);
             label2.TabIndex = 5;
@@ -105,15 +105,15 @@
             // 
             // tbRTN
             // 
-            tbRTN.Location = new Point(80, 99);
+            tbRTN.Location = new Point(80, 217);
             tbRTN.Name = "tbRTN";
-            tbRTN.PlaceholderText = "Ingrese Numero de Identidad";
+            tbRTN.PlaceholderText = "Ingrese su RTN";
             tbRTN.Size = new Size(196, 27);
             tbRTN.TabIndex = 6;
             // 
             // tbIdentidad
             // 
-            tbIdentidad.Location = new Point(80, 210);
+            tbIdentidad.Location = new Point(86, 99);
             tbIdentidad.Name = "tbIdentidad";
             tbIdentidad.Size = new Size(196, 27);
             tbIdentidad.TabIndex = 7;
@@ -121,7 +121,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 217);
+            label3.Location = new Point(7, 106);
             label3.Name = "label3";
             label3.Size = new Size(73, 20);
             label3.TabIndex = 8;
