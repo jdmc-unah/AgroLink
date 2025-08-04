@@ -54,16 +54,16 @@ create table Pruebas.Direccion	--ya creada
 )
 
 insert into Pruebas.Direccion ( MunicipioID, Colonia, Detalle) values
-(501, 'Colonia Universidad', 'Boulevard Los Próceres #1234'),
-(501, 'Barrio Río de Piedras', 'Ave. Circunvalación #5678'),
+(501, 'Colonia Universidad', 'Boulevard Los Prï¿½ceres #1234'),
+(501, 'Barrio Rï¿½o de Piedras', 'Ave. Circunvalaciï¿½n #5678'),
 (501, 'Colonia Moderna', '10a Calle, 15 Ave. SO #91'),
 (502, 'Centro', 'Calle Principal, frente al parque central'),  --se volvieron a insertar por el cambio en tabla direccion
 (506, 'Barrio El Centro', 'Ave. Honduras #321'),
-(511, 'Colonia San José', 'Carretera CA-5 Km 15'),
+(511, 'Colonia San Josï¿½', 'Carretera CA-5 Km 15'),
 (512, 'Barrio El Progreso', 'Ave. La Lima #789'),
-(504, 'Aldea San Antonio', 'Desvío La Barca Km 3'),
-(503, 'Casco Histórico', 'Calle del Comercio #456'),
-(510, 'El Paraíso', 'Orilla del Lago de Yojoa'),
+(504, 'Aldea San Antonio', 'Desvï¿½o La Barca Km 3'),
+(503, 'Casco Histï¿½rico', 'Calle del Comercio #456'),
+(510, 'El Paraï¿½so', 'Orilla del Lago de Yojoa'),
 (501, 'Segundo Anillo', '20 Calle SE')
 
 select * from pruebas.direccion
@@ -170,11 +170,11 @@ create table Pruebas.TipoRiego --ya creada
 
 -- 5. tipo de riego
 insert into Pruebas.TipoRiego ( Nombre, Descripcion) values
-('Riego por Goteo', 'Se suministra agua directamente a las raíces de las plantas.'),
-('Riego por Aspersión', 'Utiliza aspersores para distribuir el agua en el terreno.'),
-('Riego por exudación', 'El agua se libera lentamente a través de tubos porosos.'),
-('Riego por Microaspersión', 'Sistema de riego localizado con microaspersores de bajo caudal'),
-('Riego por superficie o inundación', 'Se aplica agua directamente sobre el suelo.'),
+('Riego por Goteo', 'Se suministra agua directamente a las raï¿½ces de las plantas.'),
+('Riego por Aspersiï¿½n', 'Utiliza aspersores para distribuir el agua en el terreno.'),
+('Riego por exudaciï¿½n', 'El agua se libera lentamente a travï¿½s de tubos porosos.'),
+('Riego por Microaspersiï¿½n', 'Sistema de riego localizado con microaspersores de bajo caudal'),
+('Riego por superficie o inundaciï¿½n', 'Se aplica agua directamente sobre el suelo.'),
 ('Riego Manual', 'Riego realizado manualmente con mangueras o regaderas');
 
 select * from pruebas.TipoRiego
@@ -326,13 +326,13 @@ create table Pruebas.Socio --ya creada
 
 -- 8. socio
 insert into Pruebas.Socio ( Nombre, TipoSocio, Identidad, RTN, Correo, Telefono, DireccionID, Notas, Saldo) values
-('José Manuel Flores', 'Agricultor', '0502199812345', '05021998123456', 'joseflores@email.com', '9876-5432', 4, 'Productor de plátano en Choloma',0),
+('Josï¿½ Manuel Flores', 'Agricultor', '0502199812345', '05021998123456', 'joseflores@email.com', '9876-5432', 4, 'Productor de plï¿½tano en Choloma',0),
 ('Agrosuministros S.A.', 'Proveedor', '0501199923456', '05011999234567', 'ventas@agroceiba.hn', '2557-6789', 5, 'Distribuidor de fertilizantes', 0),
-('Carmen Elena Mejía', 'Agricultor', '0511198734567', '05011987345678', 'carmenmejia@email.com', '8765-4321', 6, 'Productora orgánica en Villanueva', 0),
+('Carmen Elena Mejï¿½a', 'Agricultor', '0511198734567', '05011987345678', 'carmenmejia@email.com', '8765-4321', 6, 'Productora orgï¿½nica en Villanueva', 0),
 ('Supermercados Del Norte', 'Consumidor', '0501199845678', '05011998456789', 'compras@delnorte.hn', '2558-7890', 7, 'Cadena regional de supermercados', 0),
 ('Roberto Alvarado', 'Agricultor', '0512199056789', '05121990567890', 'roberto.alvarado@email.com', '9654-3210', 8, 'Especialista en hortalizas', 0),
-('Insumos Agrícolas', 'Proveedor', '0501199167890', '05011991678901', 'info@insumoscortes.hn', '2559-8901', 9, 'Proveedor de semillas certificadas', 0),
-('Ana Sofía Castillo', 'Agricultor', '0510198978901', '05101989789012', 'ana.castillo@email.com', '9543-2109', 10, 'Cultivos de exportación Lago Yojoa' , 0),
+('Insumos Agrï¿½colas', 'Proveedor', '0501199167890', '05011991678901', 'info@insumoscortes.hn', '2559-8901', 9, 'Proveedor de semillas certificadas', 0),
+('Ana Sofï¿½a Castillo', 'Agricultor', '0510198978901', '05101989789012', 'ana.castillo@email.com', '9543-2109', 10, 'Cultivos de exportaciï¿½n Lago Yojoa' , 0),
 ('Supermercado La Colonia', 'Consumidor', '0501200012345','05012000123455', 'info@lacolonia.com', '2251-6352',11 , 'Supermercado La Colonia', 0  )
 
 select * from Pruebas.Socio 
@@ -398,11 +398,11 @@ create table Pruebas.Finca --ya creada
 
 -- 9. finca
 insert into Pruebas.Finca ( SocioID, Nombre, DireccionID, CapacidadAgua) values
-(1, 'Finca San José', 4, 'Alta'),
-(3, 'Finca Orgánica', 6, 'Media'),
-(5, 'Finca El Paraíso', 7, 'Alta'),
+(1, 'Finca San Josï¿½', 4, 'Alta'),
+(3, 'Finca Orgï¿½nica', 6, 'Media'),
+(5, 'Finca El Paraï¿½so', 7, 'Alta'),
 (7, 'Finca Lago Verde', 10, 'Alta'),
-(1, 'Finca Los Plátanos', 4, 'Media');
+(1, 'Finca Los Plï¿½tanos', 4, 'Media');
 
 select * from Pruebas.Finca 
 
@@ -433,12 +433,12 @@ create table Pruebas.TipoProducto -- ya creada
 insert into Pruebas.TipoProducto (NombreTipo, Categoria) values
 ('Semillas Certificadas', 'Insumo'),
 ('Fertilizantes', 'Insumo'),
-('Agroquímicos', 'Insumo'),
+('Agroquï¿½micos', 'Insumo'),
 ('Frutas Tropicales', 'Producto Agricola'),
 ('Hortalizas', 'Producto Agricola'),
-('Granos Básicos', 'Producto Agricola'),
+('Granos Bï¿½sicos', 'Producto Agricola'),
 ('Herramientas', 'Insumo'),
-('Cultivos Exportación', 'Producto Agricola');
+('Cultivos Exportaciï¿½n', 'Producto Agricola');
 
 select * from Pruebas.TipoProducto 
 
@@ -471,7 +471,7 @@ insert into Pruebas.UnidadMedida (Nombre, Abreviacion) values
 ('Libra', 'lb'),
 ('Quintal', 'q'),
 ('Litro', 'lts'),
-('Galón', 'gal'),
+('Galï¿½n', 'gal'),
 ('Saco', 'saco'),
 ('Caja', 'caja'),
 ('Unidad', 'ud'),
@@ -535,14 +535,14 @@ insert into Pruebas.Producto (TipoID, UnidadMedidaID, Nombre) values
 ( 3, 4, 'Fungicida Propiconazol'),
 ( 7, 8, 'Machete Tramontina'),
 ( 7, 8, 'Bomba Fumigadora'),
--- Productos Agrícolas (Típicos de Cortés)
+-- Productos Agrï¿½colas (Tï¿½picos de Cortï¿½s)
 (4, 7, 'Banano'),
-(4, 7, 'Plátano Verde'),
+(4, 7, 'Plï¿½tano Verde'),
 (5, 1, 'Tomate'),
 (5, 1, 'Lechuga Iceberg'),
-(6, 3, 'Maíz'),
+(6, 3, 'Maï¿½z'),
 (6, 3, 'Frijol Rojo'),
-(8, 1, 'Melón');
+(8, 1, 'Melï¿½n');
 
 select * from Pruebas.Producto 
 
@@ -551,7 +551,7 @@ select * from Pruebas.Producto
 
 -->>>>>>>>>>>>>>>>>>>>>>>> ProductoDetalle >>>>>>>>>>>>>>>>>>>>>>>> 
 
---Se agregó productos con lista de precio costo y se arreglo la tabla ya que como estaba no se podian agregar mas precios
+--Se agregï¿½ productos con lista de precio costo y se arreglo la tabla ya que como estaba no se podian agregar mas precios
 
 drop table  Pruebas.ProductoDetalle
 
@@ -591,18 +591,18 @@ insert into Pruebas.ProductoDetalle ( ProductoID, ListaPreciosID, Precio) values
 (8, 6, 1000.00),    -- Bomba Fumigadora costo
 (9, 1, 120.00),     -- Banano (caja)
 (9, 6, 90.00),     -- Banano (caja) Costo
-(10, 1, 95.00),     -- Plátano Verde (caja)
-(10, 6, 70.00),     -- Plátano Verde (caja) Costo
+(10, 1, 95.00),     -- Plï¿½tano Verde (caja)
+(10, 6, 70.00),     -- Plï¿½tano Verde (caja) Costo
 (11, 1, 25.00),     -- Tomate (kg)
 (11, 6, 10.00),     -- Tomate (kg) Costo
 (12, 1, 18.00),     -- Lechuga Iceberg (kg)
 (12, 6, 10.00),     -- Lechuga Iceberg (kg) Costo
-(13, 1, 520.00),    -- Maíz (q) - Precio oficial 2024
-(13, 6, 400.00),    -- Maíz (q) - Costo
+(13, 1, 520.00),    -- Maï¿½z (q) - Precio oficial 2024
+(13, 6, 400.00),    -- Maï¿½z (q) - Costo
 (14, 1, 850.00),    -- Frijol Rojo (q)
 (14, 6, 700.00),    -- Frijol Rojo (q) costo
-(15, 1, 45.00),     -- Melón (kg) 
-(15, 6, 30.00);     -- Melón (kg) costo
+(15, 1, 45.00),     -- Melï¿½n (kg) 
+(15, 6, 30.00);     -- Melï¿½n (kg) costo
 
 select * from pruebas.Producto p inner join
 Pruebas.ProductoDetalle pd on p.ProductoID = pd.ProductoID
@@ -640,10 +640,10 @@ create table Pruebas.Lote --ya creada
 
 -- 16. lote
 insert into Pruebas.Lote ( FincaID, ProductoID, TipoRiegoID, TipoSueloID, FechaSiembra, FechaCosecha, Extension) values
-(1, 11, 1, 3, '2024-03-15', '2024-07-15', 255.50),  -- Tomate Cherry en Finca San José
-(1, 15, 3, 2, '2024-01-10', '2024-12-10', 536.00),    -- Café en Finca San José
+(1, 11, 1, 3, '2024-03-15', '2024-07-15', 255.50),  -- Tomate Cherry en Finca San Josï¿½
+(1, 15, 3, 2, '2024-01-10', '2024-12-10', 536.00),    -- Cafï¿½ en Finca San Josï¿½
 (2, 12, 2, 4, '2024-04-01', '2024-06-01', 365.75),   -- Lechuga en Finca Las Flores
-(3, 13, 1, 5, '2024-05-20', '2024-10-20', 365.25),        -- Maíz en Finca El Paraíso
+(3, 13, 1, 5, '2024-05-20', '2024-10-20', 365.25),        -- Maï¿½z en Finca El Paraï¿½so
 (4, 9, 4, 1, '2024-02-01', '2024-05-01', 494.00),  -- Banano en Finca Bella Vista
 (5, 14, 2, 6, '2024-06-15', '2024-11-15', 265.80);    -- Frijol en Finca Los Robles
 
@@ -689,7 +689,7 @@ create table Pruebas.Bodega -- ya creada
 -- 14. bodega
 insert into Pruebas.Bodega ( Nombre, Capacidad, DireccionID) values
 ('Bodega Central SPS', 800.00, 1),
-('Bodega Puerto Cortés', 600.00, 5),
+('Bodega Puerto Cortï¿½s', 600.00, 5),
 ('Bodega Choloma', 400.00, 4),
 ('Bodega Villanueva', 350.00, 6),
 ('Bodega La Lima', 300.00, 7);
