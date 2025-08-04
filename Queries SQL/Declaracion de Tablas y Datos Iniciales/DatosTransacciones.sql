@@ -19,6 +19,9 @@ alter table Pruebas.SalidaProducto add Fecha datetime not null
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Compra>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>					
 
 INSERT INTO PRUEBAS.Compra ( ListaPreciosID, Fecha, SocioID, TipoPago, Estado)VALUES
+(6, '2025/08/03', 3, 'Credito', 'Cerrado')
+
+
 --Compra 1
 ( 6, '2025/07/07', 6, 'Credito', 'Cerrado'), --Compra a Socio 6 
 --Compra 2
@@ -34,7 +37,11 @@ INSERT INTO PRUEBAS.Compra ( ListaPreciosID, Fecha, SocioID, TipoPago, Estado)VA
 (6, '2025/07/07', 1, 'Credito', 'Cerrado')
 
 
+
 INSERT INTO PRUEBAS.CompraDetalle (CompraID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total) VALUES 
+(14,12 , 1, 1,15 , 25, 431.25 ),	--lechuga
+(14,13 , 1, 1, 10, 30, 345 )	--maiz
+---------
 --Compra Detalle 1
 (1, 1, 1, 1, 10, 85,977.5),  --Semilla Tomate 
 (1, 2, 1, 2, 10, 65, 747.5 ), --Semilla Lechuga 
@@ -56,8 +63,11 @@ INSERT INTO PRUEBAS.CompraDetalle (CompraID, ProductoID, ImpuestoID, BodegaID, C
 
 
 
+
 SELECT * FROM PRUEBAS.COMPRA c
 inner join pruebas.CompraDetalle cd on c.CompraID = cd.CompraID
+
+
 
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Recibo >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

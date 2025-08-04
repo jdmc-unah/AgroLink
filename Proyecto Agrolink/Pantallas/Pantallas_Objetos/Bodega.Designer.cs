@@ -18,6 +18,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnNuevaBodega = new Button();
             btnRecargar = new Button();
             btnBuscar = new Button();
             tbBuscar = new TextBox();
@@ -28,6 +29,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             Nombre = new DataGridViewTextBoxColumn();
             Capacidad = new DataGridViewTextBoxColumn();
             DireccionID = new DataGridViewTextBoxColumn();
+            Direccion = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaBodega).BeginInit();
@@ -35,6 +37,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnNuevaBodega);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
@@ -44,10 +47,21 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panel1.Name = "panel1";
             panel1.Size = new Size(2761, 266);
             panel1.TabIndex = 0;
+            //
+            // btnNuevaBodega
+            //
+            btnNuevaBodega.Location = new Point(1700, 62);
+            btnNuevaBodega.Margin = new Padding(5, 7, 5, 7);
+            btnNuevaBodega.Name = "btnNuevaBodega";
+            btnNuevaBodega.Size = new Size(378, 82);
+            btnNuevaBodega.TabIndex = 4;
+            btnNuevaBodega.Text = "Nueva Bodega";
+            btnNuevaBodega.UseVisualStyleBackColor = true;
+            btnNuevaBodega.Click += btnNuevaBodega_Click;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(1889, 62);
+            btnRecargar.Location = new Point(1500, 62);
             btnRecargar.Margin = new Padding(5, 7, 5, 7);
             btnRecargar.Name = "btnRecargar";
             btnRecargar.Size = new Size(189, 82);
@@ -92,7 +106,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             tablaBodega.AllowUserToAddRows = false;
             tablaBodega.AllowUserToDeleteRows = false;
             tablaBodega.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaBodega.Columns.AddRange(new DataGridViewColumn[] { BodegaID, CodigoBodega, Nombre, Capacidad, DireccionID });
+            tablaBodega.Columns.AddRange(new DataGridViewColumn[] { BodegaID, CodigoBodega, Nombre, Capacidad, DireccionID, Direccion });
             tablaBodega.Dock = DockStyle.Fill;
             tablaBodega.Location = new Point(0, 0);
             tablaBodega.Margin = new Padding(5, 7, 5, 7);
@@ -102,6 +116,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             tablaBodega.RowHeadersWidth = 62;
             tablaBodega.Size = new Size(2761, 1225);
             tablaBodega.TabIndex = 0;
+            tablaBodega.CellDoubleClick += tablaBodega_CellDoubleClick;
             // 
             // BodegaID
             // 
@@ -148,6 +163,15 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             DireccionID.Name = "DireccionID";
             DireccionID.ReadOnly = true;
             DireccionID.Width = 200;
+            //
+            // Direccion
+            //
+            Direccion.DataPropertyName = "Direccion";
+            Direccion.HeaderText = "Dirección";
+            Direccion.MinimumWidth = 8;
+            Direccion.Name = "Direccion";
+            Direccion.ReadOnly = true;
+            Direccion.Width = 400;
             // 
             // Bodega
             // 
@@ -171,6 +195,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         #endregion
 
         private Panel panel1;
+        private Button btnNuevaBodega;
         private Button btnRecargar;
         private Button btnBuscar;
         private TextBox tbBuscar;
@@ -181,5 +206,6 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Capacidad;
         private DataGridViewTextBoxColumn DireccionID;
+        private DataGridViewTextBoxColumn Direccion;
     }
 }

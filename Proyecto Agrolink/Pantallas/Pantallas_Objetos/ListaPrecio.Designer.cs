@@ -18,6 +18,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnNuevoPrecio = new Button();
             btnRecargar = new Button();
             btnBuscar = new Button();
             tbBuscar = new TextBox();
@@ -33,6 +34,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnNuevoPrecio);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
@@ -42,6 +44,17 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 100);
             panel1.TabIndex = 0;
+            //
+            // btnNuevoPrecio
+            //
+            btnNuevoPrecio.Location = new Point(710, 20);
+            btnNuevoPrecio.Margin = new Padding(5, 7, 5, 7);
+            btnNuevoPrecio.Name = "btnNuevoPrecio";
+            btnNuevoPrecio.Size = new Size(160, 40);
+            btnNuevoPrecio.TabIndex = 3;
+            btnNuevoPrecio.Text = "Nuevo Precio";
+            btnNuevoPrecio.UseVisualStyleBackColor = true;
+            btnNuevoPrecio.Click += new System.EventHandler(this.btnNuevoPrecio_Click);
             // 
             // btnRecargar
             // 
@@ -155,6 +168,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         #endregion
 
         private Panel panel1;
+        private Button btnNuevoPrecio;
         private Button btnRecargar;
         private Button btnBuscar;
         private TextBox tbBuscar;

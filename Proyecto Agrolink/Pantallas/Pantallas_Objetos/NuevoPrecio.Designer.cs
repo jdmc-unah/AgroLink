@@ -1,9 +1,16 @@
 namespace AgroLink.Pantallas.Pantallas_Objetos
 {
-    partial class NuevoProducto
+    partial class NuevoPrecio
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -15,17 +22,19 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         #region Windows Form Designer generated code
 
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
             this.panelTitulo = new Panel();
             this.labelTitulo = new Label();
             this.panelSuperior = new Panel();
-            this.tbNombre = new TextBox();
-            this.label3 = new Label();;
+            this.txtNombre = new TextBox();
             this.label1 = new Label();
-            this.label4 = new Label();
-            this.comboUnidadMedida = new ComboBox();
-            this.comboTipoProducto = new ComboBox();
+            this.label2 = new Label();
+            this.cmbActivo = new ComboBox();
             this.panelInferior = new Panel();
             this.btnVolver = new Button();
             this.btnCancelar = new Button();
@@ -38,96 +47,78 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // panelTitulo
             // 
             this.panelTitulo.Controls.Add(this.labelTitulo);
-            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitulo.Dock = DockStyle.Top;
             this.panelTitulo.Location = new Point(0, 0);
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new Size(1200, 100);
-            this.panelTitulo.TabIndex = 2;
+            this.panelTitulo.TabIndex = 0;
             // 
             // labelTitulo
             // 
             this.labelTitulo.AutoSize = true;
-            this.labelTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            this.labelTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             this.labelTitulo.Location = new Point(50, 30);
             this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new Size(255, 45);
+            this.labelTitulo.Size = new Size(238, 45);
             this.labelTitulo.TabIndex = 0;
-            this.labelTitulo.Text = "Nuevo Producto";
+            this.labelTitulo.Text = "Nuevo Precio";
             // 
             // panelSuperior
             // 
-            this.panelSuperior.Controls.Add(this.tbNombre);
-            this.panelSuperior.Controls.Add(this.label3);
-            this.panelSuperior.Controls.Add(this.label4);
+            this.panelSuperior.Controls.Add(this.cmbActivo);
+            this.panelSuperior.Controls.Add(this.txtNombre);
+            this.panelSuperior.Controls.Add(this.label2);
             this.panelSuperior.Controls.Add(this.label1);
-            this.panelSuperior.Controls.Add(this.comboUnidadMedida);
-            this.panelSuperior.Controls.Add(this.comboTipoProducto);
             this.panelSuperior.Dock = DockStyle.Top;
             this.panelSuperior.Location = new Point(0, 100);
             this.panelSuperior.Name = "panelSuperior";
             this.panelSuperior.Size = new Size(1200, 300);
-            this.panelSuperior.TabIndex = 0;
+            this.panelSuperior.TabIndex = 1;
             // 
-            // tbNombre
+            // txtNombre
             // 
-            this.tbNombre.Location = new Point(200, 150);
-            this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new Size(300, 39);
-            this.tbNombre.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new Point(50, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(101, 32);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Nombre";
+            this.txtNombre.Location = new Point(200, 50);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new Size(300, 39);
+            this.txtNombre.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new Point(600, 50);
+            this.label1.Location = new Point(50, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new Size(202, 32);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Tipo de Producto";
+            this.label1.Size = new Size(101, 32);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nombre";
             // 
-            // label4
+            // label2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new Point(600, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(203, 32);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Unidad de Medida";
+            this.label2.AutoSize = true;
+            this.label2.Location = new Point(600, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new Size(76, 32);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Activo";
             // 
-            // comboUnidadMedida
+            // cmbActivo
             // 
-            this.comboUnidadMedida.FormattingEnabled = true;
-            this.comboUnidadMedida.Location = new Point(850, 150);
-            this.comboUnidadMedida.Name = "comboUnidadMedida";
-            this.comboUnidadMedida.Size = new Size(300, 40);
-            this.comboUnidadMedida.TabIndex = 1;
-            // 
-            // comboTipoProducto
-            // 
-            this.comboTipoProducto.FormattingEnabled = true;
-            this.comboTipoProducto.Location = new Point(850, 50);
-            this.comboTipoProducto.Name = "comboTipoProducto";
-            this.comboTipoProducto.Size = new Size(300, 40);
-            this.comboTipoProducto.TabIndex = 0;
+            this.cmbActivo.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmbActivo.FormattingEnabled = true;
+            this.cmbActivo.Location = new Point(750, 50);
+            this.cmbActivo.Name = "cmbActivo";
+            this.cmbActivo.Size = new Size(150, 40);
+            this.cmbActivo.TabIndex = 1;
             // 
             // panelInferior
             // 
             this.panelInferior.Controls.Add(this.btnVolver);
             this.panelInferior.Controls.Add(this.btnCancelar);
             this.panelInferior.Controls.Add(this.btnAgregar);
-            this.panelInferior.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelInferior.Dock = DockStyle.Fill;
             this.panelInferior.Location = new Point(0, 400);
             this.panelInferior.Name = "panelInferior";
             this.panelInferior.Size = new Size(1200, 100);
-            this.panelInferior.TabIndex = 1;
+            this.panelInferior.TabIndex = 2;
             // 
             // btnVolver
             // 
@@ -157,9 +148,9 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new EventHandler(this.btnGuardar_Click);
+            this.btnAgregar.Click += new EventHandler(this.btnAgregar_Click);
             // 
-            // NuevoProducto
+            // NuevoPrecio
             // 
             this.AutoScaleDimensions = new SizeF(13F, 32F);
             this.AutoScaleMode = AutoScaleMode.Font;
@@ -168,12 +159,14 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.Controls.Add(this.panelSuperior);
             this.Controls.Add(this.panelTitulo);
             this.FormBorderStyle = FormBorderStyle.None;
-            this.Name = "NuevoProducto";
-            this.Text = "NuevoProducto";
-            this.Load += new EventHandler(this.NuevoProducto_Load);
-            this.panelTitulo.SuspendLayout();
-            this.panelSuperior.SuspendLayout();
-            this.panelInferior.SuspendLayout();
+            this.Name = "NuevoPrecio";
+            this.Text = "NuevoPrecio";
+            this.Load += new EventHandler(this.NuevoPrecio_Load);
+            this.panelTitulo.ResumeLayout(false);
+            this.panelTitulo.PerformLayout();
+            this.panelSuperior.ResumeLayout(false);
+            this.panelSuperior.PerformLayout();
+            this.panelInferior.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -183,12 +176,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private Panel panelTitulo;
         private Label labelTitulo;
         private Panel panelSuperior;
-        private TextBox tbNombre;
-        private Label label3;
+        private TextBox txtNombre;
         private Label label1;
-        private Label label4;
-        private ComboBox comboUnidadMedida;
-        private ComboBox comboTipoProducto;
+        private Label label2;
+        private ComboBox cmbActivo;
         private Panel panelInferior;
         private Button btnVolver;
         private Button btnCancelar;

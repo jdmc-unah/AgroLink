@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using AgroLink.Pantallas;
 using AgroLink.Pantallas.Pantallas_Objetos;
 
 namespace AgroLink.Pantallas.Pantallas_Objetos
@@ -42,6 +43,30 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void tbBuscar_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnNuevaBodega_Click(object sender, EventArgs e)
+        {
+            if (PantallaPrincipal.instanciaPantPrincipal != null)
+            {
+                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevaBodega());
+            }
+        }
+
+        private void tablaBodega_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = tablaBodega.Rows[e.RowIndex];
+                int bodegaID = Convert.ToInt32(row.Cells["BodegaID"].Value);
+                
+                BodegaDetalle bodegaDetalle = new BodegaDetalle(bodegaID);
+                if (PantallaPrincipal.instanciaPantPrincipal != null)
+                {
+                    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new BodegaDetalle(bodegaID));
+                }
+
+            }
         }
     }
 }

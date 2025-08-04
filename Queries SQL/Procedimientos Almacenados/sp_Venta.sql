@@ -276,7 +276,7 @@ as
 			end
 
 		
-		--Actualiza Stock  --*****HAY UN BUG RARO PENDIENTE DE RESOLVER CANT CORRECTA********************
+		--Actualiza Stock  --
 	
 		declare @prod int,  @bodID int, @cantNueva float , @cantAnterior float, @compromet float
 

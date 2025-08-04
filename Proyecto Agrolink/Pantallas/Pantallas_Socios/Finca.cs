@@ -70,7 +70,6 @@ namespace AgroLink.Pantallas.Pantallas_Socios
         private void Finca_Load(object sender, EventArgs e)
         {
             llenar_comboboxs();
-            tbNombreFinca.ReadOnly = true;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -106,7 +105,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
 
 
        
-
+        //se pudo ingresar exitosamente
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -118,22 +117,50 @@ namespace AgroLink.Pantallas.Pantallas_Socios
                     return;
                 }
 
+                //verificamos si le uso nombre a la finca ;-;
+                if(string.IsNullOrWhiteSpace(tbNombreFinca.Text))
+                {
+                    MessageBox.Show("Debe Ingresar Un nombre a la Finca", "Campo obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
                 // lenar una tabla con los datos que hay en el formulario
                 Dictionary<string, object> parametros = new Dictionary<string, object>()
                 {
                     {"socioID",comboBox_Socio.SelectedValue },
+                    {"NombreFinca",tbNombreFinca.Text },
                     {"MunicipioID",comboBox_Municipio.SelectedValue },
-                    { "Colonia", (object?)tbColonia ?? DBNull.Value }, //verificamos si viene nulo 
-                    { "Detalle", (object?)tbDetalleUbicacion ?? DBNull.Value },
-                    { "CapacidadAgua", comboBox_CapacidadAgua.SelectedItem.ToString() }
+                    { "Colonia", string.IsNullOrWhiteSpace(tbColonia.Text) ? DBNull.Value : tbColonia.Text.Trim() },
+                    { "Detalle", string.IsNullOrWhiteSpace(tbDetalleUbicacion.Text) ? DBNull.Value : tbDetalleUbicacion.Text.Trim() },//validacion si vienen nulos
+                    { "CapacidadAgua", comboBox_CapacidadAgua.SelectedItem.ToString() },
+                    
                 };
+
+                DataTable resultado = recSQL.EjecutarSPDataTable("spCrearFinca",parametros);
+
+
+                if (resultado != null && resultado.Rows.Count > 0)
+                {
+                    MessageBox.Show("lote agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //si se ingreso la finca regresamos a la pantalla de agricultor 
+                    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Pantallas_Socios.Agricultor());
+
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar la finca correctamente; Intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
 
 
             }
             catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show($"Error al guardar Crear Finca: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
