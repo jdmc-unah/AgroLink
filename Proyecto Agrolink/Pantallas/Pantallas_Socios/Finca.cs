@@ -117,7 +117,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
                     return;
                 }
 
-                //verificamos si le uso nombre a la finca ;-;
+                //verificamos si le puso nombre a la finca ;-;
                 if(string.IsNullOrWhiteSpace(tbNombreFinca.Text))
                 {
                     MessageBox.Show("Debe Ingresar Un nombre a la Finca", "Campo obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -164,9 +164,9 @@
             // comboBox_Departamento
             // 
             comboBox_Departamento.FormattingEnabled = true;
-            comboBox_Departamento.Location = new Point(104, 150);
+            comboBox_Departamento.Location = new Point(122, 155);
             comboBox_Departamento.Name = "comboBox_Departamento";
-            comboBox_Departamento.Size = new Size(168, 28);
+            comboBox_Departamento.Size = new Size(208, 28);
             comboBox_Departamento.TabIndex = 15;
             comboBox_Departamento.SelectedIndexChanged += comboBox_Departamento_SelectedIndexChanged;
             // 
