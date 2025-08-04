@@ -212,10 +212,10 @@ namespace AgroLink.Pantallas
 
 
 
-            tablaTopCompra.DataSource = recSQL.EjecutarSPDataTable("spTop3ProductoVendido");
+            tablaTopCompra.DataSource = recSQL.EjecutarSPDataTable("spTop3ProductoComprado");
             tablaTopCompra.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            tablaTopVenta.DataSource = recSQL.EjecutarSPDataTable("spTop3ProductoComprado");
+            tablaTopVenta.DataSource = recSQL.EjecutarSPDataTable("spTop3ProductoVendido");
             tablaTopVenta.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 

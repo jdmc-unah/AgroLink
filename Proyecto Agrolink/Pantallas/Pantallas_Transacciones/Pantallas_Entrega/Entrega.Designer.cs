@@ -55,12 +55,12 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2629, 287);
+            panel2.Size = new Size(2916, 287);
             panel2.TabIndex = 5;
             // 
             // btnRecargarEntrega
             // 
-            btnRecargarEntrega.Location = new Point(1121, 124);
+            btnRecargarEntrega.Location = new Point(58, 174);
             btnRecargarEntrega.Name = "btnRecargarEntrega";
             btnRecargarEntrega.Size = new Size(292, 57);
             btnRecargarEntrega.TabIndex = 3;
@@ -70,7 +70,7 @@
             // 
             // btnNuevaEntrega
             // 
-            btnNuevaEntrega.Location = new Point(1467, 124);
+            btnNuevaEntrega.Location = new Point(404, 174);
             btnNuevaEntrega.Name = "btnNuevaEntrega";
             btnNuevaEntrega.Size = new Size(394, 57);
             btnNuevaEntrega.TabIndex = 2;
@@ -80,7 +80,7 @@
             // 
             // btnBuscarEntrega
             // 
-            btnBuscarEntrega.Location = new Point(648, 128);
+            btnBuscarEntrega.Location = new Point(655, 79);
             btnBuscarEntrega.Name = "btnBuscarEntrega";
             btnBuscarEntrega.Size = new Size(189, 57);
             btnBuscarEntrega.TabIndex = 1;
@@ -90,7 +90,7 @@
             // 
             // tbBuscarEntrega
             // 
-            tbBuscarEntrega.Location = new Point(51, 134);
+            tbBuscarEntrega.Location = new Point(58, 85);
             tbBuscarEntrega.Name = "tbBuscarEntrega";
             tbBuscarEntrega.PlaceholderText = "Código de Entrega o Nombre de Socio...";
             tbBuscarEntrega.Size = new Size(572, 47);
@@ -108,7 +108,7 @@
             tablaEntrega.Name = "tablaEntrega";
             tablaEntrega.ReadOnly = true;
             tablaEntrega.RowHeadersWidth = 102;
-            tablaEntrega.Size = new Size(2629, 1167);
+            tablaEntrega.Size = new Size(2916, 1425);
             tablaEntrega.TabIndex = 6;
             tablaEntrega.DoubleClick += tablaEntrega_DoubleClick;
             // 
@@ -191,7 +191,7 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2629, 1454);
+            ClientSize = new Size(2916, 1712);
             Controls.Add(tablaEntrega);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;

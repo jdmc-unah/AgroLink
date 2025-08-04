@@ -62,17 +62,15 @@
             panel1.Controls.Add(tbBuscar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1145, 175);
+            panel1.Size = new Size(2916, 287);
             panel1.TabIndex = 1;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(659, 78);
-            btnRecargar.Margin = new Padding(2, 2, 2, 2);
+            btnRecargar.Location = new Point(59, 175);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(172, 35);
+            btnRecargar.Size = new Size(292, 57);
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
@@ -80,10 +78,9 @@
             // 
             // btnNuevaFactura
             // 
-            btnNuevaFactura.Location = new Point(863, 78);
-            btnNuevaFactura.Margin = new Padding(2, 2, 2, 2);
+            btnNuevaFactura.Location = new Point(406, 175);
             btnNuevaFactura.Name = "btnNuevaFactura";
-            btnNuevaFactura.Size = new Size(172, 35);
+            btnNuevaFactura.Size = new Size(292, 57);
             btnNuevaFactura.TabIndex = 2;
             btnNuevaFactura.Text = "Nueva Factura";
             btnNuevaFactura.UseVisualStyleBackColor = true;
@@ -91,10 +88,9 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(381, 78);
-            btnBuscar.Margin = new Padding(2, 2, 2, 2);
+            btnBuscar.Location = new Point(656, 71);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(111, 35);
+            btnBuscar.Size = new Size(189, 57);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -102,11 +98,10 @@
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(30, 82);
-            tbBuscar.Margin = new Padding(2, 2, 2, 2);
+            tbBuscar.Location = new Point(59, 77);
             tbBuscar.Name = "tbBuscar";
             tbBuscar.PlaceholderText = "Código de Factura o Nombre de Socio...";
-            tbBuscar.Size = new Size(338, 31);
+            tbBuscar.Size = new Size(572, 47);
             tbBuscar.TabIndex = 0;
             // 
             // tablaFactura
@@ -116,13 +111,12 @@
             tablaFactura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaFactura.Columns.AddRange(new DataGridViewColumn[] { FacturaID, CodigoFactura, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, CodigoVenta, Estado, Total, CAI, EmpleadoID, SocioID, ListaPreciosID, NumFiscalID, VentaID });
             tablaFactura.Dock = DockStyle.Fill;
-            tablaFactura.Location = new Point(0, 175);
-            tablaFactura.Margin = new Padding(2, 2, 2, 2);
+            tablaFactura.Location = new Point(0, 287);
             tablaFactura.MultiSelect = false;
             tablaFactura.Name = "tablaFactura";
             tablaFactura.ReadOnly = true;
             tablaFactura.RowHeadersWidth = 102;
-            tablaFactura.Size = new Size(1145, 499);
+            tablaFactura.Size = new Size(2916, 1425);
             tablaFactura.TabIndex = 2;
             tablaFactura.DoubleClick += tablaFactura_DoubleClick;
             // 
@@ -144,7 +138,7 @@
             CodigoFactura.MinimumWidth = 12;
             CodigoFactura.Name = "CodigoFactura";
             CodigoFactura.ReadOnly = true;
-            CodigoFactura.Width = 107;
+            CodigoFactura.Width = 170;
             // 
             // Fecha
             // 
@@ -280,13 +274,12 @@
             // 
             // Factura
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1145, 674);
+            ClientSize = new Size(2916, 1712);
             Controls.Add(tablaFactura);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
             Name = "Factura";
             Text = "Factura";
             Load += Factura_Load;

@@ -60,12 +60,12 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2693, 287);
+            panel1.Size = new Size(2916, 287);
             panel1.TabIndex = 0;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(1245, 124);
+            btnRecargar.Location = new Point(75, 186);
             btnRecargar.Name = "btnRecargar";
             btnRecargar.Size = new Size(292, 57);
             btnRecargar.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             // btnNuevaVenta
             // 
-            btnNuevaVenta.Location = new Point(1567, 124);
+            btnNuevaVenta.Location = new Point(398, 186);
             btnNuevaVenta.Name = "btnNuevaVenta";
             btnNuevaVenta.Size = new Size(292, 57);
             btnNuevaVenta.TabIndex = 2;
@@ -85,7 +85,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(648, 128);
+            btnBuscar.Location = new Point(672, 65);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(189, 57);
             btnBuscar.TabIndex = 1;
@@ -95,7 +95,7 @@
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(51, 134);
+            tbBuscar.Location = new Point(75, 71);
             tbBuscar.Name = "tbBuscar";
             tbBuscar.PlaceholderText = "Código de Venta o Nombre de Socio...";
             tbBuscar.Size = new Size(572, 47);
@@ -107,7 +107,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 287);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2693, 1343);
+            panel2.Size = new Size(2916, 1425);
             panel2.TabIndex = 1;
             // 
             // tablaVenta
@@ -122,7 +122,7 @@
             tablaVenta.Name = "tablaVenta";
             tablaVenta.ReadOnly = true;
             tablaVenta.RowHeadersWidth = 102;
-            tablaVenta.Size = new Size(2693, 1343);
+            tablaVenta.Size = new Size(2916, 1425);
             tablaVenta.TabIndex = 0;
             tablaVenta.CellDoubleClick += tablaVenta_CellDoubleClick;
             // 
@@ -233,7 +233,7 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2693, 1630);
+            ClientSize = new Size(2916, 1712);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;

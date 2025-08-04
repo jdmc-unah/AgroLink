@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             comboTipoPago = new ComboBox();
             label5 = new Label();
             comboListaPrecio = new ComboBox();
@@ -62,7 +62,6 @@
             panel2 = new Panel();
             panel3 = new Panel();
             btnNuevaSalProd = new Button();
-            btnNuevaSalProd = new Button();
             tbTotal = new TextBox();
             label8 = new Label();
             tbSubtotal = new TextBox();
@@ -79,7 +78,7 @@
             comboTipoPago.Enabled = false;
             comboTipoPago.FormattingEnabled = true;
             comboTipoPago.Items.AddRange(new object[] { "Contado", "Credito" });
-            comboTipoPago.Location = new Point(2224, 255);
+            comboTipoPago.Location = new Point(2352, 260);
             comboTipoPago.Margin = new Padding(4);
             comboTipoPago.Name = "comboTipoPago";
             comboTipoPago.Size = new Size(438, 49);
@@ -88,7 +87,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(1997, 259);
+            label5.Location = new Point(2119, 264);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(194, 41);
@@ -99,16 +98,17 @@
             // 
             comboListaPrecio.Enabled = false;
             comboListaPrecio.FormattingEnabled = true;
-            comboListaPrecio.Location = new Point(1319, 255);
+            comboListaPrecio.Location = new Point(1363, 260);
             comboListaPrecio.Margin = new Padding(4);
             comboListaPrecio.Name = "comboListaPrecio";
             comboListaPrecio.Size = new Size(438, 49);
             comboListaPrecio.TabIndex = 18;
+            comboListaPrecio.SelectionChangeCommitted += comboListaPrecio_SelectionChangeCommitted;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1077, 259);
+            label4.Location = new Point(1121, 264);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(222, 41);
@@ -119,7 +119,7 @@
             // 
             comboSocio.Enabled = false;
             comboSocio.FormattingEnabled = true;
-            comboSocio.Location = new Point(221, 255);
+            comboSocio.Location = new Point(226, 255);
             comboSocio.Margin = new Padding(4);
             comboSocio.Name = "comboSocio";
             comboSocio.Size = new Size(633, 49);
@@ -128,7 +128,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(104, 259);
+            label3.Location = new Point(109, 259);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(91, 41);
@@ -137,7 +137,7 @@
             // 
             // tbCodigo
             // 
-            tbCodigo.Location = new Point(198, 67);
+            tbCodigo.Location = new Point(203, 67);
             tbCodigo.Margin = new Padding(4);
             tbCodigo.Name = "tbCodigo";
             tbCodigo.ReadOnly = true;
@@ -147,7 +147,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(60, 70);
+            label1.Location = new Point(65, 70);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(116, 41);
@@ -157,7 +157,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(508, 70);
+            label2.Location = new Point(513, 70);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(107, 41);
@@ -183,7 +183,7 @@
             panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(11, 0, 0, 0);
-            panel1.Size = new Size(3876, 385);
+            panel1.Size = new Size(2916, 385);
             panel1.TabIndex = 21;
             // 
             // comboEstado
@@ -191,7 +191,7 @@
             comboEstado.Enabled = false;
             comboEstado.FormattingEnabled = true;
             comboEstado.Items.AddRange(new object[] { "Abierto", "Cerrado", "Cancelado" });
-            comboEstado.Location = new Point(646, 66);
+            comboEstado.Location = new Point(651, 66);
             comboEstado.Margin = new Padding(4);
             comboEstado.Name = "comboEstado";
             comboEstado.Size = new Size(257, 49);
@@ -200,7 +200,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(2276, 70);
+            label6.Location = new Point(2441, 82);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(95, 41);
@@ -212,7 +212,7 @@
             dateTimePicker1.CustomFormat = "yyyy/MM/dd";
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(2377, 67);
+            dateTimePicker1.Location = new Point(2542, 79);
             dateTimePicker1.Margin = new Padding(4);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(248, 47);
@@ -220,7 +220,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(2119, 81);
+            btnCancelar.Location = new Point(2623, 248);
             btnCancelar.Margin = new Padding(8);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(223, 68);
@@ -232,7 +232,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(364, 82);
+            btnEditar.Location = new Point(76, 81);
             btnEditar.Margin = new Padding(8);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(223, 68);
@@ -243,7 +243,7 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(1843, 81);
+            btnAceptar.Location = new Point(2352, 248);
             btnAceptar.Margin = new Padding(8);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(223, 68);
@@ -255,7 +255,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(76, 82);
+            btnVolver.Location = new Point(76, 248);
             btnVolver.Margin = new Padding(8);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(219, 68);
@@ -275,7 +275,7 @@
             tablaDetalle.Name = "tablaDetalle";
             tablaDetalle.ReadOnly = true;
             tablaDetalle.RowHeadersWidth = 102;
-            tablaDetalle.Size = new Size(3876, 953);
+            tablaDetalle.Size = new Size(2916, 953);
             tablaDetalle.TabIndex = 1;
             tablaDetalle.CellEndEdit += tablaDetalle_CellEndEdit;
             tablaDetalle.DataError += tablaDetalle_DataError;
@@ -283,8 +283,8 @@
             // VentaID
             // 
             VentaID.DataPropertyName = "VentaID";
-            dataGridViewCellStyle5.NullValue = "0";
-            VentaID.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.NullValue = "0";
+            VentaID.DefaultCellStyle = dataGridViewCellStyle1;
             VentaID.HeaderText = "VentaID";
             VentaID.MinimumWidth = 12;
             VentaID.Name = "VentaID";
@@ -295,8 +295,8 @@
             // CodigoProducto
             // 
             CodigoProducto.DataPropertyName = "CodigoProducto";
-            dataGridViewCellStyle6.NullValue = "PRO";
-            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.NullValue = "PRO";
+            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle2;
             CodigoProducto.HeaderText = "Codigo";
             CodigoProducto.MinimumWidth = 12;
             CodigoProducto.Name = "CodigoProducto";
@@ -344,8 +344,8 @@
             // Subtotal
             // 
             Subtotal.DataPropertyName = "Subtotal";
-            dataGridViewCellStyle7.NullValue = "0";
-            Subtotal.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.NullValue = "0";
+            Subtotal.DefaultCellStyle = dataGridViewCellStyle3;
             Subtotal.HeaderText = "Subtotal";
             Subtotal.MinimumWidth = 12;
             Subtotal.Name = "Subtotal";
@@ -366,8 +366,8 @@
             // Total
             // 
             Total.DataPropertyName = "Total";
-            dataGridViewCellStyle8.NullValue = "0";
-            Total.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.NullValue = "0";
+            Total.DefaultCellStyle = dataGridViewCellStyle4;
             Total.HeaderText = "Total";
             Total.MinimumWidth = 12;
             Total.Name = "Total";
@@ -381,7 +381,7 @@
             panel2.Location = new Point(0, 385);
             panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(3876, 953);
+            panel2.Size = new Size(2916, 953);
             panel2.TabIndex = 22;
             // 
             // panel3
@@ -400,12 +400,12 @@
             panel3.Location = new Point(0, 1338);
             panel3.Margin = new Padding(4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(3876, 570);
+            panel3.Size = new Size(2916, 374);
             panel3.TabIndex = 28;
             // 
             // btnNuevaSalProd
             // 
-            btnNuevaSalProd.Location = new Point(982, 81);
+            btnNuevaSalProd.Location = new Point(694, 81);
             btnNuevaSalProd.Margin = new Padding(8);
             btnNuevaSalProd.Name = "btnNuevaSalProd";
             btnNuevaSalProd.Size = new Size(416, 68);
@@ -416,45 +416,49 @@
             // 
             // tbTotal
             // 
-            tbTotal.Location = new Point(2578, 209);
+            tbTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            tbTotal.Location = new Point(2526, 85);
             tbTotal.Margin = new Padding(4);
             tbTotal.Name = "tbTotal";
             tbTotal.ReadOnly = true;
-            tbTotal.Size = new Size(320, 31);
+            tbTotal.Size = new Size(320, 61);
             tbTotal.TabIndex = 31;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(2437, 212);
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label8.Location = new Point(2401, 88);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(49, 25);
+            label8.Size = new Size(115, 54);
             label8.TabIndex = 32;
             label8.Text = "Total";
             // 
             // tbSubtotal
             // 
-            tbSubtotal.Location = new Point(2578, 94);
+            tbSubtotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            tbSubtotal.Location = new Point(2134, 85);
             tbSubtotal.Margin = new Padding(2);
             tbSubtotal.Name = "tbSubtotal";
             tbSubtotal.ReadOnly = true;
-            tbSubtotal.Size = new Size(257, 47);
+            tbSubtotal.Size = new Size(257, 61);
             tbSubtotal.TabIndex = 29;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(2437, 98);
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label7.Location = new Point(1941, 88);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(129, 41);
+            label7.Size = new Size(183, 54);
             label7.TabIndex = 30;
             label7.Text = "Subtotal";
             // 
             // btnCrearFact
             // 
-            btnCrearFact.Location = new Point(656, 82);
+            btnCrearFact.Location = new Point(368, 81);
             btnCrearFact.Margin = new Padding(8);
             btnCrearFact.Name = "btnCrearFact";
             btnCrearFact.Size = new Size(257, 68);
@@ -467,7 +471,7 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(3876, 1908);
+            ClientSize = new Size(2916, 1712);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);

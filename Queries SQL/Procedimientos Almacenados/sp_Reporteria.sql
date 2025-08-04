@@ -90,7 +90,13 @@ as
 			SELECT  S.CodigoSocio , S.Nombre, S.Saldo,  MAX(C.Fecha) as [Ultima Fecha Crédito]
 			FROM pruebas.Socio S
 			left join pruebas.Compra C on S.SocioID = C.SocioID
-			WHERE C.TipoPago = 'Credito' 
+			WHERE C.TipoPago = 'Credito'
+			group by  S.CodigoSocio , S.Nombre , S.Saldo
+			Union
+			SELECT  S.CodigoSocio , S.Nombre, S.Saldo,  MAX(V.Fecha) as [Ultima Fecha Crédito]
+			FROM pruebas.Socio S
+			LEFT join pruebas.Venta V on S.SocioID = V.SocioID
+			WHERE V.TipoPago = 'Credito'
 			group by  S.CodigoSocio , S.Nombre , S.Saldo
 
 		ELSE
@@ -172,8 +178,8 @@ CREATE OR ALTER PROCEDURE spTop3ProductoVendido
 as
 	begin
 		--> producto mas vendido 
-		select top 3 P.CodigoProducto, P.Nombre , COUNT(*) AS 'Cantidad' , SUM(FD.Total) as 'Total'
-		from pruebas.FacturaDetalle fd
+		select top 3 P.CodigoProducto, P.Nombre , SUM(Cantidad) AS 'Cantidad' , SUM(FD.Total) as 'Total'
+		from pruebas.VentaDetalle fd
 		inner join pruebas.Producto p on fd.ProductoID = p.ProductoID
 		group by  P.Nombre, P.CodigoProducto order by Total desc
 	end	
@@ -187,8 +193,8 @@ CREATE OR ALTER PROCEDURE spTop3ProductoComprado
 as
 	begin
 		--> producto mas comprado 
-		select top 3 P.CodigoProducto, P.Nombre , COUNT(*) AS 'Cantidad' , SUM(RD.Total) as 'Total'
-		from pruebas.ReciboDetalle Rd
+		select top 3 P.CodigoProducto, P.Nombre , SUM(Cantidad) AS 'Cantidad' , SUM(RD.Total) as 'Total'
+		from pruebas.CompraDetalle Rd
 		inner join pruebas.Producto p on Rd.ProductoID = p.ProductoID
 		group by  P.Nombre, P.CodigoProducto order by Total desc
 	end	

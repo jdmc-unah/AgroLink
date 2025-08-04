@@ -226,12 +226,20 @@ begin
     -- actualiza saldo del socio si la compra fue a credito
     if @tipoPago = 'Credito' and @estadoRecibo = 'Cerrado'
     begin
-        select @saldo = case when Saldo - @nuevoTotalRecibo < 0 then 0 else Saldo - @nuevoTotalRecibo end
-        from Pruebas.Socio where SocioID = @socID
+        --select @saldo = case when Saldo - @nuevoTotalRecibo < 0 then 0 else Saldo - @nuevoTotalRecibo end
+        --from Pruebas.Socio where SocioID = @socID
         
-        update Pruebas.Socio 
-        set Saldo = @saldo 
-        where SocioID = @socID
+        --update Pruebas.Socio 
+        --set Saldo = @saldo 
+        --where SocioID = @socID
+
+		select @saldo = case when saldo < 0 then  saldo + @nuevoTotalRecibo else saldo - @nuevoTotalRecibo end
+        from pruebas.socio where socioid = @socid;
+
+        update pruebas.socio set saldo = @saldo 
+        where socioid = @socid;
+
+
     end
 
     -- cierra la compra si ya se pago completamente

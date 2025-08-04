@@ -59,15 +59,17 @@
             panel1.Controls.Add(tbBuscar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(5, 5, 5, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1562, 175);
+            panel1.Size = new Size(2916, 287);
             panel1.TabIndex = 0;
             // 
             // btnNuevoRecibo
             // 
-            btnNuevoRecibo.Location = new Point(836, 76);
+            btnNuevoRecibo.Location = new Point(373, 169);
+            btnNuevoRecibo.Margin = new Padding(5, 5, 5, 5);
             btnNuevoRecibo.Name = "btnNuevoRecibo";
-            btnNuevoRecibo.Size = new Size(172, 35);
+            btnNuevoRecibo.Size = new Size(292, 57);
             btnNuevoRecibo.TabIndex = 3;
             btnNuevoRecibo.Text = "Nuevo Recibo";
             btnNuevoRecibo.UseVisualStyleBackColor = true;
@@ -75,10 +77,9 @@
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(659, 76);
-            btnRecargar.Margin = new Padding(2);
+            btnRecargar.Location = new Point(51, 169);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(172, 35);
+            btnRecargar.Size = new Size(292, 57);
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
@@ -87,10 +88,9 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(381, 76);
-            btnBuscar.Margin = new Padding(2);
+            btnBuscar.Location = new Point(648, 73);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(111, 35);
+            btnBuscar.Size = new Size(189, 57);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -98,11 +98,10 @@
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(30, 79);
-            tbBuscar.Margin = new Padding(2);
+            tbBuscar.Location = new Point(51, 78);
             tbBuscar.Name = "tbBuscar";
             tbBuscar.PlaceholderText = "Código de Recibo o Nombre de Socio...";
-            tbBuscar.Size = new Size(338, 31);
+            tbBuscar.Size = new Size(572, 47);
             tbBuscar.TabIndex = 0;
             // 
             // tablaRecibo
@@ -112,11 +111,12 @@
             tablaRecibo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaRecibo.Columns.AddRange(new DataGridViewColumn[] { ReciboID, CodigoRecibo, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, EmpleadoID, SocioID, ListaPreciosID, CompraID });
             tablaRecibo.Dock = DockStyle.Fill;
-            tablaRecibo.Location = new Point(0, 175);
+            tablaRecibo.Location = new Point(0, 287);
+            tablaRecibo.Margin = new Padding(5, 5, 5, 5);
             tablaRecibo.Name = "tablaRecibo";
             tablaRecibo.ReadOnly = true;
             tablaRecibo.RowHeadersWidth = 62;
-            tablaRecibo.Size = new Size(1562, 763);
+            tablaRecibo.Size = new Size(2916, 1425);
             tablaRecibo.TabIndex = 1;
             tablaRecibo.CellDoubleClick += tablaRecibo_CellDoubleClick;
             // 
@@ -150,39 +150,39 @@
             // 
             // Socio
             // 
+            Socio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Socio.DataPropertyName = "Socio";
             Socio.HeaderText = "Socio";
             Socio.MinimumWidth = 12;
             Socio.Name = "Socio";
             Socio.ReadOnly = true;
-            Socio.Width = 250;
             // 
             // TipoSocio
             // 
             TipoSocio.DataPropertyName = "TipoSocio";
             TipoSocio.HeaderText = "Tipo de Socio";
-            TipoSocio.MinimumWidth = 12;
+            TipoSocio.MinimumWidth = 300;
             TipoSocio.Name = "TipoSocio";
             TipoSocio.ReadOnly = true;
-            TipoSocio.Width = 250;
+            TipoSocio.Width = 300;
             // 
             // ListaPrecio
             // 
+            ListaPrecio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ListaPrecio.DataPropertyName = "ListaPrecio";
             ListaPrecio.HeaderText = "Lista de Precios";
             ListaPrecio.MinimumWidth = 12;
             ListaPrecio.Name = "ListaPrecio";
             ListaPrecio.ReadOnly = true;
-            ListaPrecio.Width = 250;
             // 
             // MetodoPago
             // 
             MetodoPago.DataPropertyName = "MetodoPago";
             MetodoPago.HeaderText = "Metodo de Pago";
-            MetodoPago.MinimumWidth = 12;
+            MetodoPago.MinimumWidth = 300;
             MetodoPago.Name = "MetodoPago";
             MetodoPago.ReadOnly = true;
-            MetodoPago.Width = 250;
+            MetodoPago.Width = 300;
             // 
             // Estado
             // 
@@ -244,12 +244,13 @@
             // 
             // Recibo
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1562, 938);
+            ClientSize = new Size(2916, 1712);
             Controls.Add(tablaRecibo);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5, 5, 5, 5);
             Name = "Recibo";
             Text = "Recibo";
             Load += Recibo_Load;

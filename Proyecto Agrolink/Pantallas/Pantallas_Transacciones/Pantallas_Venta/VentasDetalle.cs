@@ -187,6 +187,33 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
         }
 
 
+        //actualiza precio
+        private void comboListaPrecio_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+
+            Dictionary<string, object?> param = new Dictionary<string, object?>()
+            {
+                {"listPrecID", comboListaPrecio.SelectedValue }
+            };  
+
+            DataTable tablaPrecios = recSQL.EjecutarSPDataTable("spTraePrecioVenta", "detalle", "TipoVentaDetalle" , metodosGlobales.CrearDataTable(tablaDetalle), param );
+
+            if (tablaPrecios != null &&  tablaPrecios.Rows.Count > 0)
+            {
+                for (int i = 0; i < tablaDetalle.Rows.Count && i < tablaPrecios.Rows.Count; i++)
+                {
+                    var nuevoValor = tablaPrecios.Rows[i]["Precio"];
+                    tablaDetalle.Rows[i].Cells["Precio"].Value = nuevoValor;
+                }
+            }
+
+
+        }
+
+
+
+
 
         #region Botones
 
@@ -390,5 +417,6 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Venta
 
 
 
+        
     }
 }

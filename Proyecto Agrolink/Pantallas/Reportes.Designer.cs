@@ -117,10 +117,9 @@
             tabControlReportes.Controls.Add(tabUtilidad);
             tabControlReportes.Dock = DockStyle.Fill;
             tabControlReportes.Location = new Point(0, 0);
-            tabControlReportes.Margin = new Padding(2, 2, 2, 2);
             tabControlReportes.Name = "tabControlReportes";
             tabControlReportes.SelectedIndex = 0;
-            tabControlReportes.Size = new Size(1145, 510);
+            tabControlReportes.Size = new Size(2916, 1443);
             tabControlReportes.TabIndex = 0;
             // 
             // tabInventario
@@ -128,11 +127,10 @@
             tabInventario.Controls.Add(tablaInventario);
             tabInventario.Controls.Add(panelTituloInventario);
             tabInventario.Controls.Add(panelFooterInventario);
-            tabInventario.Location = new Point(4, 34);
-            tabInventario.Margin = new Padding(2, 2, 2, 2);
+            tabInventario.Location = new Point(10, 58);
             tabInventario.Name = "tabInventario";
-            tabInventario.Padding = new Padding(2, 2, 2, 2);
-            tabInventario.Size = new Size(1137, 472);
+            tabInventario.Padding = new Padding(3, 3, 3, 3);
+            tabInventario.Size = new Size(2896, 1375);
             tabInventario.TabIndex = 0;
             tabInventario.Text = "Inventario";
             tabInventario.UseVisualStyleBackColor = true;
@@ -141,11 +139,10 @@
             // 
             tablaInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaInventario.Dock = DockStyle.Fill;
-            tablaInventario.Location = new Point(436, 148);
-            tablaInventario.Margin = new Padding(2, 2, 2, 2);
+            tablaInventario.Location = new Point(741, 242);
             tablaInventario.Name = "tablaInventario";
             tablaInventario.RowHeadersWidth = 102;
-            tablaInventario.Size = new Size(699, 322);
+            tablaInventario.Size = new Size(2152, 1130);
             tablaInventario.TabIndex = 0;
             // 
             // panelTituloInventario
@@ -155,18 +152,16 @@
             panelTituloInventario.Controls.Add(tbBuscar);
             panelTituloInventario.Controls.Add(groupReportesInventario);
             panelTituloInventario.Dock = DockStyle.Top;
-            panelTituloInventario.Location = new Point(436, 2);
-            panelTituloInventario.Margin = new Padding(2, 2, 2, 2);
+            panelTituloInventario.Location = new Point(741, 3);
             panelTituloInventario.Name = "panelTituloInventario";
-            panelTituloInventario.Size = new Size(699, 146);
+            panelTituloInventario.Size = new Size(2152, 239);
             panelTituloInventario.TabIndex = 1;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(397, 77);
-            btnRecargar.Margin = new Padding(2, 2, 2, 2);
+            btnRecargar.Location = new Point(602, 122);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(118, 35);
+            btnRecargar.Size = new Size(201, 57);
             btnRecargar.TabIndex = 9;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = true;
@@ -174,10 +169,9 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(113, 79);
-            btnBuscar.Margin = new Padding(2, 2, 2, 2);
+            btnBuscar.Location = new Point(119, 126);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(118, 35);
+            btnBuscar.Size = new Size(201, 57);
             btnBuscar.TabIndex = 7;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -185,11 +179,10 @@
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(113, 38);
-            tbBuscar.Margin = new Padding(2, 2, 2, 2);
+            tbBuscar.Location = new Point(119, 58);
             tbBuscar.Name = "tbBuscar";
             tbBuscar.PlaceholderText = "Buscar Agricultor o Producto...";
-            tbBuscar.Size = new Size(403, 31);
+            tbBuscar.Size = new Size(682, 47);
             tbBuscar.TabIndex = 6;
             // 
             // groupReportesInventario
@@ -197,11 +190,9 @@
             groupReportesInventario.Controls.Add(radioInsumosxProducto);
             groupReportesInventario.Controls.Add(radioProdxProducto);
             groupReportesInventario.Font = new Font("Segoe UI", 9F);
-            groupReportesInventario.Location = new Point(679, 38);
-            groupReportesInventario.Margin = new Padding(2, 2, 2, 2);
+            groupReportesInventario.Location = new Point(951, 36);
             groupReportesInventario.Name = "groupReportesInventario";
-            groupReportesInventario.Padding = new Padding(2, 2, 2, 2);
-            groupReportesInventario.Size = new Size(766, 84);
+            groupReportesInventario.Size = new Size(1145, 160);
             groupReportesInventario.TabIndex = 0;
             groupReportesInventario.TabStop = false;
             groupReportesInventario.Text = "Elegir Reporte";
@@ -209,10 +200,9 @@
             // radioInsumosxProducto
             // 
             radioInsumosxProducto.AutoSize = true;
-            radioInsumosxProducto.Location = new Point(446, 28);
-            radioInsumosxProducto.Margin = new Padding(2, 2, 2, 2);
+            radioInsumosxProducto.Location = new Point(616, 76);
             radioInsumosxProducto.Name = "radioInsumosxProducto";
-            radioInsumosxProducto.Size = new Size(317, 29);
+            radioInsumosxProducto.Size = new Size(519, 45);
             radioInsumosxProducto.TabIndex = 1;
             radioInsumosxProducto.TabStop = true;
             radioInsumosxProducto.Text = "Insumos Entregados por Productor";
@@ -221,10 +211,9 @@
             // radioProdxProducto
             // 
             radioProdxProducto.AutoSize = true;
-            radioProdxProducto.Location = new Point(32, 35);
-            radioProdxProducto.Margin = new Padding(2, 2, 2, 2);
+            radioProdxProducto.Location = new Point(51, 76);
             radioProdxProducto.Name = "radioProdxProducto";
-            radioProdxProducto.Size = new Size(319, 29);
+            radioProdxProducto.Size = new Size(527, 45);
             radioProdxProducto.TabIndex = 0;
             radioProdxProducto.TabStop = true;
             radioProdxProducto.Text = "Produccion Recibida por Productor ";
@@ -243,20 +232,18 @@
             panelFooterInventario.Controls.Add(label5);
             panelFooterInventario.Controls.Add(lblTotalProdAdqu);
             panelFooterInventario.Dock = DockStyle.Left;
-            panelFooterInventario.Location = new Point(2, 2);
-            panelFooterInventario.Margin = new Padding(2, 2, 2, 2);
+            panelFooterInventario.Location = new Point(3, 3);
             panelFooterInventario.Name = "panelFooterInventario";
-            panelFooterInventario.Size = new Size(434, 468);
+            panelFooterInventario.Size = new Size(738, 1369);
             panelFooterInventario.TabIndex = 1;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline);
-            label10.Location = new Point(39, 42);
-            label10.Margin = new Padding(2, 0, 2, 0);
+            label10.Location = new Point(66, 69);
             label10.Name = "label10";
-            label10.Size = new Size(357, 38);
+            label10.Size = new Size(600, 62);
             label10.TabIndex = 18;
             label10.Text = "Totales de Periodo Actual ";
             // 
@@ -264,10 +251,9 @@
             // 
             lblTotalVentasInsumos.AutoSize = true;
             lblTotalVentasInsumos.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblTotalVentasInsumos.Location = new Point(50, 704);
-            lblTotalVentasInsumos.Margin = new Padding(2, 0, 2, 0);
+            lblTotalVentasInsumos.Location = new Point(85, 1155);
             lblTotalVentasInsumos.Name = "lblTotalVentasInsumos";
-            lblTotalVentasInsumos.Size = new Size(125, 28);
+            lblTotalVentasInsumos.Size = new Size(209, 46);
             lblTotalVentasInsumos.TabIndex = 17;
             lblTotalVentasInsumos.Text = "0000000.00";
             lblTotalVentasInsumos.TextAlign = ContentAlignment.MiddleRight;
@@ -276,10 +262,9 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label9.Location = new Point(39, 661);
-            label9.Margin = new Padding(2, 0, 2, 0);
+            label9.Location = new Point(66, 1084);
             label9.Name = "label9";
-            label9.Size = new Size(256, 32);
+            label9.Size = new Size(421, 54);
             label9.TabIndex = 16;
             label9.Text = "Total Ventas Insumos";
             // 
@@ -287,10 +272,9 @@
             // 
             lblInsumosVendidos.AutoSize = true;
             lblInsumosVendidos.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblInsumosVendidos.Location = new Point(50, 537);
-            lblInsumosVendidos.Margin = new Padding(2, 0, 2, 0);
+            lblInsumosVendidos.Location = new Point(85, 881);
             lblInsumosVendidos.Name = "lblInsumosVendidos";
-            lblInsumosVendidos.Size = new Size(125, 28);
+            lblInsumosVendidos.Size = new Size(209, 46);
             lblInsumosVendidos.TabIndex = 15;
             lblInsumosVendidos.Text = "0000000.00";
             lblInsumosVendidos.TextAlign = ContentAlignment.MiddleRight;
@@ -299,10 +283,9 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label7.Location = new Point(39, 496);
-            label7.Margin = new Padding(2, 0, 2, 0);
+            label7.Location = new Point(66, 813);
             label7.Name = "label7";
-            label7.Size = new Size(223, 32);
+            label7.Size = new Size(365, 54);
             label7.TabIndex = 14;
             label7.Text = "Insumos Vendidos";
             // 
@@ -310,10 +293,9 @@
             // 
             lblComprasdelAño.AutoSize = true;
             lblComprasdelAño.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblComprasdelAño.Location = new Point(50, 371);
-            lblComprasdelAño.Margin = new Padding(2, 0, 2, 0);
+            lblComprasdelAño.Location = new Point(85, 608);
             lblComprasdelAño.Name = "lblComprasdelAño";
-            lblComprasdelAño.Size = new Size(125, 28);
+            lblComprasdelAño.Size = new Size(209, 46);
             lblComprasdelAño.TabIndex = 13;
             lblComprasdelAño.Text = "0000000.00";
             lblComprasdelAño.TextAlign = ContentAlignment.MiddleRight;
@@ -322,10 +304,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label3.Location = new Point(39, 330);
-            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Location = new Point(66, 541);
             label3.Name = "label3";
-            label3.Size = new Size(302, 32);
+            label3.Size = new Size(495, 54);
             label3.TabIndex = 12;
             label3.Text = "Total Compras Productos";
             // 
@@ -333,10 +314,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label5.Location = new Point(39, 165);
-            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Location = new Point(66, 271);
             label5.Name = "label5";
-            label5.Size = new Size(265, 32);
+            label5.Size = new Size(432, 54);
             label5.TabIndex = 5;
             label5.Text = "Productos Adquiridos";
             // 
@@ -344,10 +324,9 @@
             // 
             lblTotalProdAdqu.AutoSize = true;
             lblTotalProdAdqu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblTotalProdAdqu.Location = new Point(50, 204);
-            lblTotalProdAdqu.Margin = new Padding(2, 0, 2, 0);
+            lblTotalProdAdqu.Location = new Point(85, 335);
             lblTotalProdAdqu.Name = "lblTotalProdAdqu";
-            lblTotalProdAdqu.Size = new Size(125, 28);
+            lblTotalProdAdqu.Size = new Size(209, 46);
             lblTotalProdAdqu.TabIndex = 1;
             lblTotalProdAdqu.Text = "0000000.00";
             lblTotalProdAdqu.TextAlign = ContentAlignment.MiddleRight;
@@ -357,11 +336,10 @@
             tabSaldo.Controls.Add(tablaSaldo);
             tabSaldo.Controls.Add(panelTituloSaldo);
             tabSaldo.Controls.Add(panelFooterSaldos);
-            tabSaldo.Location = new Point(4, 34);
-            tabSaldo.Margin = new Padding(2, 2, 2, 2);
+            tabSaldo.Location = new Point(10, 58);
             tabSaldo.Name = "tabSaldo";
-            tabSaldo.Padding = new Padding(2, 2, 2, 2);
-            tabSaldo.Size = new Size(1860, 846);
+            tabSaldo.Padding = new Padding(3, 3, 3, 3);
+            tabSaldo.Size = new Size(2896, 1375);
             tabSaldo.TabIndex = 1;
             tabSaldo.Text = "Saldo";
             tabSaldo.UseVisualStyleBackColor = true;
@@ -371,11 +349,10 @@
             // 
             tablaSaldo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaSaldo.Dock = DockStyle.Fill;
-            tablaSaldo.Location = new Point(419, 148);
-            tablaSaldo.Margin = new Padding(2, 2, 2, 2);
+            tablaSaldo.Location = new Point(712, 242);
             tablaSaldo.Name = "tablaSaldo";
             tablaSaldo.RowHeadersWidth = 102;
-            tablaSaldo.Size = new Size(1439, 696);
+            tablaSaldo.Size = new Size(2181, 1130);
             tablaSaldo.TabIndex = 0;
             // 
             // panelTituloSaldo
@@ -385,18 +362,16 @@
             panelTituloSaldo.Controls.Add(tbBuscarSaldo);
             panelTituloSaldo.Controls.Add(groupFiltroSaldo);
             panelTituloSaldo.Dock = DockStyle.Top;
-            panelTituloSaldo.Location = new Point(419, 2);
-            panelTituloSaldo.Margin = new Padding(2, 2, 2, 2);
+            panelTituloSaldo.Location = new Point(712, 3);
             panelTituloSaldo.Name = "panelTituloSaldo";
-            panelTituloSaldo.Size = new Size(1439, 146);
+            panelTituloSaldo.Size = new Size(2181, 239);
             panelTituloSaldo.TabIndex = 2;
             // 
             // btnRecargarSaldo
             // 
-            btnRecargarSaldo.Location = new Point(312, 85);
-            btnRecargarSaldo.Margin = new Padding(2, 2, 2, 2);
+            btnRecargarSaldo.Location = new Point(530, 139);
             btnRecargarSaldo.Name = "btnRecargarSaldo";
-            btnRecargarSaldo.Size = new Size(118, 35);
+            btnRecargarSaldo.Size = new Size(201, 57);
             btnRecargarSaldo.TabIndex = 9;
             btnRecargarSaldo.Text = "Recargar";
             btnRecargarSaldo.UseVisualStyleBackColor = true;
@@ -404,10 +379,9 @@
             // 
             // btnBuscarSaldo
             // 
-            btnBuscarSaldo.Location = new Point(28, 87);
-            btnBuscarSaldo.Margin = new Padding(2, 2, 2, 2);
+            btnBuscarSaldo.Location = new Point(48, 143);
             btnBuscarSaldo.Name = "btnBuscarSaldo";
-            btnBuscarSaldo.Size = new Size(118, 35);
+            btnBuscarSaldo.Size = new Size(201, 57);
             btnBuscarSaldo.TabIndex = 7;
             btnBuscarSaldo.Text = "Buscar";
             btnBuscarSaldo.UseVisualStyleBackColor = true;
@@ -415,11 +389,10 @@
             // 
             // tbBuscarSaldo
             // 
-            tbBuscarSaldo.Location = new Point(28, 46);
-            tbBuscarSaldo.Margin = new Padding(2, 2, 2, 2);
+            tbBuscarSaldo.Location = new Point(48, 75);
             tbBuscarSaldo.Name = "tbBuscarSaldo";
             tbBuscarSaldo.PlaceholderText = "Buscar Agricultor o Proveedor...";
-            tbBuscarSaldo.Size = new Size(403, 31);
+            tbBuscarSaldo.Size = new Size(682, 47);
             tbBuscarSaldo.TabIndex = 6;
             // 
             // groupFiltroSaldo
@@ -428,11 +401,9 @@
             groupFiltroSaldo.Controls.Add(radioSaldoAgricultor);
             groupFiltroSaldo.Controls.Add(radioSaldoProveedor);
             groupFiltroSaldo.Font = new Font("Segoe UI", 9F);
-            groupFiltroSaldo.Location = new Point(673, 27);
-            groupFiltroSaldo.Margin = new Padding(2, 2, 2, 2);
+            groupFiltroSaldo.Location = new Point(1144, 44);
             groupFiltroSaldo.Name = "groupFiltroSaldo";
-            groupFiltroSaldo.Padding = new Padding(2, 2, 2, 2);
-            groupFiltroSaldo.Size = new Size(577, 109);
+            groupFiltroSaldo.Size = new Size(981, 179);
             groupFiltroSaldo.TabIndex = 0;
             groupFiltroSaldo.TabStop = false;
             groupFiltroSaldo.Text = "Filtro";
@@ -440,10 +411,9 @@
             // radioTodo
             // 
             radioTodo.AutoSize = true;
-            radioTodo.Location = new Point(459, 48);
-            radioTodo.Margin = new Padding(2, 2, 2, 2);
+            radioTodo.Location = new Point(780, 79);
             radioTodo.Name = "radioTodo";
-            radioTodo.Size = new Size(77, 29);
+            radioTodo.Size = new Size(122, 45);
             radioTodo.TabIndex = 2;
             radioTodo.TabStop = true;
             radioTodo.Text = "Todo";
@@ -453,10 +423,9 @@
             // radioSaldoAgricultor
             // 
             radioSaldoAgricultor.AutoSize = true;
-            radioSaldoAgricultor.Location = new Point(248, 47);
-            radioSaldoAgricultor.Margin = new Padding(2, 2, 2, 2);
+            radioSaldoAgricultor.Location = new Point(422, 77);
             radioSaldoAgricultor.Name = "radioSaldoAgricultor";
-            radioSaldoAgricultor.Size = new Size(182, 29);
+            radioSaldoAgricultor.Size = new Size(296, 45);
             radioSaldoAgricultor.TabIndex = 1;
             radioSaldoAgricultor.TabStop = true;
             radioSaldoAgricultor.Text = "Saldo Agricultores";
@@ -466,10 +435,9 @@
             // radioSaldoProveedor
             // 
             radioSaldoProveedor.AutoSize = true;
-            radioSaldoProveedor.Location = new Point(32, 46);
-            radioSaldoProveedor.Margin = new Padding(2, 2, 2, 2);
+            radioSaldoProveedor.Location = new Point(54, 75);
             radioSaldoProveedor.Name = "radioSaldoProveedor";
-            radioSaldoProveedor.Size = new Size(186, 29);
+            radioSaldoProveedor.Size = new Size(303, 45);
             radioSaldoProveedor.TabIndex = 0;
             radioSaldoProveedor.TabStop = true;
             radioSaldoProveedor.Text = "Saldo Proveedores";
@@ -486,20 +454,18 @@
             panelFooterSaldos.Controls.Add(label14);
             panelFooterSaldos.Controls.Add(lblSaldoTotProv);
             panelFooterSaldos.Dock = DockStyle.Left;
-            panelFooterSaldos.Location = new Point(2, 2);
-            panelFooterSaldos.Margin = new Padding(2, 2, 2, 2);
+            panelFooterSaldos.Location = new Point(3, 3);
             panelFooterSaldos.Name = "panelFooterSaldos";
-            panelFooterSaldos.Size = new Size(417, 842);
+            panelFooterSaldos.Size = new Size(709, 1369);
             panelFooterSaldos.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Underline);
-            label2.Location = new Point(28, 36);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(48, 59);
             label2.Name = "label2";
-            label2.Size = new Size(357, 38);
+            label2.Size = new Size(600, 62);
             label2.TabIndex = 18;
             label2.Text = "Totales de Periodo Actual ";
             // 
@@ -507,10 +473,9 @@
             // 
             lblSaldoTot.AutoSize = true;
             lblSaldoTot.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblSaldoTot.Location = new Point(59, 395);
-            lblSaldoTot.Margin = new Padding(2, 0, 2, 0);
+            lblSaldoTot.Location = new Point(105, 926);
             lblSaldoTot.Name = "lblSaldoTot";
-            lblSaldoTot.Size = new Size(133, 32);
+            lblSaldoTot.Size = new Size(218, 54);
             lblSaldoTot.TabIndex = 15;
             lblSaldoTot.Text = "000000.00";
             lblSaldoTot.TextAlign = ContentAlignment.MiddleRight;
@@ -519,10 +484,9 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label11.Location = new Point(34, 362);
-            label11.Margin = new Padding(2, 0, 2, 0);
+            label11.Location = new Point(63, 866);
             label11.Name = "label11";
-            label11.Size = new Size(140, 32);
+            label11.Size = new Size(230, 54);
             label11.TabIndex = 14;
             label11.Text = "Saldo Total";
             // 
@@ -530,10 +494,9 @@
             // 
             lblSaldoTotAgr.AutoSize = true;
             lblSaldoTotAgr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblSaldoTotAgr.Location = new Point(59, 290);
-            lblSaldoTotAgr.Margin = new Padding(2, 0, 2, 0);
+            lblSaldoTotAgr.Location = new Point(90, 631);
             lblSaldoTotAgr.Name = "lblSaldoTotAgr";
-            lblSaldoTotAgr.Size = new Size(113, 28);
+            lblSaldoTotAgr.Size = new Size(189, 46);
             lblSaldoTotAgr.TabIndex = 13;
             lblSaldoTotAgr.Text = "000000.00";
             lblSaldoTotAgr.TextAlign = ContentAlignment.MiddleRight;
@@ -542,10 +505,9 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label13.Location = new Point(34, 251);
-            label13.Margin = new Padding(2, 0, 2, 0);
+            label13.Location = new Point(48, 573);
             label13.Name = "label13";
-            label13.Size = new Size(225, 32);
+            label13.Size = new Size(368, 54);
             label13.TabIndex = 12;
             label13.Text = "Saldo Agricultores";
             // 
@@ -553,10 +515,9 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label14.Location = new Point(34, 139);
-            label14.Margin = new Padding(2, 0, 2, 0);
+            label14.Location = new Point(48, 280);
             label14.Name = "label14";
-            label14.Size = new Size(227, 32);
+            label14.Size = new Size(374, 54);
             label14.TabIndex = 5;
             label14.Text = "Saldo Proveedores";
             // 
@@ -564,10 +525,9 @@
             // 
             lblSaldoTotProv.AutoSize = true;
             lblSaldoTotProv.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblSaldoTotProv.Location = new Point(59, 175);
-            lblSaldoTotProv.Margin = new Padding(2, 0, 2, 0);
+            lblSaldoTotProv.Location = new Point(90, 341);
             lblSaldoTotProv.Name = "lblSaldoTotProv";
-            lblSaldoTotProv.Size = new Size(113, 28);
+            lblSaldoTotProv.Size = new Size(189, 46);
             lblSaldoTotProv.TabIndex = 1;
             lblSaldoTotProv.Text = "000000.00";
             lblSaldoTotProv.TextAlign = ContentAlignment.MiddleRight;
@@ -576,11 +536,10 @@
             // 
             tabUtilidad.Controls.Add(panelPanelTopProductos);
             tabUtilidad.Controls.Add(panelTotalesUtilidad);
-            tabUtilidad.Location = new Point(4, 34);
-            tabUtilidad.Margin = new Padding(2, 2, 2, 2);
+            tabUtilidad.Location = new Point(10, 58);
             tabUtilidad.Name = "tabUtilidad";
-            tabUtilidad.Padding = new Padding(2, 2, 2, 2);
-            tabUtilidad.Size = new Size(1860, 846);
+            tabUtilidad.Padding = new Padding(3, 3, 3, 3);
+            tabUtilidad.Size = new Size(2896, 1375);
             tabUtilidad.TabIndex = 2;
             tabUtilidad.Text = "Utilidad";
             tabUtilidad.UseVisualStyleBackColor = true;
@@ -593,20 +552,18 @@
             panelPanelTopProductos.Controls.Add(panelTablaTopVenta);
             panelPanelTopProductos.Controls.Add(panelTituloTopVenta);
             panelPanelTopProductos.Dock = DockStyle.Fill;
-            panelPanelTopProductos.Location = new Point(716, 2);
-            panelPanelTopProductos.Margin = new Padding(2, 2, 2, 2);
+            panelPanelTopProductos.Location = new Point(1217, 3);
             panelPanelTopProductos.Name = "panelPanelTopProductos";
-            panelPanelTopProductos.Size = new Size(1142, 842);
+            panelPanelTopProductos.Size = new Size(1676, 1369);
             panelPanelTopProductos.TabIndex = 1;
             // 
             // panelTablaTopCompra
             // 
             panelTablaTopCompra.Controls.Add(tablaTopCompra);
             panelTablaTopCompra.Dock = DockStyle.Top;
-            panelTablaTopCompra.Location = new Point(0, 499);
-            panelTablaTopCompra.Margin = new Padding(2, 2, 2, 2);
+            panelTablaTopCompra.Location = new Point(0, 797);
             panelTablaTopCompra.Name = "panelTablaTopCompra";
-            panelTablaTopCompra.Size = new Size(1142, 349);
+            panelTablaTopCompra.Size = new Size(1676, 572);
             panelTablaTopCompra.TabIndex = 4;
             // 
             // tablaTopCompra
@@ -614,30 +571,27 @@
             tablaTopCompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaTopCompra.Dock = DockStyle.Fill;
             tablaTopCompra.Location = new Point(0, 0);
-            tablaTopCompra.Margin = new Padding(2, 2, 2, 2);
             tablaTopCompra.Name = "tablaTopCompra";
             tablaTopCompra.RowHeadersWidth = 102;
-            tablaTopCompra.Size = new Size(1142, 349);
+            tablaTopCompra.Size = new Size(1676, 572);
             tablaTopCompra.TabIndex = 0;
             // 
             // panelTituloTopCompra
             // 
             panelTituloTopCompra.Controls.Add(label8);
             panelTituloTopCompra.Dock = DockStyle.Top;
-            panelTituloTopCompra.Location = new Point(0, 424);
-            panelTituloTopCompra.Margin = new Padding(2, 2, 2, 2);
+            panelTituloTopCompra.Location = new Point(0, 674);
             panelTituloTopCompra.Name = "panelTituloTopCompra";
-            panelTituloTopCompra.Size = new Size(1142, 75);
+            panelTituloTopCompra.Size = new Size(1676, 123);
             panelTituloTopCompra.TabIndex = 3;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            label8.Location = new Point(205, 14);
-            label8.Margin = new Padding(2, 0, 2, 0);
+            label8.Location = new Point(500, 32);
             label8.Name = "label8";
-            label8.Size = new Size(472, 46);
+            label8.Size = new Size(789, 76);
             label8.TabIndex = 3;
             label8.Text = "Top 3 Productos Comprados";
             // 
@@ -645,10 +599,9 @@
             // 
             panelTablaTopVenta.Controls.Add(tablaTopVenta);
             panelTablaTopVenta.Dock = DockStyle.Top;
-            panelTablaTopVenta.Location = new Point(0, 75);
-            panelTablaTopVenta.Margin = new Padding(2, 2, 2, 2);
+            panelTablaTopVenta.Location = new Point(0, 123);
             panelTablaTopVenta.Name = "panelTablaTopVenta";
-            panelTablaTopVenta.Size = new Size(1142, 349);
+            panelTablaTopVenta.Size = new Size(1676, 551);
             panelTablaTopVenta.TabIndex = 2;
             // 
             // tablaTopVenta
@@ -656,10 +609,9 @@
             tablaTopVenta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaTopVenta.Dock = DockStyle.Fill;
             tablaTopVenta.Location = new Point(0, 0);
-            tablaTopVenta.Margin = new Padding(2, 2, 2, 2);
             tablaTopVenta.Name = "tablaTopVenta";
             tablaTopVenta.RowHeadersWidth = 102;
-            tablaTopVenta.Size = new Size(1142, 349);
+            tablaTopVenta.Size = new Size(1676, 551);
             tablaTopVenta.TabIndex = 0;
             // 
             // panelTituloTopVenta
@@ -667,19 +619,17 @@
             panelTituloTopVenta.Controls.Add(label6);
             panelTituloTopVenta.Dock = DockStyle.Top;
             panelTituloTopVenta.Location = new Point(0, 0);
-            panelTituloTopVenta.Margin = new Padding(2, 2, 2, 2);
             panelTituloTopVenta.Name = "panelTituloTopVenta";
-            panelTituloTopVenta.Size = new Size(1142, 75);
+            panelTituloTopVenta.Size = new Size(1676, 123);
             panelTituloTopVenta.TabIndex = 1;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            label6.Location = new Point(211, 15);
-            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Location = new Point(531, 32);
             label6.Name = "label6";
-            label6.Size = new Size(437, 46);
+            label6.Size = new Size(727, 76);
             label6.TabIndex = 2;
             label6.Text = "Top 3 Productos Vendidos";
             // 
@@ -692,20 +642,18 @@
             panelTotalesUtilidad.Controls.Add(lblTotIngresos);
             panelTotalesUtilidad.Controls.Add(label4);
             panelTotalesUtilidad.Dock = DockStyle.Left;
-            panelTotalesUtilidad.Location = new Point(2, 2);
-            panelTotalesUtilidad.Margin = new Padding(2, 2, 2, 2);
+            panelTotalesUtilidad.Location = new Point(3, 3);
             panelTotalesUtilidad.Name = "panelTotalesUtilidad";
-            panelTotalesUtilidad.Size = new Size(714, 842);
+            panelTotalesUtilidad.Size = new Size(1214, 1369);
             panelTotalesUtilidad.TabIndex = 0;
             // 
             // lblTotUtilidad
             // 
             lblTotUtilidad.AutoSize = true;
             lblTotUtilidad.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            lblTotUtilidad.Location = new Point(87, 661);
-            lblTotUtilidad.Margin = new Padding(2, 0, 2, 0);
+            lblTotUtilidad.Location = new Point(148, 1084);
             lblTotUtilidad.Name = "lblTotUtilidad";
-            lblTotUtilidad.Size = new Size(209, 46);
+            lblTotUtilidad.Size = new Size(344, 76);
             lblTotUtilidad.TabIndex = 6;
             lblTotUtilidad.Text = "0000000.00";
             // 
@@ -713,10 +661,9 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            label16.Location = new Point(64, 601);
-            label16.Margin = new Padding(2, 0, 2, 0);
+            label16.Location = new Point(109, 986);
             label16.Name = "label16";
-            label16.Size = new Size(481, 46);
+            label16.Size = new Size(802, 76);
             label16.TabIndex = 5;
             label16.Text = "Total Utilidad Periodo Actual";
             // 
@@ -724,10 +671,9 @@
             // 
             lblTotGastos.AutoSize = true;
             lblTotGastos.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            lblTotGastos.Location = new Point(87, 401);
-            lblTotGastos.Margin = new Padding(2, 0, 2, 0);
+            lblTotGastos.Location = new Point(148, 658);
             lblTotGastos.Name = "lblTotGastos";
-            lblTotGastos.Size = new Size(209, 46);
+            lblTotGastos.Size = new Size(344, 76);
             lblTotGastos.TabIndex = 4;
             lblTotGastos.Text = "0000000.00";
             // 
@@ -735,10 +681,9 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            label12.Location = new Point(64, 343);
-            label12.Margin = new Padding(2, 0, 2, 0);
+            label12.Location = new Point(109, 563);
             label12.Name = "label12";
-            label12.Size = new Size(262, 46);
+            label12.Size = new Size(441, 76);
             label12.TabIndex = 3;
             label12.Text = "Total de Gastos";
             // 
@@ -746,10 +691,9 @@
             // 
             lblTotIngresos.AutoSize = true;
             lblTotIngresos.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            lblTotIngresos.Location = new Point(87, 162);
-            lblTotIngresos.Margin = new Padding(2, 0, 2, 0);
+            lblTotIngresos.Location = new Point(148, 266);
             lblTotIngresos.Name = "lblTotIngresos";
-            lblTotIngresos.Size = new Size(209, 46);
+            lblTotIngresos.Size = new Size(344, 76);
             lblTotIngresos.TabIndex = 2;
             lblTotIngresos.Text = "0000000.00";
             // 
@@ -757,10 +701,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            label4.Location = new Point(64, 102);
-            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Location = new Point(109, 167);
             label4.Name = "label4";
-            label4.Size = new Size(475, 46);
+            label4.Size = new Size(795, 76);
             label4.TabIndex = 1;
             label4.Text = "Total de Ingresos Facturados";
             // 
@@ -769,19 +712,17 @@
             panelTitulo.Controls.Add(lbBienvenida);
             panelTitulo.Dock = DockStyle.Top;
             panelTitulo.Location = new Point(0, 0);
-            panelTitulo.Margin = new Padding(2, 2, 2, 2);
             panelTitulo.Name = "panelTitulo";
-            panelTitulo.Size = new Size(1145, 164);
+            panelTitulo.Size = new Size(2916, 269);
             panelTitulo.TabIndex = 1;
             // 
             // lbBienvenida
             // 
             lbBienvenida.AutoSize = true;
             lbBienvenida.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            lbBienvenida.Location = new Point(99, 63);
-            lbBienvenida.Margin = new Padding(2, 0, 2, 0);
+            lbBienvenida.Location = new Point(168, 103);
             lbBienvenida.Name = "lbBienvenida";
-            lbBienvenida.Size = new Size(245, 54);
+            lbBienvenida.Size = new Size(408, 89);
             lbBienvenida.TabIndex = 0;
             lbBienvenida.Text = "Bienvenido ";
             // 
@@ -789,21 +730,19 @@
             // 
             panelContenido.Controls.Add(tabControlReportes);
             panelContenido.Dock = DockStyle.Fill;
-            panelContenido.Location = new Point(0, 164);
-            panelContenido.Margin = new Padding(2, 2, 2, 2);
+            panelContenido.Location = new Point(0, 269);
             panelContenido.Name = "panelContenido";
-            panelContenido.Size = new Size(1145, 510);
+            panelContenido.Size = new Size(2916, 1443);
             panelContenido.TabIndex = 2;
             // 
             // Reportes
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1145, 674);
+            ClientSize = new Size(2916, 1712);
             Controls.Add(panelContenido);
             Controls.Add(panelTitulo);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
             Name = "Reportes";
             Text = "Reportes";
             Load += Reportes_Load;

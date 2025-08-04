@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label7 = new Label();
             tbColonia = new TextBox();
@@ -92,13 +92,13 @@
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(11, 0, 0, 0);
-            panel1.Size = new Size(2597, 505);
+            panel1.Size = new Size(2916, 513);
             panel1.TabIndex = 24;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(2215, 225);
+            label7.Location = new Point(2318, 230);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(110, 41);
@@ -107,7 +107,7 @@
             // 
             // tbColonia
             // 
-            tbColonia.Location = new Point(1697, 408);
+            tbColonia.Location = new Point(1800, 413);
             tbColonia.Name = "tbColonia";
             tbColonia.ReadOnly = true;
             tbColonia.Size = new Size(421, 47);
@@ -115,7 +115,7 @@
             // 
             // tbDetalle
             // 
-            tbDetalle.Location = new Point(2215, 281);
+            tbDetalle.Location = new Point(2318, 286);
             tbDetalle.Name = "tbDetalle";
             tbDetalle.ReadOnly = true;
             tbDetalle.Size = new Size(491, 171);
@@ -125,7 +125,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(76, 340);
+            label2.Location = new Point(99, 340);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(157, 41);
@@ -135,7 +135,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(1448, 411);
+            label5.Location = new Point(1551, 416);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(119, 41);
@@ -146,7 +146,7 @@
             // 
             comboRepartidor.Enabled = false;
             comboRepartidor.FormattingEnabled = true;
-            comboRepartidor.Location = new Point(76, 408);
+            comboRepartidor.Location = new Point(99, 408);
             comboRepartidor.Margin = new Padding(2);
             comboRepartidor.Name = "comboRepartidor";
             comboRepartidor.Size = new Size(633, 49);
@@ -156,7 +156,7 @@
             // 
             comboDep.Enabled = false;
             comboDep.FormattingEnabled = true;
-            comboDep.Location = new Point(1697, 74);
+            comboDep.Location = new Point(1800, 79);
             comboDep.Margin = new Padding(2);
             comboDep.Name = "comboDep";
             comboDep.Size = new Size(421, 49);
@@ -177,7 +177,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1448, 78);
+            label4.Location = new Point(1551, 83);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(210, 41);
@@ -198,7 +198,7 @@
             // 
             comboMuni.Enabled = false;
             comboMuni.FormattingEnabled = true;
-            comboMuni.Location = new Point(1697, 243);
+            comboMuni.Location = new Point(1800, 248);
             comboMuni.Margin = new Padding(2);
             comboMuni.Name = "comboMuni";
             comboMuni.Size = new Size(421, 49);
@@ -207,7 +207,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(2215, 74);
+            label6.Location = new Point(2318, 79);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(95, 41);
@@ -217,7 +217,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(1448, 247);
+            label3.Location = new Point(1551, 252);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(150, 41);
@@ -229,7 +229,7 @@
             dateTimePicker1.CustomFormat = "yyyy/MM/dd";
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(2316, 72);
+            dateTimePicker1.Location = new Point(2419, 77);
             dateTimePicker1.Margin = new Padding(2);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(321, 47);
@@ -257,7 +257,7 @@
             // labelSocio
             // 
             labelSocio.AutoSize = true;
-            labelSocio.Location = new Point(76, 175);
+            labelSocio.Location = new Point(99, 175);
             labelSocio.Margin = new Padding(2, 0, 2, 0);
             labelSocio.Name = "labelSocio";
             labelSocio.Size = new Size(91, 41);
@@ -268,7 +268,7 @@
             // 
             comboSocio.Enabled = false;
             comboSocio.FormattingEnabled = true;
-            comboSocio.Location = new Point(76, 243);
+            comboSocio.Location = new Point(99, 243);
             comboSocio.Margin = new Padding(2);
             comboSocio.Name = "comboSocio";
             comboSocio.Size = new Size(633, 49);
@@ -278,10 +278,10 @@
             // 
             panel2.Controls.Add(tablaDetalle);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 505);
+            panel2.Location = new Point(0, 513);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2597, 947);
+            panel2.Size = new Size(2916, 1021);
             panel2.TabIndex = 25;
             // 
             // tablaDetalle
@@ -296,7 +296,7 @@
             tablaDetalle.Name = "tablaDetalle";
             tablaDetalle.ReadOnly = true;
             tablaDetalle.RowHeadersWidth = 102;
-            tablaDetalle.Size = new Size(2597, 947);
+            tablaDetalle.Size = new Size(2916, 1021);
             tablaDetalle.TabIndex = 1;
             tablaDetalle.DataError += tablaDetalle_DataError;
             tablaDetalle.UserDeletedRow += tablaDetalle_UserDeletedRow;
@@ -304,8 +304,8 @@
             // EntregaID
             // 
             EntregaID.DataPropertyName = "EntregaID";
-            dataGridViewCellStyle1.NullValue = "0";
-            EntregaID.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.NullValue = "0";
+            EntregaID.DefaultCellStyle = dataGridViewCellStyle17;
             EntregaID.HeaderText = "ID";
             EntregaID.MinimumWidth = 12;
             EntregaID.Name = "EntregaID";
@@ -316,8 +316,8 @@
             // CodigoProducto
             // 
             CodigoProducto.DataPropertyName = "CodigoProducto";
-            dataGridViewCellStyle2.NullValue = "PRO";
-            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.NullValue = "PRO";
+            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle18;
             CodigoProducto.HeaderText = "Codigo";
             CodigoProducto.MinimumWidth = 12;
             CodigoProducto.Name = "CodigoProducto";
@@ -350,15 +350,15 @@
             panel3.Controls.Add(btnEditar);
             panel3.Controls.Add(btnAceptar);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 1452);
+            panel3.Location = new Point(0, 1534);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(2597, 150);
+            panel3.Size = new Size(2916, 178);
             panel3.TabIndex = 31;
             // 
             // btnBorrarEntr
             // 
-            btnBorrarEntr.Location = new Point(33, 86);
+            btnBorrarEntr.Location = new Point(76, 64);
             btnBorrarEntr.Margin = new Padding(4);
             btnBorrarEntr.Name = "btnBorrarEntr";
             btnBorrarEntr.Size = new Size(253, 68);
@@ -370,7 +370,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(51, 86);
+            btnVolver.Location = new Point(94, 64);
             btnVolver.Margin = new Padding(4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(219, 68);
@@ -381,7 +381,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(2284, 86);
+            btnCancelar.Location = new Point(2586, 64);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(223, 68);
@@ -393,7 +393,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(325, 86);
+            btnEditar.Location = new Point(368, 64);
             btnEditar.Margin = new Padding(4);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(223, 68);
@@ -404,7 +404,7 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(2016, 86);
+            btnAceptar.Location = new Point(2318, 64);
             btnAceptar.Margin = new Padding(4);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(223, 68);
@@ -418,7 +418,7 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2597, 1602);
+            ClientSize = new Size(2916, 1712);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);

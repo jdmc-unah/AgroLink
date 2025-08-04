@@ -53,6 +53,9 @@ exec spTraeVentaDetalle 1
 go
 
 
+
+
+
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae ventas (solo id y codigo) filtrado >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 CREATE OR ALTER PROCEDURE spTraeVentasCode  @ventID int = null
@@ -106,6 +109,62 @@ select * from pruebas.Venta
 go
 
 
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> TraePrecioVenta >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER PROCEDURE spTraePrecioVenta @listPrecID int, @detalle TipoVentaDetalle READONLY
+as
+	begin
+		declare @precios as table (ProductoID int, Precio float) 
+		declare @hayNulos int = 0
+
+		insert into @precios
+		select ProductoID, Precio from pruebas.ProductoDetalle 
+		where ListaPreciosID = @listPrecID and ProductoID in (select ProductoID from @detalle)
+	
+		select @hayNulos = CASE when P.Precio IS NULL then 1 else 0 end
+		from @detalle d left join @precios p on d.ProductoID = p.ProductoID
+
+		IF ISNULL(@hayNulos,1) = 1
+			THROW 50004, 'El producto no esta asignado a esa lista de precios', 1;
+		ELSE
+			SELECT * from @precios
+
+	end
+
+
+go
+
+
+
+--Para probar el sp anterior
+begin transaction
+-- Declarar la variable tipo tabla
+DECLARE @DatosPrueba AS TipoVentaDetalle;
+	
+---- Insertar datos de prueba
+INSERT INTO @DatosPrueba (VentaID,Codigo,  ProductoID, ImpuestoID, BodegaID, Cantidad,	Precio, SubTotal, Total)
+VALUES
+(54,'PRO2',	2	, 2,	2,	1,	4.00, 4.00,	5.00 ),
+(54,'PRO3',	3	, 1,	3,	2,	2.00, 4.00,	4.60 ),
+(54,'PRO4',	4	, 1,	4,	6,	2.00, 8.00,	9.20 )
+
+--insert into pruebas.Venta values (GETDATE(), 3,6,'Contado' , 'Abierto' )
+
+EXEC spTraePrecio 1, @DatosPrueba;
+
+
+rollback
+
+select * from pruebas.ProductoDetalle where ListaPreciosID = 3
+
+insert into pruebas.ProductoDetalle  values (2,2,40)
+
+
+go
+
+
+
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>> Cancelar Venta >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 CREATE OR ALTER PROCEDURE spCancelarVenta @ventID int, @socID int, @error varchar(50) OUTPUT
 as
@@ -125,8 +184,11 @@ as
 						select @totalAnterior = ISNULL(SUM(Total), 0) from pruebas.VentaDetalle where VentaID = @ventID 
 			
 						--valida que no quede negativo
-						select @saldo = ( CASE  WHEN Saldo - @totalAnterior < 0 THEN 0 ELSE Saldo - @totalAnterior  END ) 
-						from pruebas.Socio where SocioID = @socID 
+						--select @saldo = ( CASE  WHEN Saldo - @totalAnterior < 0 THEN 0 ELSE Saldo - @totalAnterior  END ) 
+						--from pruebas.Socio where SocioID = @socID 
+						
+						select @saldo = case when saldo < 0 then  saldo + @totalanterior else saldo - @totalanterior end
+						from pruebas.socio where socioid = @socid;
 
 						update pruebas.Socio set Saldo = @saldo 
 						where SocioID = @socID
@@ -267,8 +329,11 @@ as
 				select @totalAnterior = ISNULL(SUM(Total), 0) from pruebas.VentaDetalle where VentaID = @ventID 
 			
 				--valida que no quede negativo
-				select @saldo = ( CASE  WHEN Saldo - @totalAnterior < 0 THEN 0 ELSE Saldo - @totalAnterior  END ) 
-				from pruebas.Socio where SocioID = @socID 
+				--select @saldo = ( CASE  WHEN Saldo - @totalAnterior < 0 THEN 0 ELSE Saldo - @totalAnterior  END ) 
+				--from pruebas.Socio where SocioID = @socID 
+
+				select @saldo = case when saldo < 0 then  saldo + @totalanterior else saldo - @totalanterior end
+				from pruebas.socio where socioid = @socid;
 
 				update pruebas.Socio set Saldo = @saldo + @totalNuevo
 				where SocioID = @socID

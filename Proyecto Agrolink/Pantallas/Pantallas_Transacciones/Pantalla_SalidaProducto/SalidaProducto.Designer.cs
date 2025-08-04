@@ -64,7 +64,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2661, 287);
+            panel1.Size = new Size(2916, 287);
             panel1.TabIndex = 2;
             // 
             // panel2
@@ -76,12 +76,12 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2661, 287);
+            panel2.Size = new Size(2916, 287);
             panel2.TabIndex = 4;
             // 
             // btnRecargarSal
             // 
-            btnRecargarSal.Location = new Point(1121, 124);
+            btnRecargarSal.Location = new Point(51, 171);
             btnRecargarSal.Name = "btnRecargarSal";
             btnRecargarSal.Size = new Size(292, 57);
             btnRecargarSal.TabIndex = 3;
@@ -91,7 +91,7 @@
             // 
             // btnNuevaSalProd
             // 
-            btnNuevaSalProd.Location = new Point(1467, 124);
+            btnNuevaSalProd.Location = new Point(397, 171);
             btnNuevaSalProd.Name = "btnNuevaSalProd";
             btnNuevaSalProd.Size = new Size(394, 57);
             btnNuevaSalProd.TabIndex = 2;
@@ -101,7 +101,7 @@
             // 
             // btnBuscarSal
             // 
-            btnBuscarSal.Location = new Point(648, 128);
+            btnBuscarSal.Location = new Point(648, 75);
             btnBuscarSal.Name = "btnBuscarSal";
             btnBuscarSal.Size = new Size(189, 57);
             btnBuscarSal.TabIndex = 1;
@@ -111,7 +111,7 @@
             // 
             // tbBuscarSal
             // 
-            tbBuscarSal.Location = new Point(51, 134);
+            tbBuscarSal.Location = new Point(51, 81);
             tbBuscarSal.Name = "tbBuscarSal";
             tbBuscarSal.PlaceholderText = "Código de Salida o Nombre de Socio...";
             tbBuscarSal.Size = new Size(572, 47);
@@ -164,7 +164,7 @@
             tablaSalida.Name = "tablaSalida";
             tablaSalida.ReadOnly = true;
             tablaSalida.RowHeadersWidth = 102;
-            tablaSalida.Size = new Size(2661, 1255);
+            tablaSalida.Size = new Size(2916, 1425);
             tablaSalida.TabIndex = 3;
             tablaSalida.DoubleClick += tablaSalida_DoubleClick;
             // 
@@ -267,7 +267,7 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2661, 1542);
+            ClientSize = new Size(2916, 1712);
             Controls.Add(tablaSalida);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;

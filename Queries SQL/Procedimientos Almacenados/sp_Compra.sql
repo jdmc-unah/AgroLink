@@ -1,5 +1,34 @@
 -- PROCEDIMIENTOS ALMACENADOS PARA PANTALLA COMPRA Y COMPRA DETALLE
 
+
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>> Trae Precio Compra >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CREATE OR ALTER PROCEDURE spTraePrecioCompra @listPrecID int, @detalle TipoCompraDetalle READONLY
+as
+	begin
+		declare @precios as table (ProductoID int, Precio float) 
+		declare @hayNulos int = 0
+
+		insert into @precios
+		select ProductoID, Precio from pruebas.ProductoDetalle 
+		where ListaPreciosID = @listPrecID and ProductoID in (select ProductoID from @detalle)
+	
+		select @hayNulos = CASE when P.Precio IS NULL then 1 else 0 end
+		from @detalle d left join @precios p on d.ProductoID = p.ProductoID
+
+		IF ISNULL(@hayNulos,1) = 1
+			THROW 50004, 'El producto no esta asignado a esa lista de precios', 1;
+		ELSE
+			SELECT * from @precios
+
+	end
+
+
+go
+
+
+
 -- busqueda de compra por codigo
 
 create or alter procedure spBuscarCompra
@@ -104,6 +133,26 @@ BEGIN
         -- obtener tipo de pago (no es estrictamente necesario aquí, pero si quieres usarlo puedes)
         DECLARE @tipoPago VARCHAR(50);
         SELECT @tipoPago = TipoPago FROM Pruebas.Compra WHERE CompraID = @compraID;
+
+		-- actualiza saldo de socio con compras al crédito
+		if @tipopago = 'Credito'
+		begin
+			declare @totalanterior float, @saldo float
+
+			select @totalanterior = isnull(sum(total), 0) from pruebas.compradetalle where compraid = @compraid;
+
+			-- valida que no quede negativo
+			--select @saldo = (case when saldo - @totalanterior < 0 then 0 else saldo - @totalanterior end) 
+			--from pruebas.socio where socioid = @socid;
+
+			select @saldo = case when saldo < 0 then  saldo + @totalanterior else saldo - @totalanterior end
+			from pruebas.socio where socioid = @socid;
+
+			update pruebas.socio set saldo = @saldo 
+			where socioid = @socid;
+		end
+
+
 
         -- revertir stock: restar cantidades de la compra cancelada
         UPDATE bd
@@ -260,10 +309,13 @@ begin
         select @totalanterior = isnull(sum(total), 0) from pruebas.compradetalle where compraid = @compraid;
 
         -- valida que no quede negativo
-        select @saldo = (case when saldo - @totalanterior < 0 then 0 else saldo - @totalanterior end) 
+        --select @saldo = (case when saldo - @totalanterior < 0 then 0 else saldo - @totalanterior end) 
+        --from pruebas.socio where socioid = @socid;
+
+		select @saldo = case when saldo < 0 then  saldo + @totalanterior else saldo - @totalanterior end
         from pruebas.socio where socioid = @socid;
 
-        update pruebas.socio set saldo = @saldo + @totalnuevo
+        update pruebas.socio set saldo = @saldo - @totalnuevo
         where socioid = @socid;
     end
 

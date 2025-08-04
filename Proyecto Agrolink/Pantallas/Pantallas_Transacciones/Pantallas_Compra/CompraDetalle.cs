@@ -54,7 +54,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
             btnAceptarCompra.Visible = !esSoloLectura;
             btnCancelarCompra.Visible = !esSoloLectura;
             btnEditarCompra.Visible = esSoloLectura;
-
+            btnCrearRecibo.Visible = esSoloLectura;
             if (compraID != 0)
             {
                 string estadoEdicion = esSoloLectura ? "desactivado" : "activado";
@@ -331,7 +331,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
 
         }
 
-        
+
         private void tablaCompraDetalle_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
 
@@ -347,6 +347,27 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
 
         }
 
-        
+        private void cbListaPrecioCompra_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+
+            Dictionary<string, object?> param = new Dictionary<string, object?>()
+            {
+                {"listPrecID", cbListaPrecioCompra.SelectedValue }
+            };
+
+            DataTable tablaPrecios = recSQL.EjecutarSPDataTable("spTraePrecioCompra", "detalle", "TipoCompraDetalle", metodosGlobales.CrearDataTable(tablaCompraDetalle), param);
+
+            if (tablaPrecios != null && tablaPrecios.Rows.Count > 0)
+            {
+                for (int i = 0; i < tablaCompraDetalle.Rows.Count && i < tablaPrecios.Rows.Count; i++)
+                {
+                    var nuevoValor = tablaPrecios.Rows[i]["Precio"];
+                    tablaCompraDetalle.Rows[i].Cells["Precio"].Value = nuevoValor;
+                }
+            }
+
+
+        }
     }
 }

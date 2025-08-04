@@ -57,26 +57,23 @@
             panel1.Controls.Add(btnNuevaCompra);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1946, 175);
+            panel1.Size = new Size(2916, 287);
             panel1.TabIndex = 0;
             // 
             // tbBuscarCompra
             // 
-            tbBuscarCompra.Location = new Point(30, 82);
-            tbBuscarCompra.Margin = new Padding(2);
+            tbBuscarCompra.Location = new Point(51, 89);
             tbBuscarCompra.Name = "tbBuscarCompra";
             tbBuscarCompra.PlaceholderText = "Código de Compra o Nombre de Socio...";
-            tbBuscarCompra.Size = new Size(338, 31);
+            tbBuscarCompra.Size = new Size(572, 47);
             tbBuscarCompra.TabIndex = 0;
             // 
             // btnRecargarCompra
             // 
-            btnRecargarCompra.Location = new Point(659, 78);
-            btnRecargarCompra.Margin = new Padding(2);
+            btnRecargarCompra.Location = new Point(51, 182);
             btnRecargarCompra.Name = "btnRecargarCompra";
-            btnRecargarCompra.Size = new Size(172, 35);
+            btnRecargarCompra.Size = new Size(292, 57);
             btnRecargarCompra.TabIndex = 3;
             btnRecargarCompra.Text = "Recargar";
             btnRecargarCompra.UseVisualStyleBackColor = true;
@@ -84,10 +81,9 @@
             // 
             // btnBuscarCompra
             // 
-            btnBuscarCompra.Location = new Point(381, 78);
-            btnBuscarCompra.Margin = new Padding(2);
+            btnBuscarCompra.Location = new Point(648, 83);
             btnBuscarCompra.Name = "btnBuscarCompra";
-            btnBuscarCompra.Size = new Size(111, 35);
+            btnBuscarCompra.Size = new Size(189, 57);
             btnBuscarCompra.TabIndex = 1;
             btnBuscarCompra.Text = "Buscar";
             btnBuscarCompra.UseVisualStyleBackColor = true;
@@ -95,10 +91,9 @@
             // 
             // btnNuevaCompra
             // 
-            btnNuevaCompra.Location = new Point(863, 78);
-            btnNuevaCompra.Margin = new Padding(2);
+            btnNuevaCompra.Location = new Point(398, 182);
             btnNuevaCompra.Name = "btnNuevaCompra";
-            btnNuevaCompra.Size = new Size(172, 35);
+            btnNuevaCompra.Size = new Size(292, 57);
             btnNuevaCompra.TabIndex = 2;
             btnNuevaCompra.Text = "Nueva Compra";
             btnNuevaCompra.UseVisualStyleBackColor = true;
@@ -111,13 +106,12 @@
             tablaCompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaCompra.Columns.AddRange(new DataGridViewColumn[] { CompraID, SocioID, ListaPreciosID, CodigoCompra, Fecha, Socio, TipoSocio, ListaPrecio, TipoPago, Estado, Total });
             tablaCompra.Dock = DockStyle.Fill;
-            tablaCompra.Location = new Point(0, 175);
-            tablaCompra.Margin = new Padding(2);
+            tablaCompra.Location = new Point(0, 287);
             tablaCompra.MultiSelect = false;
             tablaCompra.Name = "tablaCompra";
             tablaCompra.ReadOnly = true;
             tablaCompra.RowHeadersWidth = 102;
-            tablaCompra.Size = new Size(1946, 931);
+            tablaCompra.Size = new Size(2916, 1425);
             tablaCompra.TabIndex = 0;
             tablaCompra.CellDoubleClick += tablaCompra_CellDoubleClick;
             // 
@@ -156,10 +150,10 @@
             CodigoCompra.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             CodigoCompra.DataPropertyName = "CodigoCompra";
             CodigoCompra.HeaderText = "Código";
-            CodigoCompra.MinimumWidth = 12;
+            CodigoCompra.MinimumWidth = 170;
             CodigoCompra.Name = "CodigoCompra";
             CodigoCompra.ReadOnly = true;
-            CodigoCompra.Width = 107;
+            CodigoCompra.Width = 170;
             // 
             // Fecha
             // 
@@ -172,39 +166,40 @@
             // 
             // Socio
             // 
+            Socio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Socio.DataPropertyName = "Socio";
             Socio.HeaderText = "Socio";
             Socio.MinimumWidth = 150;
             Socio.Name = "Socio";
             Socio.ReadOnly = true;
-            Socio.Width = 150;
             // 
             // TipoSocio
             // 
+            TipoSocio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             TipoSocio.DataPropertyName = "TipoSocio";
             TipoSocio.HeaderText = "Tipo de Socio";
             TipoSocio.MinimumWidth = 12;
             TipoSocio.Name = "TipoSocio";
             TipoSocio.ReadOnly = true;
-            TipoSocio.Width = 250;
             // 
             // ListaPrecio
             // 
+            ListaPrecio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ListaPrecio.DataPropertyName = "ListaPrecio";
             ListaPrecio.HeaderText = "Lista de Precios";
             ListaPrecio.MinimumWidth = 12;
             ListaPrecio.Name = "ListaPrecio";
             ListaPrecio.ReadOnly = true;
-            ListaPrecio.Width = 300;
             // 
             // TipoPago
             // 
+            TipoPago.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             TipoPago.DataPropertyName = "TipoPago";
             TipoPago.HeaderText = "Tipo de Pago";
             TipoPago.MinimumWidth = 12;
             TipoPago.Name = "TipoPago";
             TipoPago.ReadOnly = true;
-            TipoPago.Width = 250;
+            TipoPago.Width = 500;
             // 
             // Estado
             // 
@@ -226,12 +221,13 @@
             // 
             // Compra
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1946, 1106);
+            ClientSize = new Size(2916, 1712);
             Controls.Add(tablaCompra);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5);
             Name = "Compra";
             Text = "Compra";
             Load += Compra_Load;
