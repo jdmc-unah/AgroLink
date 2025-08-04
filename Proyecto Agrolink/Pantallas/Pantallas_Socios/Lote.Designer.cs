@@ -47,7 +47,6 @@
             label6 = new Label();
             label8 = new Label();
             comboBox_productocosecha = new ComboBox();
-            btnEliminarLote = new Button();
             btnRecargar = new Button();
             ((System.ComponentModel.ISupportInitialize)LoteTabla).BeginInit();
             SuspendLayout();
@@ -66,7 +65,7 @@
             // 
             tbBuscarLote.Location = new Point(12, 34);
             tbBuscarLote.Name = "tbBuscarLote";
-            tbBuscarLote.PlaceholderText = "Ingresar Codgo de Lote o codigo de Finca";
+            tbBuscarLote.PlaceholderText = "Ingresar Codgo de Lote o Codigo de Finca";
             tbBuscarLote.Size = new Size(401, 27);
             tbBuscarLote.TabIndex = 1;
             // 
@@ -96,7 +95,7 @@
             btnAgregarLote.Name = "btnAgregarLote";
             btnAgregarLote.Size = new Size(135, 31);
             btnAgregarLote.TabIndex = 4;
-            btnAgregarLote.Text = "AgregarLote";
+            btnAgregarLote.Text = "Agregar Lote";
             btnAgregarLote.UseVisualStyleBackColor = true;
             btnAgregarLote.Click += btnAgregarLote_Click;
             // 
@@ -164,16 +163,16 @@
             // dateTimePicker_cosecha
             // 
             dateTimePicker_cosecha.Format = DateTimePickerFormat.Short;
-            dateTimePicker_cosecha.Location = new Point(462, 152);
+            dateTimePicker_cosecha.Location = new Point(504, 154);
             dateTimePicker_cosecha.Name = "dateTimePicker_cosecha";
             dateTimePicker_cosecha.Size = new Size(172, 27);
             dateTimePicker_cosecha.TabIndex = 12;
             // 
             // tbExtencion
             // 
-            tbExtencion.Location = new Point(800, 157);
+            tbExtencion.Location = new Point(873, 156);
             tbExtencion.Name = "tbExtencion";
-            tbExtencion.Size = new Size(162, 27);
+            tbExtencion.Size = new Size(183, 27);
             tbExtencion.TabIndex = 13;
             // 
             // label4
@@ -191,18 +190,18 @@
             label5.AutoSize = true;
             label5.Location = new Point(287, 157);
             label5.Name = "label5";
-            label5.Size = new Size(169, 20);
+            label5.Size = new Size(211, 20);
             label5.TabIndex = 15;
-            label5.Text = "Fecha Aprox de cosecha";
+            label5.Text = "Fecha Aproximada de cosecha";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(649, 159);
+            label6.Location = new Point(706, 159);
             label6.Name = "label6";
-            label6.Size = new Size(145, 20);
+            label6.Size = new Size(149, 20);
             label6.TabIndex = 16;
-            label6.Text = "extension de terreno";
+            label6.Text = "Extension De Terreno";
             // 
             // label8
             // 
@@ -221,15 +220,6 @@
             comboBox_productocosecha.Size = new Size(178, 28);
             comboBox_productocosecha.TabIndex = 20;
             // 
-            // btnEliminarLote
-            // 
-            btnEliminarLote.Location = new Point(716, 34);
-            btnEliminarLote.Name = "btnEliminarLote";
-            btnEliminarLote.Size = new Size(139, 31);
-            btnEliminarLote.TabIndex = 21;
-            btnEliminarLote.Text = "Eliminar Lote";
-            btnEliminarLote.UseVisualStyleBackColor = true;
-            // 
             // btnRecargar
             // 
             btnRecargar.Location = new Point(22, 513);
@@ -246,7 +236,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1283, 559);
             Controls.Add(btnRecargar);
-            Controls.Add(btnEliminarLote);
             Controls.Add(comboBox_productocosecha);
             Controls.Add(label8);
             Controls.Add(label6);
@@ -296,7 +285,6 @@
         private Label label6;
         private Label label8;
         private ComboBox comboBox_productocosecha;
-        private Button btnEliminarLote;
         private Button btnRecargar;
     }
 }
