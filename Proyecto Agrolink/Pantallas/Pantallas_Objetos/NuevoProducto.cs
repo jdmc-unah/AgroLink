@@ -8,6 +8,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 {
     public partial class NuevoProducto : Form
     {
+        public int productoID { get; set; }
+
+
+
         public NuevoProducto()
         {
             InitializeComponent();
@@ -21,6 +25,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void NuevoProducto_Load(object sender, EventArgs e)
         {
             LlenaCombos();
+
         }
 
         void LlenaCombos()
@@ -60,8 +65,9 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
                 if (resultado != null && resultado.Rows.Count > 0)
                 {
+
                     MessageBox.Show("Producto guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                     // Limpiar los campos después de guardar
                     tbNombre.Clear();
                     comboTipoProducto.SelectedIndex = -1;
@@ -93,8 +99,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         {
             // Cerrar esta pantalla y volver a la pantalla de productos
             this.Close();
-            
-            // Abrir la pantalla de productos
+
             if (PantallaPrincipal.instanciaPantPrincipal != null)
             {
                 PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Producto());

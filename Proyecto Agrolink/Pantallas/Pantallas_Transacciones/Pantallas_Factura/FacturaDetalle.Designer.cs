@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             comboNumFiscalID = new ComboBox();
             label10 = new Label();
@@ -106,7 +106,7 @@
             panel1.Margin = new Padding(1);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(6, 0, 0, 0);
-            panel1.Size = new Size(1145, 235);
+            panel1.Size = new Size(1529, 235);
             panel1.TabIndex = 22;
             // 
             // comboNumFiscalID
@@ -318,7 +318,7 @@
             panel2.Location = new Point(0, 235);
             panel2.Margin = new Padding(1);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1145, 577);
+            panel2.Size = new Size(1529, 577);
             panel2.TabIndex = 23;
             // 
             // tablaDetalle
@@ -332,7 +332,7 @@
             tablaDetalle.Name = "tablaDetalle";
             tablaDetalle.ReadOnly = true;
             tablaDetalle.RowHeadersWidth = 102;
-            tablaDetalle.Size = new Size(1145, 577);
+            tablaDetalle.Size = new Size(1529, 577);
             tablaDetalle.TabIndex = 1;
             tablaDetalle.CellEndEdit += tablaDetalle_CellEndEdit;
             tablaDetalle.DataError += tablaDetalle_DataError;
@@ -351,8 +351,8 @@
             // CodigoProducto
             // 
             CodigoProducto.DataPropertyName = "CodigoProducto";
-            dataGridViewCellStyle1.NullValue = "PRO";
-            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.NullValue = "PRO";
+            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle4;
             CodigoProducto.HeaderText = "Codigo";
             CodigoProducto.MinimumWidth = 12;
             CodigoProducto.Name = "CodigoProducto";
@@ -400,8 +400,8 @@
             // Subtotal
             // 
             Subtotal.DataPropertyName = "Subtotal";
-            dataGridViewCellStyle2.NullValue = "0";
-            Subtotal.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.NullValue = "0";
+            Subtotal.DefaultCellStyle = dataGridViewCellStyle5;
             Subtotal.HeaderText = "Subtotal";
             Subtotal.MinimumWidth = 12;
             Subtotal.Name = "Subtotal";
@@ -422,8 +422,8 @@
             // Total
             // 
             Total.DataPropertyName = "Total";
-            dataGridViewCellStyle3.NullValue = "0";
-            Total.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.NullValue = "0";
+            Total.DefaultCellStyle = dataGridViewCellStyle6;
             Total.HeaderText = "Total";
             Total.MinimumWidth = 12;
             Total.Name = "Total";
@@ -445,7 +445,7 @@
             panel3.Location = new Point(0, 812);
             panel3.Margin = new Padding(1);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1145, 0);
+            panel3.Size = new Size(1529, 151);
             panel3.TabIndex = 29;
             // 
             // btnNuevaSalProd
@@ -547,7 +547,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1145, 674);
+            ClientSize = new Size(1529, 963);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            btnAdministrarProducto = new Button();
             label6 = new Label();
             dateTimePicker1 = new DateTimePicker();
             cbEstadoCompra = new ComboBox();
@@ -45,12 +46,6 @@
             label1 = new Label();
             tbCodigoCompra = new TextBox();
             tablaCompraDetalle = new DataGridView();
-            btnVolver = new Button();
-            btnEditarCompra = new Button();
-            btnAceptarCompra = new Button();
-            btnCancelarCompra = new Button();
-            panel2 = new Panel();
-            panel3 = new Panel();
             CompraID = new DataGridViewTextBoxColumn();
             CodigoProducto = new DataGridViewTextBoxColumn();
             ProductoID = new DataGridViewComboBoxColumn();
@@ -60,11 +55,17 @@
             Subtotal = new DataGridViewTextBoxColumn();
             ImpuestoID = new DataGridViewComboBoxColumn();
             Total = new DataGridViewTextBoxColumn();
-            btnCrearRecibo = new Button();
-            label7 = new Label();
-            label8 = new Label();
-            tbSubtotal = new TextBox();
+            btnVolver = new Button();
+            btnEditarCompra = new Button();
+            btnAceptarCompra = new Button();
+            btnCancelarCompra = new Button();
+            panel2 = new Panel();
+            panel3 = new Panel();
             tbTotal = new TextBox();
+            tbSubtotal = new TextBox();
+            label8 = new Label();
+            label7 = new Label();
+            btnCrearRecibo = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaCompraDetalle).BeginInit();
             panel2.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnAdministrarProducto);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(cbEstadoCompra);
@@ -90,13 +92,23 @@
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(6, 0, 0, 0);
-            panel1.Size = new Size(1584, 235);
+            panel1.Size = new Size(1610, 235);
             panel1.TabIndex = 21;
+            // 
+            // btnAdministrarProducto
+            // 
+            btnAdministrarProducto.Location = new Point(1228, 162);
+            btnAdministrarProducto.Name = "btnAdministrarProducto";
+            btnAdministrarProducto.Size = new Size(244, 33);
+            btnAdministrarProducto.TabIndex = 24;
+            btnAdministrarProducto.Text = "Administrar Productos";
+            btnAdministrarProducto.UseVisualStyleBackColor = true;
+            btnAdministrarProducto.Click += btnAdministrarProducto_Click;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(1225, 122);
+            label6.Location = new Point(830, 48);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(117, 25);
@@ -105,13 +117,13 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker1.CustomFormat = "yyyy/MM/dd";
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(1412, 35);
+            dateTimePicker1.Location = new Point(1289, 44);
             dateTimePicker1.Margin = new Padding(2);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(148, 31);
+            dateTimePicker1.Size = new Size(183, 31);
             dateTimePicker1.TabIndex = 21;
             // 
             // cbEstadoCompra
@@ -120,10 +132,10 @@
             cbEstadoCompra.Enabled = false;
             cbEstadoCompra.FormattingEnabled = true;
             cbEstadoCompra.Items.AddRange(new object[] { "Abierto", "Cerrado", "Cancelado" });
-            cbEstadoCompra.Location = new Point(371, 38);
+            cbEstadoCompra.Location = new Point(530, 44);
             cbEstadoCompra.Margin = new Padding(2);
             cbEstadoCompra.Name = "cbEstadoCompra";
-            cbEstadoCompra.Size = new Size(152, 33);
+            cbEstadoCompra.Size = new Size(183, 33);
             cbEstadoCompra.TabIndex = 23;
             // 
             // cbTipoPagoCompra
@@ -132,10 +144,10 @@
             cbTipoPagoCompra.Enabled = false;
             cbTipoPagoCompra.FormattingEnabled = true;
             cbTipoPagoCompra.Items.AddRange(new object[] { "Contado", "Credito" });
-            cbTipoPagoCompra.Location = new Point(1219, 162);
+            cbTipoPagoCompra.Location = new Point(951, 44);
             cbTipoPagoCompra.Margin = new Padding(2);
             cbTipoPagoCompra.Name = "cbTipoPagoCompra";
-            cbTipoPagoCompra.Size = new Size(259, 33);
+            cbTipoPagoCompra.Size = new Size(183, 33);
             cbTipoPagoCompra.TabIndex = 20;
             // 
             // cbListaPrecioCompra
@@ -184,18 +196,18 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(1338, 37);
+            label3.Location = new Point(1228, 48);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(57, 25);
-            label3.TabIndex = 22;
+            label3.TabIndex = 19;
             label3.Text = "Fecha";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(299, 40);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(459, 48);
+            label2.Margin = new Padding(1, 0, 1, 0);
             label2.Name = "label2";
             label2.Size = new Size(66, 25);
             label2.TabIndex = 14;
@@ -204,7 +216,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(35, 42);
+            label1.Location = new Point(112, 48);
+            label1.Margin = new Padding(1, 0, 1, 0);
             label1.Name = "label1";
             label1.Size = new Size(71, 25);
             label1.TabIndex = 1;
@@ -213,7 +226,7 @@
             // tbCodigoCompra
             // 
             tbCodigoCompra.BackColor = SystemColors.Control;
-            tbCodigoCompra.Location = new Point(106, 40);
+            tbCodigoCompra.Location = new Point(191, 46);
             tbCodigoCompra.Margin = new Padding(2);
             tbCodigoCompra.Name = "tbCodigoCompra";
             tbCodigoCompra.ReadOnly = true;
@@ -232,11 +245,107 @@
             tablaCompraDetalle.Name = "tablaCompraDetalle";
             tablaCompraDetalle.ReadOnly = true;
             tablaCompraDetalle.RowHeadersWidth = 102;
-            tablaCompraDetalle.Size = new Size(1584, 582);
+            tablaCompraDetalle.Size = new Size(1610, 582);
             tablaCompraDetalle.TabIndex = 1;
             tablaCompraDetalle.CellContentClick += tablaCompraDetalle_CellContentClick;
             tablaCompraDetalle.CellEndEdit += tablaCompraDetalle_CellEndEdit;
+            tablaCompraDetalle.CellValueChanged += tablaCompraDetalle_CellValueChanged;
             tablaCompraDetalle.DataError += tablaCompraDetalle_DataError;
+            tablaCompraDetalle.EditingControlShowing += tablaCompraDetalle_EditingControlShowing;
+            // 
+            // CompraID
+            // 
+            CompraID.DataPropertyName = "CompraID";
+            dataGridViewCellStyle1.NullValue = "0";
+            CompraID.DefaultCellStyle = dataGridViewCellStyle1;
+            CompraID.HeaderText = "ID";
+            CompraID.MinimumWidth = 12;
+            CompraID.Name = "CompraID";
+            CompraID.ReadOnly = true;
+            CompraID.Visible = false;
+            CompraID.Width = 250;
+            // 
+            // CodigoProducto
+            // 
+            CodigoProducto.DataPropertyName = "CodigoProducto";
+            dataGridViewCellStyle2.NullValue = "PRO";
+            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle2;
+            CodigoProducto.HeaderText = "Código";
+            CodigoProducto.MinimumWidth = 12;
+            CodigoProducto.Name = "CodigoProducto";
+            CodigoProducto.ReadOnly = true;
+            CodigoProducto.Width = 250;
+            // 
+            // ProductoID
+            // 
+            ProductoID.DataPropertyName = "ProductoID";
+            ProductoID.HeaderText = "Producto";
+            ProductoID.MinimumWidth = 12;
+            ProductoID.Name = "ProductoID";
+            ProductoID.ReadOnly = true;
+            ProductoID.Resizable = DataGridViewTriState.True;
+            ProductoID.SortMode = DataGridViewColumnSortMode.Automatic;
+            ProductoID.Width = 250;
+            // 
+            // BodegaID
+            // 
+            BodegaID.DataPropertyName = "BodegaID";
+            BodegaID.HeaderText = "Bodega";
+            BodegaID.MinimumWidth = 12;
+            BodegaID.Name = "BodegaID";
+            BodegaID.ReadOnly = true;
+            BodegaID.Resizable = DataGridViewTriState.True;
+            BodegaID.SortMode = DataGridViewColumnSortMode.Automatic;
+            BodegaID.Width = 250;
+            // 
+            // Cantidad
+            // 
+            Cantidad.DataPropertyName = "Cantidad";
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 12;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 250;
+            // 
+            // Precio
+            // 
+            Precio.DataPropertyName = "Precio";
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 12;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 250;
+            // 
+            // Subtotal
+            // 
+            Subtotal.DataPropertyName = "Subtotal";
+            dataGridViewCellStyle3.NullValue = "0";
+            Subtotal.DefaultCellStyle = dataGridViewCellStyle3;
+            Subtotal.HeaderText = "Subtotal";
+            Subtotal.MinimumWidth = 12;
+            Subtotal.Name = "Subtotal";
+            Subtotal.ReadOnly = true;
+            Subtotal.Width = 250;
+            // 
+            // ImpuestoID
+            // 
+            ImpuestoID.DataPropertyName = "ImpuestoID";
+            ImpuestoID.HeaderText = "Impuesto";
+            ImpuestoID.MinimumWidth = 12;
+            ImpuestoID.Name = "ImpuestoID";
+            ImpuestoID.ReadOnly = true;
+            ImpuestoID.Resizable = DataGridViewTriState.True;
+            ImpuestoID.SortMode = DataGridViewColumnSortMode.Automatic;
+            ImpuestoID.Width = 250;
+            // 
+            // Total
+            // 
+            Total.DataPropertyName = "Total";
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 12;
+            Total.Name = "Total";
+            Total.ReadOnly = true;
+            Total.Width = 250;
             // 
             // btnVolver
             // 
@@ -291,7 +400,7 @@
             panel2.Location = new Point(0, 235);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1584, 582);
+            panel2.Size = new Size(1610, 582);
             panel2.TabIndex = 22;
             // 
             // panel3
@@ -308,111 +417,34 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 817);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1584, 177);
+            panel3.Size = new Size(1610, 177);
             panel3.TabIndex = 28;
+            panel3.Paint += panel3_Paint;
             // 
-            // CompraID
+            // tbTotal
             // 
-            dataGridViewCellStyle4.NullValue = "0";
-            CompraID.DefaultCellStyle = dataGridViewCellStyle4;
-            CompraID.HeaderText = "CompraID";
-            CompraID.MinimumWidth = 12;
-            CompraID.Name = "CompraID";
-            CompraID.ReadOnly = true;
-            CompraID.Visible = false;
-            CompraID.Width = 250;
+            tbTotal.Location = new Point(1435, 109);
+            tbTotal.Margin = new Padding(1);
+            tbTotal.Name = "tbTotal";
+            tbTotal.Size = new Size(153, 31);
+            tbTotal.TabIndex = 31;
             // 
-            // CodigoProducto
+            // tbSubtotal
             // 
-            CodigoProducto.DataPropertyName = "CodigoProducto";
-            dataGridViewCellStyle5.NullValue = "PRO";
-            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle5;
-            CodigoProducto.HeaderText = "Codigo";
-            CodigoProducto.MinimumWidth = 12;
-            CodigoProducto.Name = "CodigoProducto";
-            CodigoProducto.ReadOnly = true;
-            CodigoProducto.Width = 250;
+            tbSubtotal.Location = new Point(1435, 57);
+            tbSubtotal.Margin = new Padding(1);
+            tbSubtotal.Name = "tbSubtotal";
+            tbSubtotal.Size = new Size(153, 31);
+            tbSubtotal.TabIndex = 29;
             // 
-            // ProductoID
+            // label8
             // 
-            ProductoID.DataPropertyName = "ProductoID";
-            ProductoID.HeaderText = "Producto";
-            ProductoID.MinimumWidth = 12;
-            ProductoID.Name = "ProductoID";
-            ProductoID.ReadOnly = true;
-            ProductoID.Resizable = DataGridViewTriState.True;
-            ProductoID.SortMode = DataGridViewColumnSortMode.Automatic;
-            ProductoID.Width = 150;
-            // 
-            // BodegaID
-            // 
-            BodegaID.DataPropertyName = "BodegaID";
-            BodegaID.HeaderText = "Bodega";
-            BodegaID.MinimumWidth = 12;
-            BodegaID.Name = "BodegaID";
-            BodegaID.ReadOnly = true;
-            BodegaID.Resizable = DataGridViewTriState.True;
-            BodegaID.SortMode = DataGridViewColumnSortMode.Automatic;
-            BodegaID.Width = 250;
-            // 
-            // Cantidad
-            // 
-            Cantidad.DataPropertyName = "Cantidad";
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 12;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 250;
-            // 
-            // Precio
-            // 
-            Precio.DataPropertyName = "Precio";
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 12;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 250;
-            // 
-            // Subtotal
-            // 
-            Subtotal.DataPropertyName = "Subtotal";
-            dataGridViewCellStyle6.NullValue = "0";
-            Subtotal.DefaultCellStyle = dataGridViewCellStyle6;
-            Subtotal.HeaderText = "Subtotal";
-            Subtotal.MinimumWidth = 12;
-            Subtotal.Name = "Subtotal";
-            Subtotal.ReadOnly = true;
-            Subtotal.Width = 250;
-            // 
-            // ImpuestoID
-            // 
-            ImpuestoID.DataPropertyName = "ImpuestoID";
-            ImpuestoID.HeaderText = "Impuesto";
-            ImpuestoID.MinimumWidth = 12;
-            ImpuestoID.Name = "ImpuestoID";
-            ImpuestoID.ReadOnly = true;
-            ImpuestoID.Resizable = DataGridViewTriState.True;
-            ImpuestoID.SortMode = DataGridViewColumnSortMode.Automatic;
-            ImpuestoID.Width = 250;
-            // 
-            // Total
-            // 
-            Total.DataPropertyName = "Total";
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 12;
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            Total.Width = 250;
-            // 
-            // btnCrearRecibo
-            // 
-            btnCrearRecibo.Location = new Point(359, 73);
-            btnCrearRecibo.Margin = new Padding(2);
-            btnCrearRecibo.Name = "btnCrearRecibo";
-            btnCrearRecibo.Size = new Size(131, 41);
-            btnCrearRecibo.TabIndex = 28;
-            btnCrearRecibo.Text = "Crear Recibo";
-            btnCrearRecibo.UseVisualStyleBackColor = true;
+            label8.AutoSize = true;
+            label8.Location = new Point(1355, 110);
+            label8.Name = "label8";
+            label8.Size = new Size(49, 25);
+            label8.TabIndex = 30;
+            label8.Text = "Total";
             // 
             // label7
             // 
@@ -424,36 +456,22 @@
             label7.TabIndex = 30;
             label7.Text = "Subtotal";
             // 
-            // label8
+            // btnCrearRecibo
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(1355, 110);
-            label8.Name = "label8";
-            label8.Size = new Size(49, 25);
-            label8.TabIndex = 30;
-            label8.Text = "Total";
-            // 
-            // tbSubtotal
-            // 
-            tbSubtotal.Location = new Point(1435, 57);
-            tbSubtotal.Margin = new Padding(1);
-            tbSubtotal.Name = "tbSubtotal";
-            tbSubtotal.Size = new Size(153, 31);
-            tbSubtotal.TabIndex = 29;
-            // 
-            // tbTotal
-            // 
-            tbTotal.Location = new Point(1435, 109);
-            tbTotal.Margin = new Padding(1);
-            tbTotal.Name = "tbTotal";
-            tbTotal.Size = new Size(153, 31);
-            tbTotal.TabIndex = 31;
+            btnCrearRecibo.Location = new Point(359, 73);
+            btnCrearRecibo.Margin = new Padding(2);
+            btnCrearRecibo.Name = "btnCrearRecibo";
+            btnCrearRecibo.Size = new Size(131, 41);
+            btnCrearRecibo.TabIndex = 28;
+            btnCrearRecibo.Text = "Crear Recibo";
+            btnCrearRecibo.UseVisualStyleBackColor = true;
+            btnCrearRecibo.Click += btnCrearRecibo_Click;
             // 
             // CompraDetalle
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1584, 994);
+            ClientSize = new Size(1610, 994);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -492,6 +510,11 @@
         private Button btnCancelarCompra;
         private Panel panel2;
         private Panel panel3;
+        private TextBox tbSubtotal;
+        private Label label8;
+        private Label label7;
+        private Button btnCrearRecibo;
+        private TextBox tbTotal;
         private DataGridViewTextBoxColumn CompraID;
         private DataGridViewTextBoxColumn CodigoProducto;
         private DataGridViewComboBoxColumn ProductoID;
@@ -501,10 +524,6 @@
         private DataGridViewTextBoxColumn Subtotal;
         private DataGridViewComboBoxColumn ImpuestoID;
         private DataGridViewTextBoxColumn Total;
-        private TextBox tbSubtotal;
-        private Label label8;
-        private Label label7;
-        private Button btnCrearRecibo;
-        private TextBox tbTotal;
+        private Button btnAdministrarProducto;
     }
 }

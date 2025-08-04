@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using AgroLink.Pantallas.Pantallas_Objetos;
+using static AgroLink.Pantallas.Pantallas_Objetos.NuevoProducto;
 
 namespace AgroLink.Pantallas.Pantallas_Objetos
 {

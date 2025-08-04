@@ -4,7 +4,7 @@
 
 create or alter view vTraeRecibos 
 as
-	select r.ReciboID, r.CodigoRecibo, r.Fecha, s.Nombre as 'Socio', s.TipoSocio, lp.Nombre as 'ListaPrecio', r.MetodoPago, r.Estado, e.Nombre as 'Empleado',
+	select r.ReciboID, r.CodigoRecibo, r.Fecha, s.Nombre as 'Socio', s.TipoSocio, lp.Nombre as 'ListaPrecio', r.MetodoPago, r.Estado,
 		   sum((rd.Cantidad * rd.Precio) * (1 + I.Valor)) as 'Total',
 
     -- campos adicionales para referencia interna
@@ -18,7 +18,7 @@ as
     inner join Pruebas.Empleado e on R.EmpleadoID = E.EmpleadoID
 	group by
     r.ReciboID, r.CodigoRecibo, r.Fecha, s.SocioID, s.Nombre, s.TipoSocio, lp.ListaPreciosID, lp.Nombre, r.MetodoPago, r.Estado, 
-	r.SocioID, r.ListaPreciosID, r.CompraID, r.EmpleadoID, e.Nombre
+	r.SocioID, r.ListaPreciosID, r.CompraID, r.EmpleadoID
 go
 
 select * from vTraeRecibos

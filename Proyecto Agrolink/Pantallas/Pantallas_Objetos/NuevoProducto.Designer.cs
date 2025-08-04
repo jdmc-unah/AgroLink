@@ -21,7 +21,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.labelTitulo = new System.Windows.Forms.Label();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.tbNombre = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();;
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboUnidadMedida = new System.Windows.Forms.ComboBox();

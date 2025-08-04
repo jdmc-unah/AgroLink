@@ -285,6 +285,7 @@
             tablaReciboDetalle.RowHeadersWidth = 62;
             tablaReciboDetalle.Size = new Size(1584, 577);
             tablaReciboDetalle.TabIndex = 0;
+            tablaReciboDetalle.CellEndEdit += tablaReciboDetalle_CellEndEdit;
             tablaReciboDetalle.DataError += tablaReciboDetalle_DataError;
             tablaReciboDetalle.DefaultValuesNeeded += tablaReciboDetalle_DefaultValuesNeeded;
             tablaReciboDetalle.UserDeletedRow += tablaReciboDetalle_UserDeletedRow;

@@ -44,10 +44,14 @@ CREATE OR ALTER FUNCTION dbo.fCalcularTotalesRecibo (@tablaTotales TipoReciboDet
 RETURNS @resultado TABLE (Subtotal DECIMAL(10, 2), Total DECIMAL(10, 2))
 AS
 BEGIN
-	INSERT INTO @resultado 
-	SELECT SUM(TT.Subtotal), SUM(TT.Total)
-	FROM @tablaTotales TT
-
+	INSERT INTO @resultado
+	SELECT 
+        SUM(td.Cantidad * td.Precio) as Subtotal,
+        SUM((td.Cantidad * td.Precio) * (1 + i.Valor)) as Total
+    FROM 
+        @tablaTotales td
+    INNER JOIN 
+        Pruebas.Impuesto i ON td.ImpuestoID = i.ImpuestoID
 	RETURN
 END
 GO

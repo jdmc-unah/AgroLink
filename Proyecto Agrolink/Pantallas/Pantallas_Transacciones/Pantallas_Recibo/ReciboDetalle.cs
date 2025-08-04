@@ -71,7 +71,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo
             cbEmpleado.ValueMember = "EmpleadoID";
 
             Dictionary<string, object> filtroComprasAbiertas = new Dictionary<string, object>() {
-                {"compID",  compraID}
+                {"reciboID", reciboID}
             };
 
             cbCompra.DataSource = recSQL.EjecutarSPDataTable("spTraeComprasCode", filtroComprasAbiertas);
@@ -260,6 +260,11 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Recibo
         }
 
         private void tablaReciboDetalle_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+
+        }
+
+        private void tablaReciboDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
 
         }

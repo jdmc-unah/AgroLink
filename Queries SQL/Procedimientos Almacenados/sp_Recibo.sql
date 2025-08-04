@@ -112,8 +112,7 @@ BEGIN
 END
 GO
 
--- actualiza y agrega recibo
-
+-- tipo para recibo detalle
 create type TipoReciboDetalle as table 
 (
 	ReciboID int,	
@@ -128,140 +127,125 @@ create type TipoReciboDetalle as table
 )
 go
 
-CREATE OR ALTER PROCEDURE spAddUpdateRecibo @reciboID int, @compraID int, @socID int, @listPrecID int, @fecha date, @metodoPago varchar(50), @empleadoID int, @estado varchar(50), 
-@detalle TipoReciboDetalle READONLY
-AS
-BEGIN
-    BEGIN TRANSACTION;
+-- actualiza y agrega recibo
+create or alter procedure spAddUpdateRecibo @reciboID int, @compraID int, @socID int, @listPrecID int, @fecha date, @metodoPago varchar(50), @empleadoID int, @estado varchar(50), @detalle TipoReciboDetalle READONLY
+as
+begin
+    begin transaction
 
-    DECLARE @err varchar(50) = '', @resCancelacion varchar(50)
+    declare @err varchar(50) = '', @resCancelacion varchar(50)
 
     -- valida si el recibo lleva estado Cancelado
-    IF @estado = 'Cancelado'
-    BEGIN
-        EXEC spCancelarRecibo @reciboID, @error = @resCancelacion OUTPUT
-        IF ISNULL(@resCancelacion, '') <> '' THROW 50001, @resCancelacion, 1 -- devuelve error personalizado
 
-        COMMIT
-        SELECT @reciboID
-        RETURN
-    END
+    if @estado = 'Cancelado'
+    begin
+        exec spCancelarRecibo @reciboID, @error = @resCancelacion output
+        if isnull(@resCancelacion, '') <> '' THROW 50001, @resCancelacion, 1 -- devuelve error personalizado
+
+        commit
+        select @reciboID
+        return
+    end
 
     -- crea o Actualiza Recibo
-    IF @reciboID = 0
-		BEGIN
+
+    if @reciboID = 0
+		begin
         -- nuevo Recibo
-			INSERT INTO Pruebas.Recibo (CompraID, SocioID, ListaPreciosID, Fecha, MetodoPago, EmpleadoID, Estado)
-			VALUES (@compraID, @socID, @listPrecID, @fecha, @metodoPago, @empleadoID, @estado)
+			insert into Pruebas.Recibo (CompraID, SocioID, ListaPreciosID, Fecha, MetodoPago, EmpleadoID, Estado)
+			values (@compraID, @socID, @listPrecID, @fecha, @metodoPago, @empleadoID, @estado)
 
-			IF @@ERROR <> 0 AND @err = '' SET @err = 'Error al insertar Recibo'
-		END
-    ELSE
-    BEGIN
+			if @@ERROR <> 0 and @err = '' set @err = 'Error al insertar Recibo'
+		end
+    else
+    begin
         -- editar Recibo
-        UPDATE Pruebas.Recibo
-        SET CompraID = @compraID,
-            SocioID = @socID,
-            ListaPreciosID = @listPrecID,
-            Fecha = @fecha,
-            MetodoPago = @metodoPago,
-            EmpleadoID = @empleadoID,
-            Estado = @estado
-        WHERE ReciboID = @reciboID
+        update Pruebas.Recibo
+        set CompraID = @compraID, SocioID = @socID, ListaPreciosID = @listPrecID, Fecha = @fecha, MetodoPago = @metodoPago, EmpleadoID = @empleadoID, Estado = @estado
+        where ReciboID = @reciboID
 
-        IF @@ERROR <> 0 AND @err = '' SET @err = 'Error al actualizar Recibo'
-    END
+        if @@ERROR <> 0 and @err = '' set @err = 'Error al actualizar Recibo'
+    end
 
-    -- si no hubo error, contin�a con el detalle
-    IF @err = ''
-    BEGIN
-        IF @reciboID = 0
-            SELECT TOP 1 @reciboID = ReciboID FROM Pruebas.Recibo ORDER BY ReciboID DESC
+    -- valida si hubo error en Recibo
 
-        -- ejecuta y valida el detalle del recibo
-        EXEC spAddUpdateReciboDet @reciboid, @compraid, @estado, @detalle;
+    if @err = ''
+    begin
+        if @reciboID = 0
+            select top 1 @reciboID = ReciboID from Pruebas.Recibo order by ReciboID desc
 
-        IF @@ERROR = 0
-        BEGIN
-            COMMIT
-            SELECT @reciboid
-        END
-        ELSE
-        BEGIN
-            ROLLBACK
-        END
-    END
-    ELSE
-    BEGIN
-        ROLLBACK
-    END
-END
-GO
+        -- ejecuta y valida el detalle del recibodetalle
+
+        exec spAddUpdateReciboDet @reciboid, @compraid, @estado, @detalle
+
+        if @@ERROR = 0
+        begin
+            commit
+            select @reciboid
+        end
+        else
+        begin
+            rollback
+        end
+    end
+    else
+    begin
+        rollback
+    end
+end
+go
 
 
 
 -- actualiza y agrega recibo detalle
 
-CREATE OR ALTER PROCEDURE spAddUpdateReciboDet 
-@reciboID INT,  
-@compraID INT,
-@estadoRecibo VARCHAR(20),  
-@detalle TipoReciboDetalle READONLY
-AS
-BEGIN
-    DECLARE @tipoPago VARCHAR(50), @socID INT, 
-            @nuevoTotalRecibo FLOAT, @totalCompra FLOAT, @totalRecibosPagados FLOAT, @saldo FLOAT		
+create or alter procedure spAddUpdateReciboDet @reciboID int,  @compraID int, @estadoRecibo varchar(20),  @detalle TipoReciboDetalle readonly
+as
+begin
+    declare @tipoPago varchar(50), @socID int, @nuevoTotalRecibo float, @totalCompra float, @totalRecibosPagados float, @saldo float		
 
     -- llena variables necesarias
-    SELECT @tipoPago = TipoPago, @socID = SocioID 
-    FROM Pruebas.Compra 
-    WHERE CompraID = @compraID;
+    select @tipoPago = TipoPago, @socID = SocioID 
+    from Pruebas.Compra 
+    where CompraID = @compraID
 
-    SELECT @nuevoTotalRecibo = ISNULL(SUM(Total), 0) FROM @detalle;  -- Total de este recibo
+	-- total que se paga en este recibo
+    select @nuevoTotalRecibo = isnull(sum(Total), 0) from @detalle
 
-    SELECT @totalCompra = ISNULL(SUM(Total), 0) 
-    FROM Pruebas.CompraDetalle 
-    WHERE CompraID = @compraID;
+	-- total de la compra (monto original)
+    select @totalCompra = isnull(sum(Total), 0) 
+    from Pruebas.CompraDetalle 
+    where CompraID = @compraID
 
-    SELECT @totalRecibosPagados = ISNULL(SUM(RD.Total), 0)  
-    FROM Pruebas.ReciboDetalle RD
-    INNER JOIN Pruebas.Recibo R ON RD.ReciboID = R.ReciboID  
-    WHERE R.CompraID = @compraID AND R.Estado = 'Cerrado' AND R.ReciboID <> @reciboID
+	-- total ya pagado en recios anteiores cerrados
+    select @totalRecibosPagados = isnull(sum(rd.Total), 0)  
+    from Pruebas.ReciboDetalle rd
+    inner join Pruebas.Recibo r on rd.ReciboID = r.ReciboID  
+    where r.CompraID = @compraID and r.Estado = 'Cerrado' and r.ReciboID <> @reciboID
 
-    -- actualiza saldo del socio si la compra fue a credito y el recibo se cerro
-    IF @tipoPago = 'Credito' AND @estadoRecibo = 'Cerrado'
-    BEGIN
-        -- valida saldo no negativo
-        SELECT @saldo = CASE WHEN Saldo - @nuevoTotalRecibo < 0 THEN 0 ELSE Saldo - @nuevoTotalRecibo END
-        FROM Pruebas.Socio WHERE SocioID = @socID
+    -- actualiza saldo del socio si la compra fue a credito
+    if @tipoPago = 'Credito' and @estadoRecibo = 'Cerrado'
+    begin
+        select @saldo = case when Saldo - @nuevoTotalRecibo < 0 then 0 else Saldo - @nuevoTotalRecibo end
+        from Pruebas.Socio where SocioID = @socID
         
-        UPDATE Pruebas.Socio 
-        SET Saldo = @saldo 
-        WHERE SocioID = @socID
-    END
+        update Pruebas.Socio 
+        set Saldo = @saldo 
+        where SocioID = @socID
+    end
 
     -- cierra la compra si ya se pago completamente
-    IF @estadoRecibo = 'Cerrado' AND (@totalRecibosPagados + @nuevoTotalRecibo) = @totalCompra
-    BEGIN
-        UPDATE Pruebas.Compra 
-        SET Estado = 'Cerrado' 
-        WHERE CompraID = @compraID
-    END
+    if @estadoRecibo = 'Cerrado' and (@totalRecibosPagados + @nuevoTotalRecibo) = @totalCompra
+    begin
+        update Pruebas.Compra 
+        set Estado = 'Cerrado' 
+        where CompraID = @compraID
+    end
 
-	IF EXISTS (
-        SELECT 1 FROM @detalle d
-        WHERE NOT EXISTS (SELECT 1 FROM Pruebas.Impuesto i WHERE i.ImpuestoID = d.ImpuestoID)
-    )
-    
-        THROW 50020, 'Existen filas con ImpuestoID inválido en el detalle del recibo.', 1
+    -- actualiza ReciboDetalle (borra e inserta)
+    delete from Pruebas.ReciboDetalle where ReciboID = @reciboID
 
-    -- actualiza ReciboDetalle
-    DELETE FROM Pruebas.ReciboDetalle WHERE ReciboID = @reciboID
-
-    INSERT INTO Pruebas.ReciboDetalle (ReciboID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total)
-    SELECT @reciboID, d.ProductoID, d.ImpuestoID, d.BodegaID, d.Cantidad, d.Precio, d.Total 
-    FROM @detalle d
-	inner join Pruebas.Impuesto i on i.ImpuestoID = d.ImpuestoID
-END
-GO
-
+    insert into Pruebas.ReciboDetalle (ReciboID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total)
+    select @reciboID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total from @detalle 
+end
+go

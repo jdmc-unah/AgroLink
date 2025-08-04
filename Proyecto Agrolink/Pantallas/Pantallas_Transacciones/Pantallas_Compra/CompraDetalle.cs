@@ -1,4 +1,5 @@
-﻿using AgroLink.Recursos;
+﻿using AgroLink.Pantallas.Pantallas_Objetos;
+using AgroLink.Recursos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AgroLink.Pantallas.Pantallas_Objetos.NuevoProducto;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
@@ -16,6 +18,8 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
     {
         public Compra compraForm { get; set; }
         public int compraID { get; set; }
+
+
 
         public CompraDetalle()
         {
@@ -82,6 +86,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
 
             DataTable dt = recSQL.EjecutarSPDataTable("spTraeCompraDetalle", parametros);
             dt.Columns["CompraID"].AutoIncrement = false;
+
             dt.Columns["CompraID"].DefaultValue = 0;
             dt.Columns["CodigoProducto"].DefaultValue = "PRO";
             dt.Columns["Subtotal"].DefaultValue = 0;
@@ -121,6 +126,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
             colProducto.DisplayMember = "Producto";
             colProducto.ValueMember = "ProductoID";
 
+
             DataGridViewComboBoxColumn colBodega = (DataGridViewComboBoxColumn)tablaCompraDetalle.Columns["BodegaID"];
             colBodega.DataSource = recSQL.EjecutarVista("vTraeBodega");
             colBodega.DisplayMember = "Bodega";
@@ -132,6 +138,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
             colImpuesto.DisplayMember = "Impuesto";
             colImpuesto.ValueMember = "ImpuestoID";
         }
+
 
         #endregion
 
@@ -160,7 +167,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
 
             DataTable tbDet = metodosGlobales.CrearDataTable(tablaCompraDetalle);
 
-            Dictionary<string, object> paramsCompra = new Dictionary<string, object>() 
+            Dictionary<string, object> paramsCompra = new Dictionary<string, object>()
             {
                 {"compraID" , compraID },
                 {"fecha" , dateTimePicker1.Value.ToString("yyyy/MM/dd") },
@@ -172,36 +179,79 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
 
             DataTable? tablaResultante = recSQL.EjecutarSPDataTable("spAddUpdateCompra", "detalle", "TipoCompraDetalle", tbDet, paramsCompra);
 
-            if (tablaResultante != null)
+            if (tablaResultante != null && tablaResultante.Rows.Count > 0)
             {
-                if (compraID != null)
-                {
-                    compraID = Convert.ToInt32(tablaResultante.Rows[0][0]);
+                compraID = Convert.ToInt32(tablaResultante.Rows[0][0]);
 
-                    if (metodosGlobales.MensajeConfirmacion("Confirmacion", "Cambios guardados \n ¿Desea crear un recibo?"))
-                    {
-                        Pantallas_Recibo.ReciboDetalle formRecibo = new Pantallas_Recibo.ReciboDetalle();
-                        formRecibo.compraID = compraID;
-                        formRecibo.FormPadre = this;
-                        PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formRecibo);
-                    }
+                if (metodosGlobales.MensajeConfirmacion("Confirmación", "Cambios guardados \n ¿Desea crear un recibo?"))
+                {
+                    Pantallas_Recibo.ReciboDetalle formRecibo = new Pantallas_Recibo.ReciboDetalle();
+                    formRecibo.compraID = compraID;
+                    formRecibo.FormPadre = this;
+                    PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formRecibo);
                 }
+
                 ObtenerDatos(compraID);
                 ToggleReadOnly(true);
+            }
+            else
+            {
+                MessageBox.Show("No se pudo guardar la compra. Verifique si ocurrió un error.");
             }
         }
 
         private void btnCancelarCompra_Click(object sender, EventArgs e)
         {
-            ToggleReadOnly(true);
-
             if (compraID != 0)
             {
-                ObtenerDatos(compraID);
+                Dictionary<string, object> parametros = new Dictionary<string, object>()
+                {
+                    { "compraID", compraID },
+                    { "socID", cbSocioCompra.SelectedValue },
+                    { "error", "" } // OUTPUT parametro
+                };
+
+                recSQL.EjecutarSPDataTable("spCancelarCompra", parametros);
+
+                if (parametros["error"] != null && parametros["error"].ToString() != "")
+                {
+                    MessageBox.Show(parametros["error"].ToString());
+                    return;
+                }
+
+                MessageBox.Show("Compra cancelada correctamente.");
+
+                ObtenerDatos(compraID); // refresca pantalla
+                ToggleReadOnly(true);   // deshabilita edición
             }
             else
             {
                 PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(compraForm, this);
+            }
+        }
+
+        private void btnCrearRecibo_Click(object sender, EventArgs e)
+        {
+            if (cbEstadoCompra.SelectedItem == "Abierto" && compraID != 0)
+            {
+
+                Pantallas_Recibo.ReciboDetalle formRecibo = new Pantallas_Recibo.ReciboDetalle();
+                formRecibo.compraID = compraID;
+                formRecibo.FormPadre = this;
+                PantallaPrincipal.instanciaPantPrincipal.ToggleDetailForms(this, formRecibo);
+            }
+            else
+            {
+                MessageBox.Show("No puede crear recibos si la compra ha sido cerrada");
+            }
+
+        }
+
+        private void btnAdministrarProducto_Click(object sender, EventArgs e)
+        {
+            if (PantallaPrincipal.instanciaPantPrincipal != null)
+            {
+                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Producto());
             }
         }
 
@@ -211,6 +261,7 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
 
         private void CompraDetalle_Load(object sender, EventArgs e)
         {
+
             if (compraID != 0)
             {
                 ObtenerDatos(compraID);
@@ -218,14 +269,17 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
             else
             {
                 LlenaCombosSuperiores();
+
                 cbEstadoCompra.SelectedItem = "Abierto";
 
                 LlenaComboDetalle();
+
                 ToggleReadOnly(false);
             }
+
         }
 
-        
+
 
         private void tablaCompraDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -276,5 +330,23 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
         {
 
         }
+
+        
+        private void tablaCompraDetalle_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tablaCompraDetalle_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        
     }
 }

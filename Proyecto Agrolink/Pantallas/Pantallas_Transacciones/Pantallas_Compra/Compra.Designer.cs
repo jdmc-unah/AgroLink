@@ -59,7 +59,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1584, 175);
+            panel1.Size = new Size(1946, 175);
             panel1.TabIndex = 0;
             // 
             // tbBuscarCompra
@@ -73,7 +73,7 @@
             // 
             // btnRecargarCompra
             // 
-            btnRecargarCompra.Location = new Point(665, 90);
+            btnRecargarCompra.Location = new Point(659, 78);
             btnRecargarCompra.Margin = new Padding(2);
             btnRecargarCompra.Name = "btnRecargarCompra";
             btnRecargarCompra.Size = new Size(172, 35);
@@ -95,7 +95,7 @@
             // 
             // btnNuevaCompra
             // 
-            btnNuevaCompra.Location = new Point(665, 43);
+            btnNuevaCompra.Location = new Point(863, 78);
             btnNuevaCompra.Margin = new Padding(2);
             btnNuevaCompra.Name = "btnNuevaCompra";
             btnNuevaCompra.Size = new Size(172, 35);
@@ -117,7 +117,7 @@
             tablaCompra.Name = "tablaCompra";
             tablaCompra.ReadOnly = true;
             tablaCompra.RowHeadersWidth = 102;
-            tablaCompra.Size = new Size(1584, 819);
+            tablaCompra.Size = new Size(1946, 931);
             tablaCompra.TabIndex = 0;
             tablaCompra.CellDoubleClick += tablaCompra_CellDoubleClick;
             // 
@@ -228,7 +228,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1584, 994);
+            ClientSize = new Size(1946, 1106);
             Controls.Add(tablaCompra);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;

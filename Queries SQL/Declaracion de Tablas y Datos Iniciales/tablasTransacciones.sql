@@ -1,26 +1,6 @@
 use AgroLinkDB
 go 
 
---editando/creando tablas de transacciones
-
-/*
-bases padre
-drop table Pruebas.Venta
-drop table Pruebas.Compra
-drop table Pruebas.EntradaProducto
-drop table Pruebas.Factura
-drop table Pruebas.Recibo
-drop table Pruebas.SalidaProducto
-
-bases hija
-drop table Pruebas.CompraDetalle
-drop table Pruebas.VentaDetalle
-drop table Pruebas.EntradaProductoDetalle
-drop table Pruebas.FacturaDetalle
-drop table Pruebas.ReciboDetalle
-drop table Pruebas.SalidaProductoDetalle
-*/
-
 
 --VENTAS
 
@@ -99,37 +79,6 @@ Create table Pruebas.CompraDetalle --ya creada
 	constraint fkCompraDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
 	constraint fkCompraDetalleImpuesto foreign key (ImpuestoID) references Pruebas.Impuesto(ImpuestoID),
 	constraint fkCompraDetalleBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID),
-)
-go
-
---EntradProducto
-Create Table Pruebas.EntradaProducto --ya creada
-(
-	EntradaID int identity(1,1)  primary key not null,
-	CodigoEntrada as concat('ENT', EntradaID) persisted,
-	SocioID int,						--CAMBIO
-	Fecha Datetime not null,
-	LoteID int,
-	CompraID int,						--CAMBIO
-
-	constraint fkEntradaProductoSocio foreign key (SocioID) references Pruebas.Socio(SocioID), 
-	constraint fkEntradaProductoLote foreign key (LoteID) references Pruebas.Lote(LoteID),
-	constraint fkEntradaProductoCompra foreign key (CompraID) references Pruebas.Compra(CompraID)	--CAMBIO
-)
-go
-
---Entrada Producto Detalle
-
-Create Table Pruebas.EntradaProductoDetalle --ya creada
-(
-	EntradaID int not null,
-	ProductoID int not null,
-	Cantidad int not null,
-	BodegaID int not null,				--CAMBIO
-
-	constraint pkEntradaProductoDetalle primary key (EntradaID, ProductoID),
-	constraint fkEntradaProductoDetalleProducto foreign key (ProductoID) references Pruebas.Producto(ProductoID),
-	constraint fkEntradaProductoBodega foreign key (BodegaID) references Pruebas.Bodega(BodegaID)		--CAMBIO
 )
 go
 
