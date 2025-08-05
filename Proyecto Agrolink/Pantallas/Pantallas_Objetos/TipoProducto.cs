@@ -23,10 +23,14 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void btnNuevoTipoProducto_Click(object sender, EventArgs e)
         {
-            if (PantallaPrincipal.instanciaPantPrincipal != null)
-            {
-                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevoTipoProducto());
-            }
+            //if (PantallaPrincipal.instanciaPantPrincipal != null)
+            //{
+            //    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevoTipoProducto());
+            //}
+            NuevoTipoProducto nuevTP = new NuevoTipoProducto();
+            nuevTP.ShowDialog();
+
+
         }
 
         private void btnRecargar_Click(object sender, EventArgs e)

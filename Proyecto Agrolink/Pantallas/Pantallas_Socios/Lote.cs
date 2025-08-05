@@ -51,7 +51,7 @@ namespace AgroLink.Pantallas.Pantallas_Socios
             comboBox_TipoRiego.ValueMember = "TipoRiegoID";
             comboBox_TipoRiego.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            //llebar tipo de semilla o cosecha no se como llamarlo
+            //trae productos de produccion agricola
             comboBox_productocosecha.DataSource = recSQL.EjecutarVista("vTraerSiembra");
             comboBox_productocosecha.DisplayMember = "ProductoSiembra";
             comboBox_productocosecha.ValueMember = "ProductoID";

@@ -52,20 +52,18 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panelTitulo.Controls.Add(labelTitulo);
             panelTitulo.Dock = DockStyle.Top;
             panelTitulo.Location = new Point(0, 0);
-            panelTitulo.Margin = new Padding(2, 2, 2, 2);
             panelTitulo.Name = "panelTitulo";
-            panelTitulo.Size = new Size(923, 78);
+            panelTitulo.Size = new Size(1553, 128);
             panelTitulo.TabIndex = 0;
             // 
             // labelTitulo
             // 
             labelTitulo.AutoSize = true;
             labelTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            labelTitulo.ForeColor = SystemColors.Window;
-            labelTitulo.Location = new Point(38, 23);
-            labelTitulo.Margin = new Padding(2, 0, 2, 0);
+            labelTitulo.ForeColor = Color.FromArgb(255, 222, 89);
+            labelTitulo.Location = new Point(65, 38);
             labelTitulo.Name = "labelTitulo";
-            labelTitulo.Size = new Size(239, 45);
+            labelTitulo.Size = new Size(399, 72);
             labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Nueva Bodega";
             // 
@@ -79,18 +77,16 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panelSuperior.Controls.Add(label2);
             panelSuperior.Controls.Add(label1);
             panelSuperior.Dock = DockStyle.Top;
-            panelSuperior.Location = new Point(0, 78);
-            panelSuperior.Margin = new Padding(2, 2, 2, 2);
+            panelSuperior.Location = new Point(0, 128);
             panelSuperior.Name = "panelSuperior";
-            panelSuperior.Size = new Size(923, 234);
+            panelSuperior.Size = new Size(1553, 339);
             panelSuperior.TabIndex = 1;
             // 
             // txtCapacidad
             // 
-            txtCapacidad.Location = new Point(615, 39);
-            txtCapacidad.Margin = new Padding(2, 2, 2, 2);
+            txtCapacidad.Location = new Point(1046, 64);
             txtCapacidad.Name = "txtCapacidad";
-            txtCapacidad.Size = new Size(232, 31);
+            txtCapacidad.Size = new Size(392, 47);
             txtCapacidad.TabIndex = 1;
             txtCapacidad.KeyPress += txtCapacidad_KeyPress;
             // 
@@ -98,28 +94,25 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             cmbDireccion.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDireccion.FormattingEnabled = true;
-            cmbDireccion.Location = new Point(154, 117);
-            cmbDireccion.Margin = new Padding(2, 2, 2, 2);
+            cmbDireccion.Location = new Point(262, 192);
             cmbDireccion.Name = "cmbDireccion";
-            cmbDireccion.Size = new Size(693, 33);
+            cmbDireccion.Size = new Size(1175, 49);
             cmbDireccion.TabIndex = 2;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(154, 39);
-            txtNombre.Margin = new Padding(2, 2, 2, 2);
+            txtNombre.Location = new Point(262, 64);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(232, 31);
+            txtNombre.Size = new Size(392, 47);
             txtNombre.TabIndex = 0;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.ForeColor = SystemColors.Window;
-            label3.Location = new Point(38, 117);
-            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Location = new Point(65, 192);
             label3.Name = "label3";
-            label3.Size = new Size(85, 25);
+            label3.Size = new Size(142, 41);
             label3.TabIndex = 3;
             label3.Text = "Dirección";
             // 
@@ -127,10 +120,9 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.Window;
-            label2.Location = new Point(462, 39);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(785, 64);
             label2.Name = "label2";
-            label2.Size = new Size(95, 25);
+            label2.Size = new Size(157, 41);
             label2.TabIndex = 2;
             label2.Text = "Capacidad";
             // 
@@ -138,10 +130,9 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             label1.AutoSize = true;
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(38, 39);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(65, 64);
             label1.Name = "label1";
-            label1.Size = new Size(78, 25);
+            label1.Size = new Size(128, 41);
             label1.TabIndex = 1;
             label1.Text = "Nombre";
             // 
@@ -152,19 +143,20 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panelInferior.Controls.Add(btnCancelar);
             panelInferior.Controls.Add(btnAgregar);
             panelInferior.Dock = DockStyle.Fill;
-            panelInferior.Location = new Point(0, 312);
-            panelInferior.Margin = new Padding(2, 2, 2, 2);
+            panelInferior.Location = new Point(0, 467);
             panelInferior.Name = "panelInferior";
-            panelInferior.Size = new Size(923, 79);
+            panelInferior.Size = new Size(1553, 142);
             panelInferior.TabIndex = 2;
             // 
             // btnVolver
             // 
-            btnVolver.BackColor = SystemColors.Window;
-            btnVolver.Location = new Point(615, 20);
-            btnVolver.Margin = new Padding(2, 2, 2, 2);
+            btnVolver.BackColor = Color.FromArgb(22, 48, 43);
+            btnVolver.FlatStyle = FlatStyle.Flat;
+            btnVolver.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnVolver.ForeColor = SystemColors.ButtonFace;
+            btnVolver.Location = new Point(65, 41);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(115, 39);
+            btnVolver.Size = new Size(196, 64);
             btnVolver.TabIndex = 2;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = false;
@@ -172,11 +164,13 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // btnCancelar
             // 
-            btnCancelar.BackColor = SystemColors.Window;
-            btnCancelar.Location = new Point(385, 20);
-            btnCancelar.Margin = new Padding(2, 2, 2, 2);
+            btnCancelar.BackColor = Color.FromArgb(22, 48, 43);
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnCancelar.ForeColor = SystemColors.ButtonFace;
+            btnCancelar.Location = new Point(1304, 41);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(115, 39);
+            btnCancelar.Size = new Size(196, 64);
             btnCancelar.TabIndex = 1;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
@@ -186,27 +180,26 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             btnAgregar.BackColor = Color.FromArgb(255, 222, 89);
             btnAgregar.FlatStyle = FlatStyle.Popup;
-            btnAgregar.Location = new Point(154, 20);
-            btnAgregar.Margin = new Padding(2, 2, 2, 2);
+            btnAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAgregar.Location = new Point(1002, 41);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(115, 39);
+            btnAgregar.Size = new Size(196, 64);
             btnAgregar.TabIndex = 0;
-            btnAgregar.Text = "Agregar";
+            btnAgregar.Text = "Aceptar";
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
             // NuevaBodega
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(923, 391);
+            ClientSize = new Size(1553, 609);
             Controls.Add(panelInferior);
             Controls.Add(panelSuperior);
             Controls.Add(panelTitulo);
-            FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "NuevaBodega";
-            Text = "NuevaBodega";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += NuevaBodega_Load;
             panelTitulo.ResumeLayout(false);
             panelTitulo.PerformLayout();

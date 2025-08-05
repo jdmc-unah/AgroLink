@@ -87,10 +87,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // Cerrar el formulario actual
             this.Close();
             // Volver a la pantalla anterior si es necesario
-            if (PantallaPrincipal.instanciaPantPrincipal != null)
-            {
-                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new TipoProducto());
-            }
+            //if (PantallaPrincipal.instanciaPantPrincipal != null)
+            //{
+            //    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new TipoProducto());
+            //}
         }
     }
 }

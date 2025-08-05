@@ -118,10 +118,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.Close();
             
             // Abrir la pantalla de bodegas
-            if (PantallaPrincipal.instanciaPantPrincipal != null)
-            {
-                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Bodega());
-            }
+            //if (PantallaPrincipal.instanciaPantPrincipal != null)
+            //{
+            //    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Bodega());
+            //}
         }
 
         private void txtCapacidad_KeyPress(object sender, KeyPressEventArgs e)

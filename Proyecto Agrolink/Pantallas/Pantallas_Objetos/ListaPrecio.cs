@@ -36,10 +36,14 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void btnNuevoPrecio_Click(object sender, EventArgs e)
         {
             // Abrir la pantalla para agregar un nuevo precio
-            if (PantallaPrincipal.instanciaPantPrincipal != null)
-            {
-                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevoPrecio());
-            }
+            //if (PantallaPrincipal.instanciaPantPrincipal != null)
+            //{
+            //    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevoPrecio());
+            //}
+            NuevoPrecio nuevLp = new NuevoPrecio();
+            nuevLp.ShowDialog();
+
+
         }
     }
 }

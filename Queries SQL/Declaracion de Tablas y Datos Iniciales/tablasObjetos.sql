@@ -2,7 +2,6 @@ use AgroLinkDB
 
 -- nomenclatura de foreign keys fk<TablaHija><TablaPadre>
 
--- tablas amiguitas
 
 create table Pruebas.Direccion	--ya creada
 (
@@ -25,9 +24,6 @@ create table Pruebas.NumFiscal	--ya creada
 
 	constraint fkNumFiscalEmpresa foreign key (EmpresaID) references Pruebas.Empresa(EmpresaID) --se agrego fk de empresa
 
-	-- ideas para automatizar Estado
-	-- 1. podriamos usar un trigger que, al insertar o actualizar, revise la fecha de vencimiento y actualice el estado automaticamente
-	-- 2. usamos una columna calculada que se actualiza segun la fecha
 )
 
 

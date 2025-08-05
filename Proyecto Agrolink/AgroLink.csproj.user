@@ -34,6 +34,9 @@
     <Compile Update="Pantallas\Pantallas_Objetos\Producto.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Pantallas\Pantallas_Objetos\ProductoDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Pantallas\Pantallas_Objetos\TipoProducto.cs">
       <SubType>Form</SubType>
     </Compile>

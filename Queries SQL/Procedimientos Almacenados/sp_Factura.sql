@@ -155,13 +155,6 @@ as
 					return;
 				end
 
-
-
-	-->Valida Stock
-			--SELECT @err = dbo.fValidaStockF(@detalle);
-			--IF ISNULL(@err, '') <> '' THROW 50001, @err, 1; --devuelve error personalizado
-				
-
 	-->Crea o Edita Factura
 			IF @factID = 0
 				begin	--nueva Factura

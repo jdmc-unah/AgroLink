@@ -47,10 +47,15 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void btnNuevaBodega_Click(object sender, EventArgs e)
         {
-            if (PantallaPrincipal.instanciaPantPrincipal != null)
-            {
-                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevaBodega());
-            }
+            //if (PantallaPrincipal.instanciaPantPrincipal != null)
+            //{
+            //    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevaBodega());
+            //}
+            NuevaBodega nuevBod = new NuevaBodega();
+            nuevBod.ShowDialog();
+
+
+
         }
 
         private void tablaBodega_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

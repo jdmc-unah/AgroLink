@@ -97,10 +97,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             this.Close();
             
             // Abrir la pantalla de lista de precios
-            if (PantallaPrincipal.instanciaPantPrincipal != null)
-            {
-                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new ListaPrecio());
-            }
+            //if (PantallaPrincipal.instanciaPantPrincipal != null)
+            //{
+            //    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new ListaPrecio());
+            //}
         }
 
         #endregion

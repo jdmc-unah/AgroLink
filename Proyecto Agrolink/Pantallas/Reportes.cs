@@ -24,6 +24,30 @@ namespace AgroLink.Pantallas
         MetodosGlobales metodosGlobales = new MetodosGlobales();
 
 
+        private void Reportes_Load(object sender, EventArgs e)
+        {
+           
+            
+            lbBienvenida.Text = $"¡Bienvenido, {MetodosGlobales.SesionGlobal.nombreUsuario}!";
+
+
+            DataTable totales = recSQL.EjecutarSPDataTable("spTotalesUtilidad");
+
+            lblTotIngresos.Text = totales.Rows[0][0].ToString();
+            lblTotGastos.Text = totales.Rows[0][1].ToString();
+            lblTotUtilidad.Text = totales.Rows[0][2].ToString();
+
+            tablaTopCompra.DataSource = recSQL.EjecutarSPDataTable("spTop3ProductoComprado");
+            tablaTopCompra.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            tablaTopVenta.DataSource = recSQL.EjecutarSPDataTable("spTop3ProductoVendido");
+            tablaTopVenta.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+
+        }
+
+
+
 
         #region Inventario
 
@@ -40,6 +64,16 @@ namespace AgroLink.Pantallas
         }
 
         #endregion
+
+        private void tabInventario_Enter(object sender, EventArgs e)
+        {
+            DataTable totales = recSQL.EjecutarSPDataTable("spTotalesReporteInventario");
+
+            lblTotalProdAdqu.Text = totales.Rows[0][0].ToString();
+            lblComprasdelAño.Text = totales.Rows[0][1].ToString();
+            lblInsumosVendidos.Text = totales.Rows[0][2].ToString();
+            lblTotalVentasInsumos.Text = totales.Rows[0][3].ToString();
+        }
 
         private void radioProdxProducto_CheckedChanged(object sender, EventArgs e)
         {
@@ -66,18 +100,6 @@ namespace AgroLink.Pantallas
                 LlenaTablaInventario(recSQL.EjecutarVista(radioProdxProducto.Checked ? "vProdRecibidaxProductor" : "vInsumosEntrxProductor"));
         }
 
-        private void Reportes_Load(object sender, EventArgs e)
-        {
-            DataTable totales = recSQL.EjecutarSPDataTable("spTotalesReporteInventario");
-
-            lblTotalProdAdqu.Text = totales.Rows[0][0].ToString();
-            lblComprasdelAño.Text = totales.Rows[0][1].ToString();
-            lblInsumosVendidos.Text = totales.Rows[0][2].ToString();
-            lblTotalVentasInsumos.Text = totales.Rows[0][3].ToString();
-
-            // clasico Bienvenido no unisex sino neutral programático 
-            lbBienvenida.Text = $"¡Bienvenido, {MetodosGlobales.SesionGlobal.nombreUsuario}!";
-        }
 
 
 
@@ -231,5 +253,6 @@ namespace AgroLink.Pantallas
 
 
 
+       
     }
 }

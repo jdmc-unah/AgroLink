@@ -7,7 +7,7 @@ go
 CREATE TABLE Pruebas.Venta --ya creada
 (
 	VentaID int identity(1,1) primary key not null,
-	CodigoVenta	as concat('VEN', VentaID) persisted,		--CAMBIO
+	CodigoVenta	as concat('VEN', VentaID) persisted,		
 	Fecha Datetime not null,
 	SocioID int not null,
 	ListaPreciosID int not null,
@@ -48,7 +48,7 @@ go
 Create Table Pruebas.Compra --ya creada
 (
 	CompraID int identity(1, 1)primary key not null,
-	CodigoCompra	as concat('COM', CompraID) persisted,		--CAMBIO
+	CodigoCompra	as concat('COM', CompraID) persisted,		
 	ListaPreciosID int not null,
 	Fecha Datetime not null,
 	SocioID int not null,
@@ -87,7 +87,7 @@ go
 Create Table Pruebas.Factura --ya creada
 (
 	FacturaID int identity(1,1) primary key not null,
-	CodigoFactura	as concat('FAC', FacturaID) persisted,		--CAMBIO
+	CodigoFactura	as concat('FAC', FacturaID) persisted,		
 	VentaID int not null,
 	SocioID int not null,
 	ListaPreciosID int not null,
@@ -95,9 +95,9 @@ Create Table Pruebas.Factura --ya creada
 	Fecha Datetime not null,
 	MetodoPago varchar(50) not null,
 	CAI varchar(50) not null,
-	EmpleadoID int not null,		--CAMBIO
-	Estado varchar(50) not null,	--CAMBIO
-	NumFiscalID int not null,		--CAMBIO
+	EmpleadoID int not null,		
+	Estado varchar(50) not null,	
+	NumFiscalID int not null,		
 
 	constraint fkFacturaNumFiscal foreign key (NumFiscalID) references Pruebas.NumFiscal(NumFiscalID), --se agrego fk de numfiscal
 	constraint chkMetodoPago check( MetodoPago in('Efectivo','Tarjeta','Cheque') ),

@@ -44,20 +44,21 @@
             TablaSocio.AllowUserToDeleteRows = false;
             TablaSocio.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             TablaSocio.Dock = DockStyle.Fill;
-            TablaSocio.Location = new Point(0, 164);
-            TablaSocio.Margin = new Padding(4);
+            TablaSocio.Location = new Point(0, 269);
+            TablaSocio.Margin = new Padding(7, 7, 7, 7);
             TablaSocio.Name = "TablaSocio";
+            TablaSocio.ReadOnly = true;
             TablaSocio.RowHeadersWidth = 51;
-            TablaSocio.Size = new Size(1145, 510);
+            TablaSocio.Size = new Size(1946, 836);
             TablaSocio.TabIndex = 0;
             // 
             // btAgregar
             // 
             btAgregar.BackColor = SystemColors.Window;
-            btAgregar.Location = new Point(192, 88);
-            btAgregar.Margin = new Padding(4);
+            btAgregar.Location = new Point(326, 144);
+            btAgregar.Margin = new Padding(7, 7, 7, 7);
             btAgregar.Name = "btAgregar";
-            btAgregar.Size = new Size(125, 41);
+            btAgregar.Size = new Size(212, 67);
             btAgregar.TabIndex = 1;
             btAgregar.Text = "Nuevo Socio";
             btAgregar.UseVisualStyleBackColor = false;
@@ -67,10 +68,10 @@
             // 
             btnBuscarSocio.BackColor = Color.FromArgb(255, 222, 89);
             btnBuscarSocio.FlatStyle = FlatStyle.Popup;
-            btnBuscarSocio.Location = new Point(386, 39);
-            btnBuscarSocio.Margin = new Padding(4);
+            btnBuscarSocio.Location = new Point(656, 64);
+            btnBuscarSocio.Margin = new Padding(7, 7, 7, 7);
             btnBuscarSocio.Name = "btnBuscarSocio";
-            btnBuscarSocio.Size = new Size(111, 35);
+            btnBuscarSocio.Size = new Size(189, 57);
             btnBuscarSocio.TabIndex = 2;
             btnBuscarSocio.Text = "Buscar";
             btnBuscarSocio.UseVisualStyleBackColor = false;
@@ -78,20 +79,20 @@
             // 
             // tbBuscarSocio
             // 
-            tbBuscarSocio.Location = new Point(49, 41);
-            tbBuscarSocio.Margin = new Padding(4);
+            tbBuscarSocio.Location = new Point(83, 67);
+            tbBuscarSocio.Margin = new Padding(7, 7, 7, 7);
             tbBuscarSocio.Name = "tbBuscarSocio";
             tbBuscarSocio.PlaceholderText = "Ingrese Nombre o Código de Socio...";
-            tbBuscarSocio.Size = new Size(324, 31);
+            tbBuscarSocio.Size = new Size(548, 47);
             tbBuscarSocio.TabIndex = 3;
             // 
             // btnRecargar
             // 
             btnRecargar.BackColor = SystemColors.Window;
-            btnRecargar.Location = new Point(49, 88);
-            btnRecargar.Margin = new Padding(4);
+            btnRecargar.Location = new Point(83, 144);
+            btnRecargar.Margin = new Padding(7, 7, 7, 7);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(125, 41);
+            btnRecargar.Size = new Size(212, 67);
             btnRecargar.TabIndex = 4;
             btnRecargar.Text = "Recargar";
             btnRecargar.UseVisualStyleBackColor = false;
@@ -106,20 +107,19 @@
             panel1.Controls.Add(btnBuscarSocio);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1145, 164);
+            panel1.Size = new Size(1946, 269);
             panel1.TabIndex = 5;
             // 
             // Socios
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1145, 674);
+            ClientSize = new Size(1946, 1105);
             Controls.Add(TablaSocio);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4);
+            Margin = new Padding(7, 7, 7, 7);
             Name = "Socios";
             Text = "Socios";
             Load += Socios_Load;
