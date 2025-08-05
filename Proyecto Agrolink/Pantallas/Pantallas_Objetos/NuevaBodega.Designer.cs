@@ -28,168 +28,192 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelTitulo = new System.Windows.Forms.Panel();
-            this.labelTitulo = new System.Windows.Forms.Label();
-            this.panelSuperior = new System.Windows.Forms.Panel();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbDireccion = new System.Windows.Forms.ComboBox();
-            this.txtCapacidad = new System.Windows.Forms.TextBox();
-            this.panelInferior = new System.Windows.Forms.Panel();
-            this.btnVolver = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.panelTitulo.SuspendLayout();
-            this.panelSuperior.SuspendLayout();
-            this.panelInferior.SuspendLayout();
-            this.SuspendLayout();
+            panelTitulo = new Panel();
+            labelTitulo = new Label();
+            panelSuperior = new Panel();
+            txtCapacidad = new TextBox();
+            cmbDireccion = new ComboBox();
+            txtNombre = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            panelInferior = new Panel();
+            btnVolver = new Button();
+            btnCancelar = new Button();
+            btnAgregar = new Button();
+            panelTitulo.SuspendLayout();
+            panelSuperior.SuspendLayout();
+            panelInferior.SuspendLayout();
+            SuspendLayout();
             // 
             // panelTitulo
             // 
-            this.panelTitulo.Controls.Add(this.labelTitulo);
-            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitulo.Location = new System.Drawing.Point(0, 0);
-            this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1200, 100);
-            this.panelTitulo.TabIndex = 0;
+            panelTitulo.BackColor = Color.FromArgb(22, 48, 43);
+            panelTitulo.Controls.Add(labelTitulo);
+            panelTitulo.Dock = DockStyle.Top;
+            panelTitulo.Location = new Point(0, 0);
+            panelTitulo.Margin = new Padding(2, 2, 2, 2);
+            panelTitulo.Name = "panelTitulo";
+            panelTitulo.Size = new Size(923, 78);
+            panelTitulo.TabIndex = 0;
             // 
             // labelTitulo
             // 
-            this.labelTitulo.AutoSize = true;
-            this.labelTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.labelTitulo.Location = new System.Drawing.Point(50, 30);
-            this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(232, 45);
-            this.labelTitulo.TabIndex = 0;
-            this.labelTitulo.Text = "Nueva Bodega";
+            labelTitulo.AutoSize = true;
+            labelTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            labelTitulo.ForeColor = SystemColors.Window;
+            labelTitulo.Location = new Point(38, 23);
+            labelTitulo.Margin = new Padding(2, 0, 2, 0);
+            labelTitulo.Name = "labelTitulo";
+            labelTitulo.Size = new Size(239, 45);
+            labelTitulo.TabIndex = 0;
+            labelTitulo.Text = "Nueva Bodega";
             // 
             // panelSuperior
             // 
-            this.panelSuperior.Controls.Add(this.txtCapacidad);
-            this.panelSuperior.Controls.Add(this.cmbDireccion);
-            this.panelSuperior.Controls.Add(this.txtNombre);
-            this.panelSuperior.Controls.Add(this.label3);
-            this.panelSuperior.Controls.Add(this.label2);
-            this.panelSuperior.Controls.Add(this.label1);
-            this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSuperior.Location = new System.Drawing.Point(0, 100);
-            this.panelSuperior.Name = "panelSuperior";
-            this.panelSuperior.Size = new System.Drawing.Size(1200, 300);
-            this.panelSuperior.TabIndex = 1;
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(200, 50);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(300, 39);
-            this.txtNombre.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 32);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nombre";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(600, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 32);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Capacidad";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 32);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Dirección";
-            // 
-            // cmbDireccion
-            // 
-            this.cmbDireccion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDireccion.FormattingEnabled = true;
-            this.cmbDireccion.Location = new System.Drawing.Point(200, 150);
-            this.cmbDireccion.Name = "cmbDireccion";
-            this.cmbDireccion.Size = new System.Drawing.Size(900, 40);
-            this.cmbDireccion.TabIndex = 2;
+            panelSuperior.BackColor = Color.FromArgb(22, 48, 43);
+            panelSuperior.Controls.Add(txtCapacidad);
+            panelSuperior.Controls.Add(cmbDireccion);
+            panelSuperior.Controls.Add(txtNombre);
+            panelSuperior.Controls.Add(label3);
+            panelSuperior.Controls.Add(label2);
+            panelSuperior.Controls.Add(label1);
+            panelSuperior.Dock = DockStyle.Top;
+            panelSuperior.Location = new Point(0, 78);
+            panelSuperior.Margin = new Padding(2, 2, 2, 2);
+            panelSuperior.Name = "panelSuperior";
+            panelSuperior.Size = new Size(923, 234);
+            panelSuperior.TabIndex = 1;
             // 
             // txtCapacidad
             // 
-            this.txtCapacidad.Location = new System.Drawing.Point(800, 50);
-            this.txtCapacidad.Name = "txtCapacidad";
-            this.txtCapacidad.Size = new System.Drawing.Size(300, 39);
-            this.txtCapacidad.TabIndex = 1;
-            this.txtCapacidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCapacidad_KeyPress);
+            txtCapacidad.Location = new Point(615, 39);
+            txtCapacidad.Margin = new Padding(2, 2, 2, 2);
+            txtCapacidad.Name = "txtCapacidad";
+            txtCapacidad.Size = new Size(232, 31);
+            txtCapacidad.TabIndex = 1;
+            txtCapacidad.KeyPress += txtCapacidad_KeyPress;
+            // 
+            // cmbDireccion
+            // 
+            cmbDireccion.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbDireccion.FormattingEnabled = true;
+            cmbDireccion.Location = new Point(154, 117);
+            cmbDireccion.Margin = new Padding(2, 2, 2, 2);
+            cmbDireccion.Name = "cmbDireccion";
+            cmbDireccion.Size = new Size(693, 33);
+            cmbDireccion.TabIndex = 2;
+            // 
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(154, 39);
+            txtNombre.Margin = new Padding(2, 2, 2, 2);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(232, 31);
+            txtNombre.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = SystemColors.Window;
+            label3.Location = new Point(38, 117);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(85, 25);
+            label3.TabIndex = 3;
+            label3.Text = "Dirección";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.Window;
+            label2.Location = new Point(462, 39);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(95, 25);
+            label2.TabIndex = 2;
+            label2.Text = "Capacidad";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = SystemColors.Window;
+            label1.Location = new Point(38, 39);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 25);
+            label1.TabIndex = 1;
+            label1.Text = "Nombre";
             // 
             // panelInferior
             // 
-            this.panelInferior.Controls.Add(this.btnVolver);
-            this.panelInferior.Controls.Add(this.btnCancelar);
-            this.panelInferior.Controls.Add(this.btnAgregar);
-            this.panelInferior.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInferior.Location = new System.Drawing.Point(0, 400);
-            this.panelInferior.Name = "panelInferior";
-            this.panelInferior.Size = new System.Drawing.Size(1200, 100);
-            this.panelInferior.TabIndex = 2;
+            panelInferior.BackColor = Color.FromArgb(22, 48, 43);
+            panelInferior.Controls.Add(btnVolver);
+            panelInferior.Controls.Add(btnCancelar);
+            panelInferior.Controls.Add(btnAgregar);
+            panelInferior.Dock = DockStyle.Fill;
+            panelInferior.Location = new Point(0, 312);
+            panelInferior.Margin = new Padding(2, 2, 2, 2);
+            panelInferior.Name = "panelInferior";
+            panelInferior.Size = new Size(923, 79);
+            panelInferior.TabIndex = 2;
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(800, 25);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(150, 50);
-            this.btnVolver.TabIndex = 2;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            btnVolver.BackColor = SystemColors.Window;
+            btnVolver.Location = new Point(615, 20);
+            btnVolver.Margin = new Padding(2, 2, 2, 2);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(115, 39);
+            btnVolver.TabIndex = 2;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(500, 25);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(150, 50);
-            this.btnCancelar.TabIndex = 1;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            btnCancelar.BackColor = SystemColors.Window;
+            btnCancelar.Location = new Point(385, 20);
+            btnCancelar.Margin = new Padding(2, 2, 2, 2);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(115, 39);
+            btnCancelar.TabIndex = 1;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // btnGuardar
+            // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(200, 25);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(150, 50);
-            this.btnAgregar.TabIndex = 0;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            btnAgregar.BackColor = Color.FromArgb(255, 222, 89);
+            btnAgregar.FlatStyle = FlatStyle.Popup;
+            btnAgregar.Location = new Point(154, 20);
+            btnAgregar.Margin = new Padding(2, 2, 2, 2);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(115, 39);
+            btnAgregar.TabIndex = 0;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // NuevaBodega
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 500);
-            this.Controls.Add(this.panelInferior);
-            this.Controls.Add(this.panelSuperior);
-            this.Controls.Add(this.panelTitulo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "NuevaBodega";
-            this.Text = "NuevaBodega";
-            this.Load += new System.EventHandler(this.NuevaBodega_Load);
-            this.panelTitulo.ResumeLayout(false);
-            this.panelTitulo.PerformLayout();
-            this.panelSuperior.ResumeLayout(false);
-            this.panelSuperior.PerformLayout();
-            this.panelInferior.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(923, 391);
+            Controls.Add(panelInferior);
+            Controls.Add(panelSuperior);
+            Controls.Add(panelTitulo);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2, 2, 2, 2);
+            Name = "NuevaBodega";
+            Text = "NuevaBodega";
+            Load += NuevaBodega_Load;
+            panelTitulo.ResumeLayout(false);
+            panelTitulo.PerformLayout();
+            panelSuperior.ResumeLayout(false);
+            panelSuperior.PerformLayout();
+            panelInferior.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

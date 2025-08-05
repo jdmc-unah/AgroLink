@@ -833,3 +833,7 @@ C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.NuevoPrecio.resources
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.ListaPrecio.resources
 C:\Users\jose.mejia\Documents\jdmc\AgroLink\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.TipoProducto.resources
+C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.ListaPrecio.resources
+C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.NuevoPrecio.resources
+C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.TipoProducto.resources
+C:\Users\Kisha M\Desktop\AgroLinkDB\COPRAG AGROLINKDB\AgroLink\Proyecto Agrolink\obj\Debug\net8.0-windows\AgroLink.Pantallas.Pantallas_Objetos.NuevoTipoProducto.resources

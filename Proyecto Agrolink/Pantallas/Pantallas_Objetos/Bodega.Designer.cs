@@ -37,57 +37,62 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(22, 48, 43);
             panel1.Controls.Add(btnNuevaBodega);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(5, 7, 5, 7);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2761, 266);
+            panel1.Size = new Size(1145, 162);
             panel1.TabIndex = 0;
             // 
             // btnNuevaBodega
             // 
-            btnNuevaBodega.Location = new Point(318, 149);
-            btnNuevaBodega.Margin = new Padding(5, 7, 5, 7);
+            btnNuevaBodega.BackColor = SystemColors.Window;
+            btnNuevaBodega.Location = new Point(185, 91);
+            btnNuevaBodega.Margin = new Padding(3, 4, 3, 4);
             btnNuevaBodega.Name = "btnNuevaBodega";
-            btnNuevaBodega.Size = new Size(379, 66);
+            btnNuevaBodega.Size = new Size(223, 41);
             btnNuevaBodega.TabIndex = 4;
             btnNuevaBodega.Text = "Nueva Bodega";
-            btnNuevaBodega.UseVisualStyleBackColor = true;
+            btnNuevaBodega.UseVisualStyleBackColor = false;
             btnNuevaBodega.Click += btnNuevaBodega_Click;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(88, 149);
-            btnRecargar.Margin = new Padding(5, 7, 5, 7);
+            btnRecargar.BackColor = SystemColors.Window;
+            btnRecargar.Location = new Point(49, 91);
+            btnRecargar.Margin = new Padding(3, 4, 3, 4);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(197, 66);
+            btnRecargar.Size = new Size(125, 41);
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
-            btnRecargar.UseVisualStyleBackColor = true;
+            btnRecargar.UseVisualStyleBackColor = false;
             btnRecargar.Click += btnRecargar_Click;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(965, 52);
-            btnBuscar.Margin = new Padding(5, 7, 5, 7);
+            btnBuscar.BackColor = Color.FromArgb(255, 222, 89);
+            btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.Location = new Point(565, 35);
+            btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(197, 66);
+            btnBuscar.Size = new Size(111, 35);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(88, 62);
-            tbBuscar.Margin = new Padding(5, 7, 5, 7);
+            tbBuscar.Location = new Point(49, 38);
+            tbBuscar.Margin = new Padding(3, 4, 3, 4);
             tbBuscar.Name = "tbBuscar";
-            tbBuscar.PlaceholderText = "Codigo de bodega...";
-            tbBuscar.Size = new Size(853, 47);
+            tbBuscar.PlaceholderText = "Código de bodega...";
+            tbBuscar.Size = new Size(503, 31);
             tbBuscar.TabIndex = 0;
             tbBuscar.TextChanged += tbBuscar_TextChanged;
             // 
@@ -95,10 +100,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             panel2.Controls.Add(tablaBodega);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 266);
-            panel2.Margin = new Padding(5, 7, 5, 7);
+            panel2.Location = new Point(0, 162);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2761, 1225);
+            panel2.Size = new Size(1145, 512);
             panel2.TabIndex = 1;
             // 
             // tablaBodega
@@ -109,12 +114,12 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             tablaBodega.Columns.AddRange(new DataGridViewColumn[] { BodegaID, CodigoBodega, Nombre, Capacidad, DireccionID, Direccion });
             tablaBodega.Dock = DockStyle.Fill;
             tablaBodega.Location = new Point(0, 0);
-            tablaBodega.Margin = new Padding(5, 7, 5, 7);
+            tablaBodega.Margin = new Padding(3, 4, 3, 4);
             tablaBodega.MultiSelect = false;
             tablaBodega.Name = "tablaBodega";
             tablaBodega.ReadOnly = true;
             tablaBodega.RowHeadersWidth = 62;
-            tablaBodega.Size = new Size(2761, 1225);
+            tablaBodega.Size = new Size(1145, 512);
             tablaBodega.TabIndex = 0;
             tablaBodega.CellDoubleClick += tablaBodega_CellDoubleClick;
             // 
@@ -176,13 +181,13 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // Bodega
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2761, 1491);
+            ClientSize = new Size(1145, 674);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(5, 7, 5, 7);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Bodega";
             Text = "Bodega";
             Load += Bodega_Load;

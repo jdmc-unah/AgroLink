@@ -53,55 +53,61 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(22, 48, 43);
             panel1.Controls.Add(btnNuevoRecibo);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(5, 5, 5, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2916, 287);
+            panel1.Size = new Size(1145, 175);
             panel1.TabIndex = 0;
             // 
             // btnNuevoRecibo
             // 
-            btnNuevoRecibo.Location = new Point(373, 169);
-            btnNuevoRecibo.Margin = new Padding(5, 5, 5, 5);
+            btnNuevoRecibo.BackColor = SystemColors.Window;
+            btnNuevoRecibo.Location = new Point(181, 103);
             btnNuevoRecibo.Name = "btnNuevoRecibo";
-            btnNuevoRecibo.Size = new Size(292, 57);
+            btnNuevoRecibo.Size = new Size(187, 35);
             btnNuevoRecibo.TabIndex = 3;
             btnNuevoRecibo.Text = "Nuevo Recibo";
-            btnNuevoRecibo.UseVisualStyleBackColor = true;
+            btnNuevoRecibo.UseVisualStyleBackColor = false;
             btnNuevoRecibo.Click += btnNuevoRecibo_Click;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(51, 169);
+            btnRecargar.BackColor = SystemColors.Window;
+            btnRecargar.Location = new Point(30, 103);
+            btnRecargar.Margin = new Padding(2);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(292, 57);
+            btnRecargar.Size = new Size(125, 35);
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
-            btnRecargar.UseVisualStyleBackColor = true;
+            btnRecargar.UseVisualStyleBackColor = false;
             btnRecargar.VisibleChanged += btnRecargar_VisibleChanged;
             btnRecargar.Click += btnRecargar_Click;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(648, 73);
+            btnBuscar.BackColor = Color.FromArgb(255, 222, 89);
+            btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.Location = new Point(381, 45);
+            btnBuscar.Margin = new Padding(2);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(189, 57);
+            btnBuscar.Size = new Size(111, 35);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(51, 78);
+            tbBuscar.Location = new Point(30, 48);
+            tbBuscar.Margin = new Padding(2);
             tbBuscar.Name = "tbBuscar";
             tbBuscar.PlaceholderText = "Código de Recibo o Nombre de Socio...";
-            tbBuscar.Size = new Size(572, 47);
+            tbBuscar.Size = new Size(338, 31);
             tbBuscar.TabIndex = 0;
             // 
             // tablaRecibo
@@ -111,12 +117,11 @@
             tablaRecibo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaRecibo.Columns.AddRange(new DataGridViewColumn[] { ReciboID, CodigoRecibo, Fecha, Socio, TipoSocio, ListaPrecio, MetodoPago, Estado, Total, EmpleadoID, SocioID, ListaPreciosID, CompraID });
             tablaRecibo.Dock = DockStyle.Fill;
-            tablaRecibo.Location = new Point(0, 287);
-            tablaRecibo.Margin = new Padding(5, 5, 5, 5);
+            tablaRecibo.Location = new Point(0, 175);
             tablaRecibo.Name = "tablaRecibo";
             tablaRecibo.ReadOnly = true;
             tablaRecibo.RowHeadersWidth = 62;
-            tablaRecibo.Size = new Size(2916, 1425);
+            tablaRecibo.Size = new Size(1145, 499);
             tablaRecibo.TabIndex = 1;
             tablaRecibo.CellDoubleClick += tablaRecibo_CellDoubleClick;
             // 
@@ -244,13 +249,12 @@
             // 
             // Recibo
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2916, 1712);
+            ClientSize = new Size(1145, 674);
             Controls.Add(tablaRecibo);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(5, 5, 5, 5);
             Name = "Recibo";
             Text = "Recibo";
             Load += Recibo_Load;
