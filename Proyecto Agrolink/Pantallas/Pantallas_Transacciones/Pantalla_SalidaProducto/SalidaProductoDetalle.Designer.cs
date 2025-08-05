@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             labelBodDest = new Label();
             comboBodDestino = new ComboBox();
@@ -265,8 +265,8 @@
             // SalidaID
             // 
             SalidaID.DataPropertyName = "SalidaID";
-            dataGridViewCellStyle3.NullValue = "0";
-            SalidaID.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.NullValue = "0";
+            SalidaID.DefaultCellStyle = dataGridViewCellStyle1;
             SalidaID.HeaderText = "ID";
             SalidaID.MinimumWidth = 12;
             SalidaID.Name = "SalidaID";
@@ -277,8 +277,8 @@
             // CodigoProducto
             // 
             CodigoProducto.DataPropertyName = "CodigoProducto";
-            dataGridViewCellStyle4.NullValue = "PRO";
-            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.NullValue = "PRO";
+            CodigoProducto.DefaultCellStyle = dataGridViewCellStyle2;
             CodigoProducto.HeaderText = "Codigo";
             CodigoProducto.MinimumWidth = 12;
             CodigoProducto.Name = "CodigoProducto";
