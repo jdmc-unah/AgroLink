@@ -98,22 +98,24 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(52, 124);
-            textBox1.Margin = new Padding(2, 3, 2, 3);
+            textBox1.Location = new Point(31, 76);
+            textBox1.Margin = new Padding(1, 2, 1, 2);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(604, 47);
+            textBox1.Size = new Size(357, 31);
             textBox1.TabIndex = 0;
             // 
             // splitContainer1
             // 
+            splitContainer1.BackColor = Color.FromArgb(22, 48, 43);
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(0, 0);
-            splitContainer1.Margin = new Padding(2, 3, 2, 3);
+            splitContainer1.Margin = new Padding(1, 2, 1, 2);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.BackColor = Color.FromArgb(22, 48, 43);
             splitContainer1.Panel1.Controls.Add(label10);
             splitContainer1.Panel1.Controls.Add(label9);
             splitContainer1.Panel1.Controls.Add(label8);
@@ -138,19 +140,20 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
-            splitContainer1.Size = new Size(2761, 1491);
-            splitContainer1.SplitterDistance = 1277;
-            splitContainer1.SplitterWidth = 5;
+            splitContainer1.Size = new Size(1145, 674);
+            splitContainer1.SplitterDistance = 528;
+            splitContainer1.SplitterWidth = 3;
             splitContainer1.TabIndex = 5;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label10.Location = new Point(52, 728);
-            label10.Margin = new Padding(2, 0, 2, 0);
+            label10.ForeColor = SystemColors.Window;
+            label10.Location = new Point(31, 444);
+            label10.Margin = new Padding(1, 0, 1, 0);
             label10.Name = "label10";
-            label10.Size = new Size(223, 41);
+            label10.Size = new Size(136, 25);
             label10.TabIndex = 23;
             label10.Text = "Departamento";
             // 
@@ -158,10 +161,11 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label9.Location = new Point(673, 728);
-            label9.Margin = new Padding(2, 0, 2, 0);
+            label9.ForeColor = SystemColors.Window;
+            label9.Location = new Point(396, 444);
+            label9.Margin = new Padding(1, 0, 1, 0);
             label9.Name = "label9";
-            label9.Size = new Size(161, 41);
+            label9.Size = new Size(97, 25);
             label9.TabIndex = 22;
             label9.Text = "Municipio";
             // 
@@ -169,94 +173,102 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label8.Location = new Point(52, 550);
-            label8.Margin = new Padding(2, 0, 2, 0);
+            label8.ForeColor = SystemColors.Window;
+            label8.Location = new Point(31, 335);
+            label8.Margin = new Padding(1, 0, 1, 0);
             label8.Name = "label8";
-            label8.Size = new Size(125, 41);
+            label8.Size = new Size(76, 25);
             label8.TabIndex = 21;
             label8.Text = "Colonia";
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(52, 621);
-            textBox5.Margin = new Padding(2, 3, 2, 3);
+            textBox5.Location = new Point(31, 379);
+            textBox5.Margin = new Padding(1, 2, 1, 2);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
-            textBox5.Size = new Size(604, 47);
+            textBox5.Size = new Size(357, 31);
             textBox5.TabIndex = 4;
             // 
             // comboBox2
             // 
             comboBox2.Enabled = false;
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(673, 790);
+            comboBox2.Location = new Point(396, 482);
+            comboBox2.Margin = new Padding(2);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(491, 49);
+            comboBox2.Size = new Size(290, 33);
             comboBox2.TabIndex = 6;
             // 
             // comboBox1
             // 
             comboBox1.Enabled = false;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(52, 790);
+            comboBox1.Location = new Point(31, 482);
+            comboBox1.Margin = new Padding(2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(491, 49);
+            comboBox1.Size = new Size(290, 33);
             comboBox1.TabIndex = 5;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(52, 964);
-            richTextBox1.Margin = new Padding(7, 8, 7, 8);
+            richTextBox1.Location = new Point(31, 588);
+            richTextBox1.Margin = new Padding(4, 5, 4, 5);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
-            richTextBox1.Size = new Size(683, 216);
+            richTextBox1.Size = new Size(403, 133);
             richTextBox1.TabIndex = 7;
             richTextBox1.Text = "";
             // 
             // button3
             // 
-            button3.Location = new Point(937, 1319);
-            button3.Margin = new Padding(2, 3, 2, 3);
+            button3.BackColor = SystemColors.Window;
+            button3.Location = new Point(551, 804);
+            button3.Margin = new Padding(1, 2, 1, 2);
             button3.Name = "button3";
-            button3.Size = new Size(187, 57);
+            button3.Size = new Size(110, 35);
             button3.TabIndex = 10;
             button3.Text = "Cancelar";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Visible = false;
             button3.Click += button3_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(698, 1319);
-            button2.Margin = new Padding(2, 3, 2, 3);
+            button2.BackColor = Color.FromArgb(255, 222, 89);
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.Location = new Point(411, 804);
+            button2.Margin = new Padding(1, 2, 1, 2);
             button2.Name = "button2";
-            button2.Size = new Size(187, 57);
+            button2.Size = new Size(110, 35);
             button2.TabIndex = 9;
             button2.Text = "Aceptar";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Visible = false;
             button2.Click += button2_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(116, 1319);
-            button1.Margin = new Padding(2, 3, 2, 3);
+            button1.BackColor = SystemColors.Window;
+            button1.Location = new Point(68, 804);
+            button1.Margin = new Padding(1, 2, 1, 2);
             button1.Name = "button1";
-            button1.Size = new Size(400, 57);
+            button1.Size = new Size(235, 35);
             button1.TabIndex = 8;
             button1.Text = "Editar Datos de Empresa";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(52, 893);
-            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.ForeColor = SystemColors.Window;
+            label5.Location = new Point(31, 545);
+            label5.Margin = new Padding(1, 0, 1, 0);
             label5.Name = "label5";
-            label5.Size = new Size(118, 41);
+            label5.Size = new Size(72, 25);
             label5.TabIndex = 13;
             label5.Text = "Detalle";
             // 
@@ -264,78 +276,83 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(673, 233);
-            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.ForeColor = SystemColors.Window;
+            label4.Location = new Point(396, 142);
+            label4.Margin = new Padding(1, 0, 1, 0);
             label4.Name = "label4";
-            label4.Size = new Size(140, 41);
+            label4.Size = new Size(86, 25);
             label4.TabIndex = 11;
             label4.Text = "Telefono";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(673, 293);
-            textBox4.Margin = new Padding(2, 3, 2, 3);
+            textBox4.Location = new Point(396, 179);
+            textBox4.Margin = new Padding(1, 2, 1, 2);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(491, 47);
+            textBox4.Size = new Size(290, 31);
             textBox4.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(52, 395);
-            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.ForeColor = SystemColors.Window;
+            label3.Location = new Point(31, 241);
+            label3.Margin = new Padding(1, 0, 1, 0);
             label3.Name = "label3";
-            label3.Size = new Size(113, 41);
+            label3.Size = new Size(69, 25);
             label3.TabIndex = 9;
             label3.Text = "Correo";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(52, 452);
-            textBox3.Margin = new Padding(2, 3, 2, 3);
+            textBox3.Location = new Point(31, 276);
+            textBox3.Margin = new Padding(1, 2, 1, 2);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(604, 47);
+            textBox3.Size = new Size(357, 31);
             textBox3.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(52, 235);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.ForeColor = SystemColors.Window;
+            label2.Location = new Point(31, 143);
+            label2.Margin = new Padding(1, 0, 1, 0);
             label2.Name = "label2";
-            label2.Size = new Size(79, 41);
+            label2.Size = new Size(49, 25);
             label2.TabIndex = 7;
             label2.Text = "RTN";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(52, 293);
-            textBox2.Margin = new Padding(2, 3, 2, 3);
+            textBox2.Location = new Point(31, 179);
+            textBox2.Margin = new Padding(1, 2, 1, 2);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(491, 47);
+            textBox2.Size = new Size(290, 31);
             textBox2.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label1.Location = new Point(42, 64);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.ForeColor = SystemColors.Window;
+            label1.Location = new Point(25, 39);
+            label1.Margin = new Padding(1, 0, 1, 0);
             label1.Name = "label1";
-            label1.Size = new Size(304, 41);
+            label1.Size = new Size(184, 25);
             label1.TabIndex = 5;
             label1.Text = "Nombre de Empresa";
             // 
             // splitContainer2
             // 
+            splitContainer2.BackColor = Color.FromArgb(22, 48, 43);
             splitContainer2.Dock = DockStyle.Fill;
             splitContainer2.Location = new Point(0, 0);
-            splitContainer2.Margin = new Padding(2, 3, 2, 3);
+            splitContainer2.Margin = new Padding(1, 2, 1, 2);
             splitContainer2.Name = "splitContainer2";
             splitContainer2.Orientation = Orientation.Horizontal;
             // 
@@ -346,36 +363,41 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(splitContainer3);
-            splitContainer2.Size = new Size(1479, 1491);
-            splitContainer2.SplitterDistance = 741;
-            splitContainer2.SplitterWidth = 3;
+            splitContainer2.Size = new Size(614, 674);
+            splitContainer2.SplitterDistance = 334;
+            splitContainer2.SplitterWidth = 2;
             splitContainer2.TabIndex = 1;
             // 
             // splitContainer4
             // 
             splitContainer4.Dock = DockStyle.Fill;
             splitContainer4.Location = new Point(0, 0);
+            splitContainer4.Margin = new Padding(2);
             splitContainer4.Name = "splitContainer4";
             splitContainer4.Orientation = Orientation.Horizontal;
             // 
             // splitContainer4.Panel1
             // 
+            splitContainer4.Panel1.BackColor = Color.FromArgb(192, 229, 200);
             splitContainer4.Panel1.Controls.Add(label7);
             // 
             // splitContainer4.Panel2
             // 
+            splitContainer4.Panel2.BackColor = Color.FromArgb(192, 229, 200);
             splitContainer4.Panel2.Controls.Add(dataGridView1);
-            splitContainer4.Size = new Size(1479, 741);
-            splitContainer4.SplitterDistance = 100;
+            splitContainer4.Size = new Size(614, 334);
+            splitContainer4.SplitterDistance = 44;
+            splitContainer4.SplitterWidth = 2;
             splitContainer4.TabIndex = 1;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label7.Location = new Point(548, 28);
+            label7.Location = new Point(322, 17);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(260, 41);
+            label7.Size = new Size(158, 25);
             label7.TabIndex = 1;
             label7.Text = "Numeros Fiscales";
             // 
@@ -385,13 +407,13 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { NumFiscalID, RangoInicio, RangoFin, Estado, FechaVencimiento });
             dataGridView1.ContextMenuStrip = contextMenuStrip1;
-            dataGridView1.Location = new Point(0, 3);
-            dataGridView1.Margin = new Padding(2, 3, 2, 3);
+            dataGridView1.Location = new Point(0, 2);
+            dataGridView1.Margin = new Padding(1, 2, 1, 2);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 102;
-            dataGridView1.Size = new Size(1396, 549);
+            dataGridView1.Size = new Size(821, 335);
             dataGridView1.TabIndex = 0;
             dataGridView1.DataError += dataGridView1_DataError;
             // 
@@ -404,7 +426,7 @@
             NumFiscalID.Name = "NumFiscalID";
             NumFiscalID.ReadOnly = true;
             NumFiscalID.Visible = false;
-            NumFiscalID.Width = 250;
+            NumFiscalID.Width = 150;
             // 
             // RangoInicio
             // 
@@ -450,26 +472,26 @@
             contextMenuStrip1.ImageScalingSize = new Size(40, 40);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem, borrarToolStripMenuItem, guardarToolStripMenuItem, cancelarToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(210, 196);
+            contextMenuStrip1.Size = new Size(151, 132);
             // 
             // editarToolStripMenuItem
             // 
             editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            editarToolStripMenuItem.Size = new Size(209, 48);
+            editarToolStripMenuItem.Size = new Size(150, 32);
             editarToolStripMenuItem.Text = "Editar";
             editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
             // 
             // borrarToolStripMenuItem
             // 
             borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
-            borrarToolStripMenuItem.Size = new Size(209, 48);
+            borrarToolStripMenuItem.Size = new Size(150, 32);
             borrarToolStripMenuItem.Text = "Borrar";
             borrarToolStripMenuItem.Click += borrarToolStripMenuItem_Click;
             // 
             // guardarToolStripMenuItem
             // 
             guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            guardarToolStripMenuItem.Size = new Size(209, 48);
+            guardarToolStripMenuItem.Size = new Size(150, 32);
             guardarToolStripMenuItem.Text = "Guardar";
             guardarToolStripMenuItem.Visible = false;
             guardarToolStripMenuItem.Click += guardarToolStripMenuItem_Click;
@@ -477,7 +499,7 @@
             // cancelarToolStripMenuItem
             // 
             cancelarToolStripMenuItem.Name = "cancelarToolStripMenuItem";
-            cancelarToolStripMenuItem.Size = new Size(209, 48);
+            cancelarToolStripMenuItem.Size = new Size(150, 32);
             cancelarToolStripMenuItem.Text = "Cancelar";
             cancelarToolStripMenuItem.Visible = false;
             cancelarToolStripMenuItem.Click += cancelarToolStripMenuItem_Click_1;
@@ -486,27 +508,33 @@
             // 
             splitContainer3.Dock = DockStyle.Fill;
             splitContainer3.Location = new Point(0, 0);
+            splitContainer3.Margin = new Padding(2);
             splitContainer3.Name = "splitContainer3";
             splitContainer3.Orientation = Orientation.Horizontal;
             // 
             // splitContainer3.Panel1
             // 
+            splitContainer3.Panel1.BackColor = Color.FromArgb(192, 229, 200);
             splitContainer3.Panel1.Controls.Add(label6);
             // 
             // splitContainer3.Panel2
             // 
+            splitContainer3.Panel2.BackColor = Color.FromArgb(192, 229, 200);
             splitContainer3.Panel2.Controls.Add(dataGridView2);
-            splitContainer3.Size = new Size(1479, 747);
-            splitContainer3.SplitterDistance = 78;
+            splitContainer3.Size = new Size(614, 338);
+            splitContainer3.SplitterDistance = 35;
+            splitContainer3.SplitterWidth = 2;
             splitContainer3.TabIndex = 3;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label6.Location = new Point(596, 14);
+            label6.ForeColor = SystemColors.ControlText;
+            label6.Location = new Point(351, 9);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(164, 41);
+            label6.Size = new Size(100, 25);
             label6.TabIndex = 0;
             label6.Text = "Impuestos";
             // 
@@ -517,12 +545,12 @@
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { ImpuestoID, Nombre, Valor });
             dataGridView2.ContextMenuStrip = contextMenuStrip2;
             dataGridView2.Location = new Point(0, 0);
-            dataGridView2.Margin = new Padding(2, 3, 2, 3);
+            dataGridView2.Margin = new Padding(1, 2, 1, 2);
             dataGridView2.MultiSelect = false;
             dataGridView2.Name = "dataGridView2";
             dataGridView2.ReadOnly = true;
             dataGridView2.RowHeadersWidth = 102;
-            dataGridView2.Size = new Size(1396, 587);
+            dataGridView2.Size = new Size(821, 358);
             dataGridView2.TabIndex = 2;
             dataGridView2.DataError += dataGridView2_DataError;
             // 
@@ -535,7 +563,7 @@
             ImpuestoID.Name = "ImpuestoID";
             ImpuestoID.ReadOnly = true;
             ImpuestoID.Visible = false;
-            ImpuestoID.Width = 250;
+            ImpuestoID.Width = 150;
             // 
             // Nombre
             // 
@@ -560,26 +588,26 @@
             contextMenuStrip2.ImageScalingSize = new Size(40, 40);
             contextMenuStrip2.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem1, borrarToolStripMenuItem1, guardarToolStripMenuItem1, cancelarToolStripMenuItem1 });
             contextMenuStrip2.Name = "contextMenuStrip2";
-            contextMenuStrip2.Size = new Size(210, 196);
+            contextMenuStrip2.Size = new Size(151, 132);
             // 
             // editarToolStripMenuItem1
             // 
             editarToolStripMenuItem1.Name = "editarToolStripMenuItem1";
-            editarToolStripMenuItem1.Size = new Size(209, 48);
+            editarToolStripMenuItem1.Size = new Size(150, 32);
             editarToolStripMenuItem1.Text = "Editar";
             editarToolStripMenuItem1.Click += editarToolStripMenuItem1_Click;
             // 
             // borrarToolStripMenuItem1
             // 
             borrarToolStripMenuItem1.Name = "borrarToolStripMenuItem1";
-            borrarToolStripMenuItem1.Size = new Size(209, 48);
+            borrarToolStripMenuItem1.Size = new Size(150, 32);
             borrarToolStripMenuItem1.Text = "Borrar";
             borrarToolStripMenuItem1.Click += borrarToolStripMenuItem1_Click;
             // 
             // guardarToolStripMenuItem1
             // 
             guardarToolStripMenuItem1.Name = "guardarToolStripMenuItem1";
-            guardarToolStripMenuItem1.Size = new Size(209, 48);
+            guardarToolStripMenuItem1.Size = new Size(150, 32);
             guardarToolStripMenuItem1.Text = "Guardar";
             guardarToolStripMenuItem1.Visible = false;
             guardarToolStripMenuItem1.Click += guardarToolStripMenuItem1_Click;
@@ -587,19 +615,19 @@
             // cancelarToolStripMenuItem1
             // 
             cancelarToolStripMenuItem1.Name = "cancelarToolStripMenuItem1";
-            cancelarToolStripMenuItem1.Size = new Size(209, 48);
+            cancelarToolStripMenuItem1.Size = new Size(150, 32);
             cancelarToolStripMenuItem1.Text = "Cancelar";
             cancelarToolStripMenuItem1.Visible = false;
             cancelarToolStripMenuItem1.Click += cancelarToolStripMenuItem1_Click_1;
             // 
             // Empresa
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2761, 1491);
+            ClientSize = new Size(1145, 674);
             Controls.Add(splitContainer1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 3, 2, 3);
+            Margin = new Padding(1, 2, 1, 2);
             Name = "Empresa";
             Text = "Configuración de Empresa";
             Load += Empresa_Load;

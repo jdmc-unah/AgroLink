@@ -20,8 +20,11 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panelTitulo = new Panel();
             labelTitulo = new Label();
             panelSuperior = new Panel();
+            btnVolver = new Button();
             tbNombre = new TextBox();
+            btnCancelar = new Button();
             label3 = new Label();
+            btnAgregar = new Button();
             label4 = new Label();
             label1 = new Label();
             comboUnidadMedida = new ComboBox();
@@ -37,6 +40,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // panelTitulo
             // 
+            panelTitulo.BackColor = Color.FromArgb(22, 48, 43);
             panelTitulo.Controls.Add(labelTitulo);
             panelTitulo.Dock = DockStyle.Top;
             panelTitulo.Location = new Point(0, 0);
@@ -53,7 +57,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             labelTitulo.Location = new Point(65, 38);
             labelTitulo.Margin = new Padding(4, 0, 4, 0);
             labelTitulo.Name = "labelTitulo";
-            labelTitulo.Size = new Size(444, 72);
+            labelTitulo.Size = new Size(266, 45);
             labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Nuevo Producto";
             // 
@@ -72,13 +76,38 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             panelSuperior.Size = new Size(1519, 531);
             panelSuperior.TabIndex = 0;
             // 
+            // btnVolver
+            // 
+            btnVolver.BackColor = Color.FromArgb(255, 222, 89);
+            btnVolver.FlatStyle = FlatStyle.Popup;
+            btnVolver.Location = new Point(38, 255);
+            btnVolver.Margin = new Padding(2, 2, 2, 2);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(115, 39);
+            btnVolver.TabIndex = 2;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
+            // 
             // tbNombre
             // 
             tbNombre.Location = new Point(169, 142);
             tbNombre.Margin = new Padding(4);
             tbNombre.Name = "tbNombre";
-            tbNombre.Size = new Size(582, 47);
+            tbNombre.Size = new Size(344, 31);
             tbNombre.TabIndex = 6;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = SystemColors.Window;
+            btnCancelar.Location = new Point(381, 255);
+            btnCancelar.Margin = new Padding(2, 2, 2, 2);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(115, 39);
+            btnCancelar.TabIndex = 1;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // label3
             // 
@@ -91,6 +120,18 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             label3.Size = new Size(134, 41);
             label3.TabIndex = 5;
             label3.Text = "Nombre";
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.BackColor = SystemColors.Window;
+            btnAgregar.Location = new Point(201, 255);
+            btnAgregar.Margin = new Padding(2, 2, 2, 2);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(115, 39);
+            btnAgregar.TabIndex = 0;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnGuardar_Click;
             // 
             // label4
             // 
@@ -122,7 +163,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             comboUnidadMedida.Location = new Point(1001, 142);
             comboUnidadMedida.Margin = new Padding(4);
             comboUnidadMedida.Name = "comboUnidadMedida";
-            comboUnidadMedida.Size = new Size(391, 49);
+            comboUnidadMedida.Size = new Size(232, 33);
             comboUnidadMedida.TabIndex = 1;
             // 
             // comboTipoProducto
@@ -190,7 +231,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // NuevoProducto
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(22, 48, 43);
             ClientSize = new Size(1519, 834);

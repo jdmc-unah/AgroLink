@@ -34,57 +34,62 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(22, 48, 43);
             panel1.Controls.Add(btnNuevoPrecio);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(11, 18, 11, 18);
+            panel1.Margin = new Padding(6, 11, 6, 11);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2916, 297);
+            panel1.Size = new Size(1145, 181);
             panel1.TabIndex = 0;
             // 
             // btnNuevoPrecio
             // 
-            btnNuevoPrecio.Location = new Point(309, 169);
-            btnNuevoPrecio.Margin = new Padding(11, 18, 11, 18);
+            btnNuevoPrecio.BackColor = SystemColors.Window;
+            btnNuevoPrecio.Location = new Point(182, 103);
+            btnNuevoPrecio.Margin = new Padding(6, 11, 6, 11);
             btnNuevoPrecio.Name = "btnNuevoPrecio";
-            btnNuevoPrecio.Size = new Size(321, 57);
+            btnNuevoPrecio.Size = new Size(189, 35);
             btnNuevoPrecio.TabIndex = 3;
             btnNuevoPrecio.Text = "Nuevo Precio";
-            btnNuevoPrecio.UseVisualStyleBackColor = true;
+            btnNuevoPrecio.UseVisualStyleBackColor = false;
             btnNuevoPrecio.Click += btnNuevoPrecio_Click;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(75, 169);
-            btnRecargar.Margin = new Padding(11, 18, 11, 18);
+            btnRecargar.BackColor = SystemColors.Window;
+            btnRecargar.Location = new Point(44, 103);
+            btnRecargar.Margin = new Padding(6, 11, 6, 11);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(195, 57);
+            btnRecargar.Size = new Size(115, 35);
             btnRecargar.TabIndex = 2;
             btnRecargar.Text = "Recargar";
-            btnRecargar.UseVisualStyleBackColor = true;
+            btnRecargar.UseVisualStyleBackColor = false;
             btnRecargar.Click += btnRecargar_Click;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(1027, 71);
-            btnBuscar.Margin = new Padding(11, 18, 11, 18);
+            btnBuscar.BackColor = Color.FromArgb(255, 222, 89);
+            btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.Location = new Point(604, 43);
+            btnBuscar.Margin = new Padding(6, 11, 6, 11);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(195, 57);
+            btnBuscar.Size = new Size(115, 35);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(75, 76);
-            tbBuscar.Margin = new Padding(11, 18, 11, 18);
+            tbBuscar.Location = new Point(44, 46);
+            tbBuscar.Margin = new Padding(6, 11, 6, 11);
             tbBuscar.Name = "tbBuscar";
-            tbBuscar.PlaceholderText = "Buscar lista de precios...";
-            tbBuscar.Size = new Size(930, 47);
+            tbBuscar.PlaceholderText = "Buscar Lista de Precios...";
+            tbBuscar.Size = new Size(549, 31);
             tbBuscar.TabIndex = 0;
             tbBuscar.TextChanged += tbBuscar_TextChanged;
             // 
@@ -92,10 +97,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             panel2.Controls.Add(tablaListaPrecio);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 297);
-            panel2.Margin = new Padding(11, 18, 11, 18);
+            panel2.Location = new Point(0, 181);
+            panel2.Margin = new Padding(6, 11, 6, 11);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2916, 1415);
+            panel2.Size = new Size(1145, 493);
             panel2.TabIndex = 1;
             // 
             // tablaListaPrecio
@@ -106,12 +111,12 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             tablaListaPrecio.Columns.AddRange(new DataGridViewColumn[] { listaPreciosID, nombre, activo });
             tablaListaPrecio.Dock = DockStyle.Fill;
             tablaListaPrecio.Location = new Point(0, 0);
-            tablaListaPrecio.Margin = new Padding(11, 18, 11, 18);
+            tablaListaPrecio.Margin = new Padding(6, 11, 6, 11);
             tablaListaPrecio.MultiSelect = false;
             tablaListaPrecio.Name = "tablaListaPrecio";
             tablaListaPrecio.ReadOnly = true;
             tablaListaPrecio.RowHeadersWidth = 62;
-            tablaListaPrecio.Size = new Size(2916, 1415);
+            tablaListaPrecio.Size = new Size(1145, 493);
             tablaListaPrecio.TabIndex = 0;
             // 
             // listaPreciosID
@@ -144,13 +149,13 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // 
             // ListaPrecio
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2916, 1712);
+            ClientSize = new Size(1145, 674);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(8, 10, 8, 10);
+            Margin = new Padding(5, 6, 5, 6);
             Name = "ListaPrecio";
             Text = "ListaPrecio";
             Load += ListaPrecio_Load;

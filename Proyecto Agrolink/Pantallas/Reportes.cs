@@ -76,7 +76,7 @@ namespace AgroLink.Pantallas
             lblTotalVentasInsumos.Text = totales.Rows[0][3].ToString();
 
             // clasico Bienvenido no unisex sino neutral programático 
-            lbBienvenida.Text = $"Bienvenido, {MetodosGlobales.SesionGlobal.nombreUsuario}!";
+            lbBienvenida.Text = $"¡Bienvenido, {MetodosGlobales.SesionGlobal.nombreUsuario}!";
         }
 
 

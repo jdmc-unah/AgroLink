@@ -28,147 +28,167 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelTitulo = new Panel();
-            this.labelTitulo = new Label();
-            this.panelSuperior = new Panel();
-            this.tbNombreTipo = new TextBox();
-            this.labelNombreTipo = new Label();
-            this.labelCategoria = new Label();
-            this.comboCategoria = new ComboBox();
-            this.panelInferior = new Panel();
-            this.btnVolver = new Button();
-            this.btnCancelar = new Button();
-            this.btnAgregar = new Button();
-            this.panelTitulo.SuspendLayout();
-            this.panelSuperior.SuspendLayout();
-            this.panelInferior.SuspendLayout();
-            this.SuspendLayout();
+            panelTitulo = new Panel();
+            labelTitulo = new Label();
+            panelSuperior = new Panel();
+            tbNombreTipo = new TextBox();
+            labelNombreTipo = new Label();
+            labelCategoria = new Label();
+            comboCategoria = new ComboBox();
+            panelInferior = new Panel();
+            btnVolver = new Button();
+            btnCancelar = new Button();
+            btnAgregar = new Button();
+            panelTitulo.SuspendLayout();
+            panelSuperior.SuspendLayout();
+            panelInferior.SuspendLayout();
+            SuspendLayout();
             // 
             // panelTitulo
             // 
-            this.panelTitulo.Controls.Add(this.labelTitulo);
-            this.panelTitulo.Dock = DockStyle.Top;
-            this.panelTitulo.Location = new Point(0, 0);
-            this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new Size(800, 100);
-            this.panelTitulo.TabIndex = 2;
+            panelTitulo.BackColor = Color.FromArgb(22, 48, 43);
+            panelTitulo.Controls.Add(labelTitulo);
+            panelTitulo.Dock = DockStyle.Top;
+            panelTitulo.Location = new Point(0, 0);
+            panelTitulo.Margin = new Padding(2);
+            panelTitulo.Name = "panelTitulo";
+            panelTitulo.Size = new Size(615, 78);
+            panelTitulo.TabIndex = 2;
             // 
             // labelTitulo
             // 
-            this.labelTitulo.AutoSize = true;
-            this.labelTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            this.labelTitulo.Location = new Point(50, 30);
-            this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new Size(310, 45);
-            this.labelTitulo.TabIndex = 0;
-            this.labelTitulo.Text = "Nuevo Tipo Producto";
+            labelTitulo.AutoSize = true;
+            labelTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            labelTitulo.ForeColor = SystemColors.Window;
+            labelTitulo.Location = new Point(38, 23);
+            labelTitulo.Margin = new Padding(2, 0, 2, 0);
+            labelTitulo.Name = "labelTitulo";
+            labelTitulo.Size = new Size(343, 45);
+            labelTitulo.TabIndex = 0;
+            labelTitulo.Text = "Nuevo Tipo Producto";
             // 
             // panelSuperior
             // 
-            this.panelSuperior.Controls.Add(this.tbNombreTipo);
-            this.panelSuperior.Controls.Add(this.labelNombreTipo);
-            this.panelSuperior.Controls.Add(this.labelCategoria);
-            this.panelSuperior.Controls.Add(this.comboCategoria);
-            this.panelSuperior.Dock = DockStyle.Top;
-            this.panelSuperior.Location = new Point(0, 100);
-            this.panelSuperior.Name = "panelSuperior";
-            this.panelSuperior.Size = new Size(800, 200);
-            this.panelSuperior.TabIndex = 0;
+            panelSuperior.BackColor = Color.FromArgb(22, 48, 43);
+            panelSuperior.Controls.Add(tbNombreTipo);
+            panelSuperior.Controls.Add(labelNombreTipo);
+            panelSuperior.Controls.Add(labelCategoria);
+            panelSuperior.Controls.Add(comboCategoria);
+            panelSuperior.Dock = DockStyle.Top;
+            panelSuperior.Location = new Point(0, 78);
+            panelSuperior.Margin = new Padding(2);
+            panelSuperior.Name = "panelSuperior";
+            panelSuperior.Size = new Size(615, 156);
+            panelSuperior.TabIndex = 0;
             // 
             // tbNombreTipo
             // 
-            this.tbNombreTipo.Location = new Point(350, 50);
-            this.tbNombreTipo.Name = "tbNombreTipo";
-            this.tbNombreTipo.Size = new Size(300, 39);
-            this.tbNombreTipo.TabIndex = 6;
+            tbNombreTipo.Location = new Point(269, 39);
+            tbNombreTipo.Margin = new Padding(2);
+            tbNombreTipo.Name = "tbNombreTipo";
+            tbNombreTipo.Size = new Size(232, 31);
+            tbNombreTipo.TabIndex = 6;
             // 
             // labelNombreTipo
             // 
-            this.labelNombreTipo.AutoSize = true;
-            this.labelNombreTipo.Location = new Point(50, 50);
-            this.labelNombreTipo.Name = "labelNombreTipo";
-            this.labelNombreTipo.Size = new Size(194, 32);
-            this.labelNombreTipo.TabIndex = 5;
-            this.labelNombreTipo.Text = "Nombre Tipo Producto";
+            labelNombreTipo.AutoSize = true;
+            labelNombreTipo.ForeColor = SystemColors.Window;
+            labelNombreTipo.Location = new Point(38, 39);
+            labelNombreTipo.Margin = new Padding(2, 0, 2, 0);
+            labelNombreTipo.Name = "labelNombreTipo";
+            labelNombreTipo.Size = new Size(196, 25);
+            labelNombreTipo.TabIndex = 5;
+            labelNombreTipo.Text = "Nombre Tipo Producto";
             // 
             // labelCategoria
             // 
-            this.labelCategoria.AutoSize = true;
-            this.labelCategoria.Location = new Point(50, 120);
-            this.labelCategoria.Name = "labelCategoria";
-            this.labelCategoria.Size = new Size(112, 32);
-            this.labelCategoria.TabIndex = 7;
-            this.labelCategoria.Text = "Categoría";
+            labelCategoria.AutoSize = true;
+            labelCategoria.ForeColor = SystemColors.Window;
+            labelCategoria.Location = new Point(38, 94);
+            labelCategoria.Margin = new Padding(2, 0, 2, 0);
+            labelCategoria.Name = "labelCategoria";
+            labelCategoria.Size = new Size(88, 25);
+            labelCategoria.TabIndex = 7;
+            labelCategoria.Text = "Categoría";
             // 
             // comboCategoria
             // 
-            this.comboCategoria.FormattingEnabled = true;
-            this.comboCategoria.Location = new Point(250, 120);
-            this.comboCategoria.Name = "comboCategoria";
-            this.comboCategoria.Size = new Size(300, 40);
-            this.comboCategoria.TabIndex = 8;
+            comboCategoria.FormattingEnabled = true;
+            comboCategoria.Location = new Point(192, 94);
+            comboCategoria.Margin = new Padding(2);
+            comboCategoria.Name = "comboCategoria";
+            comboCategoria.Size = new Size(232, 33);
+            comboCategoria.TabIndex = 8;
             // 
             // panelInferior
             // 
-            this.panelInferior.Controls.Add(this.btnVolver);
-            this.panelInferior.Controls.Add(this.btnCancelar);
-            this.panelInferior.Controls.Add(this.btnAgregar);
-            this.panelInferior.Dock = DockStyle.Fill;
-            this.panelInferior.Location = new Point(0, 300);
-            this.panelInferior.Name = "panelInferior";
-            this.panelInferior.Size = new Size(800, 100);
-            this.panelInferior.TabIndex = 1;
+            panelInferior.BackColor = Color.FromArgb(22, 48, 43);
+            panelInferior.Controls.Add(btnVolver);
+            panelInferior.Controls.Add(btnCancelar);
+            panelInferior.Controls.Add(btnAgregar);
+            panelInferior.Dock = DockStyle.Fill;
+            panelInferior.Location = new Point(0, 234);
+            panelInferior.Margin = new Padding(2);
+            panelInferior.Name = "panelInferior";
+            panelInferior.Size = new Size(615, 78);
+            panelInferior.TabIndex = 1;
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new Point(800, 50);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new Size(150, 50);
-            this.btnVolver.TabIndex = 2;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new EventHandler(this.btnVolver_Click);
-            // 
+            btnVolver.BackColor = SystemColors.Window;
+            btnVolver.Location = new Point(615, 39);
+            btnVolver.Margin = new Padding(2);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(115, 39);
+            btnVolver.TabIndex = 2;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new Point(500, 50);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new Size(150, 50);
-            this.btnCancelar.TabIndex = 1;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new EventHandler(this.btnCancelar_Click);
+            btnCancelar.BackColor = SystemColors.Window;
+            btnCancelar.Location = new Point(385, 39);
+            btnCancelar.Margin = new Padding(2);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(115, 39);
+            btnCancelar.TabIndex = 1;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new Point(200, 50);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new Size(150, 50);
-            this.btnAgregar.TabIndex = 0;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new EventHandler(this.btnAgregar_Click);
+            btnAgregar.BackColor = Color.FromArgb(255, 222, 89);
+            btnAgregar.FlatStyle = FlatStyle.Popup;
+            btnAgregar.Location = new Point(154, 39);
+            btnAgregar.Margin = new Padding(2);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(115, 39);
+            btnAgregar.TabIndex = 0;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // NuevoTipoProducto
             // 
-            this.AutoScaleDimensions = new SizeF(13F, 32F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new Size(800, 400);
-            this.Controls.Add(this.panelInferior);
-            this.Controls.Add(this.panelSuperior);
-            this.Controls.Add(this.panelTitulo);
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.Name = "NuevoTipoProducto";
-            this.Text = "NuevoTipoProducto";
-            this.Load += new System.EventHandler(this.NuevoTipoProducto_Load);
-            this.panelTitulo.ResumeLayout(false);
-            this.panelTitulo.PerformLayout();
-            this.panelSuperior.ResumeLayout(false);
-            this.panelSuperior.PerformLayout();
-            this.panelInferior.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(615, 312);
+            Controls.Add(panelInferior);
+            Controls.Add(panelSuperior);
+            Controls.Add(panelTitulo);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2);
+            Name = "NuevoTipoProducto";
+            Text = "NuevoTipoProducto";
+            Load += NuevoTipoProducto_Load;
+            panelTitulo.ResumeLayout(false);
+            panelTitulo.PerformLayout();
+            panelSuperior.ResumeLayout(false);
+            panelSuperior.PerformLayout();
+            panelInferior.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

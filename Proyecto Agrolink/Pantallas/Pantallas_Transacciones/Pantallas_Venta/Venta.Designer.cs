@@ -53,61 +53,72 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(22, 48, 43);
             panel1.Controls.Add(btnRecargar);
             panel1.Controls.Add(btnNuevaVenta);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(tbBuscar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2916, 287);
+            panel1.Size = new Size(1145, 175);
             panel1.TabIndex = 0;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(75, 186);
+            btnRecargar.BackColor = SystemColors.Window;
+            btnRecargar.Location = new Point(44, 103);
+            btnRecargar.Margin = new Padding(2);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(292, 57);
+            btnRecargar.Size = new Size(131, 35);
             btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar";
-            btnRecargar.UseVisualStyleBackColor = true;
+            btnRecargar.UseVisualStyleBackColor = false;
             btnRecargar.Click += btnRecargar_Click;
             // 
             // btnNuevaVenta
             // 
-            btnNuevaVenta.Location = new Point(398, 186);
+            btnNuevaVenta.BackColor = SystemColors.Window;
+            btnNuevaVenta.Location = new Point(195, 103);
+            btnNuevaVenta.Margin = new Padding(2);
             btnNuevaVenta.Name = "btnNuevaVenta";
-            btnNuevaVenta.Size = new Size(292, 57);
+            btnNuevaVenta.Size = new Size(187, 35);
             btnNuevaVenta.TabIndex = 2;
             btnNuevaVenta.Text = "Nueva Venta";
-            btnNuevaVenta.UseVisualStyleBackColor = true;
+            btnNuevaVenta.UseVisualStyleBackColor = false;
             btnNuevaVenta.Click += btnNuevaVenta_Click;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(672, 65);
+            btnBuscar.BackColor = Color.FromArgb(255, 222, 89);
+            btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.Location = new Point(395, 40);
+            btnBuscar.Margin = new Padding(2);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(189, 57);
+            btnBuscar.Size = new Size(111, 35);
             btnBuscar.TabIndex = 1;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // tbBuscar
             // 
-            tbBuscar.Location = new Point(75, 71);
+            tbBuscar.Location = new Point(44, 43);
+            tbBuscar.Margin = new Padding(2);
             tbBuscar.Name = "tbBuscar";
             tbBuscar.PlaceholderText = "Código de Venta o Nombre de Socio...";
-            tbBuscar.Size = new Size(572, 47);
+            tbBuscar.Size = new Size(338, 31);
             tbBuscar.TabIndex = 0;
             // 
             // panel2
             // 
             panel2.Controls.Add(tablaVenta);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 287);
+            panel2.Location = new Point(0, 175);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2916, 1425);
+            panel2.Size = new Size(1145, 499);
             panel2.TabIndex = 1;
             // 
             // tablaVenta
@@ -118,11 +129,12 @@
             tablaVenta.Columns.AddRange(new DataGridViewColumn[] { VentaID, SocioID, ListaPreciosID, CodigoVenta, Fecha, Socio, TipoSocio, ListaPrecio, TipoPago, Estado, Total });
             tablaVenta.Dock = DockStyle.Fill;
             tablaVenta.Location = new Point(0, 0);
+            tablaVenta.Margin = new Padding(2);
             tablaVenta.MultiSelect = false;
             tablaVenta.Name = "tablaVenta";
             tablaVenta.ReadOnly = true;
             tablaVenta.RowHeadersWidth = 102;
-            tablaVenta.Size = new Size(2916, 1425);
+            tablaVenta.Size = new Size(1145, 499);
             tablaVenta.TabIndex = 0;
             tablaVenta.CellDoubleClick += tablaVenta_CellDoubleClick;
             // 
@@ -164,7 +176,7 @@
             CodigoVenta.MinimumWidth = 12;
             CodigoVenta.Name = "CodigoVenta";
             CodigoVenta.ReadOnly = true;
-            CodigoVenta.Width = 170;
+            CodigoVenta.Width = 107;
             // 
             // Fecha
             // 
@@ -231,12 +243,13 @@
             // 
             // Venta
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2916, 1712);
+            ClientSize = new Size(1145, 674);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2);
             Name = "Venta";
             Text = "Venta";
             Load += Venta_Load;

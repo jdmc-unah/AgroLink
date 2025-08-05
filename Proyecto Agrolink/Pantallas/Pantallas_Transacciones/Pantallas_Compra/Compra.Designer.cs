@@ -51,52 +51,62 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(22, 48, 43);
             panel1.Controls.Add(tbBuscarCompra);
             panel1.Controls.Add(btnRecargarCompra);
             panel1.Controls.Add(btnBuscarCompra);
             panel1.Controls.Add(btnNuevaCompra);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2916, 287);
+            panel1.Size = new Size(1145, 190);
             panel1.TabIndex = 0;
             // 
             // tbBuscarCompra
             // 
-            tbBuscarCompra.Location = new Point(51, 89);
+            tbBuscarCompra.Location = new Point(30, 54);
+            tbBuscarCompra.Margin = new Padding(2);
             tbBuscarCompra.Name = "tbBuscarCompra";
             tbBuscarCompra.PlaceholderText = "Código de Compra o Nombre de Socio...";
-            tbBuscarCompra.Size = new Size(572, 47);
+            tbBuscarCompra.Size = new Size(338, 31);
             tbBuscarCompra.TabIndex = 0;
             // 
             // btnRecargarCompra
             // 
-            btnRecargarCompra.Location = new Point(51, 182);
+            btnRecargarCompra.BackColor = SystemColors.Window;
+            btnRecargarCompra.Location = new Point(30, 111);
+            btnRecargarCompra.Margin = new Padding(2);
             btnRecargarCompra.Name = "btnRecargarCompra";
-            btnRecargarCompra.Size = new Size(292, 57);
+            btnRecargarCompra.Size = new Size(152, 35);
             btnRecargarCompra.TabIndex = 3;
             btnRecargarCompra.Text = "Recargar";
-            btnRecargarCompra.UseVisualStyleBackColor = true;
+            btnRecargarCompra.UseVisualStyleBackColor = false;
             btnRecargarCompra.Click += btnRecargarCompra_Click;
             // 
             // btnBuscarCompra
             // 
-            btnBuscarCompra.Location = new Point(648, 83);
+            btnBuscarCompra.BackColor = Color.FromArgb(255, 222, 89);
+            btnBuscarCompra.FlatStyle = FlatStyle.Popup;
+            btnBuscarCompra.Location = new Point(381, 52);
+            btnBuscarCompra.Margin = new Padding(2);
             btnBuscarCompra.Name = "btnBuscarCompra";
-            btnBuscarCompra.Size = new Size(189, 57);
+            btnBuscarCompra.Size = new Size(111, 35);
             btnBuscarCompra.TabIndex = 1;
             btnBuscarCompra.Text = "Buscar";
-            btnBuscarCompra.UseVisualStyleBackColor = true;
+            btnBuscarCompra.UseVisualStyleBackColor = false;
             btnBuscarCompra.Click += btnBuscarCompra_Click;
             // 
             // btnNuevaCompra
             // 
-            btnNuevaCompra.Location = new Point(398, 182);
+            btnNuevaCompra.BackColor = SystemColors.Window;
+            btnNuevaCompra.Location = new Point(205, 111);
+            btnNuevaCompra.Margin = new Padding(2);
             btnNuevaCompra.Name = "btnNuevaCompra";
-            btnNuevaCompra.Size = new Size(292, 57);
+            btnNuevaCompra.Size = new Size(163, 35);
             btnNuevaCompra.TabIndex = 2;
             btnNuevaCompra.Text = "Nueva Compra";
-            btnNuevaCompra.UseVisualStyleBackColor = true;
+            btnNuevaCompra.UseVisualStyleBackColor = false;
             btnNuevaCompra.Click += btnNuevaCompra_Click;
             // 
             // tablaCompra
@@ -106,12 +116,13 @@
             tablaCompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaCompra.Columns.AddRange(new DataGridViewColumn[] { CompraID, SocioID, ListaPreciosID, CodigoCompra, Fecha, Socio, TipoSocio, ListaPrecio, TipoPago, Estado, Total });
             tablaCompra.Dock = DockStyle.Fill;
-            tablaCompra.Location = new Point(0, 287);
+            tablaCompra.Location = new Point(0, 190);
+            tablaCompra.Margin = new Padding(2);
             tablaCompra.MultiSelect = false;
             tablaCompra.Name = "tablaCompra";
             tablaCompra.ReadOnly = true;
             tablaCompra.RowHeadersWidth = 102;
-            tablaCompra.Size = new Size(2916, 1425);
+            tablaCompra.Size = new Size(1145, 484);
             tablaCompra.TabIndex = 0;
             tablaCompra.CellDoubleClick += tablaCompra_CellDoubleClick;
             // 
@@ -221,13 +232,12 @@
             // 
             // Compra
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2916, 1712);
+            ClientSize = new Size(1145, 674);
             Controls.Add(tablaCompra);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(5);
             Name = "Compra";
             Text = "Compra";
             Load += Compra_Load;

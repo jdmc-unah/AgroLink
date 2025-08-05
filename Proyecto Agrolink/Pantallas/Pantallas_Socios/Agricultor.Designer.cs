@@ -45,11 +45,11 @@
             // 
             TablaAgricultor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             TablaAgricultor.Dock = DockStyle.Fill;
-            TablaAgricultor.Location = new Point(0, 292);
-            TablaAgricultor.Margin = new Padding(6);
+            TablaAgricultor.Location = new Point(0, 190);
+            TablaAgricultor.Margin = new Padding(4);
             TablaAgricultor.Name = "TablaAgricultor";
             TablaAgricultor.RowHeadersWidth = 51;
-            TablaAgricultor.Size = new Size(2916, 1420);
+            TablaAgricultor.Size = new Size(1145, 484);
             TablaAgricultor.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -60,60 +60,66 @@
             // 
             // TbBuscar
             // 
-            TbBuscar.Location = new Point(80, 51);
-            TbBuscar.Margin = new Padding(6);
+            TbBuscar.Location = new Point(47, 46);
+            TbBuscar.Margin = new Padding(4);
             TbBuscar.Name = "TbBuscar";
-            TbBuscar.PlaceholderText = "Ingrese Codigo o Nombre de Agricultor";
-            TbBuscar.Size = new Size(858, 47);
+            TbBuscar.PlaceholderText = "Ingrese Código o Nombre de Agricultor...";
+            TbBuscar.Size = new Size(506, 31);
             TbBuscar.TabIndex = 2;
             TbBuscar.TextChanged += textBox1_TextChanged;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(950, 41);
-            btnBuscar.Margin = new Padding(6);
+            btnBuscar.BackColor = Color.FromArgb(255, 222, 89);
+            btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.Location = new Point(566, 44);
+            btnBuscar.Margin = new Padding(4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(193, 66);
+            btnBuscar.Size = new Size(111, 35);
             btnBuscar.TabIndex = 3;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // btnRecargar
             // 
-            btnRecargar.Location = new Point(1196, 41);
-            btnRecargar.Margin = new Padding(6);
+            btnRecargar.BackColor = SystemColors.Window;
+            btnRecargar.Location = new Point(689, 44);
+            btnRecargar.Margin = new Padding(4);
             btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(305, 66);
-            btnRecargar.TabIndex = 4;
+            btnRecargar.Size = new Size(210, 35);
+            btnRecargar.TabIndex = 3;
             btnRecargar.Text = "Recargar Pagina";
-            btnRecargar.UseVisualStyleBackColor = true;
+            btnRecargar.UseVisualStyleBackColor = false;
             btnRecargar.Click += btnRecargar_Click;
             // 
             // btnAgregarFinca
             // 
-            btnAgregarFinca.Location = new Point(80, 156);
-            btnAgregarFinca.Margin = new Padding(6);
+            btnAgregarFinca.BackColor = SystemColors.Window;
+            btnAgregarFinca.Location = new Point(47, 95);
+            btnAgregarFinca.Margin = new Padding(4);
             btnAgregarFinca.Name = "btnAgregarFinca";
-            btnAgregarFinca.Size = new Size(249, 72);
+            btnAgregarFinca.Size = new Size(125, 41);
             btnAgregarFinca.TabIndex = 5;
             btnAgregarFinca.Text = "Ver Lotes";
-            btnAgregarFinca.UseVisualStyleBackColor = true;
+            btnAgregarFinca.UseVisualStyleBackColor = false;
             btnAgregarFinca.Click += btnAgregarFinca_Click;
             // 
             // btnAgregarFinca1
             // 
-            btnAgregarFinca1.Location = new Point(366, 156);
-            btnAgregarFinca1.Margin = new Padding(6);
+            btnAgregarFinca1.BackColor = SystemColors.Window;
+            btnAgregarFinca1.Location = new Point(184, 95);
+            btnAgregarFinca1.Margin = new Padding(4);
             btnAgregarFinca1.Name = "btnAgregarFinca1";
-            btnAgregarFinca1.Size = new Size(372, 72);
+            btnAgregarFinca1.Size = new Size(196, 41);
             btnAgregarFinca1.TabIndex = 6;
             btnAgregarFinca1.Text = "Crear Nueva Finca";
-            btnAgregarFinca1.UseVisualStyleBackColor = true;
+            btnAgregarFinca1.UseVisualStyleBackColor = false;
             btnAgregarFinca1.Click += btnAgregarFinca1_Click;
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(22, 48, 43);
             panel1.Controls.Add(TbBuscar);
             panel1.Controls.Add(btnBuscar);
             panel1.Controls.Add(btnAgregarFinca1);
@@ -121,19 +127,20 @@
             panel1.Controls.Add(btnAgregarFinca);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2916, 292);
+            panel1.Size = new Size(1145, 190);
             panel1.TabIndex = 7;
             // 
             // Agricultor
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2916, 1712);
+            ClientSize = new Size(1145, 674);
             Controls.Add(TablaAgricultor);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(6);
+            Margin = new Padding(4);
             Name = "Agricultor";
             Text = "Agricultor";
             Load += Agricultor_Load;
