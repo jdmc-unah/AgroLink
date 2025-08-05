@@ -111,6 +111,7 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             tablaProducto.RowHeadersWidth = 62;
             tablaProducto.Size = new Size(2761, 1225);
             tablaProducto.TabIndex = 0;
+            tablaProducto.CellDoubleClick += tablaProducto_CellDoubleClick;
             // 
             // ProductoID
             // 

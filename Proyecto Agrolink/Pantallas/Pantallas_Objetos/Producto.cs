@@ -16,10 +16,15 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
 
         private void btnNuevoProducto_Click(object sender, EventArgs e)
         {
-            if (PantallaPrincipal.instanciaPantPrincipal != null)
-            {
-                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevoProducto());
-            }
+            //if (PantallaPrincipal.instanciaPantPrincipal != null)
+            //{
+            //    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new NuevoProducto());
+            //}
+
+            NuevoProducto nuevoProd = new NuevoProducto();
+            nuevoProd.ShowDialog();
+
+
         }
 
         #region Variables Globales
@@ -43,14 +48,14 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string cod = tbBuscar.Text.Trim();
-            
+
             // Si el campo de búsqueda está vacío, mostrar todos los productos
             if (string.IsNullOrEmpty(cod))
             {
                 tablaProducto.DataSource = recSQL.EjecutarVista("vPantallaProductos");
                 return;
             }
-            
+
             Dictionary<string, object> parametros = new Dictionary<string, object>()
             {
                 { "cod", cod }
@@ -68,5 +73,18 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             }
         }
 
+        private void tablaProducto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ProductoDetalle prodDet = new ProductoDetalle();
+
+           //Toma el indice de la fila seleccionada y el valor seleccionado 
+            int row = tablaProducto.CurrentRow.Index;
+            prodDet.prodID = (int)this.tablaProducto.Rows[row].Cells[0].Value;
+            prodDet.prodNombre = (string)this.tablaProducto.Rows[row].Cells[2].Value;
+
+            prodDet.ShowDialog();
+
+
+        }
     }
 }

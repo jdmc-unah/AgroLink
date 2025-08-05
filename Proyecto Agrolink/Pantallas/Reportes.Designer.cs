@@ -129,7 +129,7 @@
             tabInventario.Controls.Add(panelFooterInventario);
             tabInventario.Location = new Point(10, 58);
             tabInventario.Name = "tabInventario";
-            tabInventario.Padding = new Padding(3, 3, 3, 3);
+            tabInventario.Padding = new Padding(3);
             tabInventario.Size = new Size(2896, 1375);
             tabInventario.TabIndex = 0;
             tabInventario.Text = "Inventario";
@@ -338,7 +338,7 @@
             tabSaldo.Controls.Add(panelFooterSaldos);
             tabSaldo.Location = new Point(10, 58);
             tabSaldo.Name = "tabSaldo";
-            tabSaldo.Padding = new Padding(3, 3, 3, 3);
+            tabSaldo.Padding = new Padding(3);
             tabSaldo.Size = new Size(2896, 1375);
             tabSaldo.TabIndex = 1;
             tabSaldo.Text = "Saldo";
@@ -538,7 +538,7 @@
             tabUtilidad.Controls.Add(panelTotalesUtilidad);
             tabUtilidad.Location = new Point(10, 58);
             tabUtilidad.Name = "tabUtilidad";
-            tabUtilidad.Padding = new Padding(3, 3, 3, 3);
+            tabUtilidad.Padding = new Padding(3);
             tabUtilidad.Size = new Size(2896, 1375);
             tabUtilidad.TabIndex = 2;
             tabUtilidad.Text = "Utilidad";

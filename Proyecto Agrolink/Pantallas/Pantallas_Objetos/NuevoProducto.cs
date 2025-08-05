@@ -105,10 +105,10 @@ namespace AgroLink.Pantallas.Pantallas_Objetos
             // Cerrar esta pantalla y volver a la pantalla de productos
             this.Close();
 
-            if (PantallaPrincipal.instanciaPantPrincipal != null)
-            {
-                PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Producto());
-            }
+            //if (PantallaPrincipal.instanciaPantPrincipal != null)
+            //{
+            //    PantallaPrincipal.instanciaPantPrincipal.OpenChildForm(new Producto());
+            //}
         }
     }
 }

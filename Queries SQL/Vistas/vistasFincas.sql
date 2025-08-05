@@ -7,5 +7,3 @@ inner join Pruebas.Producto pp on pl.ProductoID=pp.ProductoID inner join pruebas
 inner join Pruebas.TipoSuelo pts on pl.TipoSueloID=pts.TipoSueloID
 go
 
-
-

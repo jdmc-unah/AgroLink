@@ -44,19 +44,18 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(86, 228);
-            txtUsuario.Margin = new Padding(2);
+            txtUsuario.Location = new Point(146, 374);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(299, 31);
+            txtUsuario.Size = new Size(506, 47);
             txtUsuario.TabIndex = 0;
             txtUsuario.TextChanged += textBox1_TextChanged;
             // 
             // txtClave
             // 
-            txtClave.Location = new Point(86, 321);
-            txtClave.Margin = new Padding(2);
+            txtClave.Location = new Point(146, 526);
             txtClave.Name = "txtClave";
-            txtClave.Size = new Size(299, 31);
+            txtClave.PasswordChar = '*';
+            txtClave.Size = new Size(506, 47);
             txtClave.TabIndex = 1;
             // 
             // label1
@@ -64,10 +63,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(95, 78);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(162, 128);
             label1.Name = "label1";
-            label1.Size = new Size(275, 41);
+            label1.Size = new Size(455, 67);
             label1.TabIndex = 2;
             label1.Text = "INICIO DE SESIÓN";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -78,10 +76,9 @@
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Segoe UI", 10F);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(160, 490);
-            btnLogin.Margin = new Padding(2);
+            btnLogin.Location = new Point(272, 804);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(134, 44);
+            btnLogin.Size = new Size(228, 72);
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Iniciar sesión";
             btnLogin.UseVisualStyleBackColor = true;
@@ -98,9 +95,10 @@
             panelLogin.Controls.Add(btnLogin);
             panelLogin.Controls.Add(txtUsuario);
             panelLogin.Controls.Add(txtClave);
-            panelLogin.Location = new Point(261, 166);
+            panelLogin.Location = new Point(444, 272);
+            panelLogin.Margin = new Padding(5, 5, 5, 5);
             panelLogin.Name = "panelLogin";
-            panelLogin.Size = new Size(480, 652);
+            panelLogin.Size = new Size(816, 1069);
             panelLogin.TabIndex = 4;
             // 
             // linkLabel2
@@ -109,9 +107,10 @@
             linkLabel2.AutoSize = true;
             linkLabel2.Font = new Font("Segoe UI", 10F);
             linkLabel2.LinkColor = Color.Gray;
-            linkLabel2.Location = new Point(114, 447);
+            linkLabel2.Location = new Point(194, 733);
+            linkLabel2.Margin = new Padding(5, 0, 5, 0);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(235, 28);
+            linkLabel2.Size = new Size(402, 46);
             linkLabel2.TabIndex = 7;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "¿Olvidaste tu contraseña?";
@@ -123,9 +122,10 @@
             linkLabel1.AutoSize = true;
             linkLabel1.Font = new Font("Segoe UI", 10F);
             linkLabel1.LinkColor = Color.Gray;
-            linkLabel1.Location = new Point(130, 548);
+            linkLabel1.Location = new Point(221, 899);
+            linkLabel1.Margin = new Padding(5, 0, 5, 0);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(193, 28);
+            linkLabel1.Size = new Size(329, 46);
             linkLabel1.TabIndex = 6;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Crear Nuevo Usuario";
@@ -136,9 +136,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(82, 289);
+            label3.Location = new Point(139, 474);
+            label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(118, 28);
+            label3.Size = new Size(200, 46);
             label3.TabIndex = 5;
             label3.Text = "Contraseña";
             // 
@@ -147,9 +148,10 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(81, 196);
+            label2.Location = new Point(138, 321);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(84, 28);
+            label2.Size = new Size(144, 46);
             label2.TabIndex = 4;
             label2.Text = "Usuario";
             label2.Click += label2_Click;
@@ -159,21 +161,23 @@
             pictureBox2.Dock = DockStyle.Fill;
             pictureBox2.Image = Properties.Resources.fondoInicioSesionCOPRAG;
             pictureBox2.Location = new Point(0, 0);
+            pictureBox2.Margin = new Padding(5, 5, 5, 5);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1900, 1050);
+            pictureBox2.Size = new Size(3230, 1722);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1900, 1050);
+            ClientSize = new Size(3230, 1722);
             Controls.Add(panelLogin);
             Controls.Add(pictureBox2);
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5, 5, 5, 5);
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Load += Form1_Load;
