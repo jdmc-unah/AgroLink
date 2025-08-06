@@ -93,7 +93,7 @@
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(6, 0, 0, 0);
-            panel1.Size = new Size(1773, 235);
+            panel1.Size = new Size(1145, 235);
             panel1.TabIndex = 21;
             // 
             // btnAdministrarProducto
@@ -255,7 +255,7 @@
             tablaCompraDetalle.Name = "tablaCompraDetalle";
             tablaCompraDetalle.ReadOnly = true;
             tablaCompraDetalle.RowHeadersWidth = 102;
-            tablaCompraDetalle.Size = new Size(1773, 582);
+            tablaCompraDetalle.Size = new Size(1145, 582);
             tablaCompraDetalle.TabIndex = 1;
             tablaCompraDetalle.CellContentClick += tablaCompraDetalle_CellContentClick;
             tablaCompraDetalle.CellEndEdit += tablaCompraDetalle_CellEndEdit;
@@ -281,50 +281,50 @@
             dataGridViewCellStyle2.NullValue = "PRO";
             CodigoProducto.DefaultCellStyle = dataGridViewCellStyle2;
             CodigoProducto.HeaderText = "Código";
-            CodigoProducto.MinimumWidth = 12;
+            CodigoProducto.MinimumWidth = 90;
             CodigoProducto.Name = "CodigoProducto";
             CodigoProducto.ReadOnly = true;
-            CodigoProducto.Width = 250;
+            CodigoProducto.Width = 90;
             // 
             // ProductoID
             // 
-            ProductoID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProductoID.DataPropertyName = "ProductoID";
             ProductoID.HeaderText = "Producto";
-            ProductoID.MinimumWidth = 12;
+            ProductoID.MinimumWidth = 200;
             ProductoID.Name = "ProductoID";
             ProductoID.ReadOnly = true;
             ProductoID.Resizable = DataGridViewTriState.True;
             ProductoID.SortMode = DataGridViewColumnSortMode.Automatic;
+            ProductoID.Width = 200;
             // 
             // BodegaID
             // 
-            BodegaID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             BodegaID.DataPropertyName = "BodegaID";
             BodegaID.HeaderText = "Bodega";
-            BodegaID.MinimumWidth = 12;
+            BodegaID.MinimumWidth = 200;
             BodegaID.Name = "BodegaID";
             BodegaID.ReadOnly = true;
             BodegaID.Resizable = DataGridViewTriState.True;
             BodegaID.SortMode = DataGridViewColumnSortMode.Automatic;
+            BodegaID.Width = 200;
             // 
             // Cantidad
             // 
             Cantidad.DataPropertyName = "Cantidad";
             Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 12;
+            Cantidad.MinimumWidth = 200;
             Cantidad.Name = "Cantidad";
             Cantidad.ReadOnly = true;
-            Cantidad.Width = 250;
+            Cantidad.Width = 200;
             // 
             // Precio
             // 
             Precio.DataPropertyName = "Precio";
             Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 12;
+            Precio.MinimumWidth = 200;
             Precio.Name = "Precio";
             Precio.ReadOnly = true;
-            Precio.Width = 250;
+            Precio.Width = 200;
             // 
             // Subtotal
             // 
@@ -416,7 +416,7 @@
             panel2.Location = new Point(0, 235);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1773, 582);
+            panel2.Size = new Size(1145, 582);
             panel2.TabIndex = 22;
             // 
             // panel3
@@ -434,7 +434,7 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 817);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1773, 228);
+            panel3.Size = new Size(1145, 0);
             panel3.TabIndex = 28;
             panel3.Paint += panel3_Paint;
             // 
@@ -495,7 +495,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1773, 1045);
+            ClientSize = new Size(1145, 674);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);

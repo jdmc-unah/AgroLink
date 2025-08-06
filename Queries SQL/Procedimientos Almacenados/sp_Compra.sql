@@ -66,28 +66,6 @@ begin
 end
 go
 
--- trae compra pendiente de sacar producto completo
-
-CREATE OR ALTER PROCEDURE spTraeComprasEntradaComp
-AS
-BEGIN
-    DECLARE @comprasConEntradaCompleta AS TABLE (EntradaID INT, CompraID INT)
-
-    INSERT INTO @comprasConEntradaCompleta
-    SELECT DISTINCT EPD.EntradaID, CD.CompraID
-    FROM Pruebas.EntradaProducto EP
-    INNER JOIN Pruebas.EntradaProductoDetalle EPD ON EP.EntradaID = EPD.EntradaID
-    INNER JOIN Pruebas.Compra C ON EP.CompraID = C.CompraID
-    INNER JOIN Pruebas.CompraDetalle CD ON CD.CompraID = C.CompraID
-    WHERE CD.Cantidad = EPD.Cantidad AND CD.ProductoID = EPD.ProductoID
-
-    SELECT CompraID, CodigoCompra
-    FROM Pruebas.Compra
-    WHERE CompraID NOT IN (SELECT CompraID FROM @comprasConEntradaCompleta)
-    AND Estado <> 'Cancelado'
-END
-GO
-
 
 -- trae compra filtrada (id y codigo)
 
@@ -110,79 +88,6 @@ begin
 	select CompraID, CodigoCompra from Pruebas.Compra where Estado = 'Abierto' and CompraID <> @compraID
 end
 go
-
-
-CREATE OR ALTER PROCEDURE spCancelarCompra 
-    @compraID INT, 
-    @socID INT, 
-    @error VARCHAR(255) OUTPUT
-AS
-BEGIN
-    SET @error = '';
-
-    BEGIN TRY
-        BEGIN TRANSACTION;
-
-        -- validar que compra exista
-        IF NOT EXISTS (SELECT 1 FROM Pruebas.Compra WHERE CompraID = @compraID)
-        BEGIN
-            SET @error = 'La compra no existe.';
-            THROW 50011, @error, 1;
-        END
-
-        -- obtener tipo de pago (no es estrictamente necesario aquí, pero si quieres usarlo puedes)
-        DECLARE @tipoPago VARCHAR(50);
-        SELECT @tipoPago = TipoPago FROM Pruebas.Compra WHERE CompraID = @compraID;
-
-		-- actualiza saldo de socio con compras al crédito
-		if @tipopago = 'Credito'
-		begin
-			declare @totalanterior float, @saldo float
-
-			select @totalanterior = isnull(sum(total), 0) from pruebas.compradetalle where compraid = @compraid;
-
-			-- valida que no quede negativo
-			--select @saldo = (case when saldo - @totalanterior < 0 then 0 else saldo - @totalanterior end) 
-			--from pruebas.socio where socioid = @socid;
-
-			select @saldo = case when saldo < 0 then  saldo + @totalanterior else saldo - @totalanterior end
-			from pruebas.socio where socioid = @socid;
-
-			update pruebas.socio set saldo = @saldo 
-			where socioid = @socid;
-		end
-
-
-
-        -- revertir stock: restar cantidades de la compra cancelada
-        UPDATE bd
-        SET bd.TotalExistencias = CASE 
-                                    WHEN bd.TotalExistencias - cd.Cantidad < 0 THEN 0 
-                                    ELSE bd.TotalExistencias - cd.Cantidad 
-                                  END
-        FROM Pruebas.BodegaDetalle bd
-        INNER JOIN Pruebas.CompraDetalle cd 
-            ON bd.BodegaID = cd.BodegaID 
-            AND bd.ProductoID = cd.ProductoID
-        WHERE cd.CompraID = @compraID;
-
-        -- Cambiar estado a 'Cancelado'
-        UPDATE Pruebas.Compra 
-        SET Estado = 'Cancelado' 
-        WHERE CompraID = @compraID;
-
-        COMMIT TRANSACTION;
-    END TRY
-    BEGIN CATCH
-        IF @@TRANCOUNT > 0
-            ROLLBACK TRANSACTION;
-
-        SET @error = ERROR_MESSAGE();
-        RETURN;
-    END CATCH
-END
-GO
-
 
 
 -- actualizar y agregar compra
@@ -275,6 +180,95 @@ BEGIN
 END
 GO
 
+-- actualizar el saldo de un socio al registrar una compra al credito
+create or alter procedure spActualizarSaldoSocioCompraDetalle @compraID int
+as
+begin
+    declare @socioID int, @tipoPago varchar(20), @totalCompra float, @saldoActual float
+
+    -- obtener el socio y tipo de pago de la compra
+    select @socioID = SocioID, @tipoPago = TipoPago
+    from Pruebas.Compra
+    where CompraID = @compraID
+
+    -- si la compra es al crédito, actualizar saldo
+    if @tipoPago = 'Credito'
+    begin
+        -- sumamos el total de la compra actual
+        select @totalCompra = isnull(sum(Total), 0)
+        from Pruebas.CompraDetalle
+        where CompraID = @compraID
+
+        -- obtenemos el saldo actual del socio
+        select @saldoActual = Saldo
+        from Pruebas.Socio
+        where SocioID = @socioID;
+
+        -- se actualiza el saldo (empresa le debe más al socio deberia ser negativo)
+        set @saldoActual = @saldoActual - @totalCompra
+
+        update Pruebas.Socio
+        set Saldo = @saldoActual
+        where SocioID = @socioID;
+    end
+end
+go
+
+-- sp para cancelar una compra
+
+CREATE OR ALTER PROCEDURE spCancelarCompra 
+    @compraID INT, 
+    @socID INT, 
+    @error VARCHAR(255) OUTPUT
+AS
+BEGIN
+    SET @error = ''
+
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Validar que la compra exista
+        IF NOT EXISTS (SELECT 1 FROM Pruebas.Compra WHERE CompraID = @compraID)
+        BEGIN
+            SET @error = 'La compra no existe.'; THROW 50011, @error, 1
+        END
+
+        -- Obtener tipo de pago de la compra
+        DECLARE @tipoPago VARCHAR(50);
+        SELECT @tipoPago = TipoPago FROM Pruebas.Compra WHERE CompraID = @compraID;
+
+        -- Revertir stock: restar cantidades de la compra cancelada
+        UPDATE bd
+        SET bd.TotalExistencias = CASE 
+                                    WHEN bd.TotalExistencias - cd.Cantidad < 0 THEN 0 
+                                    ELSE bd.TotalExistencias - cd.Cantidad 
+                                  END
+        FROM Pruebas.BodegaDetalle bd
+        INNER JOIN Pruebas.CompraDetalle cd 
+            ON bd.BodegaID = cd.BodegaID 
+            AND bd.ProductoID = cd.ProductoID
+        WHERE cd.CompraID = @compraID;
+
+        -- Cambiar estado de la compra a 'Cancelado'
+        UPDATE Pruebas.Compra 
+        SET Estado = 'Cancelado' 
+        WHERE CompraID = @compraID;
+
+        -- Recalcular saldo del socio
+        EXEC spActualizarSaldoSocioCompraDetalle @socID
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        SET @error = ERROR_MESSAGE()
+        RETURN
+    END CATCH
+END
+GO
+
 
 -- actualizar y agregar compra detalle
 
@@ -292,85 +286,74 @@ create type TipoCompraDetalle as table
 )
 go
 
-
-create or alter procedure spAgregarCompraDetalle 
-    @compraid int, 
-    @detalle TipoCompraDetalle readonly
+create or alter procedure spAgregarCompraDetalle @compraid int, @detalle TipoCompraDetalle readonly
 as
 begin
-    declare @tipopago varchar(50), @socid int, @totalnuevo float, @totalanterior float, @saldo float;		
+    declare @tipopago varchar(50), @socid int, @totalnuevo float, @totalanterior float, @saldo float		
 
-    select @tipopago = TipoPago, @socid = SocioID from pruebas.compra where compraid = @compraid;
+    select @tipopago = TipoPago, @socid = SocioID 
+    from Pruebas.Compra 
+    where CompraID = @compraid
 
-    -- actualiza saldo de socio con compras al crédito
-    if @tipopago = 'Credito'
-    begin
-        select @totalnuevo = isnull(sum(total), 0) from @detalle;
-        select @totalanterior = isnull(sum(total), 0) from pruebas.compradetalle where compraid = @compraid;
-
-        -- valida que no quede negativo
-        --select @saldo = (case when saldo - @totalanterior < 0 then 0 else saldo - @totalanterior end) 
-        --from pruebas.socio where socioid = @socid;
-
-		select @saldo = case when saldo < 0 then  saldo + @totalanterior else saldo - @totalanterior end
-        from pruebas.socio where socioid = @socid;
-
-        update pruebas.socio set saldo = @saldo - @totalnuevo
-        where socioid = @socid;
-    end
-
-    declare @prod int, @bodid int, @cantnueva float, @cantanterior float, @existencias float;
+    -- se actualiza el detalle de compra y existencias
+    declare @prod int, @bodid int, @cantnueva float, @cantanterior float, @existencias float
 
     declare crsCompraDet cursor for
-        select productoid, bodegaid, cantidad from @detalle;
+        select ProductoID, BodegaID, Cantidad 
+        from @detalle
 
-    open crsCompraDet;
-    fetch next from crsCompraDet into @prod, @bodid, @cantnueva;
+    open crsCompraDet fetch next from crsCompraDet into @prod, @bodid, @cantnueva
 
-    while @@fetch_status = 0
+    while @@FETCH_STATUS = 0
     begin
-        -- Si no existe el producto en la bodega, insertarlo con existencias 0
-        if not exists (select 1 from pruebas.bodegadetalle where bodegaid = @bodid and productoid = @prod)
+        -- si no existe el producto en la bodega, insertarlo con existencias 0
+        if not exists (select 1 from Pruebas.BodegaDetalle where BodegaID = @bodid and ProductoID = @prod)
         begin
-            insert into pruebas.bodegadetalle (BodegaID, ProductoID, TotalExistencias)
-            values (@bodid, @prod, 0);
+            insert into Pruebas.BodegaDetalle (BodegaID, ProductoID, TotalExistencias)
+            values (@bodid, @prod, 0)
         end
 
-        select @cantanterior = cantidad from pruebas.compradetalle where compraid = @compraid and productoid = @prod;
+        select @cantanterior = Cantidad 
+        from Pruebas.CompraDetalle 
+        where CompraID = @compraid and ProductoID = @prod
 
-        -- valida que no quede negativo ni nulo 
+        -- valida existencias para no dejar negativas
         select @existencias = 
-        (
-            case  
-                when TotalExistencias - isnull(@cantanterior, 0) < 0 then 0 
-                else TotalExistencias - isnull(@cantanterior, 0)
-            end
-        ) 
-        from pruebas.bodegadetalle where bodegaid = @bodid and productoid = @prod;
+        case  
+            when TotalExistencias - isnull(@cantanterior, 0) < 0 then 0 
+            else TotalExistencias - isnull(@cantanterior, 0)
+        end
+        from Pruebas.BodegaDetalle 
+        where BodegaID = @bodid and ProductoID = @prod
 
-        update pruebas.bodegadetalle 
+        update Pruebas.BodegaDetalle 
         set TotalExistencias = @existencias + @cantnueva
-        where bodegaid = @bodid and productoid = @prod;
+        where BodegaID = @bodid and ProductoID = @prod
 
-        fetch next from crsCompraDet into @prod, @bodid, @cantnueva;
+        fetch next from crsCompraDet into @prod, @bodid, @cantnueva
     end
 
-    deallocate crsCompraDet;
+    deallocate crsCompraDet
 
+    -- validación de impuestos en detalle
     if exists 
     (
         select 1 from @detalle d
         where not exists (select 1 from Pruebas.Impuesto i where i.ImpuestoID = d.ImpuestoID)
     )
-        THROW 50010, 'Existen filas con ImpuestoID inválido en el detalle de compra.', 1;
+        throw 50010, 'Existen filas con ImpuestoID inválido en el detalle de compra.', 1
 
-    -- Actualiza el detalle eliminando lo anterior y agregando lo nuevo
-    delete from Pruebas.compradetalle where compraid = @compraid;
+    -- actualiza el detalle eliminando lo anterior y agregando lo nuevo
+    delete from Pruebas.CompraDetalle where CompraID = @compraid
 
-    insert into pruebas.compradetalle (CompraID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total)
-    select @compraid, d.ProductoID, d.impuestoid, d.bodegaid, d.cantidad, d.precio, d.total 
+    insert into Pruebas.CompraDetalle (CompraID, ProductoID, ImpuestoID, BodegaID, Cantidad, Precio, Total)
+    select @compraid, d.ProductoID, d.ImpuestoID, d.BodegaID, d.Cantidad, d.Precio, d.Total 
     from @detalle d
-    inner join Pruebas.Impuesto i on d.ImpuestoID = i.ImpuestoID;
+    inner join Pruebas.Impuesto i on d.ImpuestoID = i.ImpuestoID
+
+    -- actualiza el saldo del socio (si es al credito)
+    exec spActualizarSaldoSocioCompraDetalle @compraid
 end
 go
+
 

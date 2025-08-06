@@ -103,7 +103,7 @@ BEGIN
         WHERE ReciboID = @reciboID;
 
         IF @@ERROR <> 0 
-            SET @error = 'Ocurri� un error al actualizar el estado del recibo'
+            SET @error = 'Ocurrio un error al actualizar el estado del recibo'
     END
     ELSE
         SET @error = 'No puede usar estado Cancelado en nuevo recibo'

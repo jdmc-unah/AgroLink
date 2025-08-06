@@ -95,7 +95,7 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(1, 1, 1, 1);
+            panel1.Margin = new Padding(1);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(6, 0, 0, 0);
             panel1.Size = new Size(1145, 235);
@@ -104,7 +104,7 @@
             // tbCodigo
             // 
             tbCodigo.Location = new Point(106, 48);
-            tbCodigo.Margin = new Padding(1, 1, 1, 1);
+            tbCodigo.Margin = new Padding(1);
             tbCodigo.Name = "tbCodigo";
             tbCodigo.ReadOnly = true;
             tbCodigo.Size = new Size(153, 31);
@@ -115,7 +115,7 @@
             cbEmpleado.Enabled = false;
             cbEmpleado.FormattingEnabled = true;
             cbEmpleado.Location = new Point(1333, 169);
-            cbEmpleado.Margin = new Padding(1, 1, 1, 1);
+            cbEmpleado.Margin = new Padding(1);
             cbEmpleado.Name = "cbEmpleado";
             cbEmpleado.Size = new Size(259, 33);
             cbEmpleado.TabIndex = 29;
@@ -126,7 +126,7 @@
             cbMetodoPago.FormattingEnabled = true;
             cbMetodoPago.Items.AddRange(new object[] { "Efectivo", "Tarjeta", "Cheque" });
             cbMetodoPago.Location = new Point(962, 169);
-            cbMetodoPago.Margin = new Padding(1, 1, 1, 1);
+            cbMetodoPago.Margin = new Padding(1);
             cbMetodoPago.Name = "cbMetodoPago";
             cbMetodoPago.Size = new Size(259, 33);
             cbMetodoPago.TabIndex = 20;
@@ -136,7 +136,7 @@
             cbListaPrecio.Enabled = false;
             cbListaPrecio.FormattingEnabled = true;
             cbListaPrecio.Location = new Point(591, 169);
-            cbListaPrecio.Margin = new Padding(1, 1, 1, 1);
+            cbListaPrecio.Margin = new Padding(1);
             cbListaPrecio.Name = "cbListaPrecio";
             cbListaPrecio.Size = new Size(259, 33);
             cbListaPrecio.TabIndex = 18;
@@ -147,7 +147,7 @@
             cbCompra.Enabled = false;
             cbCompra.FormattingEnabled = true;
             cbCompra.Location = new Point(658, 45);
-            cbCompra.Margin = new Padding(1, 1, 1, 1);
+            cbCompra.Margin = new Padding(1);
             cbCompra.Name = "cbCompra";
             cbCompra.Size = new Size(153, 33);
             cbCompra.TabIndex = 31;
@@ -159,7 +159,7 @@
             cbEstado.FormattingEnabled = true;
             cbEstado.Items.AddRange(new object[] { "Abierto", "Cerrado", "Cancelado" });
             cbEstado.Location = new Point(368, 45);
-            cbEstado.Margin = new Padding(1, 1, 1, 1);
+            cbEstado.Margin = new Padding(1);
             cbEstado.Name = "cbEstado";
             cbEstado.Size = new Size(153, 33);
             cbEstado.TabIndex = 23;
@@ -170,7 +170,7 @@
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.Location = new Point(1471, 46);
-            dateTimePicker1.Margin = new Padding(1, 1, 1, 1);
+            dateTimePicker1.Margin = new Padding(1);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(190, 31);
             dateTimePicker1.TabIndex = 21;
@@ -180,7 +180,7 @@
             cbSocio.Enabled = false;
             cbSocio.FormattingEnabled = true;
             cbSocio.Location = new Point(108, 169);
-            cbSocio.Margin = new Padding(1, 1, 1, 1);
+            cbSocio.Margin = new Padding(1);
             cbSocio.Name = "cbSocio";
             cbSocio.Size = new Size(374, 33);
             cbSocio.TabIndex = 16;
@@ -278,7 +278,7 @@
             panel2.Controls.Add(tablaReciboDetalle);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 235);
-            panel2.Margin = new Padding(1, 1, 1, 1);
+            panel2.Margin = new Padding(1);
             panel2.Name = "panel2";
             panel2.Size = new Size(1145, 613);
             panel2.TabIndex = 23;
@@ -314,34 +314,34 @@
             dataGridViewCellStyle1.NullValue = "PRO";
             CodigoProducto.DefaultCellStyle = dataGridViewCellStyle1;
             CodigoProducto.HeaderText = "Código";
-            CodigoProducto.MinimumWidth = 12;
+            CodigoProducto.MinimumWidth = 90;
             CodigoProducto.Name = "CodigoProducto";
-            CodigoProducto.Width = 250;
+            CodigoProducto.Width = 90;
             // 
             // ProductoID
             // 
-            ProductoID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProductoID.DataPropertyName = "ProductoID";
             ProductoID.HeaderText = "Producto";
-            ProductoID.MinimumWidth = 12;
+            ProductoID.MinimumWidth = 210;
             ProductoID.Name = "ProductoID";
+            ProductoID.Width = 210;
             // 
             // BodegaID
             // 
-            BodegaID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             BodegaID.DataPropertyName = "BodegaID";
             BodegaID.HeaderText = "Bodega";
-            BodegaID.MinimumWidth = 12;
+            BodegaID.MinimumWidth = 210;
             BodegaID.Name = "BodegaID";
             BodegaID.SortMode = DataGridViewColumnSortMode.Automatic;
+            BodegaID.Width = 210;
             // 
             // Cantidad
             // 
             Cantidad.DataPropertyName = "Cantidad";
             Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 12;
+            Cantidad.MinimumWidth = 120;
             Cantidad.Name = "Cantidad";
-            Cantidad.Width = 250;
+            Cantidad.Width = 120;
             // 
             // Precio
             // 
@@ -411,7 +411,7 @@
             // 
             tbSubtotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             tbSubtotal.Location = new Point(1273, 40);
-            tbSubtotal.Margin = new Padding(1, 1, 1, 1);
+            tbSubtotal.Margin = new Padding(1);
             tbSubtotal.Name = "tbSubtotal";
             tbSubtotal.ReadOnly = true;
             tbSubtotal.Size = new Size(153, 39);
@@ -445,7 +445,7 @@
             // 
             btnCancelar.BackColor = SystemColors.Window;
             btnCancelar.Location = new Point(1523, 123);
-            btnCancelar.Margin = new Padding(2, 2, 2, 2);
+            btnCancelar.Margin = new Padding(2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(131, 41);
             btnCancelar.TabIndex = 25;
@@ -457,7 +457,7 @@
             btnAceptar.BackColor = Color.FromArgb(255, 222, 89);
             btnAceptar.FlatStyle = FlatStyle.Popup;
             btnAceptar.Location = new Point(1368, 123);
-            btnAceptar.Margin = new Padding(2, 2, 2, 2);
+            btnAceptar.Margin = new Padding(2);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(131, 41);
             btnAceptar.TabIndex = 23;
@@ -470,7 +470,7 @@
             // 
             btnEditar.BackColor = SystemColors.Window;
             btnEditar.Location = new Point(32, 38);
-            btnEditar.Margin = new Padding(2, 2, 2, 2);
+            btnEditar.Margin = new Padding(2);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(131, 41);
             btnEditar.TabIndex = 24;
@@ -483,7 +483,7 @@
             btnVolver.BackColor = Color.FromArgb(255, 222, 89);
             btnVolver.FlatStyle = FlatStyle.Popup;
             btnVolver.Location = new Point(35, 116);
-            btnVolver.Margin = new Padding(2, 2, 2, 2);
+            btnVolver.Margin = new Padding(2);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(129, 41);
             btnVolver.TabIndex = 27;

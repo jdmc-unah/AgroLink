@@ -139,28 +139,28 @@
             // 
             CodigoRecibo.DataPropertyName = "CodigoRecibo";
             CodigoRecibo.HeaderText = "Código";
-            CodigoRecibo.MinimumWidth = 12;
+            CodigoRecibo.MinimumWidth = 100;
             CodigoRecibo.Name = "CodigoRecibo";
             CodigoRecibo.ReadOnly = true;
-            CodigoRecibo.Width = 250;
+            CodigoRecibo.Width = 150;
             // 
             // Fecha
             // 
             Fecha.DataPropertyName = "Fecha";
             Fecha.HeaderText = "Fecha";
-            Fecha.MinimumWidth = 12;
+            Fecha.MinimumWidth = 150;
             Fecha.Name = "Fecha";
             Fecha.ReadOnly = true;
-            Fecha.Width = 250;
+            Fecha.Width = 150;
             // 
             // Socio
             // 
-            Socio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Socio.DataPropertyName = "Socio";
             Socio.HeaderText = "Socio";
-            Socio.MinimumWidth = 12;
+            Socio.MinimumWidth = 250;
             Socio.Name = "Socio";
             Socio.ReadOnly = true;
+            Socio.Width = 250;
             // 
             // TipoSocio
             // 
@@ -173,12 +173,12 @@
             // 
             // ListaPrecio
             // 
-            ListaPrecio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ListaPrecio.DataPropertyName = "ListaPrecio";
             ListaPrecio.HeaderText = "Lista de Precios";
-            ListaPrecio.MinimumWidth = 12;
+            ListaPrecio.MinimumWidth = 170;
             ListaPrecio.Name = "ListaPrecio";
             ListaPrecio.ReadOnly = true;
+            ListaPrecio.Width = 170;
             // 
             // MetodoPago
             // 

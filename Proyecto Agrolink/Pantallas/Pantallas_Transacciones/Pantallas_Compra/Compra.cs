@@ -71,6 +71,9 @@ namespace AgroLink.Pantallas.Pantallas_Transacciones.Pantallas_Compra
             tablaCompra.DataSource = recSQL.EjecutarVista("vTraeCompras");
         }
 
+        private void tablaCompra_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }

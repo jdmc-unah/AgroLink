@@ -124,6 +124,7 @@
             tablaCompra.RowHeadersWidth = 102;
             tablaCompra.Size = new Size(1145, 484);
             tablaCompra.TabIndex = 0;
+            tablaCompra.CellContentClick += tablaCompra_CellContentClick;
             tablaCompra.CellDoubleClick += tablaCompra_CellDoubleClick;
             // 
             // CompraID
@@ -158,68 +159,68 @@
             // 
             // CodigoCompra
             // 
-            CodigoCompra.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             CodigoCompra.DataPropertyName = "CodigoCompra";
             CodigoCompra.HeaderText = "Código";
-            CodigoCompra.MinimumWidth = 170;
+            CodigoCompra.MinimumWidth = 120;
             CodigoCompra.Name = "CodigoCompra";
             CodigoCompra.ReadOnly = true;
-            CodigoCompra.Width = 170;
+            CodigoCompra.Width = 120;
             // 
             // Fecha
             // 
             Fecha.DataPropertyName = "Fecha";
             Fecha.HeaderText = "Fecha";
-            Fecha.MinimumWidth = 12;
+            Fecha.MinimumWidth = 170;
             Fecha.Name = "Fecha";
             Fecha.ReadOnly = true;
-            Fecha.Width = 250;
+            Fecha.Width = 170;
             // 
             // Socio
             // 
-            Socio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Socio.DataPropertyName = "Socio";
             Socio.HeaderText = "Socio";
-            Socio.MinimumWidth = 150;
+            Socio.MinimumWidth = 250;
             Socio.Name = "Socio";
             Socio.ReadOnly = true;
+            Socio.Width = 250;
             // 
             // TipoSocio
             // 
-            TipoSocio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             TipoSocio.DataPropertyName = "TipoSocio";
             TipoSocio.HeaderText = "Tipo de Socio";
-            TipoSocio.MinimumWidth = 12;
+            TipoSocio.MinimumWidth = 200;
             TipoSocio.Name = "TipoSocio";
             TipoSocio.ReadOnly = true;
+            TipoSocio.Width = 200;
             // 
             // ListaPrecio
             // 
-            ListaPrecio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ListaPrecio.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             ListaPrecio.DataPropertyName = "ListaPrecio";
             ListaPrecio.HeaderText = "Lista de Precios";
-            ListaPrecio.MinimumWidth = 12;
+            ListaPrecio.MinimumWidth = 250;
             ListaPrecio.Name = "ListaPrecio";
             ListaPrecio.ReadOnly = true;
+            ListaPrecio.Width = 250;
             // 
             // TipoPago
             // 
             TipoPago.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             TipoPago.DataPropertyName = "TipoPago";
             TipoPago.HeaderText = "Tipo de Pago";
-            TipoPago.MinimumWidth = 12;
+            TipoPago.MinimumWidth = 170;
             TipoPago.Name = "TipoPago";
             TipoPago.ReadOnly = true;
-            TipoPago.Width = 500;
+            TipoPago.Width = 170;
             // 
             // Estado
             // 
             Estado.DataPropertyName = "Estado";
             Estado.HeaderText = "Estado";
-            Estado.MinimumWidth = 12;
+            Estado.MinimumWidth = 150;
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
-            Estado.Width = 250;
+            Estado.Width = 150;
             // 
             // Total
             // 
