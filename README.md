@@ -6,7 +6,7 @@ Este proyecto consiste en la creación de un sistema cliente-servidor (cliente l
 
 ---
 
-## 📂 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 /COPRAG-AgroLinkDB
